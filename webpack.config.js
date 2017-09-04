@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const auth = JSON.parse(fs.readFileSync('./ssh.config.json', 'utf-8'));
+
 const LessAutoprefixPlugin = require('less-plugin-autoprefix');
 const LessCleanCSSPlugin = require('less-plugin-clean-css');
 
@@ -63,10 +65,10 @@ module.exports = {
 		}),
 		new SSHPlugin({
 			host: 'enn-devl.ga',
-			username: 'enn',
-			privateKey: fs.readFileSync('./ssh.pem'),
+			username: auth.username,
+			password: auth.password,
 			from: './app',
-			to: '/var/www/html/tour/front/app/'
+			to: auth.to
 		})
 	]
 };

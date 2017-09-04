@@ -1,5 +1,6 @@
 ssh.key
 ssh.pem
+ssh.config.json
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
