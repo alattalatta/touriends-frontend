@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Touriends Frontend</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-    <script src="app/bundle.js"></script>
-    <base href="/tour/front/">
+<!--    <base href="--><?//= home_url('') ?><!--/tour/front/">-->
+    <?php wp_head() ?>
 </head>
 <body ng-app="touriends">
 
@@ -16,5 +16,6 @@
 <a ui-sref="group">Group</a>
 <ui-view></ui-view>
 
+<?php wp_footer() ?>
 </body>
 </html>

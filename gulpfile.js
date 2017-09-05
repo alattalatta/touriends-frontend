@@ -12,7 +12,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const gulp = require('gulp');
-// const runSequence = require('run-sequence');
 const sftp = require('gulp-ssh');
 
 gulp.task('default', ['build', 'watch']);
@@ -87,10 +86,10 @@ let ssh = new sftp({
 });
 gulp.task('watch', () => {
 	gulp.watch('app/**/*', ['push']);
-	gulp.watch(['.htaccess', 'index.html'], ['index'])
+	gulp.watch(['style.css', '*.php'], ['index'])
 });
 gulp.task('index', () => {
-	return gulp.src(['.htaccess', 'index.html'])
+	return gulp.src(['style.css', '*.php'])
 		.pipe(ssh.dest(auth.to));
 });
 gulp.task('push', () => {
