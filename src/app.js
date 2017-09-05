@@ -17,5 +17,7 @@ angular
 			template: require('./template/group.html')
 		});
 
+		console.log('hi');
+
 		$locationProvider.html5Mode(true);
 	}]);
