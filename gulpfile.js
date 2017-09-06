@@ -1,9 +1,13 @@
 'use strict';
 
+// Node.js
 const fs = require('fs');
 const path = require('path');
+
+// SSH auth
 const auth = JSON.parse(fs.readFileSync('./ssh.config.json', 'utf-8'));
 
+// Webpack
 const webpackCompiler = require('webpack');
 const webpack = require('webpack-stream');
 const LessAutoprefixPlugin = require('less-plugin-autoprefix');
@@ -11,6 +15,7 @@ const LessCleanCSSPlugin = require('less-plugin-clean-css');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+// Gulp
 const gulp = require('gulp');
 const sftp = require('gulp-ssh');
 

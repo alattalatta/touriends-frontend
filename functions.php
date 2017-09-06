@@ -1,6 +1,8 @@
 <?php
 
-wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/app/bundle.js', false, false, true);
+add_action('wp_enqueue_scripts', function() {
+    wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/app/bundle.js', false, false, true);
+});
 
 add_filter('show_admin_bar', '__return_false'); // Remove admin bar even if the user is an admin
 

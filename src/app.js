@@ -1,23 +1,58 @@
 import 'angular-ui-router';
+import HomeCtrl from './controller/Home';
+import LoginCtrl from './controller/Login';
+import LoginSvc from './service/Login';
 
 angular
 	.module('touriends', ['ui.router'])
-	.config(['$stateProvider', '$locationProvider', ($stateProvider, $locationProvider) => {
+	.controller('HomeCtrl', HomeCtrl)
+	.controller('LoginCtrl', LoginCtrl)
+	.service('LoginSvc', LoginSvc)
+	.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
 		$stateProvider.state({
-			url: '/',
-			name: 'main',
-			template: require('./template/main.html')
+			abstract: true,
+			name: 'authful',
+			resolve: {
+				auth: ['$q', '$state', '$timeout', 'LoginSvc', ($q, $state, $timeout, LoginSvc) => {
+					if (LoginSvc.logged) {
+						return $q.when();
+					}
+					else {
+						$timeout(() => {
+							$state.go('login');
+						});
+
+						return $q.reject();
+					}
+				}]
+			}
+		}).state({
+			url: '/login',
+			name: 'login',
+			template: require('./template/login.html'),
+			resolve: {
+				auth: ['$q', '$state', '$timeout', 'LoginSvc', ($q, $state, $timeout, LoginSvc) => {
+					if (! LoginSvc.logged) {
+						return $q.when();
+					}
+					else {
+						$timeout(() => {
+							$state.go('home');
+						});
+
+						return $q.reject();
+					}
+				}]
+			}
 		}).state({
 			url: '/home',
 			name: 'home',
+			parent: 'authful',
 			template: require('./template/home.html')
-		}).state({
-			url: '/group',
-			name: 'group',
-			template: require('./template/group.html')
 		});
 
-		console.log('hi');
-
-		// $locationProvider.html5Mode(true);
+		$urlRouterProvider.otherwise('/login');
+	}])
+	.config(['$httpProvider', ($httpProvider) => {
+		$httpProvider.defaults.paramSerializer = '$httpParamSerializerJQLike';
 	}]);
