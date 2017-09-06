@@ -20,7 +20,6 @@ class LoginCtrl {
 
 	login() {
 		this.LoginSvc.login(this.loginObj).then((response) => {
-			console.log(response);
 			if (response.data.success) {
 				this.$state.go('home');
 			}

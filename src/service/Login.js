@@ -1,3 +1,6 @@
+/**
+ * 글로벌 로그인 서비스
+ */
 class LoginSvc {
 	static get $inject() {
 		return ['$http'];
@@ -5,8 +8,8 @@ class LoginSvc {
 
 	constructor($http) {
 		this.$http = $http;
-		this.logged = logged;
-		this.uid = uid;
+		this.logged = logged; // 이미 로그인된 경우면 index.php의 logged = true
+		this.uid = uid; // 이미 로그인된 경우면 index.php의 uid = 현재 사용자 ID
 	}
 
 	register(loginObj) {
@@ -46,6 +49,7 @@ class LoginSvc {
 			}
 		}).then((response) => {
 			this.logged = false;
+			this.uid = null;
 			return response;
 		});
 	}
