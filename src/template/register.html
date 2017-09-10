@@ -1,0 +1,9 @@
+<div ng-controller="RegisterCtrl as $ctrl">
+    <h2>Register</h2>
+    <form ng-submit="$ctrl.register()">
+        <input type="email" ng-model="$ctrl.registerObj.login" placeholder="Email">
+        <input type="password" ng-model="$ctrl.registerObj.pwd" placeholder="Password">
+        <input type="password" ng-model="$ctrl.registerObj.pwdConfirm" placeholder="Confirm password">
+        <button>Register</button>
+    </form>
+</div>

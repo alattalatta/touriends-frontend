@@ -5,12 +5,6 @@
         <input type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
         <button>Login</button>
     </form>
-    <hr>
-    <h2>Register</h2>
-    <form ng-submit="$ctrl.register()">
-        <input type="email" ng-model="$ctrl.registerObj.login" placeholder="Email">
-        <input type="password" ng-model="$ctrl.registerObj.pwd" placeholder="Password">
-        <input type="password" ng-model="$ctrl.registerObj.pwdConfirm" placeholder="Confirm password">
-        <button>Register</button>
-    </form>
+
+    <a ui-sref="register">계정이 없어욧</a>
 </div>
