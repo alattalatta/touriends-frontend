@@ -7,7 +7,6 @@
     <meta name="ref" content="<?= wp_create_nonce('touriends_ref') ?>">
     <title>Touriends Frontend</title>
     <?php wp_head() ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script>
         var ajax_url=`<?= admin_url('admin-ajax.php') ?>`;
         var logged=<?= is_user_logged_in() ? 'true' : 'false' ?>;

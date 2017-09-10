@@ -71,9 +71,7 @@ gulp.task('build', () => {
 			},
 			plugins: [
 				new ExtractTextPlugin('style.css'),
-				new UglifyJSPlugin({
-					sourceMap: true
-				})
+				new UglifyJSPlugin({sourceMap: true})
 			]
 		}, webpackCompiler))
 		.pipe(gulp.dest('app/'));
