@@ -1,12 +1,16 @@
 <div ng-controller="LoginCtrl as $ctrl">
     <h2>Login</h2>
-    <input type="email" ng-model="$ctrl.loginObj.login" placeholder="Email">
-    <input type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
-    <p ng-click="$ctrl.login()">Login</p>
+    <form ng-submit="$ctrl.login()">
+        <input type="email" ng-model="$ctrl.loginObj.login" placeholder="Email">
+        <input type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
+        <button>Login</button>
+    </form>
     <hr>
     <h2>Register</h2>
-    <input type="email" ng-model="$ctrl.registerObj.login" placeholder="Email">
-    <input type="password" ng-model="$ctrl.registerObj.pwd" placeholder="Password">
-    <input type="password" ng-model="$ctrl.registerObj.pwdConfirm" placeholder="Confirm password">
-    <p ng-click="$ctrl.register()">Register</p>
+    <form ng-submit="$ctrl.register()">
+        <input type="email" ng-model="$ctrl.registerObj.login" placeholder="Email">
+        <input type="password" ng-model="$ctrl.registerObj.pwd" placeholder="Password">
+        <input type="password" ng-model="$ctrl.registerObj.pwdConfirm" placeholder="Confirm password">
+        <button>Register</button>
+    </form>
 </div>
