@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="ref" content="<?= wp_create_nonce('touriends_ref') ?>">
     <title>Touriends Frontend</title>
+	<base href="<?= home_url() ?>">
     <?php wp_head() ?>
     <script>
         var ajax_url=`<?= admin_url('admin-ajax.php') ?>`;

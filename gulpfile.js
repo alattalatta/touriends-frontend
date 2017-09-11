@@ -26,7 +26,7 @@ gulp.task('build', () => {
 			output: {
 				path: path.resolve(__dirname, 'app'),
 				filename: 'bundle.js',
-				publicPath: '/public/'
+				publicPath: auth.base
 			},
 			watch: true,
 			devtool: 'eval-source-map',
@@ -66,6 +66,11 @@ gulp.task('build', () => {
 					test: /\.html$/,
 					use: {
 						loader: 'html-loader'
+					}
+				}, {
+					test: /\.(png|jpg|gif)$/,
+					use: {
+						loader: 'file-loader'
 					}
 				}]
 			},
