@@ -29,6 +29,9 @@ class TestSuite {
             action: this.action
         };
         for (let kv of this.params) {
+            if (kv.key === null) {
+                continue;
+            }
             params[kv.key] = kv.value;
         }
         console.log('Params:', params);

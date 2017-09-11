@@ -17,6 +17,7 @@
 <body ng-app="touriends">
 
 <a ui-sref="home">Force home</a>
+<a ui-sref="test">Backend Test Arena</a>
 <ui-view></ui-view>
 
 <?php wp_footer() ?>
