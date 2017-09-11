@@ -3,7 +3,7 @@ require('./style.less');
 /**
  * https://www.html5rocks.com/en/tutorials/file/dndfiles/
  */
-class ProfileUploaderCtrl {
+class ImageUploaderCtrl {
     static get $inject() {
         return ['$element', '$scope'];
     }
@@ -27,13 +27,13 @@ class ProfileUploaderCtrl {
     }
 }
 
-let profileUploader = {
+let imageUploader = {
     bindings: {
         fileModel: '=',
         previewModel: '='
     },
-    controller: ProfileUploaderCtrl,
+    controller: ImageUploaderCtrl,
     template: require('./template.html')
 };
 
-export default profileUploader;
+export default imageUploader;
