@@ -13,26 +13,20 @@ class LoginSvc {
 	}
 
 	register(registerObj) {
+		registerObj.action = 'register';
 		return this.$http({
 			method: 'POST',
 			url: ajax_url,
-			params: {
-				action: 'register',
-				login: registerObj.login,
-				pwd: registerObj.pwd
-			}
+			params: registerObj
 		});
 	}
 	login(loginObj) {
+		loginObj.action = 'login';
 	    // 구글 검색어 javascript promise
 		return this.$http({
 			method: 'POST',
 			url: ajax_url,
-			params: {
-				action: 'login',
-				login: loginObj.login,
-				pwd: loginObj.pwd
-			}
+			params: loginObj
 		}).then((response) => {
 			if (response.data.success) {
 				this.logged = true;

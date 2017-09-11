@@ -6,8 +6,10 @@ import LoginCtrl from './controller/Login';
 import RegisterCtrl from './controller/Register';
 import LoginSvc from './service/Login';
 
+import directiveModule from './directive/index';
+
 angular
-    .module('touriends', ['ui.router'])
+    .module('touriends', ['ui.router', directiveModule.name])
     .controller('HomeCtrl', HomeCtrl)
     .controller('LoginCtrl', LoginCtrl)
     .controller('RegisterCtrl', RegisterCtrl)
