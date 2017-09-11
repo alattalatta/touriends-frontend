@@ -69,5 +69,6 @@ angular
         $urlRouterProvider.otherwise('/login');
     }])
     .config(['$httpProvider', ($httpProvider) => {
+        $httpProvider.defaults.headers.post = null;
         $httpProvider.defaults.paramSerializer = '$httpParamSerializerJQLike';
     }]);

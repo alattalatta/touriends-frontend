@@ -15,6 +15,8 @@ class RegisterCtrl {
         this.LoginSvc = LoginSvc;
 
         this.imagePreview = null;
+        this.imageData = null;
+        this.form = document.getElementById('form_register');
 
         /**
          * 회원가입 요청 전송 여부
@@ -24,13 +26,12 @@ class RegisterCtrl {
         this.pending = false;
         /**
          * 회원가입 오브젝트 원본
-         * @type {{login: string, pwd: string, pwdConfirm: string, image: blob}}
+         * @type {{login: string, pwd: string, pwdConfirm: string}}
          */
         this.registerTemplate = {
             login: null,
             pwd: null,
-            pwdConfirm: null,
-            image: null
+            pwdConfirm: null
         };
         /**
          * 회원가입 오브젝트
@@ -55,8 +56,15 @@ class RegisterCtrl {
             return;
         }
 
+        let data = new FormData(this.form);
+        // 이미지 검사
+        if (this.imageData) {
+            data.append('image', this.imageData);
+        }
+
         this.pending = true;
-        this.LoginSvc.register(this.registerObj).then((response) => {
+        this.LoginSvc.register(data).then((response) => {
+            console.log(response);
             if (response.data.success) {
                 alert(`${this.registerObj.login} 가입에 성공해버렸어요!`);
                 // 추가 접근에 대비해 초기화? 사실 필요 없을듯
