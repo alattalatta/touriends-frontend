@@ -9,21 +9,22 @@ class LoginSvc {
 	constructor($http) {
 		this.$http = $http;
 		this.logged = logged; // 이미 로그인된 경우면 index.php의 logged = true
-		this.uid = uid; // 이미 로그인된 경우면 index.php의 uid = 현재 사용자 ID
+		this.uid = uid;       // 이미 로그인된 경우면 index.php의 uid = 현재 사용자 ID
 	}
 
-	register(loginObj) {
+	register(registerObj) {
 		return this.$http({
 			method: 'POST',
 			url: ajax_url,
 			params: {
 				action: 'register',
-				login: loginObj.login,
-				pwd: loginObj.pwd
+				login: registerObj.login,
+				pwd: registerObj.pwd
 			}
 		});
 	}
 	login(loginObj) {
+	    // 구글 검색어 javascript promise
 		return this.$http({
 			method: 'POST',
 			url: ajax_url,
