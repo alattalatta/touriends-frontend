@@ -6,12 +6,17 @@ import LoginCtrl from './controller/Login';
 import RegisterCtrl from './controller/Register';
 import LoginSvc from './service/Login';
 
+import TestSuiteCtrl from './controller/TestSuite';
+
 angular
     .module('touriends', ['ui.router'])
     .controller('HomeCtrl', HomeCtrl)
     .controller('LoginCtrl', LoginCtrl)
     .controller('RegisterCtrl', RegisterCtrl)
+    .controller('TestSuiteCtrl', TestSuiteCtrl)
     .service('LoginSvc', LoginSvc)
+
+// ========== Configs ==========
     .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
         $stateProvider.state({
             abstract: true,
@@ -62,6 +67,10 @@ angular
             name: 'home',
             parent: 'authful',
             template: require('./template/home.html')
+        }).state({
+            url: '/test',
+            name: 'test',
+            template: require('./template/test.html')
         });
 
         $urlRouterProvider.otherwise('/login');

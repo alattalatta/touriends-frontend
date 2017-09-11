@@ -1,0 +1,16 @@
+<div ng-controller="TestSuiteCtrl as $ctrl" class="ts">
+    <h2 style="color: red">TEST TEST TEST</h2>
+    <p style="color: red">프로덕션에 포함하지 마시오</p>
+
+    <form ng-submit="$ctrl.submit()">
+        <input type="text" ng-model="$ctrl.action" placeholder="액션" class="action">
+		<h3>매개변수</h3>
+        <div ng-repeat="param in $ctrl.params">
+            <input type="text" ng-model="param.key" placeholder="키" class="key">
+            <input type="text" ng-model="param.value" placeholder="값" class="value">
+			<button type="button" ng-click="$ctrl.removeParam($index)" ng-if="$ctrl.params.length" class="remove">제거</button>
+        </div>
+		<button type="submit" class="submit">실행</button>
+    </form>
+	<button ng-click="$ctrl.addParam()" class="add">매개변수 추가</button>
+</div>
