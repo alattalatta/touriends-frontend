@@ -1,11 +1,10 @@
 <div ng-controller="RegisterCtrl as $ctrl">
-    <h2>Register</h2>
-    <form id="form_register" ng-submit="$ctrl.register()">
+    <form class="form" id="form_register" ng-submit="$ctrl.register()">
         <input class="form-input" ng-model="$ctrl.registerObj.login" placeholder="Email">
         <input class="form-input" type="password" ng-model="$ctrl.registerObj.pwd" placeholder="Password">
         <input class="form-input" type="password" ng-model="$ctrl.registerObj.pwdConfirm" placeholder="Confirm password">
-        <div class="form-thumbnail" style="width:200px;height:200px;background-color:grey" ng-style="$ctrl.ProfileImage"></div>
+        <div class="form-thumbnail" ng-style="$ctrl.ProfileImage"></div>
         <profile-uploader file-model="$ctrl.registerObj.image" preview-model="$ctrl.imagePreview"></profile-uploader>
-        <button>Register</button>
+        <button class="form-submit">가입</button>
     </form>
 </div>
