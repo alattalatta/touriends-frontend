@@ -16,7 +16,6 @@
 </head>
 <body ng-app="touriends">
 
-<a ui-sref="home">Force home</a>
 <ui-view></ui-view>
 
 <?php wp_footer() ?>

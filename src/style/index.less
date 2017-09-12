@@ -1,6 +1,19 @@
-@import 'normalize';
+@import './normalize';
+@import './pages/register';
 
-@import 'register';
+html {
+  height: 100%;
+}
+
+body {
+  width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  overflow-x: hidden;
+}
 
 .button {
   align-items: center;
@@ -9,10 +22,26 @@
   text-align: center;
   vertical-align: top;
 }
-.form {
-  max-width: 88%;
-  margin: 0 auto;
-}
 .form-input {
   display: block;
+}
+
+.paper-group {
+  position: relative;
+}
+.paper {
+  box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: -3;
+
+  &.top {
+    z-index: -1;
+  }
+
+  &.white {
+    background: #F8F9F8;
+  }
+  &.red {
+    background: #E15C6E;
+  }
 }

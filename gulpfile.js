@@ -6,6 +6,8 @@ const path = require('path');
 
 // SSH auth
 const auth = JSON.parse(fs.readFileSync('./ssh.config.json', 'utf-8'));
+const sshTarget = `/var/www/html/${auth.username}/wp-content/themes/touriends/`;
+const sshBase = auth.base;
 
 // Webpack
 const webpackCompiler = require('webpack');
@@ -26,10 +28,10 @@ gulp.task('build', () => {
 			output: {
 				path: path.resolve(__dirname, 'app'),
 				filename: 'bundle.js',
-				publicPath: auth.base
+				publicPath: sshBase
 			},
 			watch: true,
-			devtool: 'eval-source-map',
+			// devtool: 'eval-source-map',
 			externals: {
 				jquery: 'jQuery',
 				angular: 'angular'
@@ -40,7 +42,8 @@ gulp.task('build', () => {
 					use: {
 						loader: 'babel-loader',
 						options: {
-							presets: ['env']
+							presets: ['env'],
+							plugins: ['syntax-dynamic-import']
 						}
 					}
 				}, {
@@ -76,7 +79,7 @@ gulp.task('build', () => {
 			},
 			plugins: [
 				new ExtractTextPlugin('style.css'),
-				new UglifyJSPlugin({sourceMap: true})
+				// new UglifyJSPlugin({sourceMap: true})
 			]
 		}, webpackCompiler))
 		.pipe(gulp.dest('app/'));
@@ -98,9 +101,9 @@ gulp.task('watch', () => {
 });
 gulp.task('index', () => {
 	return gulp.src(['style.css', '*.php'])
-		.pipe(ssh.dest(auth.to));
+		.pipe(ssh.dest(sshTarget));
 });
 gulp.task('push', () => {
 	return gulp.src('app/**/*')
-		.pipe(ssh.dest(auth.to + 'app/'));
+		.pipe(ssh.dest(sshTarget + 'app/'));
 });

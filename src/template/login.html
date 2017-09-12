@@ -1,8 +1,8 @@
-<div ng-controller="LoginCtrl as $ctrl">
+<div class="page-login" ng-controller="LoginCtrl as $ctrl">
     <img src="../media/brand.png">
-    <form ng-submit="$ctrl.login()">
-        <input type="email" ng-model="$ctrl.loginObj.login" placeholder="Email">
-        <input type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
+    <form id="form_login" ng-submit="$ctrl.login()" novalidate>
+        <input type="email" name="login" ng-model="$ctrl.loginObj.login" placeholder="Email">
+        <input name="pwd" type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
         <button>Login</button>
     </form>
 

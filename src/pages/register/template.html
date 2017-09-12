@@ -1,0 +1,17 @@
+<main class="page-register" ng-controller="RegisterCtrl as $ctrl">
+    <div class="paper-group">
+        <div class="paper top white"></div>
+        <div class="paper red"></div>
+    </div>
+    <form class="form" id="form_register" ng-submit="$ctrl.register()" novalidate>
+        <input name="login" class="form-input" ng-model="$ctrl.registerObj.login" placeholder="Email">
+        <input name="pwd" class="form-input" type="password" ng-model="$ctrl.registerObj.pwd" placeholder="Password">
+        <input name="pwd" class="form-input" type="password" ng-model="$ctrl.registerObj.pwdConfirm" placeholder="Confirm password">
+        <div class="profile-group">
+            <div class="profile-thumbnail" ng-style="$ctrl.ProfileImage"></div>
+            <image-uploader file-model="$ctrl.imageData" preview-model="$ctrl.imagePreview"></image-uploader>
+        </div>
+        <button ng-bind="$ctrl.RegisterLabel"></button>
+    </form>
+    <h1 ng-click="$ctrl.$state.go('login')">돌아가기</h1>
+</main>

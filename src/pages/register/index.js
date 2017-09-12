@@ -9,6 +9,10 @@ class RegisterCtrl {
         return this.imagePreview === null ?
             null : {'background-image': `url(${this.imagePreview})`};
     }
+    get RegisterLabel() {
+        return this.pending ?
+            '...' : 'SIGN UP';
+    }
 
     constructor($state, LoginSvc) {
         this.$state = $state;
@@ -64,7 +68,6 @@ class RegisterCtrl {
 
         this.pending = true;
         this.LoginSvc.register(data).then((response) => {
-            console.log(response);
             if (response.data.success) {
                 alert(`${this.registerObj.login} 가입에 성공해버렸어요!`);
                 // 추가 접근에 대비해 초기화? 사실 필요 없을듯
@@ -83,4 +86,4 @@ class RegisterCtrl {
     }
 }
 
-export default RegisterCtrl;
+export default angular.module('touriends.page.register', ['touriends']).controller('RegisterCtrl', RegisterCtrl);
