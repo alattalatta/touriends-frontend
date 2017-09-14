@@ -15,8 +15,4 @@ class HomeCtrl {
     }
 }
 
-// function 사용시...
-// function HomeCtrl($state, LoginSvc) { ... }
-// HomeCtrl.$inject = ['$state', 'LoginSvc'];
-
-export default HomeCtrl;
+export default angular.module('touriends.page.home', ['touriends']).controller('HomeCtrl', HomeCtrl).name;

@@ -41,4 +41,4 @@ class LoginCtrl {
 	}
 }
 
-export default LoginCtrl;
+export default angular.module('touriends.page.login', ['touriends']).controller('LoginCtrl', LoginCtrl).name;

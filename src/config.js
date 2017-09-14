@@ -1,6 +1,5 @@
 export default app => {
-    app
-        .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
+    app.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
             $stateProvider.state({
                 abstract: true,
                 name: 'authful',
@@ -39,7 +38,16 @@ export default app => {
                 url: '/login',
                 name: 'login',
                 parent: 'authless',
-                template: require('./template/login.html')
+                template: require('./pages/login/template.html'),
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/login/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.login'
+                            });
+                        })
+                    }]
+                }
             }).state({
                 url: '/register',
                 name: 'register',
@@ -60,7 +68,18 @@ export default app => {
                 url: '/home',
                 name: 'home',
                 parent: 'authful',
-                template: require('./template/home.html')
+                templateProvider: () => {
+                    return import('./pages/home/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', $ocLazyLoad => {
+                        return import('./pages/home/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.home'
+                            });
+                        })
+                    }]
+                }
             });
 
             $urlRouterProvider.otherwise('/login');

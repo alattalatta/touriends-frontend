@@ -1,10 +1,21 @@
+@import './bootstrap-grid.css';
 @import './normalize';
 @import './pages/register';
+
+@font-face {
+  font-family: 'Akrobat Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Akrobat Regular'), url('../media/Akrobat-Regular.woff') format('woff');
+}
 
 html {
   height: 100%;
 }
 
+body, input {
+  font-family: 'Akrobat Regular', 'Apple SD Gothic Neo', sans-serif;
+}
 body {
   width: 100vw;
   height: 100%;
@@ -13,17 +24,34 @@ body {
 
 main {
   overflow-x: hidden;
+  height: 100%;
 }
 
+.input {
+  height: 55 / 16rem;
+  background: none;
+  border: none;
+  display: block;
+  font-size: 21 / 16rem;
+  line-height: 55 / 21;
+  &::placeholder {
+    color: rgba(0, 0, 0, .25);
+  }
+}
+.form-input {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 55 / 16rem;
+  box-shadow: 0 0 5.9px 3.2px rgba(0, 0, 0, 0.07);
+  margin-top: 35 / 16rem;
+  padding: 0 40 / 16rem;
+}
 .button {
   align-items: center;
   display: inline-flex;
   justify-content: center;
   text-align: center;
   vertical-align: top;
-}
-.form-input {
-  display: block;
 }
 
 .paper-group {

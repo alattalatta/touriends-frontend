@@ -5,13 +5,39 @@ class RegisterCtrl {
         return ['$state', 'LoginSvc']
     }
 
+    // =============== 인라인 CSS
+    /**
+     * 선택한 프로필 이미지의 인라인 백그라운드 이미지 스타일
+     * @returns {*}
+     */
     get ProfileImage() {
         return this.imagePreview === null ?
             null : {'background-image': `url(${this.imagePreview})`};
     }
-    get RegisterLabel() {
+    get SignUpLabel() {
         return this.pending ?
             '...' : 'SIGN UP';
+    }
+    get EmailStyle() {
+        if (this.registerObj.email === null) {
+            return null;
+        }
+        return ! EmailValidator.validate(this.registerObj.email) ?
+            this.invalidStyle : null;
+    }
+    get PasswordStyle() {
+        if (this.registerObj.pwd === null) {
+            return null;
+        }
+        if (this.registerObj.pwd.search(/[0-9]/g) < 0 || this.registerObj.pwd.search(/[a-z]/ig)) {
+            return this.invalidStyle;
+        }
+        return this.registerObj.pwd.length < 6 ?
+            this.invalidStyle : null;
+    }
+    get PasswordConfirmStyle() {
+        return this.registerObj.pwd !== this.registerObj.pwdConfirm ?
+            this.invalidStyle : null;
     }
 
     constructor($state, LoginSvc) {
@@ -21,6 +47,7 @@ class RegisterCtrl {
         this.imagePreview = null;
         this.imageData = null;
         this.form = document.getElementById('form_register');
+        this.invalidStyle = {'border-color': 'rgba(255, 55, 55, .25)'};
 
         /**
          * 회원가입 요청 전송 여부
@@ -30,10 +57,18 @@ class RegisterCtrl {
         this.pending = false;
         /**
          * 회원가입 오브젝트 원본
-         * @type {{login: string, pwd: string, pwdConfirm: string}}
+         * @type {{
+         * login: string,
+         * name: string,
+         * email: null,
+         * pwd: string,
+         * pwdConfirm: string
+         * }}
          */
         this.registerTemplate = {
             login: null,
+            name: null,
+            email: null,
             pwd: null,
             pwdConfirm: null
         };
@@ -86,4 +121,4 @@ class RegisterCtrl {
     }
 }
 
-export default angular.module('touriends.page.register', ['touriends']).controller('RegisterCtrl', RegisterCtrl);
+export default angular.module('touriends.page.register', ['touriends']).controller('RegisterCtrl', RegisterCtrl).name;

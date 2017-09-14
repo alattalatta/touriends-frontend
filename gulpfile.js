@@ -2,6 +2,7 @@
 
 // Node.js
 const fs = require('fs');
+const del = require('del');
 const path = require('path');
 
 // SSH auth
@@ -19,91 +20,103 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // Gulp
 const gulp = require('gulp');
+const cache = require('gulp-cached');
 const sftp = require('gulp-ssh');
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['clean', 'build', 'watch']);
+gulp.task('clean', () => {
+    return del([
+        'app/**/*'
+    ]);
+});
 gulp.task('build', () => {
-	return gulp.src('src/app.js')
-		.pipe(webpack({
-			output: {
-				path: path.resolve(__dirname, 'app'),
-				filename: 'bundle.js',
-				publicPath: sshBase
-			},
-			watch: true,
-			// devtool: 'eval-source-map',
-			externals: {
-				jquery: 'jQuery',
-				angular: 'angular'
-			},
-			module: {
-				rules: [{
-					test: /\.js$/,
-					use: {
-						loader: 'babel-loader',
-						options: {
-							presets: ['env'],
-							plugins: ['syntax-dynamic-import']
-						}
-					}
-				}, {
-					test: /\.less$/,
-					use: ExtractTextPlugin.extract({
-						use: [{
-							loader: 'css-loader',
-							options: {
-								sourceMap: true
-							}
-						}, {
-							loader: 'less-loader',
-							options: {
-								sourceMap: true,
-								plugins: [
-									new LessAutoprefixPlugin(),
-									new LessCleanCSSPlugin
-								]
-							}
-						}],
-					})
-				}, {
-					test: /\.html$/,
-					use: {
-						loader: 'html-loader'
-					}
-				}, {
-					test: /\.(png|jpg|gif)$/,
-					use: {
-						loader: 'file-loader'
-					}
-				}]
-			},
-			plugins: [
-				new ExtractTextPlugin('style.css'),
-				// new UglifyJSPlugin({sourceMap: true})
-			]
-		}, webpackCompiler))
-		.pipe(gulp.dest('app/'));
+    return gulp.src('src/app.js')
+        .pipe(webpack({
+            output   : {
+                path      : path.resolve(__dirname, 'app'),
+                filename  : 'bundle.js',
+                publicPath: sshBase
+            },
+            watch    : true,
+            // devtool: 'eval-source-map',
+            externals: {
+                jquery : 'jQuery',
+                angular: 'angular'
+            },
+            module   : {
+                rules: [{
+                    test: /\.js$/,
+                    use : {
+                        loader : 'babel-loader',
+                        options: {
+                            presets: ['env'],
+                            plugins: ['syntax-dynamic-import']
+                        }
+                    }
+                }, {
+                    test: /\.less$/,
+                    use : ExtractTextPlugin.extract({
+                        use: [{
+                            loader : 'css-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        }, {
+                            loader : 'less-loader',
+                            options: {
+                                sourceMap: true,
+                                plugins  : [
+                                    new LessAutoprefixPlugin(),
+                                    new LessCleanCSSPlugin
+                                ]
+                            }
+                        }],
+                    })
+                }, {
+                    test: /\.html$/,
+                    use : {
+                        loader: 'html-loader'
+                    }
+                }, {
+                    test: /\.(png|jpg|gif)$/,
+                    use : {
+                        loader: 'file-loader'
+                    }
+                }, {
+                    test: /\.(eot|svg|ttf|woff|woff2)$/,
+                    use: {
+                        loader: 'file-loader'
+                    }
+                }]
+            },
+            plugins  : [
+                new ExtractTextPlugin('style.css'),
+                // new UglifyJSPlugin({sourceMap: true})
+            ]
+        }, webpackCompiler))
+        .pipe(gulp.dest('app/'));
 });
 
 let config = {
-	host: 'www.enn-devl.ga',
-	port: 22,
-	username: auth.username,
-	password: auth.password
+    host    : 'www.enn-devl.ga',
+    port    : 22,
+    username: auth.username,
+    password: auth.password
 };
 let ssh = new sftp({
-	ignoreErrors: false,
-	sshConfig: config
+    ignoreErrors: false,
+    sshConfig   : config
 });
 gulp.task('watch', () => {
-	gulp.watch('app/**/*', ['push']);
-	gulp.watch(['style.css', '*.php'], ['index'])
+    gulp.watch('app/**/*', ['push']);
+    gulp.watch(['style.css', '*.php'], ['index'])
 });
 gulp.task('index', () => {
-	return gulp.src(['style.css', '*.php'])
-		.pipe(ssh.dest(sshTarget));
+    return gulp.src(['style.css', '*.php'])
+        .pipe(ssh.dest(sshTarget));
 });
 gulp.task('push', () => {
-	return gulp.src('app/**/*')
-		.pipe(ssh.dest(sshTarget + 'app/'));
+    return gulp.src('app/**/*')
+        .pipe(cache('ssh'))
+        .pipe(ssh.dest(sshTarget + 'app/'));
 });

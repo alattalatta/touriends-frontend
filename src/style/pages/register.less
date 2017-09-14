@@ -5,23 +5,51 @@
   }
   .paper.red {
     transform-origin: left bottom;
-    transform: translateY(8px) rotate(-10deg);
+    transform: translateY(.5rem) rotate(-13deg);
     left: 0;
   }
   .paper.white {
     transform-origin: right bottom;
-    transform: rotate(10deg);
+    transform: rotate(13deg);
     right: 0;
   }
 
-  .profile-group {
-    position: relative;
-  }
   .profile-thumbnail {
-    width: 200px;
-    height: 200px;
-    background: whitesmoke no-repeat center;
+    width: 156 / 16rem;
+    height: 156 / 16rem;
+    background: whitesmoke url('../../media/default-profile.jpg') no-repeat center;
     background-size: cover;
     border-radius: 100%;
+    margin: 138 / 16rem auto 0;
+    position: relative;
+  }
+  image-uploader {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .form-container {
+    padding: 0 51 / 16rem;
+  }
+
+  input[name=login] {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 36 / 16rem;
+    line-height: 52 / 36;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  input[type=radio] {
+    display: none;
+    visibility: hidden;
+  }
+
+  .birth {
+    input {
+      text-align: center;
+    }
   }
 }
