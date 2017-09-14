@@ -33,18 +33,35 @@ main {
   border: none;
   display: block;
   font-size: 21 / 16rem;
-  line-height: 55 / 21;
+  line-height: 55 / 16rem;
   &::placeholder {
-    color: rgba(0, 0, 0, .25);
+    color: rgba(0, 0, 0, .5);
+  }
+
+  &.left,
+  &.right {
+    color: rgba(0, 0, 0, .5);
+  }
+  &.left {
+    border-top-left-radius: 55 / 16rem;
+    border-bottom-left-radius: 55 / 16rem;
+  }
+  &.right {
+    border-top-right-radius: 55 / 16rem;
+    border-bottom-right-radius: 55 / 16rem;
+  }
+  &.is-checked {
+    background: #D7D7D7;
+    color: white;
   }
 }
 .form-input {
   width: 100%;
-  border: 1px solid transparent;
   border-radius: 55 / 16rem;
   box-shadow: 0 0 5.9px 3.2px rgba(0, 0, 0, 0.07);
   margin-top: 35 / 16rem;
-  padding: 0 40 / 16rem;
+  padding-left: 40 / 16rem;
+  padding-right: 40 / 16rem;
 }
 .button {
   align-items: center;

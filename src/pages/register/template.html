@@ -1,5 +1,5 @@
 <main class="page-register container-fluid" ng-controller="RegisterCtrl as $ctrl">
-    <div class="paper-group">
+    <div class="row paper-group">
         <div class="paper top white"></div>
         <div class="paper red"></div>
     </div>
@@ -7,37 +7,54 @@
         <div class="profile-thumbnail" ng-style="$ctrl.ProfileImage">
             <image-uploader file-model="$ctrl.imageData" preview-model="$ctrl.imagePreview"></image-uploader>
         </div>
-		<input name="login" ng-model="$ctrl.registerObj.login" placeholder="ID">
-		<input name="name" class="input form-input" ng-model="$ctrl.registerObj.name" placeholder="Name">
-		<input name="email" class="input form-input" type="email"
-			   ng-model="$ctrl.registerObj.email" ng-style="$ctrl.EmailStyle"
-			   placeholder="E - mail">
-		<input name="pwd" class="input form-input" type="password"
-			   ng-model="$ctrl.registerObj.pwd" ng-style="$ctrl.PasswordStyle"
-			   placeholder="Password">
-		<input class="input form-input" type="password"
-			   ng-model="$ctrl.registerObj.pwdConfirm" ng-style="$ctrl.PasswordConfirmStyle"
-			   placeholder="Confirm Password">
-		<div class="row">
-			<div class="col-6">
-				<div class="input form-input birth">
-					<div class="row no-gutters">
-						<input class="month input col-4" type="number" placeholder="12">
-						<input class="date input col-4" type="number" placeholder="31">
-						<input class="year input col-4" type="number" placeholder="00">
-					</div>
-				</div>
-			</div>
-			<div class="col-6">
-				<div class="input form-input">
-					<div class="row no-gutters">
-						<label class="input col-6"><input name="gender" type="radio" value="male">Male</label>
-						<label class="input col-6"><input name="gender" type="radio" value="female">Female</label>
-					</div>
-				</div>
-			</div>
-		</div>
-		<button ng-bind="$ctrl.SignUpLabel"></button>
+        <input name="login" ng-model="$ctrl.registerObj.login" placeholder="ID">
+        <input name="name" class="input form-input" ng-model="$ctrl.registerObj.name" placeholder="Name">
+        <input name="email" class="input form-input" type="email"
+               ng-model="$ctrl.registerObj.email" ng-style="$ctrl.EmailStyle"
+               placeholder="E - mail">
+        <input name="pwd" class="input form-input" type="password"
+               ng-model="$ctrl.registerObj.pwd" ng-style="$ctrl.PasswordStyle"
+               placeholder="Password">
+        <input class="input form-input" type="password"
+               ng-model="$ctrl.registerObj.pwdConfirm" ng-style="$ctrl.PasswordConfirmStyle"
+               placeholder="Confirm Password">
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <div class="input form-input birth">
+                    <div class="row no-gutters">
+                        <input class="month input col-4" type="number" ng-model="$ctrl.BirthMonth"
+                               ng-blur="$ctrl.sanitizeBirth()" placeholder="12">
+                        <input class="date input col-4" type="number" ng-model="$ctrl.registerObj.birth.day"
+                               ng-blur="$ctrl.sanitizeBirth()" placeholder="31">
+                        <input class="year input col-4" type="number" ng-model="$ctrl.registerObj.birth.year"
+                               ng-blur="$ctrl.sanitizeBirth()" placeholder="1990">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6">
+                <div class="input form-input gender">
+                    <div class="row no-gutters">
+                        <label class="input col-6 left" ng-class="$ctrl.genderChecked('male')">
+                            Male<input name="gender" type="radio" value="male" ng-model="$ctrl.registerObj.gender">
+                        </label>
+                        <label class="input col-6 right" ng-class="$ctrl.genderChecked('female')">
+                            Female<input name="gender" type="radio" value="female" ng-model="$ctrl.registerObj.gender">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input form-input nation">
+            <div class="row no-gutters">
+                <label class="input col-6 left" ng-class="$ctrl.nationChecked('local')">
+                    Local<input name="nation" type="radio" value="local" ng-model="$ctrl.registerObj.nation">
+                </label>
+                <label class="input col-6 right" ng-class="$ctrl.nationChecked('foreigner')">
+                    Foreigner<input name="nation" type="radio" value="foreigner" ng-model="$ctrl.registerObj.nation">
+                </label>
+            </div>
+        </div>
+        <button ng-bind="$ctrl.SignUpLabel"></button>
     </form>
     <h1 ng-click="$ctrl.$state.go('login')">Go back to login page</h1>
 </main>
