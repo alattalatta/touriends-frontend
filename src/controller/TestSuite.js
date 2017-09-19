@@ -41,7 +41,10 @@ class TestSuite {
         this.$http({
             method: 'POST',
             url: ajax_url,
-            data: param(params)
+            data: param(params),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
         }).then((response) => {
             console.log(response);
         });
