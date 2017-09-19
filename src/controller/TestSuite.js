@@ -1,3 +1,5 @@
+import param from 'jquery-param'
+
 require('../style/testSuite.less');
 
 class TestSuite {
@@ -39,7 +41,7 @@ class TestSuite {
         this.$http({
             method: 'POST',
             url: ajax_url,
-            params: params
+            data: param(params)
         }).then((response) => {
             console.log(response);
         });
