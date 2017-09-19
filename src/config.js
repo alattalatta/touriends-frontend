@@ -65,6 +65,22 @@ export default app => {
                     }]
                 }
             }).state({
+                url: '/introduce',
+                name: 'introduce',
+                parent: 'authful',
+                templateProvider: () => {
+                    return import('./pages/introduce/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/introduce/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.introduce'
+                            });
+                        });
+                    }]
+                }
+            }).state({
                 url: '/home',
                 name: 'home',
                 parent: 'authful',
