@@ -1,10 +1,12 @@
-<div class="page-login" ng-controller="LoginCtrl as $ctrl">
-    <img src="../../media/brand.png">
-    <form id="form_login" ng-submit="$ctrl.login()" novalidate>
-        <input type="email" name="login" ng-model="$ctrl.loginObj.login" placeholder="Email">
-        <input name="pwd" type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
-        <button>Login</button>
-    </form>
+<img class="login-logo" src="../../media/brand.png">
 
-    <a ui-sref="register">I have no account but I must login</a>
+<div class="page-login" ng-controller="LoginCtrl as $ctrl">
+
+    <form class="login-box" ng-submit="$ctrl.login()" novalidate>
+        <input class="form-input input" type="email" name="login" ng-model="$ctrl.loginObj.login" placeholder="Email">
+        <input class="form-input input" name="pwd" type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
+    </form>
+    <button class="login-btn" >LOGIN</button>
+    <div class="login-reg">Don't have a <button class="login-btn2" ui-sref="register">Account?</button></div>
+    <div class="login-reg">Forgot<button  class="login-btn2" ui-sref="register">Password?</button></div>
 </div>
