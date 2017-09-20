@@ -198,7 +198,7 @@ class RegisterCtrl {
             return;
         }
         // 이메일 검사
-        if (!EmailValidator.validate(this.registerObj.login)) {
+        if (!EmailValidator.validate(this.registerObj.email)) {
             alert('이메일이 아니에요!');
             return;
         }
