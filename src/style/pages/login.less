@@ -1,56 +1,61 @@
+.login-pos {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
 .login-logo {
-
-  margin-left : 190.5 / 16rem;
-  margin-top : 171 / 16rem ;
-  margin-bottom : 43.5 / 16rem;
-  width : 148.5 / 16rem;
-  height : 159.5 / 16rem;
-
+  width: 148.5 / 16rem;
+  height: 159.5 / 16rem;
+  display: block;
+  margin: 0 auto;
 }
 
-.page-login {
-
-        margin-left : 101.5 / 16rem ;
-
-        .login-box {
-            width : 326.5 / 16rem ;
-            height : 50 / 16rem;
-        }
-
-        .login-btn {
-          margin-left : 101.5 / 16rem ;
-          margin-top : 133.5 / 16rem ;
-          width: 75.5 / 16rem;
-          height: 26.5 / 16rem;
-          opacity: 0.7;
-          font-family: Akrobat;
-          font-size: 36.7px;
-          font-weight: 600;
-          text-align: center;
-          color: rgba(0, 0, 0, 0.7);
-        }
-
-  .login-font{
-    width : 326.5 / 16rem ;
-    text-align:center;
-    opacity: 0.6;
-    font-family: Akrobat;
-    font-size: 22.7px;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.6);
-  }
-
-  .login-forgot{
-    margin-top : 28.5 / 16rem;
-  }
-  .login-reg{
-    margin-top : 44.5 / 16rem;
-
-  }
-
-  .login-btn2{
-    text-decoration : underline;
-  }
+.login-box {
+  width: 326.5 / 16rem;
+  margin: 113.5 / 16rem auto 0;
+}
+.login-box__submit {
+  color: rgba(0, 0, 0, 0.7);
+  display: block;
+  font-size: 36.7 / 16rem;
+  font-weight: 600;
+  margin: 54.5 / 16rem auto 0;
+  opacity: 0.7;
+  text-align: center;
 }
 
+.login-actions {
+  font-size:  22.7 / 16rem;
+  opacity: .6;
+  text-align: center;
+  margin-top: 44.5 / 16rem;
+}
+.login-actions__action {
+  display: block;
+  margin-top: 28.5 / 16rem;
+}
+.login-actions__accent {
+  border-bottom: 1px solid rgba(0, 0, 0, .7);
+}
 
+//noinspection CssOptimizeSimilarProperties
+.login-triangle {
+  @width: 300 / 16rem;
+  @height: 140 / 16rem;
+  width: @width;
+  height: @height;
+  border-top: @height / 2 solid transparent;
+  border-left: @width / 2 solid #E15C6E;
+  border-right: @width / 2 solid transparent;
+  border-bottom: @height / 2 solid #E15C6E;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  @media (max-width: 450px), (max-height: 800px) {
+    display: none;
+  }
+}

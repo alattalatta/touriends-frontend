@@ -1,32 +1,59 @@
 @import './bootstrap-grid.css';
 @import './normalize';
-@import './pages/register';
+
+@import './paperwork';
+
 @import './pages/login';
+@import './pages/register';
 @import './pages/introduce';
 
 @font-face {
-  font-family: 'Akrobat Regular';
+  font-family: 'Akrobat';
+  src: local('Akrobat'),
+  url('../media/Akrobat-Regular.woff2') format('woff2'),
+  url('../media/Akrobat-Regular.woff') format('woff');
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
-  src: local('Akrobat Regular'), url('../media/Akrobat-Regular.woff') format('woff');
 }
+@font-face {
+  font-family: 'Akrobat';
+  src: local('Akrobat'),
+  url('../media/Akrobat-SemiBold.woff2') format('woff2'),
+  url('../media/Akrobat-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-sets: 'Akrobat', 'Apple SD Gothic Neo', sans-serif;
 
 html {
   height: 100%;
 }
 
-body, input {
-  font-family: 'Akrobat Regular', 'Apple SD Gothic Neo', sans-serif;
+body,
+input,
+textarea {
+  font-family: @font-sets;
+  &::placeholder {
+    color: rgba(0, 0, 0, .25);
+    font-family: @font-sets;
+  }
 }
+
 body {
   width: 100vw;
   height: 100%;
   overflow-x: hidden;
+  position: absolute;
+  top: 0;
 }
 
 main {
-  overflow-x: hidden;
   height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  padding-bottom: 40.5 / 16rem;
+  position: relative;
 }
 
 .input {
@@ -35,14 +62,12 @@ main {
   border: none;
   display: block;
   font-size: 21 / 16rem;
+  font-weight: 600;
   line-height: 55 / 16rem;
-  &::placeholder {
-    color: rgba(0, 0, 0, .5);
-  }
 
   &.left,
   &.right {
-    color: rgba(0, 0, 0, .5);
+    color: rgba(0, 0, 0, .25);
   }
   &.left {
     border-top-left-radius: 55 / 16rem;
@@ -57,6 +82,7 @@ main {
     color: white;
   }
 }
+
 .form-input {
   width: 100%;
   border-radius: 55 / 16rem;
@@ -65,6 +91,7 @@ main {
   padding-left: 40 / 16rem;
   padding-right: 40 / 16rem;
 }
+
 .button {
   align-items: center;
   display: inline-flex;
@@ -72,23 +99,21 @@ main {
   text-align: center;
   vertical-align: top;
 }
+.button-submit {
+  width: 314 / 16rem;
+  height: 59.5 / 16rem;
+  background-color: #E15C6E;
+  border-radius: 59.5 / 16rem;
+  color: white;
+  display: block;
+  font-size: 21.4 / 16rem;
+  font-weight: 600;
+
+  &.is-disabled {
+    background: #DCDCDC;
+  }
+}
 
 .paper-group {
   position: relative;
-}
-.paper {
-  box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  z-index: 2;
-
-  &.top {
-    z-index: 3;
-  }
-
-  &.white {
-    background: #F8F9F8;
-  }
-  &.red {
-    background: #E15C6E;
-  }
 }

@@ -1,48 +1,47 @@
-.form-id{
-  width:100%;
+@import (reference) '../index';
+
+.form-id {
+  width: 100%;
   z-index: 1;
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
   text-align: center;
   padding-bottom: 64 / 16rem;
 }
-.form-intro{
-  box-shadow: 0 0 5.9px 3.2px rgba(0, 0, 0, 0.07);
+
+.form-intro {
   width: 100%;
-  padding-top: 212.5 / 16rem;
+  height: calc(~'100% - 120px');
+  box-shadow: 0 0 5.9px 3.2px rgba(0, 0, 0, 0.07);
+  padding-top: 317 / 16rem;
   text-align: center;
-  margin-bottom: 60 / 16rem;
   position: relative;
 }
-.form-intro .intro{
-  height: 300px;
-  border: 0;
+.form-intro .intro {
   width: 100%;
-  padding : 50.5 / 16rem 35.5 / 16rem ;
+  height: calc(~'100% - ' 36rem / 16);
+  border: 0;
   font-size: 25.6 / 16rem;
-  &::placeholder {
-    color: rgba(0, 0, 0, .25);
-  }
-  font-family: 'Akrobat Regular', 'Apple SD Gothic Neo', sans-serif;
+  padding: 50.5 / 16rem 35.5 / 16rem;
 }
-.id-write{
+
+.id-write {
   font-size: 36.7 / 16rem;
   color: rgba(0, 0, 0, 0.7);
 }
-#form_introduce{
-  position: relative;
-}
-.intro-submit{
+
+.intro-submit {
   background-color: #E15C6E;
-  bottom:0;
+  bottom: 0;
   font-size: 21.4 / 16rem;
   width: 314 / 16rem;
-  padding : 22 / 16rem;
+  padding: 22 / 16rem;
   font-weight: 600;
   position: relative;
   border-radius: 30px;
 }
-.welcome-touriends{
+
+.welcome-touriends {
   z-index: 5;
   font-size: 50.7 / 16rem;
   color: #ef8b8a;
@@ -52,8 +51,27 @@
   position: absolute;
   width: 100%;
 }
-.byte-check{
+
+.byte-check {
   position: absolute;
   bottom: 23.5 / 16rem;
   right: 38 / 16rem;
+
+  &.is-highlighted {
+    color: red;
+  }
+}
+
+.page-introduce {
+  .form {
+    height: 100%;
+    position: relative;
+  }
+  .button-submit {
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }

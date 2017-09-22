@@ -1,29 +1,8 @@
 .page-register {
-  .paper {
-    width: 150%;
-    height: 305 / 16rem;
-  }
-  .paper.red {
-    transform-origin: left bottom;
-    transform: translateY(.5rem) rotate(-13deg);
-    left: 0;
-  }
-  .paper.white {
-    transform-origin: right bottom;
-    transform: rotate(13deg);
-    right: 0;
+  .form {
+    padding-top: 300 / 16rem;
   }
 
-  .profile-thumbnail {
-    z-index:3;
-    width: 156 / 16rem;
-    height: 156 / 16rem;
-    background: whitesmoke url('../../media/default-profile.jpg') no-repeat center;
-    background-size: cover;
-    border-radius: 100%;
-    margin: 138 / 16rem auto 0;
-    position: relative;
-  }
   image-uploader {
     position: absolute;
     right: 0;
@@ -38,11 +17,20 @@
     width: 100%;
     background: none;
     border: none;
+    display: block;
     font-size: 36 / 16rem;
     line-height: 52 / 36;
-    margin-top: 1rem;
+    margin: 0 auto;
     text-align: center;
   }
+  .login-separator {
+    width: 118.5 / 16rem;
+    height: 2px;
+    background: #DCDCDC;
+    border: none;
+    margin: 0 auto;
+  }
+
   input[type=radio] {
     display: none;
     visibility: hidden;
@@ -60,5 +48,9 @@
     label {
       text-align: center;
     }
+  }
+
+  .button-submit {
+    margin: 61 / 16rem auto 0;
   }
 }

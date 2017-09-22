@@ -1,0 +1,45 @@
+.profile-thumbnail {
+  width: 156 / 16rem;
+  height: 156 / 16rem;
+  background: whitesmoke url('../media/default-profile.jpg') no-repeat center;
+  background-size: cover;
+  border-radius: 100%;
+  margin: 0 auto;
+  position: absolute;
+  top: 138 / 16rem;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.paper {
+  width: 150%;
+  height: 305 / 16rem;
+  box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 2;
+
+  &.top {
+    z-index: 3;
+  }
+  &.white {
+    background: #F8F9F8;
+  }
+  &.red {
+    background: #E15C6E;
+  }
+}
+
+.page-register,
+.page-introduce {
+  .paper.red {
+    transform-origin: left bottom;
+    transform: translateY(.5rem) rotate(-13deg);
+    left: 0;
+  }
+  .paper.white {
+    transform-origin: right bottom;
+    transform: rotate(13deg);
+    right: 0;
+  }
+}

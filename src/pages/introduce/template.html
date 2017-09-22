@@ -1,22 +1,19 @@
-<main class="page-register container-fluid" ng-controller="IntroduceCtrl as $ctrl">
+<main class="page-introduce container-fluid" ng-controller="IntroduceCtrl as $ctrl">
     <div class="row paper-group">
         <div class="paper top white"></div>
         <div class="paper red"></div>
         <div class="welcome-touriends">
-          <p>Welcome to Touriends!</p>
+            <p>Welcome to Touriends!</p>
         </div>
     </div>
     <form class="form" id="form_introduce" ng-submit="$ctrl.introduce()" novalidate autocomplete="off">
-      <div class="profile-thumbnail" ng-style="$ctrl.profileImage()"></div>
-      <div class="form-id">
-          <div class="form-intro">
+        <div class="profile-thumbnail" ng-style="$ctrl.profileImage()"></div>
+        <div class="form-intro">
             <p class="id-write">ID Write</p>
-            <textarea name="intro" class="intro" placeholder="Introduce yourself to touriends!" ng-model="$ctrl.intro"></textarea>
-            <div class="byte-check" ng-bind="$ctrl.byteCheck()"></div>
-          </div>
-          <!--<button ng-bind="$ctrl.SignUpLabel"></button>-->
-          <button ng-click="$ctrl.submitIntro()" class="intro-submit" type="submit" name="introsubmit">START</button>
-      </div>
+            <textarea name="intro" class="intro" ng-model="$ctrl.intro"
+                      placeholder="Introduce yourself to touriends!"></textarea>
+            <div class="byte-check" ng-class="{'is-highlighted': $ctrl.byte > 60}" ng-bind="$ctrl.byteCheck()"></div>
+        </div>
+        <button ng-class="{'is-disabled': $ctrl.byte > 60}" class="button-submit" ng-click="$ctrl.submitIntro()">START</button>
     </form>
-    <!--<h1 ng-click="$ctrl.$state.go('login')">Go back to login page</h1>-->
 </main>

@@ -1,12 +1,15 @@
-<img class="login-logo" src="../../media/brand.png">
-
-<div class="page-login" ng-controller="LoginCtrl as $ctrl">
-
-    <form class="login-box" ng-submit="$ctrl.login()" novalidate>
-        <input class="form-input input" type="email" name="login" ng-model="$ctrl.loginObj.login" placeholder="Email">
-        <input class="form-input input" name="pwd" type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
-    </form>
-    <button class="login-btn" >LOGIN</button>
-    <div class="login-reg login-font">Don't have a <button class="login-btn2" ui-sref="register">Account?</button></div>
-    <div class="login-forgot login-font">Forgot<button  class="login-btn2" ui-sref="register">Password?</button></div>
-</div>
+<main class="page-login" ng-controller="LoginCtrl as $ctrl">
+    <div class="login-pos">
+        <img class="login-logo" src="../../media/brand.png">
+        <form class="login-box" id="form_login" ng-submit="$ctrl.login()" novalidate>
+            <input class="form-input input" name="login" type="email" ng-model="$ctrl.loginObj.login" placeholder="Email">
+            <input class="form-input input" name="pwd" type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
+            <button class="login-box__submit" >LOGIN</button>
+        </form>
+        <div class="login-actions">
+            <a class="login-actions__action" ui-sref="register">Don't have an <span class="login-actions__accent">Account?</span></a>
+            <a class="login-actions__action">Forgot <span class="login-actions__accent">Password?</span></a>
+        </div>
+    </div>
+    <div class="login-triangle"></div>
+</main>

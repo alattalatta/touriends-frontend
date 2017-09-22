@@ -220,10 +220,10 @@ class RegisterCtrl {
             if (response.data.success) {
                 alert(`${this.registerObj.login} 가입에 성공해버렸어요!`);
                 // 추가 접근에 대비해 초기화? 사실 필요 없을듯
-                // state가 변경되면 컨트롤러가 죽는 것 같다
+                // state 가 변경되면 컨트롤러가 죽는 것 같다
                 // TODO Check
                 this.registerObj = angular.copy(this.registerTemplate);
-                this.$state.go('login');
+                this.$state.go('introduce');
             }
             else {
                 // TODO Proper error checking
