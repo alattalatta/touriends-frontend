@@ -239,10 +239,10 @@ class RegisterCtrl {
                     switch (response.data.error) {
                         case 'login_duplicate':
                             this.registerObj.login = null;
-                            alert('ID already in use');
+                            alert('ID already in use!');
                             break;
                         case 'upload_failed':
-                            alert('Profile image must not exceed 5MB');
+                            alert('Profile image must not exceed 5MB!');
                             break;
                     }
                 }
