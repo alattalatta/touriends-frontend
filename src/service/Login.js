@@ -11,12 +11,12 @@ class LoginSvc {
 
     constructor($http) {
         this.$http = $http;
-        this.logged = logged; // 이미 로그인된 경우면 index.php의 logged = true
-        this.uid = uid;       // 이미 로그인된 경우면 index.php의 uid = 현재 사용자 ID
+        this.logged = logged; // 이미 로그인된 경우면 index.php 의 logged = true
+        this.uid = uid;       // 이미 로그인된 경우면 index.php 의 uid = 현재 사용자 ID
     }
 
     register(formData) {
-        formData.set('action', 'demo-register');
+        formData.set('action', 'register');
 
         let login = formData.get('login');
         let pwd = formData.get('pwd');
@@ -38,7 +38,7 @@ class LoginSvc {
     }
 
     login(formData) {
-        formData.set('action', 'demo-login');
+        formData.set('action', 'login');
 
         let login = formData.get('login');
         let pwd = formData.get('pwd');
@@ -63,7 +63,7 @@ class LoginSvc {
             method: 'GET',
             url: ajax_url,
             params: {
-                action: 'demo-logout'
+                action: 'logout'
             },
         }).then((response) => {
             this.logged = false;

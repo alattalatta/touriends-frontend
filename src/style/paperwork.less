@@ -1,15 +1,21 @@
+@import (reference) './colors';
+
 .profile-thumbnail {
   width: 156 / 16rem;
   height: 156 / 16rem;
-  background: whitesmoke url('../media/default-profile.jpg') no-repeat center;
-  background-size: cover;
-  border-radius: 100%;
   margin: 0 auto;
   position: absolute;
   top: 138 / 16rem;
   left: 0;
   right: 0;
   z-index: 3;
+}
+.profile-thumbnail__body {
+  width: 100%;
+  height: 100%;
+  background: whitesmoke url('../media/default-profile.jpg') no-repeat center;
+  background-size: cover;
+  border-radius: 100%;
 }
 
 .paper {
@@ -26,7 +32,7 @@
     background: #F8F9F8;
   }
   &.red {
-    background: #E15C6E;
+    background: @red;
   }
   &.pink {
     background: #F5C3C5;
@@ -35,7 +41,7 @@
     background: #7EC7D3;
   }
   &.yellow {
-    background: #F9D588;
+    background: @yellow;
   }
 }
 

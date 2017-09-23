@@ -1,8 +1,7 @@
+@import (reference) './colors';
 @import './bootstrap-grid.css';
 @import './normalize';
-
 @import './paperwork';
-
 @import './pages/login';
 @import './pages/register';
 @import './pages/introduce';
@@ -15,6 +14,7 @@
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Akrobat';
   src: local('Akrobat'),
@@ -92,6 +92,24 @@ main {
   padding-right: 40 / 16rem;
 }
 
+.invalid-by-gradient {
+  &.is-invalid {
+    @primary: desaturate(lighten(@yellow, 20%), 10%);
+    @secondary: lighten(@primary, 10%);
+    @width: 8px;
+    background: linear-gradient(
+            to right,
+            white, transparent, white),
+    repeating-linear-gradient(
+            -45deg,
+            @primary,
+            @primary @width,
+            @secondary @width,
+            @secondary @width * 2
+    );
+  }
+}
+
 .button {
   align-items: center;
   display: inline-flex;
@@ -99,10 +117,11 @@ main {
   text-align: center;
   vertical-align: top;
 }
+
 .button-submit {
   width: 314 / 16rem;
   height: 59.5 / 16rem;
-  background-color: #E15C6E;
+  background-color: @red;
   border-radius: 59.5 / 16rem;
   color: white;
   display: block;
