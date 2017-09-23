@@ -1,4 +1,8 @@
+import LoginModule from './pages/login';
+
 export default app => {
+    app.requires.push(LoginModule);
+
     app.config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
             $stateProvider.state({
                 abstract: true,
@@ -38,16 +42,7 @@ export default app => {
                 url: '/login',
                 name: 'login',
                 parent: 'authless',
-                template: require('./pages/login/template.html'),
-                resolve: {
-                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
-                        return import('./pages/login/index').then(() => {
-                            $ocLazyLoad.load({
-                                name: 'touriends.page.login'
-                            });
-                        })
-                    }]
-                }
+                template: require('./pages/login/template.html')
             }).state({
                 url: '/register',
                 name: 'register',
@@ -80,6 +75,11 @@ export default app => {
                         });
                     }]
                 }
+            }).state({
+                url: '/when',
+                name: 'when',
+                parent: 'authful',
+                template: require('./pages/when/template.html')
             }).state({
                 url: '/home',
                 name: 'home',
