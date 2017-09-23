@@ -81,6 +81,22 @@ export default app => {
                     }]
                 }
             }).state({
+                url: '/main',
+                name: 'main',
+                parent: 'authful',
+                templateProvider: () => {
+                    return import('./pages/main/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/main/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.main'
+                            });
+                        });
+                    }]
+                }
+            }).state({
                 url: '/home',
                 name: 'home',
                 parent: 'authful',
