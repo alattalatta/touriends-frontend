@@ -77,4 +77,7 @@ angular
     }])
     .config(['$httpProvider', ($httpProvider) => {
         $httpProvider.defaults.paramSerializer = '$httpParamSerializerJQLike';
+        $httpProvider.defaults.headers.post = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
     }]);

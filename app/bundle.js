@@ -9308,7 +9308,7 @@ var _TestSuite2 = _interopRequireDefault(_TestSuite);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(94);
+__webpack_require__(96);
 
 angular.module('touriends', ['ui.router']).controller('HomeCtrl', _Home2.default).controller('LoginCtrl', _Login2.default).controller('RegisterCtrl', _Register2.default).controller('TestSuiteCtrl', _TestSuite2.default).service('LoginSvc', _Login4.default)
 
@@ -9350,26 +9350,29 @@ angular.module('touriends', ['ui.router']).controller('HomeCtrl', _Home2.default
         url: '/login',
         name: 'login',
         parent: 'authless',
-        template: __webpack_require__(95)
+        template: __webpack_require__(97)
     }).state({
         url: '/register',
         name: 'register',
         parent: 'authless',
-        template: __webpack_require__(97)
+        template: __webpack_require__(99)
     }).state({
         url: '/home',
         name: 'home',
         parent: 'authful',
-        template: __webpack_require__(98)
+        template: __webpack_require__(100)
     }).state({
         url: '/test',
         name: 'test',
-        template: __webpack_require__(99)
+        template: __webpack_require__(101)
     });
 
     $urlRouterProvider.otherwise('/login');
 }]).config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.paramSerializer = '$httpParamSerializerJQLike';
+    $httpProvider.defaults.headers.post = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    };
 }]);
 
 /***/ }),
@@ -12010,9 +12013,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _jqueryParam = __webpack_require__(93);
+
+var _jqueryParam2 = _interopRequireDefault(_jqueryParam);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-__webpack_require__(93);
+__webpack_require__(95);
 
 var TestSuite = function () {
     _createClass(TestSuite, null, [{
@@ -12085,7 +12094,7 @@ var TestSuite = function () {
             this.$http({
                 method: 'POST',
                 url: ajax_url,
-                params: params
+                data: (0, _jqueryParam2.default)(params)
             }).then(function (response) {
                 console.log(response);
             });
@@ -12099,42 +12108,144 @@ exports.default = TestSuite;
 
 /***/ }),
 /* 93 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * @preserve jquery-param (c) 2015 KNOWLEDGECODE | MIT
+ */
+(function (global) {
+    'use strict';
+
+    var param = function param(a) {
+        var s = [],
+            rbracket = /\[\]$/,
+            isArray = function isArray(obj) {
+            return Object.prototype.toString.call(obj) === '[object Array]';
+        },
+            add = function add(k, v) {
+            v = typeof v === 'function' ? v() : v === null ? '' : v === undefined ? '' : v;
+            s[s.length] = encodeURIComponent(k) + '=' + encodeURIComponent(v);
+        },
+            buildParams = function buildParams(prefix, obj) {
+            var i, len, key;
+
+            if (prefix) {
+                if (isArray(obj)) {
+                    for (i = 0, len = obj.length; i < len; i++) {
+                        if (rbracket.test(prefix)) {
+                            add(prefix, obj[i]);
+                        } else {
+                            buildParams(prefix + '[' + (_typeof(obj[i]) === 'object' ? i : '') + ']', obj[i]);
+                        }
+                    }
+                } else if (obj && String(obj) === '[object Object]') {
+                    for (key in obj) {
+                        buildParams(prefix + '[' + key + ']', obj[key]);
+                    }
+                } else {
+                    add(prefix, obj);
+                }
+            } else if (isArray(obj)) {
+                for (i = 0, len = obj.length; i < len; i++) {
+                    add(obj[i].name, obj[i].value);
+                }
+            } else {
+                for (key in obj) {
+                    buildParams(key, obj[key]);
+                }
+            }
+            return s;
+        };
+
+        return buildParams('', a).join('&').replace(/%20/g, '+');
+    };
+
+    if (( false ? 'undefined' : _typeof(module)) === 'object' && _typeof(module.exports) === 'object') {
+        module.exports = param;
+    } else if (true) {
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+            return param;
+        }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else {
+        global.param = param;
+    }
+})(undefined);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(94)(module)))
 
 /***/ }),
 /* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function () {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+/***/ }),
+/* 95 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 96 */
+/***/ (function(module, exports) {
 
-module.exports = "<div ng-controller=\"LoginCtrl as $ctrl\">\r\n    <img src=\"" + __webpack_require__(96) + "\">\r\n    <form ng-submit=\"$ctrl.login()\">\r\n        <input type=\"email\" ng-model=\"$ctrl.loginObj.login\" placeholder=\"Email\">\r\n        <input type=\"password\" ng-model=\"$ctrl.loginObj.pwd\" placeholder=\"Password\">\r\n        <button>Login</button>\r\n    </form>\r\n\r\n    <a ui-sref=\"register\">계정이 없어욧</a>\r\n</div>";
+// removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 96 */
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div ng-controller=\"LoginCtrl as $ctrl\">\r\n    <img src=\"" + __webpack_require__(98) + "\">\r\n    <form ng-submit=\"$ctrl.login()\">\r\n        <input type=\"email\" ng-model=\"$ctrl.loginObj.login\" placeholder=\"Email\">\r\n        <input type=\"password\" ng-model=\"$ctrl.loginObj.pwd\" placeholder=\"Password\">\r\n        <button>Login</button>\r\n    </form>\r\n\r\n    <a ui-sref=\"register\">계정이 없어욧</a>\r\n</div>";
+
+/***/ }),
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "37a88cb3b430c41b7c0f86f6fc2f8d29.png";
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports) {
 
 module.exports = "<div ng-controller=\"RegisterCtrl as $ctrl\">\r\n    <h2>Register</h2>\r\n    <form ng-submit=\"$ctrl.register()\">\r\n        <input type=\"email\" ng-model=\"$ctrl.registerObj.login\" placeholder=\"Email\">\r\n        <input type=\"password\" ng-model=\"$ctrl.registerObj.pwd\" placeholder=\"Password\">\r\n        <input type=\"password\" ng-model=\"$ctrl.registerObj.pwdConfirm\" placeholder=\"Confirm password\">\r\n        <button>Register</button>\r\n    </form>\r\n</div>";
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports) {
 
 module.exports = "<div ng-controller=\"HomeCtrl as $ctrl\">\r\n    <h1>Home</h1>\r\n    <p>My User ID is: <span ng-bind=\"$ctrl.LoginSvc.uid\"></span></p>\r\n    <p ng-click=\"$ctrl.logout()\">Logout</p>\r\n</div>";
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports) {
 
 module.exports = "<div ng-controller=\"TestSuiteCtrl as $ctrl\" class=\"ts\">\r\n    <h2 style=\"color: red\">TEST TEST TEST</h2>\r\n    <p style=\"color: red\">프로덕션에 포함하지 마시오</p>\r\n\t<hr>\r\n\t<div class=\"help\">\r\n\t\t<p>액션에는 액션명을 기입하시오. add_action('wp_ajax_${액션명}', $callable) 여기에 등록한거</p>\r\n\t\t<p>매개변수에는 서버로 넘길 값을 입력하시오. '키'는 $_REQUEST의 인덱스($_REQUEST['key']), '값'은 그 값.</p>\r\n\t\t<p>값은 무조건 POST로 넘어가니 GET이 필요한 경우 요청하시오.</p>\r\n\t\t<p>서버의 응답은 콘솔에서 확인할 수 있음. data가 \"0\"일 경우 액션을 잘 추가했는지, die 또는 exit을 사용했는지 확인하시오.</p>\r\n\t</div>\r\n\t<hr>\r\n    <form ng-submit=\"$ctrl.submit()\">\r\n        <input type=\"text\" ng-model=\"$ctrl.action\" placeholder=\"액션\" class=\"action\">\r\n\t\t<h3>매개변수</h3>\r\n        <div ng-repeat=\"param in $ctrl.params\">\r\n            <input type=\"text\" ng-model=\"param.key\" placeholder=\"키\" class=\"key\">\r\n            <input type=\"text\" ng-model=\"param.value\" placeholder=\"값\" class=\"value\">\r\n\t\t\t<button type=\"button\" ng-click=\"$ctrl.removeParam($index)\" ng-if=\"$ctrl.params.length\" class=\"remove\">제거</button>\r\n        </div>\r\n\t\t<button type=\"submit\" class=\"submit\">실행</button>\r\n    </form>\r\n\t<button ng-click=\"$ctrl.addParam()\" class=\"add\">매개변수 추가</button>\r\n</div>";

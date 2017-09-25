@@ -18,6 +18,7 @@
         "gulp-cached": "^1.1.1",
         "gulp-ssh": "^0.6.0",
         "html-loader": "^0.5.1",
+        "jquery-param": "^0.2.0",
         "less": "^2.7.2",
         "less-loader": "^4.0.5",
         "less-plugin-autoprefix": "^1.5.1",
