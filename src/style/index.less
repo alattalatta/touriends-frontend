@@ -1,4 +1,5 @@
 @import (reference) './colors';
+@import (reference) './breakpoints';
 @import './bootstrap-grid';
 @import './normalize';
 @import './paperwork';
@@ -39,7 +40,7 @@
 
 html {
   height: 100%;
-  @media (max-width: 576px) {
+  @media @bts-min {
     font-size: 74.7664%;
   }
 }

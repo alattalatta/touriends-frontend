@@ -1,0 +1,90 @@
+@import (reference) '../../style/colors';
+@import (reference) '../../style/breakpoints';
+
+simple-calendar {
+  display: block;
+  font: 1rem Arial, sans-serif;
+  @media @smaller {
+    font-size: .9rem;
+  }
+  @media @smallest {
+    font-size: .8rem;
+  }
+}
+
+.scal_row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.scal_label {
+  color: rgba(11, 11, 11, .56);
+  display: block;
+  font-size: 28.2 / 16em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.scal_day {
+  color: rgba(11, 11, 11, .6);
+  font-size: 24.4 / 16em;
+  letter-spacing: -.6 / 16em;
+}
+
+.scal_date {
+  color: rgba(11, 11, 11, .3);
+}
+
+.scal_cell {
+  font-size: 26.4 / 16em;
+  line-height: 51 / 26.4;
+  margin-top: 13 / 16em;
+  text-align: center;
+}
+.scal_7c {
+  flex: 0 0 14.28%;
+  float: left;
+  max-width: 14.28%;
+
+  &.is-selected {
+    color: white;
+
+    &.is-left {
+      background: linear-gradient(
+              to left,
+              fade(@cyan, 50%),
+              fade(@cyan, 50%) 50%,
+              transparent 50%,
+              transparent 100%
+      );
+    }
+    &.is-right {
+      background: linear-gradient(
+              to right,
+              fade(@cyan, 50%),
+              fade(@cyan, 50%) 50%,
+              transparent 50%,
+              transparent 100%
+      );
+    }
+  }
+
+  &.is-included {
+    background: fade(@cyan, 50%);
+    color: rgba(11, 11, 11, .7);
+  }
+}
+.scal_7c-blank {
+  opacity: 0;
+}
+
+.scal_selector {
+  width: 51 / 26.4em; // parent is 7c
+  height: 100%;
+  border-radius: 100%;
+  margin: 0 auto;
+}
+
+.is-selected .scal_selector {
+  background: @cyan;
+}
