@@ -9,11 +9,11 @@ function IntroduceCtrl($http, $state) {
         method: 'POST',
         url: ajax_url,
         data: param({
-            action: 'get_profile_image'
+            action: 'get_user_image'
         })
     }).then((response) => {
         if (response.data.success === true) {
-            this.image = response.data.image;
+            this.image = response.data.url;
         }
     });
 
@@ -33,7 +33,7 @@ function IntroduceCtrl($http, $state) {
     };
 
     this.profileImage = function () {
-        if (this.image === null) return null;
+        if (! this.image) return null;
         return {
             'background-image': `url(${this.image})`
         };
@@ -47,14 +47,18 @@ function IntroduceCtrl($http, $state) {
             method: 'POST',
             url: ajax_url,
             data: param({
-                action: 'submit_intro',
+                action: 'set_intro',
                 intro: this.intro
             })
         }).then((response) => {
-            if (response.data.success === true) {
-                alert('hi, thank you');
+            console.log('%cIntro response arrived', 'color:white;background:dimgray');
+            console.log(response);
+            if (response.data.success) {
+                $state.go('home');
             }
-            $state.go('home'); // todo change
+            else {
+                alert('설정에 실패했어요!'); // todo change message
+            }
         });
     }
 }
