@@ -6,7 +6,7 @@
             <p>Welcome to Touriends!</p>
         </div>
     </div>
-    <form class="form" id="form_introduce" ng-submit="$ctrl.introduce()" novalidate autocomplete="off">
+    <form class="form" id="form_introduce" ng-submit="$ctrl.submitIntro()" novalidate autocomplete="off">
         <div class="profile-thumbnail" ng-style="$ctrl.profileImage()"></div>
         <div class="form-intro">
             <p class="id-write">ID Write</p>
@@ -14,6 +14,6 @@
                       placeholder="Introduce yourself to touriends!"></textarea>
             <div class="byte-check" ng-class="{'is-highlighted': $ctrl.byte > 60}" ng-bind="$ctrl.byteCheck()"></div>
         </div>
-        <button ng-class="{'is-disabled': $ctrl.byte > 60}" class="button-submit" ng-click="$ctrl.submitIntro()">START</button>
+        <button ng-class="{'is-disabled': $ctrl.byte > 60}" class="button-submit">START</button>
     </form>
 </main>

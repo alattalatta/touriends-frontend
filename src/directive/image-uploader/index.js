@@ -1,5 +1,7 @@
 require('./style.less');
 
+import EXIF from '../../exif';
+
 /**
  * https://www.html5rocks.com/en/tutorials/file/dndfiles/
  */
@@ -13,6 +15,22 @@ class ImageUploaderCtrl {
         this.fileReader = new FileReader();
 
         this.fileReader.onload = (e) => {
+            let exif = EXIF.readFromBinaryFile(EXIF.base64ToArrayBuffer(e.target.result));
+            console.log(exif.Orientation);
+            switch (exif.Orientation) {
+                case 8:
+                    this.orientationModel = 'right';
+                    break;
+                case 3:
+                    this.orientationModel = 'bottom';
+                    break;
+                case 6:
+                    this.orientationModel = 'left';
+                    break;
+                default:
+                    this.orientationModel = 'top';
+            }
+            console.log(this.orientationModel);
             this.previewModel = e.target.result; // Base64, 바로 background-image 지정 가능 (url(...))
             $scope.$apply();
         };
@@ -30,7 +48,8 @@ class ImageUploaderCtrl {
 let imageUploader = {
     bindings: {
         fileModel: '=',
-        previewModel: '='
+        previewModel: '=',
+        orientationModel: '='
     },
     controller: ImageUploaderCtrl,
     template: require('./template.html')

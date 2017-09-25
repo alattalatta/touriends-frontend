@@ -31,45 +31,73 @@ class RegisterCtrl {
         this.registerObj.birth.year = val;
     }
 
-    // =============== CSS
-    /**
-     * 선택한 프로필 이미지의 인라인 백그라운드 이미지 스타일
-     * @returns {*}
-     */
-    get ProfileImage() {
-        return this.imagePreview === null ?
-            null : {'background-image': `url(${this.imagePreview})`};
+    get Birth() {
+        return `${this.BirthYear}-${this.BirthMonth}-${this.BirthDay}`;
     }
 
+    // =============== Validation
+    get DataValid() {
+        return ! this.pending &&
+            this.IDValid && this.NameValid && this.EmailValid &&
+            this.PasswordValid && this.PasswordConfirmValid &&
+            this.GenderValid && this.NationValid && this.BirthValid;
+    }
+    get IDValid() {
+        return this.registerObj.login &&
+            /^[A-Za-z0-9\-_.]*$/.test(this.registerObj.login) &&
+            this.registerObj.login.length > 1;
+    }
+    get NameValid() {
+        return this.registerObj.name && this.registerObj.name.length > 2;
+    }
+    get EmailValid() {
+        return this.registerObj.email && EmailValidator.validate(this.registerObj.email);
+    }
+    get PasswordValid() {
+        return this.registerObj.pwd &&
+            this.registerObj.pwd.length > 6;
+    }
+    get PasswordConfirmValid() {
+        return this.registerObj.pwd && this.registerObj.pwd === this.registerObj.pwdConfirm;
+    }
+    get GenderValid() {
+        return this.registerObj.gender !== null;
+    }
+    get NationValid() {
+        return this.registerObj.nation !== null;
+    }
+    get BirthValid() {
+        return this.BirthYear && this.BirthMonth && this.BirthDay;
+    }
+
+    // =============== CSS
+    get ProfileImage() {
+        if (this.imagePreview === null) {
+            return null;
+        }
+        let rotation;
+        switch (this.imageOrientation) {
+            case 'left':
+                rotation = 'rotate(90deg)';
+                break;
+            case 'right':
+                rotation = 'rotate(-90deg)';
+                break;
+            case 'bottom':
+                rotation = 'rotate(180deg)';
+                break;
+            default:
+                rotation = null;
+        }
+        return {
+            'background-image': `url(${this.imagePreview})`,
+            'transform': rotation
+        };
+    }
     get SignUpLabel() {
         return this.pending ?
             '...' : 'SIGN UP';
     }
-
-    get EmailStyle() {
-        if (this.registerObj.email === null) {
-            return null;
-        }
-        return !EmailValidator.validate(this.registerObj.email) ?
-            this.invalidStyle : null;
-    }
-
-    get PasswordStyle() {
-        if (this.registerObj.pwd === null) {
-            return null;
-        }
-        if (this.registerObj.pwd.search(/[0-9]/g) < 0 || this.registerObj.pwd.search(/[a-z]/ig)) {
-            return this.invalidStyle;
-        }
-        return this.registerObj.pwd.length < 6 ?
-            this.invalidStyle : null;
-    }
-
-    get PasswordConfirmStyle() {
-        return this.registerObj.pwd !== this.registerObj.pwdConfirm ?
-            this.invalidStyle : null;
-    }
-
     genderChecked(val) {
         return this.registerObj.gender === val ?
             'is-checked' : null;
@@ -161,8 +189,8 @@ class RegisterCtrl {
 
         this.imagePreview = null;
         this.imageData = null;
+        this.imageOrientation = null;
         this.form = document.getElementById('form_register');
-        this.invalidStyle = {'box-shadow': '0 0 5.9px 3.2px rgba(255, 0, 0, 0.22)'};
 
         /**
          * 회원가입 요청 전송 여부
@@ -194,22 +222,13 @@ class RegisterCtrl {
     }
 
     register() {
-        if (this.pending) {
-            return;
-        }
-        // 이메일 검사
-        if (!EmailValidator.validate(this.registerObj.email)) {
-            alert('이메일이 아니에요!');
-            return;
-        }
-        // 패스워드 검사
-        if (this.registerObj.pwd !== this.registerObj.pwdConfirm) {
-            alert('패스워드가 달라요!');
-            this.registerObj.pwd = this.registerObj.pwdConfirm = null; // 잘못된 패스워드는 보통 초기화
+        if (! this.DataValid) {
             return;
         }
 
         let data = new FormData(this.form);
+        data.set('birth', this.Birth);
+
         // 이미지 검사
         if (this.imageData) {
             data.append('image', this.imageData);
@@ -217,17 +236,26 @@ class RegisterCtrl {
 
         this.pending = true;
         this.LoginSvc.register(data).then((response) => {
+            console.log('%cRegister response arrived', 'color:white;background:dimgray');
+            console.log(response);
             if (response.data.success) {
-                alert(`${this.registerObj.login} 가입에 성공해버렸어요!`);
-                // 추가 접근에 대비해 초기화? 사실 필요 없을듯
-                // state 가 변경되면 컨트롤러가 죽는 것 같다
-                // TODO Check
-                this.registerObj = angular.copy(this.registerTemplate);
                 this.$state.go('introduce');
             }
             else {
+                if (response.data.error) {
+                    switch (response.data.error) {
+                        case 'login_duplicate':
+                            this.registerObj.login = null;
+                            alert('ID already in use!');
+                            break;
+                        case 'upload_failed':
+                            alert('Profile image must not exceed 5MB!');
+                            break;
+                    }
+                }
+                if (response.data.error === 'login_duplicate') {
+                }
                 // TODO Proper error checking
-                alert(response.data.message);
                 this.registerObj.pwd = this.registerObj.pwdConfirm = null;
             }
             this.pending = false;

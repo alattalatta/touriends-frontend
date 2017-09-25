@@ -5,36 +5,42 @@
     </div>
     <div class="container">
         <form class="form" id="form_register" ng-submit="$ctrl.register()" novalidate autocomplete="off">
-            <div class="profile-thumbnail" ng-style="$ctrl.ProfileImage">
-                <image-uploader file-model="$ctrl.imageData" preview-model="$ctrl.imagePreview"></image-uploader>
+            <div class="profile-thumbnail">
+                <div class="profile-thumbnail__body" ng-style="$ctrl.ProfileImage"></div>
+                <image-uploader file-model="$ctrl.imageData"
+                                preview-model="$ctrl.imagePreview"
+                                orientation-model="$ctrl.imageOrientation"></image-uploader>
             </div>
-            <input name="login" ng-model="$ctrl.registerObj.login" placeholder="ID">
+            <input name="login" class="invalid-by-gradient" ng-class="{'is-invalid': ! $ctrl.IDValid}"
+                   ng-model="$ctrl.registerObj.login" placeholder="ID">
             <hr class="login-separator">
-            <input name="name" class="input form-input" ng-model="$ctrl.registerObj.name" placeholder="Name">
-            <input name="email" class="input form-input" type="email"
-                   ng-model="$ctrl.registerObj.email" ng-style="$ctrl.EmailStyle"
+            <input name="name" class="input form-input invalid-by-gradient"
+                   ng-model="$ctrl.registerObj.name" ng-class="{'is-invalid': ! $ctrl.NameValid}"
+                   placeholder="Name">
+            <input name="email" class="input form-input invalid-by-gradient" type="email"
+                   ng-model="$ctrl.registerObj.email" ng-class="{'is-invalid': ! $ctrl.EmailValid}"
                    placeholder="E - mail">
-            <input name="pwd" class="input form-input" type="password"
-                   ng-model="$ctrl.registerObj.pwd" ng-style="$ctrl.PasswordStyle"
+            <input name="pwd" class="input form-input invalid-by-gradient" type="password"
+                   ng-model="$ctrl.registerObj.pwd" ng-class="{'is-invalid': ! $ctrl.PasswordValid}"
                    placeholder="Password">
-            <input class="input form-input" type="password"
-                   ng-model="$ctrl.registerObj.pwdConfirm" ng-style="$ctrl.PasswordConfirmStyle"
+            <input class="input form-input invalid-by-gradient" type="password"
+                   ng-model="$ctrl.registerObj.pwdConfirm" ng-class="{'is-invalid': ! $ctrl.PasswordConfirmValid}"
                    placeholder="Confirm Password">
             <div class="row">
-                <div class="col-12 col-sm-6">
-                    <div class="input form-input birth">
+                <div class="col-6">
+                    <div class="input form-input invalid-by-gradient birth" ng-class="{'is-invalid': ! $ctrl.BirthValid}">
                         <div class="row no-gutters">
-                            <input class="month input col-4" type="number" ng-model="$ctrl.BirthMonth"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="12">
-                            <input class="date input col-4" type="number" ng-model="$ctrl.registerObj.birth.day"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="31">
-                            <input class="year input col-4" type="number" ng-model="$ctrl.registerObj.birth.year"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="1990">
+                            <input class="month input col-4" type="tel" name="month" ng-model="$ctrl.BirthMonth"
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="12" focus-select>
+                            <input class="date input col-4" type="tel" name="day" ng-model="$ctrl.registerObj.birth.day"
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="31" focus-select>
+                            <input class="year input col-4" type="tel" name="year" ng-model="$ctrl.registerObj.birth.year"
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="1990" focus-select>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6">
-                    <div class="input form-input gender">
+                <div class="col-6">
+                    <div class="input form-input invalid-by-gradient gender" ng-class="{'is-invalid': ! $ctrl.GenderValid}">
                         <div class="row no-gutters">
                             <label class="input col-6 left" ng-class="$ctrl.genderChecked('male')">
                                 Male<input name="gender" type="radio" value="male" ng-model="$ctrl.registerObj.gender">
@@ -46,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <div class="input form-input nation">
+            <div class="input form-input invalid-by-gradient nation" ng-class="{'is-invalid': ! $ctrl.NationValid}">
                 <div class="row no-gutters">
                     <label class="input col-6 left" ng-class="$ctrl.nationChecked('local')">
                         Local<input name="nation" type="radio" value="local" ng-model="$ctrl.registerObj.nation">
@@ -56,7 +62,8 @@
                     </label>
                 </div>
             </div>
-            <button class="button-submit" ng-bind="$ctrl.SignUpLabel"></button>
+            <button class="button-submit" ng-class="{'is-disabled': ! $ctrl.DataValid}"
+                    ng-bind="$ctrl.SignUpLabel"></button>
         </form>
     </div>
 </main>

@@ -59,12 +59,12 @@ gulp.task('build', () => {
                         use: [{
                             loader : 'css-loader',
                             options: {
-                                sourceMap: true
+                                // sourceMap: true
                             }
                         }, {
                             loader : 'less-loader',
                             options: {
-                                sourceMap: true,
+                                // sourceMap: true,
                                 plugins  : [
                                     new LessAutoprefixPlugin(),
                                     new LessCleanCSSPlugin
