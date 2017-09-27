@@ -1,106 +1,82 @@
 @import (reference) '../index';
 
-.paper-image .start-btn{
-  background: url('../../media/mainImage/start-button.png') center no-repeat;
-  background-size: contain;
-  z-index: 3;
-  width: 108.5 / 16rem;
-  height: 107.5 / 16rem;
-  margin: 0 auto;
-  position: relative;
-  top: -45 / 16rem ;
-}
 .paper-image_body.main {
   background-image: url('../../media/paper-image-main.png');
 }
+
 .paper-overlay.main {
-  background-image: url('../../media/figure-bg.png');
+  background-image: url('../../media/paper-overlay.png');
 }
 
-.page-main{
-  padding: 0;
-}
-.main-white{
-  -webkit-transform-origin: left bottom;
-  transform-origin: left bottom;
-  -webkit-transform: rotate(-10deg);
-  transform: rotate(-10deg);
-  left: 0;
-  position: absolute;
-  height: 577.5 / 16rem;
-  box-shadow: 0 0 13.1px 2.9px rgba(0, 0, 0, 0.07);
-  z-index: -1 !important;
-}
-.main-red{
-  -webkit-transform-origin: right bottom;
-  transform-origin: right bottom;
-  -webkit-transform: rotate(18deg);
-  transform: rotate(18deg);
-  right: 0;
-  z-index: -2;
-  position: absolute;
-  height: 577.5 / 16rem;
-  background: #F9C3C6;
-  box-shadow: 0 0 13.1px 2.9px rgba(0, 0, 0, 0.07);
-}
-.main-page{
-  position:absolute;
-  top:141.5 / 16rem;
-  width: 100%;
-  .add-touriends-text{
+.page-main {
+  .paper-image .start-btn {
+    background: url('../../media/mainImage/start-button.png') center no-repeat;
+    background-size: contain;
+    z-index: 3;
+    width: 108.5 / 16rem;
+    height: 107.5 / 16rem;
+    margin: 0 auto;
+    position: relative;
+    top: -45 / 16rem;
+  }
+
+  .add-touriends-text {
     z-index: 3;
     opacity: 0.75;
     text-align: left;
     font-size: 50.7 / 16rem;
     color: rgba(233, 97, 119, 0.75);
     font-weight: 600;
-    margin-top: 128 / 16rem;
+    margin-top: 82.5 / 16rem;
     position: relative;
     width: 100%;
-    p{
+    p {
       margin: 0 auto;
       width: 364 / 16rem !important;
     }
   }
 }
-.navi-board{
-  background-color: #F9F9F9;
+
+.navi-board {
+  width: 100%;
   height: 72.5 / 16rem;
-  width:100%;
+  background-color: #F9F9F9;
   margin-top: 103.5 / 16rem;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   z-index: 10;
-  .icon{
+  .icon {
     width: 20%;
     position: relative;
     bottom: -8 / 16rem;
     display: inline-block;
-    .nav-icon{
+
+    .nav-icon {
       margin: 0 auto;
-      background-repeat: no-repeat;
+      background: center no-repeat;
+      background-size: contain;
     }
-    .matching{
+    .matching {
       background-image: url(../../media/mainImage/matching-icon.png);
       width: 50.5 / 16rem;
       height: 52.5 / 16rem;
     }
-    .community{
+    .community {
       background-image: url(../../media/mainImage/community-icon.png);
       width: 60 / 16rem;
       height: 50 / 16rem;
     }
-    .home{
+    .home {
       background-image: url(../../media/mainImage/home-icon.png);
       width: 37 / 16rem;
       height: 55.5 / 16rem;
     }
-    .attraction{
+    .attraction {
       background-image: url(../../media/mainImage/attraction-icon.png);
       width: 59 / 16rem;
       height: 56 / 16rem;
     }
-    .mypage{
+    .mypage {
       background-image: url(../../media/mainImage/mypage-icon.png);
       width: 41.5 / 16rem;
       height: 49.5 / 16rem;

@@ -1,3 +1,5 @@
+@import (reference) '../includes/index';
+
 .login-pos {
   position: absolute;
   top: 50%;
@@ -56,7 +58,7 @@
   bottom: 0;
 
   // rem 쓰다가 소수점 w/h 되면 삼각형에 seam 생김
-  @media (max-width: 576px) {
+  @media @standard {
     @width: 180px;
     @height: 70px;
     width: @width;

@@ -1,18 +1,22 @@
 <main class="page-main container-fluid" ng-controller="MainCtrl as $ctrl">
     <div class="row paper-group">
+        <!--<div class="paper-title">-->
+            <!--<p class="paper-title_body">-->
+                <!--Which place<br>do you want to tour?-->
+            <!--</p>-->
+        <!--</div>-->
         <div class="paper-image page">
             <div class="paper-image_body main"></div>
             <div class="start-btn" ng-click="$ctrl.start()"></div>
         </div>
-        <div class="paper-overlay main"></div>
-        <div class="paper top main-white"></div>
-        <div class="paper main-red"></div>
+        <div class="paper left top white with-overlay"></div>
+        <div class="paper right pink stiff"></div>
     </div>
-    <div class="main-page">
+    <section class="main-page under-paper">
         <div class="add-touriends-text">
-            <p>Add your Touriends trevel with you</p>
+            <p>Add your Touriends to travel with you</p>
         </div>
-    </div>
+    </section>
     <div class="navi-board">
         <div class="icon" ng-repeat="nav in $ctrl.nav">
             <div ng-click="$ctrl.navbar(nav)" class="nav-icon {{nav}}"></div>
