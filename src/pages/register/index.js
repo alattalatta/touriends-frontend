@@ -31,6 +31,10 @@ class RegisterCtrl {
         this.registerObj.birth.year = val;
     }
 
+    get Birth() {
+        return `${this.BirthYear}-${this.BirthMonth}-${this.BirthDay}`;
+    }
+
     // =============== Validation
     get DataValid() {
         return ! this.pending &&
@@ -223,6 +227,8 @@ class RegisterCtrl {
         }
 
         let data = new FormData(this.form);
+        data.set('birth', this.Birth);
+
         // 이미지 검사
         if (this.imageData) {
             data.append('image', this.imageData);
@@ -230,6 +236,7 @@ class RegisterCtrl {
 
         this.pending = true;
         this.LoginSvc.register(data).then((response) => {
+            console.log('%cRegister response arrived', 'color:white;background:dimgray');
             console.log(response);
             if (response.data.success) {
                 this.$state.go('introduce');

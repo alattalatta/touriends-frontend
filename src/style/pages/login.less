@@ -43,8 +43,8 @@
 
 //noinspection CssOptimizeSimilarProperties
 .login-triangle {
-  @width: 300 / 16rem;
-  @height: 140 / 16rem;
+  @width: 240 / 16rem;
+  @height: 110 / 16rem;
   width: @width;
   height: @height;
   border-top: @height / 2 solid transparent;
@@ -55,7 +55,12 @@
   left: 0;
   bottom: 0;
 
-  @media (max-width: 450px), (max-height: 800px) {
-    display: none;
+  // rem 쓰다가 소수점 w/h 되면 삼각형에 seam 생김
+  @media (max-width: 576px) {
+    @width: 180px;
+    @height: 70px;
+    width: @width;
+    height: @height;
+    border-width: @height / 2 @width / 2 @height / 2 @width / 2;
   }
 }

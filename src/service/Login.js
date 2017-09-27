@@ -29,7 +29,6 @@ class LoginSvc {
             data: formData
         }).then((response) => {
             if (response.data.success) {
-                console.log(response);
                 this.logged = true;
                 this.uid = response.data.uid;
             }

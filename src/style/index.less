@@ -1,5 +1,5 @@
 @import (reference) './colors';
-@import './bootstrap-grid.css';
+@import './bootstrap-grid';
 @import './normalize';
 @import './paperwork';
 @import './pages/login';
@@ -7,6 +7,7 @@
 @import './pages/introduce';
 @import './pages/main';
 
+// ENGLISH
 @font-face {
   font-family: 'Akrobat';
   src: local('Akrobat'),
@@ -15,7 +16,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Akrobat';
   src: local('Akrobat'),
@@ -25,10 +25,24 @@
   font-style: normal;
 }
 
-@font-sets: 'Akrobat', 'Apple SD Gothic Neo', sans-serif;
+// KOREAN
+// YES ITS THIN
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),
+  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),
+  url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');
+}
+
+@font-sets: 'Akrobat', 'Noto Sans KR', sans-serif;
 
 html {
   height: 100%;
+  @media (max-width: 576px) {
+    font-size: 74.7664%;
+  }
 }
 
 body,
@@ -36,7 +50,7 @@ input,
 textarea {
   font-family: @font-sets;
   &::placeholder {
-    color: rgba(0, 0, 0, .25);
+    color: @c-placeholder;
     font-family: @font-sets;
   }
 }
@@ -62,13 +76,13 @@ main {
   background: none;
   border: none;
   display: block;
-  font-size: 21 / 16rem;
+  font-size: 21.4 / 16rem;
   font-weight: 600;
   line-height: 55 / 16rem;
 
   &.left,
   &.right {
-    color: rgba(0, 0, 0, .25);
+    color: @c-placeholder;
   }
   &.left {
     border-top-left-radius: 55 / 16rem;
