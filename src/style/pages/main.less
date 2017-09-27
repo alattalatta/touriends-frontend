@@ -1,5 +1,22 @@
 @import (reference) '../index';
 
+.paper-image .start-btn{
+  background: url('../../media/mainImage/start-button.png') center no-repeat;
+  background-size: contain;
+  z-index: 3;
+  width: 108.5 / 16rem;
+  height: 107.5 / 16rem;
+  margin: 0 auto;
+  position: relative;
+  top: -45 / 16rem ;
+}
+.paper-image_body.main {
+  background-image: url('../../media/paper-image-main.png');
+}
+.paper-overlay.main {
+  background-image: url('../../media/figure-bg.png');
+}
+
 .page-main{
   padding: 0;
 }
@@ -11,8 +28,6 @@
   left: 0;
   position: absolute;
   height: 577.5 / 16rem;
-  background: #F9F9F9;
-  background-image: url('../../media/figure-bg.png');
   box-shadow: 0 0 13.1px 2.9px rgba(0, 0, 0, 0.07);
   z-index: -1 !important;
 }
@@ -32,24 +47,6 @@
   position:absolute;
   top:141.5 / 16rem;
   width: 100%;
-  .main-thumbnail{
-    border-radius: 100%;
-    background-image: url('../../media/mainImage/graphic.png');
-    background-repeat: no-repeat;
-    width: 273 / 16rem;
-    height: 273 / 16rem;
-    margin: 0 auto;
-  }
-  .start-btn{
-    background-image: url('../../media/mainImage/start-button.png');
-    background-repeat: no-repeat;
-    z-index: 3;
-    width: 108.5 / 16rem;
-    height: 107.5 / 16rem;
-    margin: 0 auto;
-    position: relative;
-    top: -45 / 16rem ;
-  }
   .add-touriends-text{
     z-index: 3;
     opacity: 0.75;

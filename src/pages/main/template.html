@@ -1,18 +1,21 @@
 <main class="page-main container-fluid" ng-controller="MainCtrl as $ctrl">
     <div class="row paper-group">
+        <div class="paper-image page">
+            <div class="paper-image_body main"></div>
+            <div class="start-btn" ng-click="$ctrl.start()"></div>
+        </div>
+        <div class="paper-overlay main"></div>
         <div class="paper top main-white"></div>
         <div class="paper main-red"></div>
     </div>
     <div class="main-page">
-        <div class="main-thumbnail"></div>
-        <div type="button" class="start-btn" ng-click="$ctrl.start()"></div>
         <div class="add-touriends-text">
             <p>Add your Touriends trevel with you</p>
         </div>
     </div>
     <div class="navi-board">
-      <div class="icon" ng-repeat="nav in $ctrl.nav">
-        <div ng-click="$ctrl.navbar(nav)" class="nav-icon {{nav}}"></div>
-      </div>
+        <div class="icon" ng-repeat="nav in $ctrl.nav">
+            <div ng-click="$ctrl.navbar(nav)" class="nav-icon {{nav}}"></div>
+        </div>
     </div>
 </main>

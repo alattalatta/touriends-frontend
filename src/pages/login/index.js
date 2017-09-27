@@ -28,7 +28,7 @@ class LoginCtrl {
 		this.LoginSvc.login(formData).then((response) => {
 			this.pending = false;
 			if (response.data.success) {
-				this.$state.go('home');
+				this.$state.go('main');
 			}
 			else {
 				alert(response.data.message);

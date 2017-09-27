@@ -54,7 +54,7 @@ function IntroduceCtrl($http, $state) {
             console.log('%cIntro response arrived', 'color:white;background:dimgray');
             console.log(response);
             if (response.data.success) {
-                $state.go('home');
+                $state.go('main');
             }
             else {
                 alert('설정에 실패했어요!'); // todo change message

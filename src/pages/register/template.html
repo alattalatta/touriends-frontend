@@ -1,16 +1,16 @@
 <main class="page-register" ng-controller="RegisterCtrl as $ctrl">
     <div class="row paper-group">
+        <div class="paper-image profile">
+            <div class="paper-image_body profile" ng-style="$ctrl.ProfileImage"></div>
+            <image-uploader file-model="$ctrl.imageData"
+                            preview-model="$ctrl.imagePreview"
+                            orientation-model="$ctrl.imageOrientation"></image-uploader>
+        </div>
         <div class="paper top white"></div>
         <div class="paper red"></div>
     </div>
     <div class="container">
         <form class="form" id="form_register" ng-submit="$ctrl.register()" novalidate autocomplete="off">
-            <div class="profile-thumbnail">
-                <div class="profile-thumbnail__body" ng-style="$ctrl.ProfileImage"></div>
-                <image-uploader file-model="$ctrl.imageData"
-                                preview-model="$ctrl.imagePreview"
-                                orientation-model="$ctrl.imageOrientation"></image-uploader>
-            </div>
             <input name="login" class="invalid-by-gradient" ng-class="{'is-invalid': ! $ctrl.IDValid}"
                    ng-model="$ctrl.registerObj.login" placeholder="ID">
             <hr class="login-separator">
