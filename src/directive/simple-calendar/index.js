@@ -1,5 +1,7 @@
 require('./style.less');
 
+import leftPad from 'left-pad';
+
 /**
  * https://web.cs.dal.ca/~jamie/CS3172/Course/assig/zeller.html
  */
@@ -90,6 +92,9 @@ class SimpleCalendar {
         this.selectA = ! this.selectA;
     }
 
+    getPaddedDate($index) {
+        return leftPad($index, 2, '0');
+    }
     getClasses($index) {
         let myDate = new Date(this.year, this.month, $index + 1);
         if (! this.dateA && ! this.dateB) {

@@ -1,61 +1,127 @@
-@import (reference) './colors';
+@import (reference) 'includes/colors';
 
-.profile-thumbnail {
-  width: 156 / 16rem;
-  height: 156 / 16rem;
-  border-radius: 100%;
-  margin: 0 auto;
+@paper-height: 531 / 16rem;
+
+.paper-group {
   position: absolute;
-  top: 138 / 16rem;
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 3;
-}
-.profile-thumbnail__body {
-  width: 100%;
-  height: 100%;
-  background: whitesmoke url('../media/default-profile.jpg') no-repeat center;
-  background-size: cover;
-  border-radius: 100%;
 }
 
+// 페이퍼 아래 본문
+.under-paper {
+  padding-top: @paper-height;
+  padding-bottom: 90 / 16rem;
+}
+
+.paper-title {
+  width: 100%;
+  font-size: 44.7 / 16rem;
+  font-weight: 600;
+  line-height: 48.4 / 44.7;
+  margin-top: 52.5 / 16rem;
+  position: relative;
+  text-align: center;
+  z-index: 10;
+
+  & + .paper-image.page {
+    margin-top: 22.5 / 16rem;
+  }
+}
+.paper-title_body {
+  width: 266.5 / 16rem;
+  display: inline-block;
+  text-align: left;
+}
+
+// 원 이미지
+.paper-image {
+  border-radius: 100%;
+  position: relative;
+  z-index: 10;
+
+  &.profile {
+    width: 156 / 16rem;
+    height: 156 / 16rem;
+    margin: 138 / 16rem auto 0;
+  }
+  &.page {
+    width: 273 / 16rem;
+    height: 273 / 16rem;
+    margin: 141.5 / 16rem auto 0;
+  }
+}
+//noinspection CssOptimizeSimilarProperties
+.paper-image_body {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 100%;
+
+  &.profile {
+    background-image: url('../media/default-profile.jpg');
+  }
+}
+
+// 페이퍼
 .paper {
   width: 150%;
-  height: 305 / 16rem;
-  box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.2);
+  height: @paper-height;
+  background-color: white;
+  box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.07);
   position: absolute;
   z-index: 2;
 
   &.top {
     z-index: 3;
   }
+
+  &.short {
+    height: 305 / 16rem;
+  }
+
+  &.left {
+    left: 0;
+    transform-origin: left bottom;
+    transform: translateY(.5rem) rotate(-12deg);
+  }
+  &.right {
+    right: 0;
+    transform-origin: right bottom;
+    transform: rotate(12deg);
+
+    &.stiff {
+      transform: rotate(19deg);
+    }
+  }
+
+  &.dark-shadow {
+    box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.2);
+  }
+
   &.white {
-    background: #F8F9F8;
+    background-color: #F8F9F8;
   }
   &.red {
-    background: @red;
+    background-color: @red;
   }
   &.pink {
-    background: #F5C3C5;
+    background-color: #F5C3C5;
   }
   &.cyan {
-    background: #7EC7D3;
+    background-color: #7EC7D3;
   }
   &.yellow {
-    background: @yellow;
+    background-color: @yellow;
   }
-}
 
-.page-register,
-.page-introduce {
-  .paper.red {
-    transform-origin: left bottom;
-    transform: translateY(.5rem) rotate(-13deg);
-    left: 0;
+  &.with-overlay {
+    background-image: url('../media/paper-overlay.png');
   }
-  .paper.white {
-    transform-origin: right bottom;
-    transform: rotate(13deg);
-    right: 0;
+  &.with-overlay-blue {
+    background-image: url('../media/paper-overlay-blue.png');
   }
 }

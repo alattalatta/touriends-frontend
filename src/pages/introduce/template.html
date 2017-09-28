@@ -1,13 +1,15 @@
 <main class="page-introduce container-fluid" ng-controller="IntroduceCtrl as $ctrl">
     <div class="row paper-group">
-        <div class="paper top white"></div>
-        <div class="paper red"></div>
+        <div class="paper-image profile">
+            <div class="paper-image_body profile" ng-style="$ctrl.profileImage()"></div>
+        </div>
+        <div class="paper short left red dark-shadow"></div>
+        <div class="paper short right white top dark-shadow"></div>
         <div class="welcome-touriends">
             <p>Welcome to Touriends!</p>
         </div>
     </div>
     <form class="form" id="form_introduce" ng-submit="$ctrl.submitIntro()" novalidate autocomplete="off">
-        <div class="profile-thumbnail" ng-style="$ctrl.profileImage()"></div>
         <div class="form-intro">
             <p class="id-write">ID Write</p>
             <textarea name="intro" class="intro" ng-model="$ctrl.intro"

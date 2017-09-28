@@ -9,7 +9,7 @@
         <div class="scal_cell scal_7c scal_7c-blank" ng-repeat="i in $ctrl.PrevDates track by $index"></div>
         <div ng-repeat="i in $ctrl.CurrentDates track by $index" class="scal_cell scal_7c scal_date" ng-class="$ctrl.getClasses($index)"
              ng-click="$ctrl.setDate($index)">
-            <div class="scal_selector" ng-bind="::$index + 1"></div>
+            <div class="scal_selector" ng-bind="::$ctrl.getPaddedDate($index + 1)"></div>
         </div>
     </div>
 </div>

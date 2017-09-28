@@ -79,7 +79,34 @@ export default app => {
                 url: '/when',
                 name: 'when',
                 parent: 'authful',
-                template: require('./pages/when/template.html')
+                templateProvider: () => {
+                    return import('./pages/when/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/when/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.when'
+                            });
+                        });
+                    }]
+                }
+            }).state({
+                url: '/main',
+                name: 'main',
+                parent: 'authful',
+                templateProvider: () => {
+                    return import('./pages/main/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/main/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.main'
+                            });
+                        });
+                    }]
+                }
             }).state({
                 url: '/home',
                 name: 'home',
