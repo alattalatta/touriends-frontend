@@ -3,17 +3,20 @@ import param from 'jquery-param';
 function IntroduceCtrl($http, $state) {
     this.image = null;
     this.intro = null;
+    this.login = 'ID';
     this.byte = 0;
 
     $http({
         method: 'POST',
         url: ajax_url,
         data: param({
-            action: 'get_user_image'
+            action: 'get_intro_data'
         })
     }).then((response) => {
+        console.log(response);
         if (response.data.success === true) {
             this.image = response.data.url;
+            this.login = response.data.login;
         }
     });
 
