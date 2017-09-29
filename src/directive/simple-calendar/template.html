@@ -1,26 +1,31 @@
 <div class="scal_view-date">
     <div class="scal_header">
-        <label class="scal_label" ng-bind="$ctrl.Month"></label>
+        <label class="scal_label" ng-bind="$ctrl.Month" ng-click="$ctrl.toggleMonthSelect()"></label>
         <div class="scal_days scal_row">
             <div class="scal_cell scal_7c scal_day" ng-repeat="day in ::$ctrl.Days" ng-bind="day"></div>
         </div>
     </div>
     <div class="scal_body scal_row">
         <div class="scal_cell scal_7c scal_7c-blank" ng-repeat="i in $ctrl.PrevDates track by $index"></div>
-        <div ng-repeat="i in $ctrl.CurrentDates track by $index" class="scal_cell scal_7c scal_date" ng-class="$ctrl.getClasses($index)"
-             ng-click="$ctrl.setDate($index)">
-            <div class="scal_selector" ng-bind="::$ctrl.getPaddedDate($index + 1)"></div>
+        <div class="scal_cell scal_7c scal_date" ng-repeat="i in $ctrl.CurrentDates track by $index"
+             ng-class="$ctrl.getDateClasses($index)" ng-click="$ctrl.setDate($index)">
+            <div class="scal_selector" ng-bind="::$ctrl.getPadded($index + 1)"></div>
         </div>
     </div>
 </div>
-<div class="scal_view-month">
+<div class="scal_view-month" ng-show="$ctrl.selectMonth">
     <div class="scal_header">
-        <label class="scal_label" ng-bind="$ctrl.year"></label>
+        <label class="scal_label" ng-bind="$ctrl.year" ng-click="$ctrl.toggleMonthSelect()"></label>
+        <div class="scal_days scal_row">
+            <div class="scal_label col-3" ng-click="$ctrl.decreaseYear()">&ltrif;</div>
+            <div class="col-6"></div>
+            <div class="scal_label col-3" ng-click="$ctrl.increaseYear()">&rtrif;</div>
+        </div>
     </div>
     <div class="scal_body scal_row">
-        <div class="scal_cell col-4" ng-click="$ctrl.Month = 0">JAN</div>
-        <div class="scal_cell col-4" ng-click="$ctrl.Month = 1">FEB</div>
-        <div class="scal_cell col-4" ng-click="$ctrl.Month = 2">MAR</div>
-        <div class="scal_cell col-4" ng-click="$ctrl.Month = 3">APL</div>
+        <div class="scal_cell col-3" ng-repeat="month in ::$ctrl.month12 track by $index"
+             ng-class="$ctrl.getMonthClass($index)" ng-click="$ctrl.Month = $index">
+            <div class="scal_selector" ng-bind="::$ctrl.getPadded($index + 1)"></div>
+        </div>
     </div>
 </div>

@@ -9,6 +9,7 @@ class SimpleCalendar {
     get Days() {
         return ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
     }
+
     get Month() {
         switch (this.month) {
             case 0:
@@ -37,14 +38,17 @@ class SimpleCalendar {
                 return 'DECEMBER';
         }
     }
+
     set Month(val) {
         this.month = val;
         this.createMonth();
+        this.toggleMonthSelect();
     }
 
     get PrevDates() {
         return new Array(this.prevDatesCount);
     }
+
     get CurrentDates() {
         return new Array(this.currentDatesCount);
     }
@@ -56,6 +60,8 @@ class SimpleCalendar {
 
         this.selectMonth = false; // 월 선택 모드?
 
+        this.month12 = new Array(12); // 월 선택 ng-repeat 용
+
         this.create();
     }
 
@@ -64,6 +70,7 @@ class SimpleCalendar {
         this.createMonth();
     }
 
+    // 달력 생성
     createMonth() {
         let firstDate = new Date(this.year, this.month, 1); // 금월 1일
         let lastDate = new Date(this.year, this.month + 1, 0); // 금월 마지막일
@@ -72,6 +79,7 @@ class SimpleCalendar {
         this.currentDatesCount = lastDate.getDate(); // 이번 달 전체 일 수
     }
 
+    // 달력 초기화
     resetSelection() {
         this.dateA = null;
         this.dateB = null;
@@ -89,15 +97,13 @@ class SimpleCalendar {
             }
         }
 
-        this.selectA = ! this.selectA;
+        this.selectA = !this.selectA;
     }
 
-    getPaddedDate($index) {
-        return leftPad($index, 2, '0');
-    }
-    getClasses($index) {
+    // 선택된 날짜들 클래스
+    getDateClasses($index) {
         let myDate = new Date(this.year, this.month, $index + 1);
-        if (! this.dateA && ! this.dateB) {
+        if (!this.dateA && !this.dateB) {
             return null;
         }
 
@@ -114,12 +120,48 @@ class SimpleCalendar {
                 res.push(this.dateA > this.dateB ? 'is-left' : 'is-right');
             }
         }
-        else if (this.dateA && this.dateB &&
-            (this.dateA < myDate && myDate < this.dateB || this.dateB < myDate && myDate < this.dateA)) {
+        else if (
+            this.dateA && this.dateB && (
+                this.dateA < myDate && myDate < this.dateB || // myDate 가 dateA~dateB 사이에 있을 경우
+                this.dateB < myDate && myDate < this.dateA    // myDate 가 dateB~dateA 사이에 있을 경우
+            )) {
             res.push('is-included');
         }
 
         return res;
+    }
+
+    getMonthClass($index) {
+        let myDate = new Date(this.year, $index, 22);
+
+        if (this.dateA &&
+            this.dateA.getFullYear() === myDate.getFullYear() &&
+            this.dateA.getMonth() === myDate.getMonth()) {
+            return 'is-selected';
+        }
+        if (this.dateB &&
+            this.dateB.getFullYear() === myDate.getFullYear() &&
+            this.dateB.getMonth() === myDate.getMonth()) {
+            return 'is-selected';
+        }
+        return null;
+    }
+
+    toggleMonthSelect() {
+        this.selectMonth = !this.selectMonth;
+    }
+
+    increaseYear() {
+        this.year++;
+    }
+
+    decreaseYear() {
+        this.year--;
+    }
+
+    // 날짜 옆에 0 붙이기
+    getPadded($index) {
+        return leftPad($index, 2, '0');
     }
 }
 

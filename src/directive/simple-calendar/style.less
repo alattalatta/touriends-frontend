@@ -4,12 +4,23 @@
 simple-calendar {
   display: block;
   font: 1rem Arial, sans-serif;
+  position: relative;
+  user-select: none;
   @media @smaller {
     font-size: .9rem;
   }
   @media @smallest {
     font-size: .8rem;
   }
+}
+
+.scal_view-month {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .scal_row {
@@ -24,27 +35,22 @@ simple-calendar {
   font-weight: 600;
   text-align: center;
 }
-
-.scal_day {
-  color: rgba(11, 11, 11, .6);
-  font-size: 24.4 / 16em;
-  letter-spacing: -.6 / 16em;
+.scal_nav {
+  &.left {
+    float: left;
+  }
+  &.right {
+    float: right;
+  }
 }
 
-.scal_date {
-  color: rgba(11, 11, 11, .3);
-}
-
+@c-scal-cell: rgba(11, 11, 11, .6);
 .scal_cell {
+  color: rgba(11, 11, 11, .6);
   font-size: 26.4 / 16em;
   line-height: 51 / 26.4;
   margin-top: 13 / 26.4em;
   text-align: center;
-}
-.scal_7c {
-  flex: 0 0 14.28%;
-  float: left;
-  max-width: 14.28%;
 
   &.is-selected {
     color: white;
@@ -73,6 +79,20 @@ simple-calendar {
     background: fade(@cyan, 50%);
     color: rgba(11, 11, 11, .7);
   }
+}
+
+.scal_day {
+  font-size: 24.4 / 16em;
+  letter-spacing: -.6 / 16em;
+}
+.scal_date {
+  color: fade(@c-scal-cell, 50%);
+}
+
+.scal_7c {
+  flex: 0 0 14.28%;
+  float: left;
+  max-width: 14.28%;
 }
 .scal_7c-blank {
   opacity: 0;
