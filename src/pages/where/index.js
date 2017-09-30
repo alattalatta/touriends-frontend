@@ -6,10 +6,10 @@ class WhereCtrl {
         'Yeongdeungpo','Yangcheon','Dongjak','Seocho',
         'Songpa','Gangdong','Guro','Geumcheon',
         'Gwanak','Gwangjin','Jungnang','Yongsan','Seodaemun'];
-        this.selected = null;
+        this.place = null;
 
         this.whereSelect = function ($index){
-                this.selected = $index;
+                this.place = $index;
         }
     }
 }
