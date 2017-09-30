@@ -112,13 +112,10 @@ main {
 
 .invalid-by-gradient {
   &.is-invalid {
-    @primary: desaturate(lighten(@yellow, 20%), 10%);
-    @secondary: lighten(@primary, 10%);
+    @primary: desaturate(lighten(@yellow, 22%), 10%);
+    @secondary: lighten(@primary, 11%);
     @width: 8px;
-    background: linear-gradient(
-            to right,
-            white, transparent, white),
-    repeating-linear-gradient(
+    background: repeating-linear-gradient(
             -45deg,
             @primary,
             @primary @width,
