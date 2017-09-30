@@ -1,4 +1,4 @@
-<main class="page-main container-fluid" ng-controller="WhereCtrl as $ctrl">
+<main class="page-main page-where container-fluid" ng-controller="WhereCtrl as $ctrl">
 	<div class="paper-group">
 		<div class="paper-title where">
 			<p class="paper-title_body">
@@ -14,6 +14,11 @@
 		</div>
 	</div>
 	<section class="under-paper">
-
+		<div class="btn-group row">
+			<div class="col-3" ng-repeat="location in $ctrl.locations">
+				<button class="btn-type" ng-bind="location" ng-click="$ctrl.whereSelect($index)"
+						ng-class="{'is-highlighted': $index === $ctrl.selected}"></button>
+			</div>
+		</div>
 	</section>
 </main>
