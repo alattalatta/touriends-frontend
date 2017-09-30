@@ -123,6 +123,22 @@ export default app => {
                         })
                     }]
                 }
+            }).state({
+                url: '/theme',
+                name: 'theme',
+                parent: 'authful',
+                templateProvider: () => {
+                    return import('./pages/theme/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/theme/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.theme'
+                            });
+                        });
+                    }]
+                }
             });
 
             $urlRouterProvider.otherwise('/login');
