@@ -139,6 +139,22 @@ export default app => {
                         });
                     }]
                 }
+            }).state({
+                url: '/language',
+                name: 'language',
+                parent: 'authful',
+                templateProvider: () => {
+                    return import('./pages/language/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/language/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.language'
+                            });
+                        });
+                    }]
+                }
             });
 
             $urlRouterProvider.otherwise('/login');
