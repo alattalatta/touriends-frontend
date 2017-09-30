@@ -92,6 +92,22 @@ export default app => {
                     }]
                 }
             }).state({
+                url: '/where',
+                name: 'where',
+                parent: 'authful',
+                templateProvider: () => {
+                    return import('./pages/where/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/where/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.where'
+                            });
+                        });
+                    }]
+                }
+            }).state({
                 url: '/main',
                 name: 'main',
                 parent: 'authful',
