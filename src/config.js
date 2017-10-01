@@ -96,11 +96,11 @@ export default app => {
                 name: 'longcomment',
                 parent: 'authful',
                 templateProvider: () => {
-                    return import('./pages/longcomment/template.html')
+                    return import('./pages/long-comment/template.html')
                 },
                 resolve: {
                     lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
-                        return import('./pages/longcomment/index').then(() => {
+                        return import('./pages/long-comment/index').then(() => {
                             $ocLazyLoad.load({
                                 name: 'touriends.page.longcomment'
                             });
