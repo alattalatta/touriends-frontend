@@ -1,5 +1,4 @@
 function MainCtrl($state) {
-	this.nav = ['matching', 'community', 'home', 'attraction', 'mypage'];
 
 	this.start = function () {
 		$state.go('when');

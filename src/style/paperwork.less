@@ -1,4 +1,4 @@
-@import (reference) 'includes/colors';
+@import (reference) 'includes/index';
 
 @paper-height: 531 / 16rem;
 
@@ -13,7 +13,10 @@
 // 페이퍼 아래 본문
 .under-paper {
   padding-top: @paper-height;
-  padding-bottom: 90 / 16rem;
+
+  &.with-nav {
+    padding-bottom: 90 / 16rem;
+  }
 }
 
 .paper-title {
@@ -75,8 +78,11 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  transform: rotate(-19deg) translate(-40 / 16rem, -38 / 16rem);
+  transform: rotate(-19deg) translate(-48 / 16rem, -38 / 16rem);
   z-index: 5;
+  @media @standard {
+    transform: rotate(-19deg) translate(-36 / 16rem, -38 / 16rem);
+  }
 }
 
 // 페이퍼
