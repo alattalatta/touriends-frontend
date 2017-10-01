@@ -16,6 +16,7 @@
 </head>
 <body ng-app="touriends">
 
+<loading-overlay class="super-overlay"></loading-overlay>
 <ui-view></ui-view>
 
 <?php wp_footer() ?>

@@ -89,13 +89,13 @@ class SimpleCalendar {
 	setDate($index) {
 		if (this.selectA) {
 			this.dateA = new Date(this.year, this.month, $index + 1);
-			if (this.dateA.getTime() === this.dateB.getTime()) {
+			if (this.dateB && this.dateA.getTime() === this.dateB.getTime()) {
 				this.dateB = null;
 			}
 		}
 		else {
 			this.dateB = new Date(this.year, this.month, $index + 1);
-			if (this.dateA.getTime() === this.dateB.getTime()) {
+			if (this.dateA && this.dateA.getTime() === this.dateB.getTime()) {
 				this.dateA = null;
 			}
 		}

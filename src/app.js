@@ -1,5 +1,7 @@
 require('./style/index.less');
 
+import ngLoadingBar from 'angular-loading-bar';
+require('angular-loading-bar/build/loading-bar.min.css');
 import 'angular-ui-router';
 import 'babel-polyfill';
 import 'oclazyload';
@@ -12,7 +14,7 @@ import {homeModule, loginModule} from './pages/index';
 
 let app = angular
 	.module('touriends', [
-		'ui.router', 'oc.lazyLoad',
+		'ngAnimate', 'ui.router', 'oc.lazyLoad', ngLoadingBar,
 		directiveModule, serviceModule,
 		homeModule, loginModule
 	]);

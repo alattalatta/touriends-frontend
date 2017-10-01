@@ -2,7 +2,7 @@ import EmailValidator from 'email-validator';
 
 class RegisterCtrl {
 	static get $inject() {
-		return ['$scope', '$state', 'LoginSvc']
+		return ['OverlaySvc', 'LoginSvc', '$scope', '$state']
 	}
 
 	// =============== Property
@@ -172,10 +172,11 @@ class RegisterCtrl {
 		}
 	}
 
-	constructor($scope, $state, LoginSvc) {
+	constructor(OverlaySvc, LoginSvc, $scope, $state) {
+		this.OverlaySvc = OverlaySvc;
+		this.LoginSvc = LoginSvc;
 		this.$scope = $scope;
 		this.$state = $state;
-		this.LoginSvc = LoginSvc;
 
 		this.imagePreview = null;
 		this.imageData = null;
@@ -211,45 +212,42 @@ class RegisterCtrl {
 		this.registerObj = angular.copy(this.registerTemplate);
 	}
 
-	register() {
-		if (!this.DataValid) {
+	async register() {
+		if (!this.DataValid || this.pending) {
 			return;
 		}
 
 		let data = new FormData(this.form);
 		data.set('birth', this.Birth);
 
-		// 이미지 검사
+		// 이미지 있으면 전송 데이터에 수동으로 추가
 		if (this.imageData) {
 			data.append('image', this.imageData);
 		}
 
 		this.pending = true;
-		this.LoginSvc.register(data).then((response) => {
-			console.log('%cRegister response arrived', 'color:white;background:dimgray');
-			console.log(response);
-			if (response.data.success) {
-				this.$state.go('introduce');
+		this.OverlaySvc.toggle('loading');
+		let response = await this.LoginSvc.register(data);
+
+		this.pending = false;
+		if (response.data.success) {
+			await this.$state.go('introduce');
+			this.OverlaySvc.toggle('loading');
+		}
+		else {
+			this.registerObj.pwd = this.registerObj.pwdConfirm = null;
+			switch (response.data.error) {
+				case 'login_duplicate':
+					this.registerObj.login = null;
+					alert('ID already in use!');
+					break;
+				case 'upload_failed':
+					alert('Profile image must not exceed 5MB!');
+					break;
+				default:
+					alert('Please check your internet connection.');
 			}
-			else {
-				if (response.data.error) {
-					switch (response.data.error) {
-						case 'login_duplicate':
-							this.registerObj.login = null;
-							alert('ID already in use!');
-							break;
-						case 'upload_failed':
-							alert('Profile image must not exceed 5MB!');
-							break;
-					}
-				}
-				if (response.data.error === 'login_duplicate') {
-				}
-				// TODO Proper error checking
-				this.registerObj.pwd = this.registerObj.pwdConfirm = null;
-			}
-			this.pending = false;
-		});
+		}
 	}
 }
 

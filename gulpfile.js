@@ -60,6 +60,11 @@ gulp.task('build', () => {
 						}
 					}
 				}, {
+					test: /\.css$/,
+					use: ExtractTextPlugin.extract({
+						use: [{loader: 'css-loader'}]
+					})
+				}, {
 					test: /\.less$/,
 					use: ExtractTextPlugin.extract({
 						use: [{

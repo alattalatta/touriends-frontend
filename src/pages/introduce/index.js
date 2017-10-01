@@ -55,7 +55,7 @@ function IntroduceCtrl(LoginSvc, CacheSvc, $http, $state) {
 		    })
 	    }).then((response) => {
 		    if (response.data.success) {
-			    CacheSvc.delete('get_intro');
+			    CacheSvc.reset('get_intro');
 			    $state.go('main');
 		    }
 		    else {
