@@ -1,0 +1,24 @@
+<main class="page-main page-where container-fluid" ng-controller="WhereCtrl as $ctrl">
+	<div class="paper-group">
+		<div class="paper-title where">
+			<p class="paper-title_body">
+				Which place <br>do you want to tour?
+			</p>
+		</div>
+		<div class="paper-image page">
+			<div class="paper-image_body where"></div>
+		</div>
+		<div class="paper left top with-overlay-yellow"></div>
+		<div class="paper right yellow stiff">
+			<div class="paper-next"></div>
+		</div>
+	</div>
+	<section class="under-paper">
+		<div class="btn-group row">
+			<div class="col-3" ng-repeat="location in $ctrl.locations">
+				<button class="btn-type" ng-bind="location" ng-click="$ctrl.whereSelect($index)"
+						ng-class="{'is-highlighted': $index === $ctrl.place}"></button>
+			</div>
+		</div>
+	</section>
+</main>
