@@ -1,5 +1,6 @@
 <div class="page-home" ng-controller="HomeCtrl as $ctrl">
-    <h1>Home</h1>
-    <p>My User ID is: <span ng-bind="$ctrl.LoginSvc.uid"></span></p>
-    <p ng-click="$ctrl.logout()">Logout</p>
+	<h1>Home</h1>
+	<p>My User ID is: <span ng-bind="$ctrl.LoginSvc.user_login"></span></p>
+	<p ng-click="$ctrl.logout()">Logout</p>
+	<p ng-click="$ctrl.disconnect()">Disconnect</p>
 </div>

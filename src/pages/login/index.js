@@ -31,7 +31,7 @@ class LoginCtrl {
 				this.$state.go('main');
 			}
 			else {
-				alert(response.data.message);
+				alert('Wrong ID/Password!');
 			}
 			this.loginObj = {
 				login: null,

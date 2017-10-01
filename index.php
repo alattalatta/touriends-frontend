@@ -9,9 +9,9 @@
 	<base href="<?= home_url() ?>">
     <?php wp_head() ?>
     <script>
-        var ajax_url=`<?= admin_url('admin-ajax.php') ?>`;
-        var logged=<?= is_user_logged_in() ? 'true' : 'false' ?>;
-        var uid=<?= is_user_logged_in() ? wp_get_current_user()->ID : 'null' ?>;
+	    var ajax_url = `<?= admin_url('admin-ajax.php') ?>`;
+	    var aaa =<?= is_user_logged_in() ? 'true' : 'false' ?>;
+	    var bbb =<?= is_user_logged_in() ? '\'' . wp_get_current_user()->user_login . '\'' : 'null' ?>;
     </script>
 </head>
 <body ng-app="touriends">
