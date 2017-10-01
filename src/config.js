@@ -92,6 +92,22 @@ export default app => {
                     }]
                 }
             }).state({
+                url: '/longcomment',
+                name: 'longcomment',
+                parent: 'authful',
+                templateProvider: () => {
+                    return import('./pages/longcomment/template.html')
+                },
+                resolve: {
+                    lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+                        return import('./pages/longcomment/index').then(() => {
+                            $ocLazyLoad.load({
+                                name: 'touriends.page.longcomment'
+                            });
+                        });
+                    }]
+                }
+            }).state({
                 url: '/where',
                 name: 'where',
                 parent: 'authful',
