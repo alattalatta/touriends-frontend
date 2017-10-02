@@ -1,0 +1,214 @@
+@import (reference) '../index';
+
+.page-main.ms-page{
+  position : relative;
+}
+.paper-title_body.matching-success{
+  width: 310 / 16rem;
+  font-size: 44.7 / 16rem;
+  font-weight: 600;
+  line-height: 1.08;
+  color: #73c5d2;
+}
+.matching-data{
+  font-size: 1rem;
+  width: 531px;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  .circle{
+    border-radius: 100%;
+    display: inline-block;
+    position: absolute;
+    background-color: lightgrey;
+    &.small{
+      width: 88.5 / 16em;
+      height: 88.5 / 16em;
+      &.first{
+        top: 213 / 16em;
+        left: 214 / 16em;
+      }
+      &.second{
+        top: 318 / 16em;
+        right: 43 / 16em;
+      }
+      &.third{
+        top: 614.5 / 16em;
+        left: 174 / 16em;
+      }
+      &.forth{
+        top: 776.5 / 16em;
+        left: 108 / 16em;
+      }
+    }
+    &.middle{
+      width: 118.5 / 16em;
+      height: 118.5 / 16em;
+      &.first{
+        top: 339 / 16em;
+        left: -20 / 16em;
+      }
+      &.second{
+        top: 670 / 16em;
+        left: 11.5 / 16em;
+      }
+      &.third{
+        top: 707.5 / 16em;
+        left: 204 / 16em;
+      }
+      &.forth{
+        top: 711 / 16em;
+        right: -13 / 16em;
+      }
+    }
+    &.large{
+      width: 162 / 16em;
+      height: 162 / 16em;
+      &.first{
+        top: 156 / 16em;
+        left: 16.5 / 16em;
+      }
+      &.second{
+        top: 141 / 16em;
+        right: -10 / 16em;
+      }
+      &.third{
+        top: 494.5 / 16em;
+        left: 0;
+      }
+      &.forth{
+        top: 548 / 16em;
+        right: 31.5 / 16em;
+      }
+    }
+  }
+}
+
+.matching-circle{
+  position: absolute;
+  text-align: center;
+  top: 312 / 16rem;
+  left: 0;
+  right: 0;
+  margin : 0 auto;
+  border-radius: 100%;
+  width: 273 / 16rem;
+  height: 273 / 16rem;
+  border: 50 / 16rem solid #73c5d2;
+  //font-family: OTAppgulimB;
+  line-height: 1.08;
+  z-index: 10;
+  .first-text{
+    font-size: 29.1 / 16rem;
+    color: rgba(233, 95, 118, 0.8);
+  }
+  .second-text{
+    font-size: 37.3 / 16rem;
+    color: #e95f76;
+    font-weight: 900;
+  }
+}
+.matching-circle_wrapper{
+  position:absolute;
+  top:50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+
+
+/*Language*/
+.choice{
+  width: 45.5 / 16rem;
+  height: 45.5 / 16rem;
+  z-index: 15;
+  position: absolute;
+  display: inline-block;
+  background-size: contain;
+
+  /*Language start*/
+  &.language1{
+    left: -20 / 16rem;
+    top: -10 / 16rem;
+  }
+  &.language2{
+    left: -45 / 16rem;
+    top: 40 / 16rem;
+  }
+  &.language3{
+    left: -45 / 16rem;
+    top: 95 / 16rem;
+  }
+  &.japanese{
+    background-image: url('../../media/matching/japanese.png');
+  }
+  &.german{
+    background-image: url('../../media/matching/german.png');
+  }
+  &.chinese{
+    background-image: url('../../media/matching/chinese.png');
+  }
+  &.english{
+    background-image: url('../../media/matching/english.png');
+  }
+  &.french{
+    background-image: url('../../media/matching/french.png');
+  }
+  /*Language end*/
+
+
+
+  &.theme{
+    left: 30 / 16rem;
+    top: -40 / 16rem;
+    &.k-pop{
+      background-image: url('../../media/matching/k-pop-button.png');
+    }
+    &.food{
+      background-image: url('../../media/matching/food-button.png');
+    }
+    &.exhibition{
+      background-image: url('../../media/matching/exhibition-button.png');
+    }
+    &.activity{
+      background-image: url('../../media/matching/activity-button.png');
+    }
+    &.culture{
+      background-image: url('../../media/matching/culture-button.png');
+    }
+  }
+  &.liked{
+    top:-45 / 16rem;
+    background-image: url('../../media/matching/no-liked.png');
+    &.is-liked{
+      background-image: url('../../media/matching/liked.png');
+    }
+  }
+  &.message{
+    right: -10 / 16rem;
+    top: -20 / 16rem;
+    background-image: url('../../media/matching/message.png');
+  }
+  &.cancel{
+    right: -40 / 16rem;
+    top: 25 / 16rem;
+    background-image: url('../../media/matching/x-button.png');
+  }
+}
+
+.person-text {
+    height: 309.5 / 16rem;
+    background: transparent; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(transparent, lightgrey); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(transparent, lightgrey); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(transparent, lightgrey); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(transparent, lightgrey); /* Standard syntax (must be last) */
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom:0;
+    padding: 69 / 16rem 32 / 16rem 72.5 / 16rem;
+    font-size: 25.6 / 16rem;
+}

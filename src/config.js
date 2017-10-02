@@ -147,6 +147,22 @@ export default app => {
 				}]
 			}
 		}).state({
+			url: '/matching-success',
+			name: 'matching-success',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/matching-success/template.html')
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/matching-success/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.matching-success'
+						});
+					});
+				}]
+			}
+		}).state({
 			url: '/home',
 			name: 'home',
 			parent: 'authful',
