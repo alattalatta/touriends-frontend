@@ -20,6 +20,7 @@ function LongCommentCtrl($http, $state) {
         }
     });
 */  // 따로 봐야하고 이부분은
+
     this.byteCheck = function () {
         if (this.intro === null) return '0/300byte';
         this.byte = 0;
@@ -37,30 +38,29 @@ function LongCommentCtrl($http, $state) {
 
 
 
-    this.submitIntro = function () {
-        if (this.byte > 300) {
-            return;
+    this.submitLongComment = function(){
+        if(this.byte > 300){
+            return ;
         }
         $http({
             method: 'POST',
-            url: ajax_url,
+            url : ajax_url,
             data: param({
-                action: 'set_intro',
-                //여기 이름 알아내서 고치고
-                intro: this.intro
-                //이 부분도 이름 맞춰서 고치고(변수명)
+                action: '',
+                comment: this.comment
             })
-        }).then((response) => {
-            console.log('%cIntro response arrived', 'color:white;background:dimgray');
-            console.log(response);
-            if (response.data.success) {
+        }).then((response) =>{
+            console.log('')
+
+            if(response.data.success){
                 $state.go('main');
             }
-            else {
+            else{
                 alert('설정에 실패했어요!'); // todo change message
             }
         });
     }
+
 }
 LongCommentCtrl.$inject = ['$http', '$state'];
 
