@@ -47,7 +47,7 @@ function LongCommentCtrl($http, $state) {
             url : ajax_url,
             data: param({
                 action: '',
-                comment: this.comment
+                comments: this.comment
             })
         }).then((response) =>{
             console.log('')
@@ -56,7 +56,7 @@ function LongCommentCtrl($http, $state) {
                 $state.go('main');
             }
             else{
-                alert('설정에 실패했어요!'); // todo change message
+                console.log('Not Good');
             }
         });
     }
