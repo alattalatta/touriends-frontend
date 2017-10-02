@@ -11,7 +11,6 @@ class CacheSvc {
 
 	constructor($http) {
 		this.$http = $http;
-
 		this.map = new Map();
 	}
 

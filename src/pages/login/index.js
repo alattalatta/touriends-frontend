@@ -1,11 +1,12 @@
 class LoginCtrl {
 	static get $inject() {
-		return ['$state', 'LoginSvc']
+		return ['OverlaySvc', 'LoginSvc', '$state']
 	}
 
-	constructor($state, LoginSvc) {
-		this.$state = $state;
+	constructor(OverlaySvc, LoginSvc, $state) {
+		this.OverlaySvc = OverlaySvc;
 		this.LoginSvc = LoginSvc;
+		this.$state = $state;
 
 		this.form = document.getElementById('form_login');
 
@@ -21,23 +22,26 @@ class LoginCtrl {
 		};
 	}
 
-	login() {
+	async login() {
 		let formData = new FormData(this.form);
 
 		this.pending = true;
-		this.LoginSvc.login(formData).then((response) => {
-			this.pending = false;
-			if (response.data.success) {
-				this.$state.go('main');
-			}
-			else {
-				alert('Wrong ID/Password!');
-			}
+		this.OverlaySvc.toggle('loading');
+		let response = await this.LoginSvc.login(formData);
+		this.pending = false;
+
+		if (response.data.success) {
+			await this.$state.go('main');
+			this.OverlaySvc.toggle('loading');
+		}
+		else {
+			this.OverlaySvc.toggle('loading');
+			alert('Wrong ID/Password!');
 			this.loginObj = {
 				login: null,
 				pwd: null
 			}
-		});
+		}
 	}
 }
 

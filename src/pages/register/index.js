@@ -235,6 +235,7 @@ class RegisterCtrl {
 			this.OverlaySvc.toggle('loading');
 		}
 		else {
+			this.OverlaySvc.toggle('loading');
 			this.registerObj.pwd = this.registerObj.pwdConfirm = null;
 			switch (response.data.error) {
 				case 'login_duplicate':
