@@ -9,6 +9,7 @@ class TestSuite {
 
     constructor($http) {
         this.$http = $http;
+        this.form = document.querySelector('form');
         this.action = null;
         this.params = [{
             key: null,
@@ -27,21 +28,15 @@ class TestSuite {
     }
 
     submit() {
-        let params = {
-            action: this.action
-        };
-        for (let kv of this.params) {
-            if (kv.key === null) {
-                continue;
-            }
-            params[kv.key] = kv.value;
-        }
-        console.log('Params:', params);
+    	let formData = new FormData(this.form);
+    	formData.set('action', this.action);
+    	console.log(formData);
 
         this.$http({
             method: 'POST',
             url: ajax_url,
-            data: param(params)
+            data: formData,
+	        headers: {'Content-Type': undefined}
         }).then((response) => {
             console.log(response);
         });
