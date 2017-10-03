@@ -34,7 +34,7 @@ export default app => {
 					}
 					else {
 						$timeout(() => {
-							$state.go('home');
+							$state.go('main');
 						});
 
 						return $q.reject();
@@ -213,7 +213,7 @@ export default app => {
 			}
 		});
 
-		$urlRouterProvider.otherwise('/login');
+		$urlRouterProvider.otherwise('/main');
 	}])
 		.config(['$httpProvider', ($httpProvider) => {
 			$httpProvider.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded'};
