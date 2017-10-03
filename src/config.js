@@ -51,7 +51,7 @@ export default app => {
 			name: 'register',
 			parent: 'authless',
 			templateProvider: () => {
-				return import('./pages/register/template.html')
+				return import('./pages/register/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -67,7 +67,7 @@ export default app => {
 			name: 'introduce',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/introduce/template.html')
+				return import('./pages/introduce/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -88,7 +88,7 @@ export default app => {
 			name: 'when',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/when/template.html')
+				return import('./pages/when/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -104,7 +104,7 @@ export default app => {
 			name: 'where',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/where/template.html')
+				return import('./pages/where/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -120,7 +120,7 @@ export default app => {
 			name: 'language',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/language/template.html')
+				return import('./pages/language/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -136,7 +136,7 @@ export default app => {
 			name: 'theme',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/theme/template.html')
+				return import('./pages/theme/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -152,7 +152,7 @@ export default app => {
 			name: 'long-comment',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/long-comment/template.html')
+				return import('./pages/long-comment/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -168,7 +168,7 @@ export default app => {
 			name: 'matching-main',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/matching-main/template.html')
+				return import('./pages/matching-main/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -184,7 +184,7 @@ export default app => {
 			name: 'matching-success',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/matching-success/template.html')
+				return import('./pages/matching-success/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -200,13 +200,28 @@ export default app => {
 			name: 'home',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/home/template.html')
+				return import('./pages/home/template.html');
 			},
 			resolve: {
 				lazyload: ['$ocLazyLoad', $ocLazyLoad => {
 					return import('./pages/home/index').then(() => {
 						$ocLazyLoad.load({
 							name: 'touriends.page.home'
+						});
+					})
+				}]
+			}
+		}).state({
+			url: '/test',
+			name: 'test',
+			templateProvider: () => {
+				return import('./pages/test/template.html');
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', $ocLazyLoad => {
+					return import('./pages/test/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.test'
 						});
 					})
 				}]

@@ -1,0 +1,34 @@
+<main ng-controller="TestSuiteCtrl as $ctrl" class="ts container">
+	<div class="wrapper">
+		<h1 class="help">구와악</h1>
+		<form ng-submit="$ctrl.submit()" autocomplete="off">
+			<label class="action ins">
+				<span class="name">액션</span>
+				<input name="action" type="text" ng-model="$ctrl.action">
+			</label>
+			<section class="actions">
+				<p ng-click="$ctrl.action = 'register'">register</p>
+				<p ng-click="$ctrl.action = 'login'">login</p>
+				<p ng-click="$ctrl.action = 'calendar'">calendar</p>
+				<p ng-click="$ctrl.action = 'theme'">theme</p>
+				<p ng-click="$ctrl.action = 'language'">language</p>
+				<p ng-click="$ctrl.action = 'place'">place</p>
+				<p ng-click="$ctrl.action = 'getMatching'">getMatching</p>
+			</section>
+
+			<section class="params">
+				<h3>매개변수</h3>
+				<div class="param-row head">
+					<span class="he">키</span><span class="he">값</span><span class="del">삭제</span>
+				</div>
+				<div class="param-row" ng-repeat="param in $ctrl.params">
+					<input type="text" ng-model="param.key" placeholder="key" class="key">
+					<input type="text" ng-attr-name="{{param.key}}" ng-model="param.value" placeholder="val" class="val">
+					<div class="del" ng-click="$ctrl.removeParam($index)">X</div>
+				</div>
+			</section>
+			<button type="submit" class="hi submit">실행</button>
+			<button type="button" class="hi add" ng-click="$ctrl.addParam()">추가</button>
+		</form>
+	</div>
+</main>
