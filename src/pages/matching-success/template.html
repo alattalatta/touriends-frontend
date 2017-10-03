@@ -1,0 +1,83 @@
+<main class="page-main container-fluid ms-page" ng-controller="MatchingSuccessCtrl as $ctrl">
+	<div class="paper-group">
+		<div class="paper-title matching-success">
+			<p class="paper-title_body matching-success">
+				Matching Success
+			</p>
+		</div>
+	</div>
+	<div class="matching-data">
+		<div class="circle large first" ng-click="$ctrl.choicePerson(0)" ng-style="$ctrl.personData(0)">
+
+		</div>
+		<div class="circle large second" ng-click="$ctrl.choicePerson(1)" ng-style="$ctrl.personData(1)">
+
+		</div>
+		<div class="circle large third">
+
+		</div>
+		<div class="circle large forth">
+
+		</div>
+		<div class="circle middle first">
+
+		</div>
+		<div class="circle middle second">
+
+		</div>
+		<div class="circle middle third">
+
+		</div>
+		<div class="circle middle forth">
+
+		</div>
+		<div class="circle small first">
+
+		</div>
+		<div class="circle small second">
+
+		</div>
+		<div class="circle small third">
+
+		</div>
+		<div class="circle small forth">
+
+		</div>
+	</div>
+	<div class="matching-circle" ng-style="$ctrl.profileImage()">
+		<div class="person-group" ng-show="$ctrl.isChoice">
+			<!--1st Language-->
+			<div class="choice language1" ng-class="$ctrl.language1Data()">
+
+			</div>
+			 <!--2nd language-->
+			<div class="choice language2" ng-show="$ctrl.isLanguage2" ng-class="$ctrl.language2Data()">
+
+			</div>
+			 <!--3rd language-->
+			<div class="choice language3" ng-show"$ctrl.isLanguage3" ng-class="$ctrl.language3Data()">
+
+			</div>
+			<div class="choice liked" ng-class="{'is-liked': $ctrl.likedData()}" ng-click="$ctrl.isLiked()">
+
+			</div>
+			<div class="choice theme" ng-class="$ctrl.themeData()">
+
+			</div>
+			<div class="choice message">
+
+			</div>
+			<div class="choice cancel" ng-click="$ctrl.cancleShow()">
+
+			</div>
+		</div>
+		<div class="matching-circle_wrapper">
+			<p class="first-text" ng-hide="$ctrl.isChoice">Matching</p>
+			<p class="second-text" ng-hide="$ctrl.isChoice">SUCCESS</p>
+		</div>
+	</div>
+	<div class="person-text" ng-show="$ctrl.isChoice" ng-bind="$ctrl.personText()">
+
+	</div>
+	<main-nav></main-nav>
+</main>

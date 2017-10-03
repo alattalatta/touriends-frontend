@@ -34,7 +34,7 @@ export default app => {
 					}
 					else {
 						$timeout(() => {
-							$state.go('main');
+							$state.go('home');
 						});
 
 						return $q.reject();
@@ -175,6 +175,22 @@ export default app => {
 					return import('./pages/matching-main/index').then(() => {
 						$ocLazyLoad.load({
 							name: 'touriends.page.matching-main'
+						});
+					});
+				}]
+			}
+		}).state({
+			url: '/matching-success',
+			name: 'matching-success',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/matching-success/template.html')
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/matching-success/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.matching-success'
 						});
 					});
 				}]
