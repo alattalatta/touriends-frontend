@@ -2,6 +2,7 @@ import LoginModule from './pages/login';
 import MainModule from './pages/main';
 
 export default app => {
+	// 무조건 들어가는 페이지는 lazy load 않고 바로 불러옴
 	app.requires.push(LoginModule);
 	app.requires.push(MainModule);
 
@@ -142,6 +143,38 @@ export default app => {
 					return import('./pages/theme/index').then(() => {
 						$ocLazyLoad.load({
 							name: 'touriends.page.theme'
+						});
+					});
+				}]
+			}
+		}).state({
+			url: '/long-comment',
+			name: 'long-comment',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/long-comment/template.html')
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/long-comment/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.long-comment'
+						});
+					});
+				}]
+			}
+		}).state({
+			url: '/matching-main',
+			name: 'matching-main',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/matching-main/template.html')
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/matching-main/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.matching-main'
 						});
 					});
 				}]

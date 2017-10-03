@@ -2,10 +2,11 @@ require('./style.less');
 
 class MainNavCtrl {
     static get $inject() {
-        return ['$state'];
+        return ['ToastSvc', '$state'];
     }
 
-    constructor($state) {
+    constructor(ToastSvc, $state) {
+    	this.ToastSvc = ToastSvc;
     	this.$state = $state;
     }
 
@@ -15,6 +16,10 @@ class MainNavCtrl {
     		res.push('is-active');
 	    }
 	    return res;
+    }
+
+    go(stateName) {
+    	this.$state.go(stateName);
     }
 }
 

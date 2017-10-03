@@ -22,7 +22,7 @@
                    placeholder="E - mail">
             <input name="pwd" class="input form-input invalid-by-gradient" type="password"
                    ng-model="$ctrl.registerObj.pwd" ng-class="{'is-invalid': ! $ctrl.PasswordValid}"
-                   placeholder="Password">
+                   placeholder="Password (6 or more letters)">
             <input class="input form-input invalid-by-gradient" type="password"
                    ng-model="$ctrl.registerObj.pwdConfirm" ng-class="{'is-invalid': ! $ctrl.PasswordConfirmValid}"
                    placeholder="Confirm Password">
@@ -31,9 +31,9 @@
                     <div class="input form-input invalid-by-gradient birth" ng-class="{'is-invalid': ! $ctrl.BirthValid}">
                         <div class="row no-gutters">
                             <input class="month input col-4" type="tel" name="month" ng-model="$ctrl.BirthMonth"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="MM" focus-select>
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="M" focus-select>
                             <input class="date input col-4" type="tel" name="day" ng-model="$ctrl.registerObj.birth.day"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="DD" focus-select>
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="D" focus-select>
                             <input class="year input col-4" type="tel" name="year" ng-model="$ctrl.registerObj.birth.year"
                                    ng-blur="$ctrl.sanitizeBirth()" placeholder="YY" focus-select>
                         </div>

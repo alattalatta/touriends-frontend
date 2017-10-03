@@ -6,7 +6,10 @@ class OverlaySvc {
 		this.overlays = new Map();
 	}
 
-	add(key, elem) {
+	get(key) {
+		return this.overlays.get(key);
+	}
+	set(key, elem) {
 		this.overlays.set(key, elem);
 	}
 

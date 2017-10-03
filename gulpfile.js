@@ -120,10 +120,10 @@ let ssh = new sftp({
 });
 gulp.task('watch', () => {
 	gulp.watch('app/**/*', ['push']);
-	gulp.watch(['style.css', '*.php'], ['index'])
+	gulp.watch(['style.css', '*.php', 'screenshot.png'], ['index']);
 });
 gulp.task('index', () => {
-	return gulp.src(['style.css', '*.php'])
+	return gulp.src(['style.css', '*.php', 'screenshot.png'])
 		.pipe(ssh.dest(sshTarget));
 });
 gulp.task('push', () => {

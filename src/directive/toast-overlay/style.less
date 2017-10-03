@@ -1,0 +1,29 @@
+@import (reference) '../../style/includes/index';
+
+toast-overlay {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transition: all 175ms ease;
+	transform: translateY(100%);
+  z-index: 200;
+
+	&.is-visible {
+		transform: translateY(0);
+	}
+}
+
+.toast-body {
+	background: #323232;
+	border-radius: 2px;
+	color: rgba(255, 255, 255, .87);
+	font-size: 18.8 / 16rem;
+	line-height: 72.5 / 16rem - (18.8 / 16 * 1.2);
+	margin: 0 auto;
+	padding: .6em 1em;
+}
+.toast-dismiss {
+	color: @red;
+	float: right;
+	text-transform: uppercase;
+}

@@ -3,10 +3,11 @@ import leftPad from 'left-pad';
 
 class WhenCtrl {
 	static get $inject() {
-		return ['CacheSvc', '$http', '$state'];
+		return ['ToastSvc', 'CacheSvc', '$http', '$state'];
 	}
 
-	constructor(CacheSvc, $http, $state) {
+	constructor(ToastSvc, CacheSvc, $http, $state) {
+		this.ToastSvc = ToastSvc;
 		this.CacheSvc = CacheSvc;
 		this.$http = $http;
 		this.$state = $state;
@@ -20,7 +21,14 @@ class WhenCtrl {
 			}
 		})
 	}
-	goNext() {
+
+	async goNext() {
+		if (this.dateA === null || this.dateB === null || isNaN(this.dateA.getTime()) || isNaN(this.dateB.getTime())) {
+			this.ToastSvc.toggle('Please select two dates');
+			return;
+		}
+
+		// Month / Date = 두 자리
 		let dateAMonth = leftPad(this.dateA.getMonth() + 1, 2, '0');
 		let dateBMonth = leftPad(this.dateB.getMonth() + 1, 2, '0');
 		let dateADate = leftPad(this.dateA.getDate(), 2, '0');
@@ -35,23 +43,21 @@ class WhenCtrl {
 			from = `${this.dateA.getFullYear()}-${dateAMonth}-${dateADate}`;
 			to = `${this.dateB.getFullYear()}-${dateBMonth}-${dateBDate}`;
 		}
-		console.log('from', from);
-		console.log('to', to);
 
-		this.$http({
+		let response = await this.$http({
 			method: 'POST',
 			url: ajax_url,
 			data: param({
-				action: 'set_calendar',
+				action: 'calendar',
 				from: from,
 				to: to
 			})
-		}).then((response) => {
-			if (response.data.success) {
-				this.CacheSvc.reset('get_calendar');
-				this.$state.go('where');
-			}
 		});
+		console.log(response);
+		if (response.data.success) {
+			this.CacheSvc.reset('get_calendar');
+			this.$state.go('where');
+		}
 	}
 }
 

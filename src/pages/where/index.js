@@ -2,10 +2,11 @@ import param from 'jquery-param';
 
 class WhereCtrl {
 	static get $inject() {
-		return ['CacheSvc', '$http', '$state'];
+		return ['ToastSvc', 'CacheSvc', '$http', '$state'];
 	}
 
-	constructor(CacheSvc, $http, $state) {
+	constructor(ToastSvc, CacheSvc, $http, $state) {
+		this.ToastSvc = ToastSvc;
 		this.CacheSvc = CacheSvc;
 		this.$http = $http;
 		this.$state = $state;
@@ -33,20 +34,24 @@ class WhereCtrl {
 		this.place = $index;
 	}
 
-	goNext() {
-		this.$http({
+	async goNext() {
+		if (this.place === null) {
+			this.ToastSvc.toggle('Please select a place');
+			return;
+		}
+
+		let response = await this.$http({
 			method: 'POST',
 			url: ajax_url,
 			data: param({
-				action: 'set_place',
-				val: this.places[this.place]
+				action: 'place',
+				place: this.places[this.place]
 			})
-		}).then((response) => {
-			if (response.data.success) {
-				this.CacheSvc.reset('get_place');
-				this.$state.go('language');
-			}
-		})
+		});
+		if (response.data.success) {
+			this.CacheSvc.reset('get_place');
+			this.$state.go('language');
+		}
 	}
 }
 

@@ -2,7 +2,7 @@ import EmailValidator from 'email-validator';
 
 class RegisterCtrl {
 	static get $inject() {
-		return ['OverlaySvc', 'LoginSvc', '$scope', '$state']
+		return ['ToastSvc', 'OverlaySvc', 'LoginSvc', '$scope', '$state']
 	}
 
 	// =============== Property
@@ -59,6 +59,7 @@ class RegisterCtrl {
 	}
 
 	get EmailValid() {
+		// 이메일 형식
 		return this.registerObj.email && EmailValidator.validate(this.registerObj.email);
 	}
 
@@ -172,7 +173,8 @@ class RegisterCtrl {
 		}
 	}
 
-	constructor(OverlaySvc, LoginSvc, $scope, $state) {
+	constructor(ToastSvc, OverlaySvc, LoginSvc, $scope, $state) {
+		this.ToastSvc = ToastSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.LoginSvc = LoginSvc;
 		this.$scope = $scope;
@@ -213,7 +215,34 @@ class RegisterCtrl {
 	}
 
 	async register() {
-		if (!this.DataValid || this.pending) {
+		if (this.pending) {
+			return;
+		}
+		if (!this.DataValid) {
+			if (! this.IDValid) {
+				this.ToastSvc.toggle('Invalid ID');
+			}
+			else if (! this.NameValid) {
+				this.ToastSvc.toggle('Invalid name');
+			}
+			else if (! this.EmailValid) {
+				this.ToastSvc.toggle('Invalid e-mail');
+			}
+			else if (! this.PasswordValid) {
+				this.ToastSvc.toggle('Please use password with 6 or more letters')
+			}
+			else if (! this.PasswordConfirmValid) {
+				this.ToastSvc.toggle('Please check your password');
+			}
+			else if (! this.BirthValid) {
+				this.ToastSvc.toggle('Please fill your birthday (M/D/YY)');
+			}
+			else if (! this.GenderValid) {
+				this.ToastSvc.toggle('Please select your gender');
+			}
+			else if (! this.NationValid) {
+				this.ToastSvc.toggle('Please select your nationality');
+			}
 			return;
 		}
 
@@ -235,17 +264,18 @@ class RegisterCtrl {
 			this.OverlaySvc.toggle('loading');
 		}
 		else {
+			this.OverlaySvc.toggle('loading');
 			this.registerObj.pwd = this.registerObj.pwdConfirm = null;
 			switch (response.data.error) {
 				case 'login_duplicate':
 					this.registerObj.login = null;
-					alert('ID already in use!');
+					this.ToastSvc.toggle('ID already in use', true);
 					break;
 				case 'upload_failed':
-					alert('Profile image must not exceed 5MB!');
+					this.ToastSvc.toggle('Profile image must not exceed 5MB', true);
 					break;
 				default:
-					alert('Please check your internet connection.');
+					this.ToastSvc.toggle('Please check your internet connection', true);
 			}
 		}
 	}
