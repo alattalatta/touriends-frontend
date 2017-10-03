@@ -147,6 +147,22 @@ export default app => {
 				}]
 			}
 		}).state({
+			url: '/long-comment',
+			name: 'long-comment',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/long-comment/template.html')
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/long-comment/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.long-comment'
+						});
+					});
+				}]
+			}
+		}).state({
 			url: '/home',
 			name: 'home',
 			parent: 'authful',
