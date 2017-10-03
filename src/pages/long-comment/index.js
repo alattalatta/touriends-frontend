@@ -1,16 +1,13 @@
 import param from 'jquery-param';
 
-function LongCommentCtrl($http, $state) {
-	//this.image = null;
-	//this.intro = null;
-	//this.login = 'ID';
-	//this.byte = 0;
+function LongCommentCtrl(CacheSvc, $http, $state) {
+	this.content = null;
 	/*
 		$http({
 			method: 'POST',
 			url: ajax_url,
 			data: param({
-				action: 'get_intro_data'
+				action: 'get_content_data'
 			})
 		}).then((response) => {
 			console.log(response);
@@ -22,10 +19,13 @@ function LongCommentCtrl($http, $state) {
 	*/  // 따로 봐야하고 이부분은
 
 	this.byteCheck = function () {
-		if (this.intro === null) return '0/300byte';
+		if (this.content === null) {
+			return '0/300byte';
+		}
+
 		this.byte = 0;
-		for (var idx = 0; idx < this.intro.length; idx++) {
-			var c = encodeURI(this.intro.charAt(idx));
+		for (let idx = 0; idx < this.content.length; idx++) {
+			let c = encodeURI(this.content.charAt(idx));
 
 			if (c.length === 1)
 				this.byte++;
@@ -48,7 +48,7 @@ function LongCommentCtrl($http, $state) {
 				comments: this.comment
 			})
 		}).then((response) => {
-			console.log('')
+			console.log('');
 
 			if (response.data.success) {
 				$state.go('main');
@@ -60,7 +60,7 @@ function LongCommentCtrl($http, $state) {
 	}
 }
 
-LongCommentCtrl.$inject = ['$http', '$state'];
+LongCommentCtrl.$inject = ['CacheSvc', '$http', '$state'];
 
 
 export default angular.module('touriends.page.long-comment', ['touriends']).controller('LongCommentCtrl', LongCommentCtrl).name;

@@ -59,8 +59,7 @@ function IntroduceCtrl(LoginSvc, CacheSvc, $http, $state) {
 			    $state.go('main');
 		    }
 		    else {
-			    alert('설정에 실패했어요!'); // todo change message
-			    console.log(response.data);
+			    console.warn(response.data);
 		    }
 	    });
     }

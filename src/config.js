@@ -2,6 +2,7 @@ import LoginModule from './pages/login';
 import MainModule from './pages/main';
 
 export default app => {
+	// 무조건 들어가는 페이지는 lazy load 않고 바로 불러옴
 	app.requires.push(LoginModule);
 	app.requires.push(MainModule);
 
@@ -33,7 +34,7 @@ export default app => {
 					}
 					else {
 						$timeout(() => {
-							$state.go('home');
+							$state.go('main');
 						});
 
 						return $q.reject();

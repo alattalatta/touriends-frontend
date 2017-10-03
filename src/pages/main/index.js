@@ -14,8 +14,8 @@ function MainCtrl(CacheSvc, OverlaySvc, $state) {
 
 		// 끗
 		console.log('done!');
+		await $state.go('when');
 		OverlaySvc.toggle('loading');
-		$state.go('when');
 	};
 }
 MainCtrl.$inject = ['CacheSvc', 'OverlaySvc', '$state'];

@@ -6,15 +6,11 @@ class LoadingOverlay {
 	}
 
 	constructor(OverlaySvc, $element) {
-		OverlaySvc.add('loading', $element[0]);
+		OverlaySvc.set('loading', $element[0]);
 	}
 }
 
 let loadingOverlay = {
-	bindings: {
-		dateA: '=',
-		dateB: '='
-	},
 	controller: LoadingOverlay,
 	template: require('./template.html')
 };

@@ -1,8 +1,24 @@
 @import (reference) '../../style/includes/index';
 
+@keyframes spin {
+	0%, 30% {transform: scale(0)}
+	50% {transform: scale(1)}
+	70%, 100% {transform: scale(0)}
+}
+
 loading-overlay {
-  background: fade(white, 100%);
-  z-index: 100;
+	background: fade(white, 50%);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	transition: all 350ms ease;
+	z-index: 100;
+
+	&.is-visible {
+		opacity: 1;
+	}
 }
 
 .lov-spinners {

@@ -1,60 +1,70 @@
 import param from 'jquery-param';
 
-function ThemeCtrl(CacheSvc, $http, $state) {
-	this.datalist = ['k-pop', 'food', 'exhibition', 'culture', 'activity'];
-	this.simage = null;
+class ThemeCtrl {
+	static get $inject() {
+		return ['ToastSvc', 'CacheSvc', '$http', '$state'];
+	}
 
-	// 서버에서 받아오기
-	CacheSvc.get('get_theme').then((response) => {
-		if (response.data.success) {
-			let indexOf = this.datalist.indexOf(response.data.theme);
-			if (indexOf !== -1) {
-				this.simage = indexOf;
+	constructor(ToastSvc, CacheSvc, $http, $state) {
+		this.ToastSvc = ToastSvc;
+		this.CacheSvc = CacheSvc;
+		this.$http = $http;
+		this.$state = $state;
+
+		this.datalist = ['k-pop', 'food', 'exhibition', 'culture', 'activity'];
+		this.simage = null;
+
+		// 서버에서 받아오기
+		CacheSvc.get('get_theme').then((response) => {
+			if (response.data.success) {
+				let indexOf = this.datalist.indexOf(response.data.theme);
+				if (indexOf !== -1) {
+					this.simage = indexOf;
+				}
 			}
-		}
-	});
+		});
+	}
 
-	this.selectData = function (idx) {
+	selectData(idx) {
 		this.simage = idx; // 인덱스만 저장합니다 ^^~
-	};
-
-	this.selectImage = function () {
-		if (this.simage === null) return null;
-
-		return this.datalist[this.simage];
-	};
-
-	this.selectedTitle = function () {
-		if (this.simage === null) return '　';
-		return this.datalist[this.simage].toUpperCase();
-	};
-
-	this.rmGray = function (idx) {
+	}
+	rmGray(idx) {
 		if (this.simage === idx) {
 			return {
 				'filter': 'none'
 			}
 		}
 		return null;
-	};
+	}
 
-	this.goNext = function() {
-		$http({
+	selectedImage() {
+		if (this.simage === null) return null;
+		return this.datalist[this.simage];
+	}
+	selectedTitle() {
+		if (this.simage === null) return '　';
+		return this.datalist[this.simage].toUpperCase();
+	}
+
+	async goNext() {
+		if (this.simage === null) {
+			this.ToastSvc.toggle('Please select a theme');
+			return;
+		}
+
+		let response = await this.$http({
 			method: 'POST',
 			url: ajax_url,
 			data: param({
-				action: 'set_theme',
-				val: this.datalist[this.simage]
+				action: 'theme',
+				theme: this.datalist[this.simage]
 			})
-		}).then((response) => {
-			if (response.data.success) {
-				CacheSvc.reset('get_theme');
-				$state.go('main');
-			}
 		});
+		if (response.data.success) {
+			this.CacheSvc.reset('get_theme');
+			this.$state.go('long-comment');
+		}
 	}
 }
-
-ThemeCtrl.$inject = ['CacheSvc', '$http', '$state'];
 
 export default angular.module('touriends.page.theme', ['touriends']).controller('ThemeCtrl', ThemeCtrl).name;

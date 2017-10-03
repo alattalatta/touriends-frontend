@@ -17,6 +17,7 @@
 <body ng-app="touriends">
 
 <loading-overlay class="super-overlay"></loading-overlay>
+<toast-overlay class="super-overlay"></toast-overlay>
 <ui-view></ui-view>
 
 <?php wp_footer() ?>

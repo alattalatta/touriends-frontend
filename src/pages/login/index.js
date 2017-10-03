@@ -1,9 +1,10 @@
 class LoginCtrl {
 	static get $inject() {
-		return ['OverlaySvc', 'LoginSvc', '$state']
+		return ['ToastSvc', 'OverlaySvc', 'LoginSvc', '$state']
 	}
 
-	constructor(OverlaySvc, LoginSvc, $state) {
+	constructor(ToastSvc, OverlaySvc, LoginSvc, $state) {
+		this.ToastSvc = ToastSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.LoginSvc = LoginSvc;
 		this.$state = $state;
@@ -23,6 +24,15 @@ class LoginCtrl {
 	}
 
 	async login() {
+		if (this.loginObj.login === null || this.loginObj.login === '') {
+			this.ToastSvc.toggle('Please enter your ID');
+			return;
+		}
+		if (this.loginObj.pwd === null || this.loginObj.pwd === '') {
+			this.ToastSvc.toggle('Please enter your password');
+			return;
+		}
+
 		let formData = new FormData(this.form);
 
 		this.pending = true;
@@ -36,11 +46,8 @@ class LoginCtrl {
 		}
 		else {
 			this.OverlaySvc.toggle('loading');
-			alert('Wrong ID/Password!');
-			this.loginObj = {
-				login: null,
-				pwd: null
-			}
+			this.ToastSvc.toggle('Wrong ID/Password', true);
+			this.loginObj.pwd = null;
 		}
 	}
 }

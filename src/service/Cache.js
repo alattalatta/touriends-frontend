@@ -14,6 +14,12 @@ class CacheSvc {
 		this.map = new Map();
 	}
 
+	/**
+	 * 캐시에서 서버 응답 회수, 없으면 새로 $http 후 성공 시(data.success === true) 응답 저장
+	 * @param action AJAX 액션명
+	 * @param params 액션명 제외한 AJAX 데이터 값
+	 * @returns {Promise}
+	 */
 	get(action, params) {
 		let key = CacheSvc.actionParamsCombined(action, params);
 		let val = this.map.get(key);
@@ -34,7 +40,7 @@ class CacheSvc {
 		}
 		// 저장된게 있으면 그거 반환
 		else {
-			// 왜 Promise? => 저장된게 없는 경우 Promise 가 반환되니까 있는 경우도 맞춰야 함
+			// 왜 Promise? => 저장된게 없는 경우 Promise 가 반환되니까 있는 경우도 Promise 로 맞춰야 함
 			console.log('Cache found! Key/Val:', key, this.map.get(key));
 			return new Promise((resolve) => {
 				resolve(val);
@@ -42,11 +48,12 @@ class CacheSvc {
 		}
 	}
 
-	set(action, params, val) {
-		let key = CacheSvc.actionParamsCombined(action, params);
-		return this.map.set(key, val);
-	}
-
+	/**
+	 * 저장된 캐시 제거. 액션명에 데이터까지 모두 같아야 응답도 같음을 주의
+	 * @param action AJAX 액션명
+	 * @param params 액션명 제외한 AJAX 데이터 값
+	 * @returns {boolean}
+	 */
 	reset(action, params) {
 		let key = CacheSvc.actionParamsCombined(action, params);
 		return this.map.delete(key);
