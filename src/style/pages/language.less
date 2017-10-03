@@ -1,11 +1,38 @@
 @import (reference) '../index';
 
+.lang-preloader {
+	width: 1px;
+	height: 0;
+	pointer-events: none;
+	opacity: .1;
+	user-select: none;
+
+	&.japanese {
+		background-image: url('../../media/language/japanese.png');
+	}
+	&.korean {
+		background-image: url('../../media/language/korean.png');
+	}
+	&.english {
+		background-image: url('../../media/language/english.png');
+	}
+	&.french {
+		background-image: url('../../media/language/french.png');
+	}
+	&.chinese {
+		background-image: url('../../media/language/chinese.png');
+	}
+	&.german {
+		background-image: url('../../media/language/german.png');
+	}
+}
+
 .paper-title_body.language {
 	color: @red;
 }
 
 .select-list.language .select-img {
-	opacity: .5;
+	opacity: .3;
 }
 
 .select-title.language {
@@ -15,8 +42,13 @@
 
 .paper-image_body.language {
 	background-image: url('../../media/theme/empty-graphic.png');
+	transition: background-image 300ms ease;
+
 	&.japanese {
 		background-image: url('../../media/language/japanese.png');
+	}
+	&.korean {
+		background-image: url('../../media/language/korean.png');
 	}
 	&.english {
 		background-image: url('../../media/language/english.png');

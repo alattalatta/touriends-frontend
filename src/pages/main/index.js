@@ -7,10 +7,12 @@ function MainCtrl(CacheSvc, OverlaySvc, $state) {
 		let where = CacheSvc.get('get_place');
 		let lang = CacheSvc.get('get_language');
 		let theme = CacheSvc.get('get_theme');
+		let comment = CacheSvc.get('get_tour_comment');
 		await when;
 		await where;
 		await lang;
 		await theme;
+		await comment;
 
 		// 끗
 		console.log('done!');

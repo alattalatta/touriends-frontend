@@ -1,4 +1,5 @@
 <main class="page-main container-fluid" ng-controller="LanguageCtrl as $ctrl">
+	<div class="lang-preloader" ng-repeat="lang in $ctrl.datalist" ng-class="lang"></div>
 	<div class="paper-group tall">
 		<div class="paper-title language">
 			<p class="paper-title_body language">
@@ -20,23 +21,26 @@
 			<div class="right-bracket"> ]</div>
 		</div>
 		<div class="select-list language">
-			<div class="two-data">
-				<div class="select-img first" ng-click="$ctrl.selectData(0)" ng-style="$ctrl.rmGray(0)">
-					<img src="../../media/language/japanese-icon.png" alt="">
+			<div class="three-data">
+				<div class="select-img" ng-click="$ctrl.selectData(0)" ng-style="$ctrl.rmGray(0)">
+					<img src="../../media/language/japanese-icon.png">
 				</div>
-				<div class="select-img second" ng-click="$ctrl.selectData(1)" ng-style="$ctrl.rmGray(1)">
-					<img src="../../media/language/english-icon.png" alt="">
+				<div class="select-img" ng-click="$ctrl.selectData(1)" ng-style="$ctrl.rmGray(1)">
+					<img src="../../media/language/korean-icon.png">
+				</div>
+				<div class="select-img" ng-click="$ctrl.selectData(2)" ng-style="$ctrl.rmGray(2)">
+					<img src="../../media/language/english-icon.png">
 				</div>
 			</div>
 			<div class="three-data">
-				<div class="select-img third" ng-click="$ctrl.selectData(2)" ng-style="$ctrl.rmGray(2)">
-					<img src="../../media/language/french-icon.png" alt="">
+				<div class="select-img" ng-click="$ctrl.selectData(3)" ng-style="$ctrl.rmGray(3)">
+					<img src="../../media/language/french-icon.png">
 				</div>
-				<div class="select-img forth" ng-click="$ctrl.selectData(3)" ng-style="$ctrl.rmGray(3)">
-					<img src="../../media/language/chinese-icon.png" alt="">
+				<div class="select-img" ng-click="$ctrl.selectData(4)" ng-style="$ctrl.rmGray(4)">
+					<img src="../../media/language/chinese-icon.png">
 				</div>
-				<div class="select-img fifth" ng-click="$ctrl.selectData(4)" ng-style="$ctrl.rmGray(4)">
-					<img src="../../media/language/german-icon.png" alt="">
+				<div class="select-img" ng-click="$ctrl.selectData(5)" ng-style="$ctrl.rmGray(5)">
+					<img src="../../media/language/german-icon.png">
 				</div>
 			</div>
 		</div>
