@@ -164,6 +164,22 @@ export default app => {
 				}]
 			}
 		}).state({
+			url: '/matching-main',
+			name: 'matching-main',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/matching-main/template.html')
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/matching-main/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.matching-main'
+						});
+					});
+				}]
+			}
+		}).state({
 			url: '/home',
 			name: 'home',
 			parent: 'authful',
