@@ -1,16 +1,23 @@
-function MainCtrl($state) {
-	this.nav = ['matching', 'community', 'home', 'attraction', 'mypage'];
+function MainCtrl(CacheSvc, OverlaySvc, $state) {
 
-	this.start = function () {
+	this.start = async function () {
+		OverlaySvc.toggle('loading');
+		// 캐싱 우선
+		let when = CacheSvc.get('get_calendar');
+		let where = CacheSvc.get('get_place');
+		let lang = CacheSvc.get('get_language');
+		let theme = CacheSvc.get('get_theme');
+		await when;
+		await where;
+		await lang;
+		await theme;
+
+		// 끗
+		console.log('done!');
+		OverlaySvc.toggle('loading');
 		$state.go('when');
 	};
-	this.navbar = function (data) {
-		for (var i = 0; i < this.nav.length; i++) {
-			if (data === this.nav[i])
-				alert(data);
-		}
-	}
 }
+MainCtrl.$inject = ['CacheSvc', 'OverlaySvc', '$state'];
 
-MainCtrl.$inject = ['$state'];
 export default angular.module('touriends.page.main', ['touriends']).controller('MainCtrl', MainCtrl).name;

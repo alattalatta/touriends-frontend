@@ -1,30 +1,30 @@
 import param from 'jquery-param';
 
-function IntroduceCtrl($http, $state) {
+function IntroduceCtrl(LoginSvc, CacheSvc, $http, $state) {
     this.image = null;
     this.intro = null;
-    this.login = 'ID';
+	this.login = LoginSvc.user_login;
     this.byte = 0;
 
-    $http({
-        method: 'POST',
-        url: ajax_url,
-        data: param({
-            action: 'get_intro_data'
-        })
-    }).then((response) => {
-        console.log(response);
-        if (response.data.success === true) {
-            this.image = response.data.url;
-            this.login = response.data.login;
-        }
-    });
+	// 자기소개 가져오기
+	CacheSvc.get('get_intro').then((response) => {
+		if (response.data.success) {
+			this.intro = response.data.intro;
+		}
+	});
+
+	// 프사 가져오기
+	CacheSvc.get('get_profile_image').then((response) => {
+		if (response.data.success) {
+			this.image = response.data.image;
+		}
+	});
 
     this.byteCheck = function () {
         if (this.intro === null) return '0/60byte';
         this.byte = 0;
-        for (var idx = 0; idx < this.intro.length; idx++) {
-            var c = encodeURI(this.intro.charAt(idx));
+	    for (let idx = 0; idx < this.intro.length; idx++) {
+		    let c = encodeURI(this.intro.charAt(idx));
 
             if (c.length === 1)
                 this.byte++;
@@ -43,28 +43,29 @@ function IntroduceCtrl($http, $state) {
     };
 
     this.submitIntro = function () {
-        if (this.byte > 60) {
-            return;
-        }
-        $http({
-            method: 'POST',
-            url: ajax_url,
-            data: param({
-                action: 'set_intro',
-                intro: this.intro
-            })
-        }).then((response) => {
-            console.log('%cIntro response arrived', 'color:white;background:dimgray');
-            console.log(response);
-            if (response.data.success) {
-                $state.go('main');
-            }
-            else {
-                alert('설정에 실패했어요!'); // todo change message
-            }
-        });
+	    if (this.byte > 60) {
+		    return;
+	    }
+	    $http({
+		    method: 'POST',
+		    url: ajax_url,
+		    data: param({
+			    action: 'set_intro',
+			    intro: this.intro
+		    })
+	    }).then((response) => {
+		    if (response.data.success) {
+			    CacheSvc.reset('get_intro');
+			    $state.go('main');
+		    }
+		    else {
+			    alert('설정에 실패했어요!'); // todo change message
+			    console.log(response.data);
+		    }
+	    });
     }
 }
-IntroduceCtrl.$inject = ['$http', '$state'];
+
+IntroduceCtrl.$inject = ['LoginSvc', 'CacheSvc', '$http', '$state'];
 
 export default angular.module('touriends.page.introduce', ['touriends']).controller('IntroduceCtrl', IntroduceCtrl).name;

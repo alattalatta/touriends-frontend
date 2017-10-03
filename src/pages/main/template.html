@@ -12,14 +12,10 @@
         <div class="paper left top white with-overlay"></div>
         <div class="paper right pink stiff"></div>
     </div>
-    <section class="under-paper">
+    <section class="under-paper with-nav">
         <div class="add-touriends-text">
             <p>Add your Touriends to travel with you</p>
         </div>
     </section>
-    <div class="navi-board">
-        <div class="icon" ng-repeat="nav in $ctrl.nav">
-            <div ng-click="$ctrl.navbar(nav)" class="nav-icon {{nav}}"></div>
-        </div>
-    </div>
+    <main-nav></main-nav>
 </main>

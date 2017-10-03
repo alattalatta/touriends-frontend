@@ -31,11 +31,11 @@
                     <div class="input form-input invalid-by-gradient birth" ng-class="{'is-invalid': ! $ctrl.BirthValid}">
                         <div class="row no-gutters">
                             <input class="month input col-4" type="tel" name="month" ng-model="$ctrl.BirthMonth"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="12" focus-select>
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="MM" focus-select>
                             <input class="date input col-4" type="tel" name="day" ng-model="$ctrl.registerObj.birth.day"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="31" focus-select>
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="DD" focus-select>
                             <input class="year input col-4" type="tel" name="year" ng-model="$ctrl.registerObj.birth.year"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="1990" focus-select>
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="YY" focus-select>
                         </div>
                     </div>
                 </div>
