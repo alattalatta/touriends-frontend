@@ -1,31 +1,51 @@
 @import (reference) '../index';
 
+.theme-icons(@key) {
+	&.@{key} {
+		background-image: url('../../media/theme/@{key}-icon.png');
+	}
+}
+.theme-graphics(@key) {
+	&.@{key} {
+		background-image: url('../../media/theme/@{key}.png');
+	}
+}
+
+.theme-preloader {
+	width: 1px;
+	height: 0;
+	pointer-events: none;
+	opacity: .1;
+	user-select: none;
+
+	.theme-graphics(k-pop);
+	.theme-graphics(food);
+	.theme-graphics(exhibition);
+	.theme-graphics(culture);
+	.theme-graphics(activity);
+}
+
 .paper-title.theme {
-  color: #F5C3C5;
+	color: #F5C3C5;
 }
+
 .paper-title_body.theme {
-  font-size: 45.6 / 16rem;
-  font-weight: 600;
-  line-height: 1.06;
+	font-size: 45.6 / 16rem;
+	font-weight: 600;
+	line-height: 1.06;
 }
-.select-list.theme .select-img{
-  filter: grayscale(100%);
+
+.select-list.theme .select-img {
+	filter: grayscale(100%);
 }
+
 .paper-image_body.theme {
-  background-image: url('../../media/theme/empty-graphic.png');
-  &.k-pop {
-    background-image: url('../../media/theme/k-pop-graphic.png');
-  }
-  &.food {
-    background-image: url('../../media/theme/food-graphic.png');
-  }
-  &.exhibition {
-    background-image: url('../../media/theme/exhibition-graphic.png');
-  }
-  &.culture {
-    background-image: url('../../media/theme/culture-graphic.png');
-  }
-  &.activity {
-    background-image: url('../../media/theme/activity-graphic.png');
-  }
+	background-image: url('../../media/theme/empty-graphic.png');
+	transition: background-image 300ms ease;
+
+	.theme-graphics(k-pop);
+	.theme-graphics(food);
+	.theme-graphics(exhibition);
+	.theme-graphics(culture);
+	.theme-graphics(activity);
 }
