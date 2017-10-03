@@ -58,8 +58,8 @@ simple-calendar {
     &.is-left {
       background: linear-gradient(
               to left,
-              fade(@cyan, 50%),
-              fade(@cyan, 50%) 50%,
+              fade(@blue, 50%),
+              fade(@blue, 50%) 50%,
               transparent 50%,
               transparent 100%
       );
@@ -67,8 +67,8 @@ simple-calendar {
     &.is-right {
       background: linear-gradient(
               to right,
-              fade(@cyan, 50%),
-              fade(@cyan, 50%) 50%,
+              fade(@blue, 50%),
+              fade(@blue, 50%) 50%,
               transparent 50%,
               transparent 100%
       );
@@ -76,7 +76,7 @@ simple-calendar {
   }
 
   &.is-included {
-    background: fade(@cyan, 50%);
+    background: fade(@blue, 50%);
     color: rgba(11, 11, 11, .7);
   }
 }
@@ -90,9 +90,9 @@ simple-calendar {
 }
 
 .scal_7c {
+  max-width: 14.28%;
   flex: 0 0 14.28%;
   float: left;
-  max-width: 14.28%;
 }
 .scal_7c-blank {
   opacity: 0;
@@ -106,5 +106,5 @@ simple-calendar {
 }
 
 .is-selected .scal_selector {
-  background: @cyan;
+  background: @blue;
 }

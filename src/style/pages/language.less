@@ -1,0 +1,33 @@
+@import (reference) '../index';
+
+.paper-title_body.language {
+	color: @red;
+}
+
+.select-list.language .select-img {
+	opacity: .5;
+}
+
+.select-title.language {
+	color: black;
+	text-transform: capitalize;
+}
+
+.paper-image_body.language {
+	background-image: url('../../media/theme/empty-graphic.png');
+	&.japanese {
+		background-image: url('../../media/language/japanese.png');
+	}
+	&.english {
+		background-image: url('../../media/language/english.png');
+	}
+	&.french {
+		background-image: url('../../media/language/french.png');
+	}
+	&.chinese {
+		background-image: url('../../media/language/chinese.png');
+	}
+	&.german {
+		background-image: url('../../media/language/german.png');
+	}
+}

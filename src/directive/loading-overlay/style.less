@@ -1,0 +1,63 @@
+@import (reference) '../../style/includes/index';
+
+@keyframes spin {
+	0%, 30% {transform: scale(0)}
+	50% {transform: scale(1)}
+	70%, 100% {transform: scale(0)}
+}
+
+loading-overlay {
+	background: fade(white, 50%);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	transition: all 350ms ease;
+	z-index: 100;
+
+	&.is-visible {
+		opacity: 1;
+	}
+}
+
+.lov-spinners {
+	width: 100%;
+	height: 100 / 16rem;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	text-align: center;
+	transform: translateY(-50%);
+
+	.spinner {
+		width: 14px;
+		height: 14px;
+		animation: spin 1250ms infinite ease-in-out;
+		border-radius: 100%;
+		display: inline-block;
+		position: relative;
+		transform: scale(0);
+
+		& + .spinner {
+			margin-left: 14px;
+		}
+
+		&:first-child {
+			animation-delay: 0ms;
+			background: @red;
+		}
+		&:nth-child(2) {
+			animation-delay: 100ms;
+			background: @yellow;
+		}
+		&:nth-child(3) {
+			animation-delay: 200ms;
+			background: @blue;
+		}
+		&:nth-child(4) {
+			animation-delay: 300ms;
+			background: #81C6A9;
+		}
+	}
+}

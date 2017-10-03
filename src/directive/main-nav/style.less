@@ -1,0 +1,40 @@
+@import (reference) '../../style/includes/index';
+
+.icons(@name) {
+	&.@{name} {
+		background-image: url('./media/@{name}-disabled.png');
+		&.is-active {
+			background-image: url('./media/@{name}.png');
+		}
+	}
+}
+
+main-nav {
+	width: 100%;
+	height: 72.5 / 16rem;
+	display: block;
+	background-color: #f9f9f9;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 10;
+}
+
+.main-nav_icons {
+	height: 100%;
+	display: flex;
+	padding: 12 / 16rem 0 .5rem;
+}
+
+.main-nav_icon {
+	max-width: 20%;
+	background: center no-repeat;
+	background-size: contain;
+	flex: 0 0 20%;
+
+	.icons(attraction);
+	.icons(community);
+	.icons(main);
+	.icons(matching);
+	.icons(mypage);
+}

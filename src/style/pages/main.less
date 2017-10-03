@@ -1,21 +1,13 @@
 @import (reference) '../index';
 
-@paper-height-main: 577.5 / 16rem;
 
 .paper-image_body.main {
   background-image: url('../../media/paper-image-main.png');
 }
 
 .page-main {
-  .paper {
-    height: @paper-height-main;
-  }
-  .under-paper {
-    padding-top: @paper-height-main;
-  }
-
   .paper-image .start-btn {
-    background: url('../../media/mainImage/start-button.png') center no-repeat;
+    background: url('../../media/main-start.png') center no-repeat;
     background-size: contain;
     z-index: 3;
     width: 108.5 / 16rem;
@@ -38,54 +30,6 @@
     p {
       margin: 0 auto;
       width: 364 / 16rem !important;
-    }
-  }
-}
-
-.navi-board {
-  width: 100%;
-  height: 72.5 / 16rem;
-  background-color: #F9F9F9;
-  margin-top: 103.5 / 16rem;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 10;
-  .icon {
-    width: 20%;
-    position: relative;
-    bottom: -8 / 16rem;
-    display: inline-block;
-
-    .nav-icon {
-      margin: 0 auto;
-      background: center no-repeat;
-      background-size: contain;
-    }
-    .matching {
-      background-image: url(../../media/mainImage/matching-icon.png);
-      width: 50.5 / 16rem;
-      height: 52.5 / 16rem;
-    }
-    .community {
-      background-image: url(../../media/mainImage/community-icon.png);
-      width: 60 / 16rem;
-      height: 50 / 16rem;
-    }
-    .home {
-      background-image: url(../../media/mainImage/home-icon.png);
-      width: 37 / 16rem;
-      height: 55.5 / 16rem;
-    }
-    .attraction {
-      background-image: url(../../media/mainImage/attraction-icon.png);
-      width: 59 / 16rem;
-      height: 56 / 16rem;
-    }
-    .mypage {
-      background-image: url(../../media/mainImage/mypage-icon.png);
-      width: 41.5 / 16rem;
-      height: 49.5 / 16rem;
     }
   }
 }

@@ -1,35 +1,56 @@
 @import (reference) '../index';
 
 .paper-image_body.where {
-  background-image: url('../../media/paper-image-where.png');
+	background-image: url('../../media/paper-image-where.png');
 }
 
 .paper-title.where {
-  color: @cyan;
+	color: #88caae;
 }
 
-.btn-group{
-  margin: 70 / 16rem auto 0;
+.paper-title_body.where {
+	width: 347 / 16rem;
 }
 
-.btn-type{
-  //margin-right : 8 / 16rem;
-  margin-bottom : 20 / 16rem;
-  width : 100%;
-  height: 64.5 / 16rem;
-  box-shadow: 0 0 4.1 / 16rem 0.9 / 16rem rgba(0, 0, 0, 0.07);
-  border-radius : 1rem;
+.btn-group {
+	margin: 23 / 16rem auto 0;
 }
 
-.page-where .col-3 {
-
-  padding: 0 3px;
+.btn-wrapper {
+	max-width: 16.666%;
+	flex: 0 0 16.666%;
+	margin-bottom: 7.5 / 16rem;
+	padding: 0 .25rem;
+	@media (max-width: 640px) {
+		max-width: 20%;
+		flex: 0 0 20%;
+	}
+	@media (max-width: 560px) {
+		max-width: 25%;
+		flex: 0 0 25%;
+	}
+	@media (max-width: 480px) {
+		max-width: 33%;
+		flex: 0 0 33%;
+	}
+	@media (max-width: 400px) {
+		max-width: 50%;
+		flex: 0 0 50%;
+		margin-bottom: 1rem;
+		padding: 0 .5rem;
+	}
 }
+.btn-type {
+	width: 100%;
+	height: 64.5 / 16rem;
+	box-shadow: 0 0 4.1 / 16rem 0.9 / 16rem rgba(0, 0, 0, 0.07);
+	border-radius: .5rem;
+	color: rgba(6, 6, 6, .6);
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 15.4 / 16rem;
 
-.is-highlighted{
-  background-color : #A8D7C3;
-  color : white;
-  box-shadow: 0 0 4.1 / 16rem 0.9 / 16rem rgba(0, 0, 0, 0.07);
-  border-radius : 1rem;
-
+	&.is-highlighted {
+		background-color: #A8D7C3;
+		color: white;
+	}
 }

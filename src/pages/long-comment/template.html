@@ -1,0 +1,24 @@
+<main class="page-main page-longcomment container-fluid" ng-controller="LongCommentCtrl as $ctrl">
+	<div class="paper-group longcomment-paper">
+		<div class="paper-title where">
+			<p class="paper-title_body page-longcomment-title">
+				Anything more to tell us<br>about this tour?
+			</p>
+		</div>
+
+		<div class="paper paper-longcomment-white left top with-overlay-pink"></div>
+		<div class="paper right pink stiff paper-longcomment-pink">
+			<div class="paper-n	ext"></div>
+		</div>
+		<form class="form form-comment" id="form_comment" ng-submit="$ctrl.submitLongComment()" novalidate autocomplete="off">
+			<div class="form-intro">
+			<textarea name="intro" class="intro" ng-model="$ctrl.content"
+					  placeholder=""></textarea>
+				<div class="byte-check" ng-class="{'is-highlighted': $ctrl.byte > 300}" ng-bind="$ctrl.byteCheck()"></div>
+			</div>
+			<button ng-class="{'is-disabled': $ctrl.byte > 300}" class="button-submit form-submit">Register</button>
+		</form>
+	</div>
+
+
+</main>

@@ -1,0 +1,44 @@
+<main class="page-main container-fluid" ng-controller="ThemeCtrl as $ctrl">
+	<div class="paper-group tall">
+		<div class="paper-title theme">
+			<p class="paper-title_body theme">
+				What is your<br>preferred travel theme?
+			</p>
+		</div>
+		<div class="paper-image page">
+			<div class="paper-image_body theme" ng-class="$ctrl.selectedImage()"></div>
+		</div>
+		<div class="paper left top with-overlay-pink"></div>
+		<div class="paper right pink stiff">
+			<div class="paper-next" ng-click="$ctrl.goNext()"></div>
+		</div>
+	</div>
+	<section class="under-paper">
+		<div class="big-bracket">
+			<div class="left-bracket"> [</div>
+			<div class="select-title" ng-bind="$ctrl.selectedTitle()"></div>
+			<div class="right-bracket"> ]</div>
+		</div>
+		<div class="select-list theme">
+			<div class="two-data">
+				<div class="select-img first" ng-click="$ctrl.selectData(0)" ng-style="$ctrl.rmGray(0)">
+					<img src="../../media/theme/k-pop-button.png" alt="">
+				</div>
+				<div class="select-img second" ng-click="$ctrl.selectData(1)" ng-style="$ctrl.rmGray(1)">
+					<img src="../../media/theme/food-button.png" alt="">
+				</div>
+			</div>
+			<div class="three-data">
+				<div class="select-img third" ng-click="$ctrl.selectData(2)" ng-style="$ctrl.rmGray(2)">
+					<img src="../../media/theme/exhibition-button.png" alt="">
+				</div>
+				<div class="select-img forth" ng-click="$ctrl.selectData(3)" ng-style="$ctrl.rmGray(3)">
+					<img src="../../media/theme/culture-button.png" alt="">
+				</div>
+				<div class="select-img fifth" ng-click="$ctrl.selectData(4)" ng-style="$ctrl.rmGray(4)">
+					<img src="../../media/theme/activity-button.png" alt="">
+				</div>
+			</div>
+		</div>
+	</section>
+</main>

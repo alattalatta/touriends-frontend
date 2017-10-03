@@ -1,11 +1,13 @@
 class LoginCtrl {
 	static get $inject() {
-		return ['$state', 'LoginSvc']
+		return ['ToastSvc', 'OverlaySvc', 'LoginSvc', '$state']
 	}
 
-	constructor($state, LoginSvc) {
-		this.$state = $state;
+	constructor(ToastSvc, OverlaySvc, LoginSvc, $state) {
+		this.ToastSvc = ToastSvc;
+		this.OverlaySvc = OverlaySvc;
 		this.LoginSvc = LoginSvc;
+		this.$state = $state;
 
 		this.form = document.getElementById('form_login');
 
@@ -21,23 +23,32 @@ class LoginCtrl {
 		};
 	}
 
-	login() {
+	async login() {
+		if (this.loginObj.login === null || this.loginObj.login === '') {
+			this.ToastSvc.toggle('Please enter your ID');
+			return;
+		}
+		if (this.loginObj.pwd === null || this.loginObj.pwd === '') {
+			this.ToastSvc.toggle('Please enter your password');
+			return;
+		}
+
 		let formData = new FormData(this.form);
 
 		this.pending = true;
-		this.LoginSvc.login(formData).then((response) => {
-			this.pending = false;
-			if (response.data.success) {
-				this.$state.go('main');
-			}
-			else {
-				alert(response.data.message);
-			}
-			this.loginObj = {
-				login: null,
-				pwd: null
-			}
-		});
+		this.OverlaySvc.toggle('loading');
+		let response = await this.LoginSvc.login(formData);
+		this.pending = false;
+
+		if (response.data.success) {
+			await this.$state.go('main');
+			this.OverlaySvc.toggle('loading');
+		}
+		else {
+			this.OverlaySvc.toggle('loading');
+			this.ToastSvc.toggle('Wrong ID/Password', true);
+			this.loginObj.pwd = null;
+		}
 	}
 }
 
