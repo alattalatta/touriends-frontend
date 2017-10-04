@@ -1,10 +1,8 @@
 import param from 'jquery-param';
 
 function LongCommentCtrl($http, $state) {
-    //this.image = null;
-    //this.intro = null;
-    //this.login = 'ID';
-    //this.byte = 0;
+    this.longcomment = null;
+    this.byte = 0;
 /*
     $http({
         method: 'POST',
@@ -29,6 +27,8 @@ function LongCommentCtrl($http, $state) {
 
             if (c.length === 1)
                 this.byte++;
+            else if(c = ' ')
+                this.byte+=2;
             else
                 this.byte += 2;
         }
@@ -46,8 +46,8 @@ function LongCommentCtrl($http, $state) {
             method: 'POST',
             url : ajax_url,
             data: param({
-                action: '',
-                comments: this.comment
+                action: 'set_longcomment',
+                comment: this.comment
             })
         }).then((response) =>{
             console.log('')
