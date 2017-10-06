@@ -11,7 +11,7 @@ class LanguageCtrl {
 		this.$http = $http;
 		this.$state = $state;
 
-		this.datalist = ['japanese', 'english', 'french', 'chinese', 'german'];
+		this.datalist = ['japanese', 'korean', 'english', 'french', 'chinese', 'german'];
 		this.dataChecked = [false, false, false, false, false];
 		this.simage = null;
 		this.simageCnt = 0;

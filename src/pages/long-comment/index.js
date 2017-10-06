@@ -1,25 +1,17 @@
 import param from 'jquery-param';
 
-function LongCommentCtrl(CacheSvc, $http, $state) {
+function LongCommentCtrl(ToastSvc, CacheSvc, $http, $state) {
 	this.content = null;
-	/*
-		$http({
-			method: 'POST',
-			url: ajax_url,
-			data: param({
-				action: 'get_content_data'
-			})
-		}).then((response) => {
-			console.log(response);
-			if (response.data.success === true) {
-				this.image = response.data.url;
-				this.login = response.data.login;
-			}
-		});
-	*/  // 따로 봐야하고 이부분은
+	this.byte = 0;
+
+	CacheSvc.get('get_tour_comment').then((response) => {
+		if (response.data.success) {
+			this.content = response.data.comment;
+		}
+	});
 
 	this.byteCheck = function () {
-		if (this.content === null) {
+		if (! this.content) {
 			return '0/300byte';
 		}
 
@@ -40,27 +32,28 @@ function LongCommentCtrl(CacheSvc, $http, $state) {
 		if (this.byte > 300) {
 			return;
 		}
+
 		$http({
 			method: 'POST',
 			url: ajax_url,
 			data: param({
-				action: '',
-				comments: this.comment
+				action: 'tour_comment',
+				comment: this.content
 			})
 		}).then((response) => {
-			console.log('');
-
+			console.log(response);
 			if (response.data.success) {
-				$state.go('main');
+				CacheSvc.reset('get_tour_comment');
+				$state.go('matching-main');
 			}
 			else {
-				console.log('Not Good');
+				ToastSvc.toggle('Failed to update tour comment');
 			}
 		});
 	}
 }
 
-LongCommentCtrl.$inject = ['CacheSvc', '$http', '$state'];
+LongCommentCtrl.$inject = ['ToastSvc', 'CacheSvc', '$http', '$state'];
 
 
 export default angular.module('touriends.page.long-comment', ['touriends']).controller('LongCommentCtrl', LongCommentCtrl).name;

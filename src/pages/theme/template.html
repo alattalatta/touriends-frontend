@@ -1,4 +1,5 @@
 <main class="page-main container-fluid" ng-controller="ThemeCtrl as $ctrl">
+	<div class="theme-preloader" ng-repeat="theme in $ctrl.datalist" ng-class="theme"></div>
 	<div class="paper-group tall">
 		<div class="paper-title theme">
 			<p class="paper-title_body theme">
