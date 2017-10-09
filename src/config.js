@@ -212,22 +212,6 @@ export default app => {
 				}]
 			}
 		}).state({
-			url: '/home',
-			name: 'home',
-			parent: 'authful',
-			templateProvider: () => {
-				return import('./pages/home/template.html');
-			},
-			resolve: {
-				lazyload: ['$ocLazyLoad', $ocLazyLoad => {
-					return import('./pages/home/index').then(() => {
-						$ocLazyLoad.load({
-							name: 'touriends.page.home'
-						});
-					})
-				}]
-			}
-		}).state({
 			url: '/test',
 			name: 'test',
 			templateProvider: () => {

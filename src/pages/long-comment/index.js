@@ -4,9 +4,9 @@ function LongCommentCtrl(ToastSvc, CacheSvc, $http, $state) {
 	this.content = null;
 	this.byte = 0;
 
-	CacheSvc.get('get_tour_comment').then((response) => {
+	CacheSvc.get('get_longIntro').then((response) => {
 		if (response.data.success) {
-			this.content = response.data.comment;
+			this.content = response.data.longIntro;
 		}
 	});
 
@@ -37,13 +37,13 @@ function LongCommentCtrl(ToastSvc, CacheSvc, $http, $state) {
 			method: 'POST',
 			url: ajax_url,
 			data: param({
-				action: 'tour_comment',
-				comment: this.content
+				action: 'longIntro',
+				longIntro: this.content
 			})
 		}).then((response) => {
 			console.log(response);
 			if (response.data.success) {
-				CacheSvc.reset('get_tour_comment');
+				CacheSvc.reset('get_longIntro');
 				$state.go('matching-main');
 			}
 			else {

@@ -1,3 +1,27 @@
-<main ng-controller="MyCtrl as $ctrl">
-
+<main class="page-my" ng-controller="MyCtrl as $ctrl">
+	<div class="paper-group">
+		<div class="paper-image profile">
+			<div class="paper-image_body profile" ng-style="$ctrl.ProfileImage"></div>
+			<image-uploader file-model="$ctrl.imageData"
+			                orientation-model="$ctrl.imageOrientation"></image-uploader>
+			<p class="paper-id" ng-bind="$ctrl.user_login"></p>
+		</div>
+		<div class="paper short left cyan top"></div>
+		<div class="paper short right"></div>
+	</div>
+	<div class="under-paper container-fluid">
+		<section class="matching-info">
+			<p ng-bind="$ctrl.intro"></p>
+			<div class="my-icons clearfix">
+				<div class="my-icon" ng-if="$ctrl.theme" ng-class="$ctrl.theme"></div>
+				<div class="my-icon" ng-if="$ctrl.languages" ng-repeat="lang in $ctrl.languages" ng-class="lang"></div>
+			</div>
+		</section>
+		<section class="my-options">
+			<div class="item"><span>Profile</span></div>
+			<div class="item"><span>Matching info</span></div>
+			<div class="item" ng-click="$ctrl.logout()"><span>Log out</span></div>
+		</section>
+	</div>
+	<main-nav></main-nav>
 </main>

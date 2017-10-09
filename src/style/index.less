@@ -15,6 +15,7 @@
 @import './pages/longcomment';
 @import './pages/matchingmain';
 @import './pages/matching-success';
+@import './pages/my';
 
 @import './test-suite';
 
@@ -185,4 +186,14 @@ main {
 	&.is-disabled {
 		background: #DCDCDC;
 	}
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
+	clear: both;
 }

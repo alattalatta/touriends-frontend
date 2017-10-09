@@ -2,11 +2,11 @@ require('./style.less');
 
 class MainNavCtrl {
     static get $inject() {
-        return ['ToastSvc', '$state'];
+        return ['OverlaySvc', '$state'];
     }
 
-    constructor(ToastSvc, $state) {
-    	this.ToastSvc = ToastSvc;
+    constructor(OverlaySvc, $state) {
+    	this.OverlaySvc = OverlaySvc;
     	this.$state = $state;
     }
 
@@ -19,6 +19,11 @@ class MainNavCtrl {
     }
 
     go(stateName) {
+    	if (this.$state.is(stateName)) {
+    		return;
+	    }
+
+    	this.OverlaySvc.on('loading');
     	this.$state.go(stateName);
     }
 }
