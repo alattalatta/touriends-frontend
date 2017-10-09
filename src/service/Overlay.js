@@ -2,7 +2,12 @@
  * 슈퍼 오버레이 관리 서비스
  */
 class OverlaySvc {
-	constructor() {
+	static get $inject() {
+		return ['$timeout']
+	}
+
+	constructor($timeout) {
+		this.$timeout = $timeout;
 		this.overlays = new Map();
 	}
 
@@ -13,14 +18,23 @@ class OverlaySvc {
 		this.overlays.set(key, elem);
 	}
 
-	toggle(key) {
-		let overlay = this.overlays.get(key);
-		if (overlay === undefined) {
-			throw new Error('Invalid overlay key');
-		}
-		else {
-			overlay.classList.toggle('is-visible');
-		}
+	on(key, delay) {
+		if (delay === undefined) delay = 0;
+		this.$timeout(() => {
+			this.overlays.get(key).classList.add('is-visible');
+		}, delay);
+	}
+	off(key, delay) {
+		if (delay === undefined) delay = 0;
+		this.$timeout(() => {
+			this.overlays.get(key).classList.remove('is-visible');
+		}, delay);
+	}
+	toggle(key, delay) {
+		if (delay === undefined) delay = 0;
+		this.$timeout(() => {
+			this.overlays.get(key).classList.toggle('is-visible');
+		}, delay);
 	}
 }
 

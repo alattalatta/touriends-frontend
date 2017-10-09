@@ -5,6 +5,7 @@
 		background-image: url('../../media/theme/@{key}-icon.png');
 	}
 }
+
 .theme-graphics(@key) {
 	&.@{key} {
 		background-image: url('../../media/theme/@{key}.png');
@@ -30,13 +31,27 @@
 }
 
 .paper-title_body.theme {
+	width: 416 / 16rem;
 	font-size: 45.6 / 16rem;
 	font-weight: 600;
 	line-height: 1.06;
 }
 
-.select-list.theme .select-img {
-	filter: grayscale(100%);
+.select-list.theme {
+	.select-img {
+		.shadow(@selector; @color) {
+			.@{selector} {
+				box-shadow: 0 .1rem 1rem .2rem @color;
+			}
+		}
+		filter: grayscale(100%);
+
+		.shadow(k-pop, rgba(255, 216, 118, 0.75));
+		.shadow(exhibition, rgba(242, 164, 164, 0.65));
+		.shadow(activity, rgba(137, 206, 213, 0.65));
+		.shadow(culture, rgba(122, 196, 166, 0.65));
+		.shadow(food, rgba(248, 197, 150, 0.75));
+	}
 }
 
 .paper-image_body.theme {

@@ -36,16 +36,16 @@ class LoginCtrl {
 		let formData = new FormData(this.form);
 
 		this.pending = true;
-		this.OverlaySvc.toggle('loading');
+		this.OverlaySvc.on('loading');
 		let response = await this.LoginSvc.login(formData);
 		this.pending = false;
 
 		if (response.data.success) {
 			await this.$state.go('main');
-			this.OverlaySvc.toggle('loading');
+			this.OverlaySvc.off('loading');
 		}
 		else {
-			this.OverlaySvc.toggle('loading');
+			this.OverlaySvc.off('loading');
 			this.ToastSvc.toggle('Wrong ID/Password', true);
 			this.loginObj.pwd = null;
 		}

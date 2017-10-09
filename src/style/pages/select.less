@@ -31,18 +31,24 @@
 }
 
 .select-list {
-	margin-top: 62.5 / 16rem;
+	margin-top: 72.5 / 16rem;
 	text-align: center;
 	.select-img {
-		width: 132 / 16rem;
+		width: 92 / 16rem;
 		height: auto;
 		display: inline-block;
 		transition: opacity 300ms ease;
+
+		& + .select-img {
+			margin-left: 64 / 16rem;
+		}
+
+		img {
+			border-radius: 100%;
+		}
 	}
-	.second {
-		margin-left: 35 / 16rem;
-	}
-	.forth, .fifth {
-		margin-left: 23.5 / 16rem;
+
+	.three-data + .three-data {
+		margin-top: 24.5 / 16rem;
 	}
 }

@@ -196,19 +196,19 @@ export default app => {
 				}]
 			}
 		}).state({
-			url: '/home',
-			name: 'home',
+			url: '/my',
+			name: 'my',
 			parent: 'authful',
 			templateProvider: () => {
-				return import('./pages/home/template.html');
+				return import('./pages/my/template.html');
 			},
 			resolve: {
-				lazyload: ['$ocLazyLoad', $ocLazyLoad => {
-					return import('./pages/home/index').then(() => {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/my/index').then(() => {
 						$ocLazyLoad.load({
-							name: 'touriends.page.home'
+							name: 'touriends.page.my'
 						});
-					})
+					});
 				}]
 			}
 		}).state({
