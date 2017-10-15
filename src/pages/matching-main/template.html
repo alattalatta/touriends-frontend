@@ -1,14 +1,15 @@
 <main class="page-main" ng-controller="MatchingMainCtrl as $ctrl">
-        <div class="page-matching-main">
-                <p class="matching-main-title">
-                        I'm looking for Touriends<br>for you.<br>Would you like to match?
-                </p>
+	<div class="page-matching-main">
+		<p class="matching-main-title">
+			I'm looking for Touriends<br>for you.<br>Would you like to match?
+		</p>
 
-                <div class="matching-main-ball">
-                       <p class="matching-main-ball-text">Loading...</p>
-                </div>
+		<div class="matching-main-ball">
+			<p class="matching-main-ball-text">Loading...</p>
+		</div>
 
-                <button class="button-submit matching-btn " >Yes, I'd like to match</button>
-                <button class="button-submit matching-btn is-disabled" >No, I'll do it next time</button>
-        </div>
+		<button class="button-submit matching-btn" ng-click="$ctrl.goNext()">Yes, I'd like to match</button>
+		<button class="button-submit matching-btn is-disabled" ng-click="">No, I'll do it next time</button>
+	</div>
+	<main-nav></main-nav>
 </main>

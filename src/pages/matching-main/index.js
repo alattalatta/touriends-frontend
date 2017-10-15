@@ -1,6 +1,14 @@
 class MatchingMainCtrl {
 	static get $inject() {
-		return ['$state', 'LoginSvc']
+		return ['$state'];
+	}
+
+	constructor($state) {
+		this.$state = $state;
+	}
+
+	goNext() {
+		this.$state.go('matching-success');
 	}
 }
 
