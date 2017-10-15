@@ -26,6 +26,12 @@ function MatchingSuccessCtrl($timeout) {
 
 	this.getPersonClasses = function(idx) {
 		let res = [];
+		// 좋아요?
+		let current = this.datalist[idx];
+		if (current !== undefined && current.liked) {
+			res.push('liked')
+		}
+
 		// Large / Middle / Small 중 택 1
 		// 12개 중 4개씩 스케일이 달라지니까, 0 = L, 1 = M, 2 = S
 		let scale = parseInt(idx / 4);

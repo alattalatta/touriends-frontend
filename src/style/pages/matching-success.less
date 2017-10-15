@@ -14,7 +14,7 @@
 
 .matching-data {
 	font-size: 1rem;
-	width: 531px;
+	max-width: 531 / 16rem;
 	position: relative;
 	left: 0;
 	right: 0;
@@ -26,6 +26,20 @@
 		border-radius: 100%;
 		display: inline-block;
 		position: absolute;
+
+		&.liked::after {
+			content: '';
+			width: calc(~'100% + 6px');
+			height: calc(~'100% + 6px');
+			background: #73C5D2;
+			border-radius: 100%;
+			margin: auto;
+			position: absolute;
+			top: 0;
+			right: -3px;
+			bottom: 0;
+			z-index: -1;
+		}
 
 		&.small {
 			width: 88.5 / 16em;
