@@ -4,21 +4,21 @@
 	position: relative;
 }
 
-.paper-title_body.matching-success {
-	width: 310 / 16rem;
-	font-size: 44.7 / 16rem;
-	font-weight: 600;
-	line-height: 1.08;
-	color: #73c5d2;
-}
-
-.matching-data {
-	font-size: 1rem;
-	max-width: 531 / 16rem;
+.matching-wrapper {
+	height: 100%;
+	min-height: 791.5 / 16rem;
 	position: relative;
+}
+.matching-data {
+	max-width: 531 / 16rem;
+	height: 731.5 / 16rem;
+	font-size: 1rem;
+	margin: auto;
+	position: relative;
+	top: 50%;
 	left: 0;
 	right: 0;
-	margin: 0 auto;
+	transform: translateY(-50%);
 
 	.circle {
 		background: #DADADA center no-repeat;
@@ -45,19 +45,19 @@
 			width: 88.5 / 16em;
 			height: 88.5 / 16em;
 			&.first {
-				top: 213 / 16em;
+				top: 72 / 16em;
 				left: 214 / 16em;
 			}
 			&.second {
-				top: 318 / 16em;
+				top: 177 / 16em;
 				right: 43 / 16em;
 			}
 			&.third {
-				top: 614.5 / 16em;
+				top: 473.5 / 16em;
 				left: 174 / 16em;
 			}
 			&.fourth {
-				top: 776.5 / 16em;
+				top: 635.5 / 16em;
 				left: 108 / 16em;
 			}
 		}
@@ -65,19 +65,19 @@
 			width: 118.5 / 16em;
 			height: 118.5 / 16em;
 			&.first {
-				top: 339 / 16em;
+				top: 198 / 16em;
 				left: -20 / 16em;
 			}
 			&.second {
-				top: 670 / 16em;
+				top: 529.5 / 16em;
 				left: 11.5 / 16em;
 			}
 			&.third {
-				top: 707.5 / 16em;
+				top: 566.5 / 16em;
 				left: 204 / 16em;
 			}
 			&.fourth {
-				top: 711 / 16em;
+				top: 570 / 16em;
 				right: -13 / 16em;
 			}
 		}
@@ -85,19 +85,19 @@
 			width: 162 / 16em;
 			height: 162 / 16em;
 			&.first {
-				top: 156 / 16em;
+				top: 15 / 16em;
 				left: 16.5 / 16em;
 			}
 			&.second {
-				top: 141 / 16em;
+				top: 0 / 16em;
 				right: -10 / 16em;
 			}
 			&.third {
-				top: 494.5 / 16em;
+				top: 353.5 / 16em;
 				left: 0;
 			}
 			&.fourth {
-				top: 548 / 16em;
+				top: 407 / 16em;
 				right: 31.5 / 16em;
 			}
 		}
@@ -112,7 +112,7 @@
 	line-height: 1.08;
 	margin: 0 auto;
 	position: absolute;
-	top: 312 / 16rem;
+	top: 171 / 16rem;
 	left: 0;
 	right: 0;
 	text-align: center;
@@ -250,7 +250,7 @@
 	color: rgba(0, 0, 0, .8);
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 25.6 / 16rem;
-	position: absolute;
+	position: fixed;
 	right: 0;
 	left: 0;
 	bottom: 72.5 / 16rem; // main-nav 높이
