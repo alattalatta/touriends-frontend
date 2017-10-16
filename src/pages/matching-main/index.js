@@ -1,10 +1,12 @@
 class MatchingMainCtrl {
 	static get $inject() {
-		return ['$state'];
+		return ['OverlaySvc', '$state'];
 	}
 
-	constructor($state) {
+	constructor(OverlaySvc, $state) {
 		this.$state = $state;
+
+		OverlaySvc.off('loading');
 	}
 
 	goNext() {
