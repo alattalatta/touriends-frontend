@@ -109,7 +109,7 @@ gulp.task('build', () => {
 });
 
 let config = {
-	host: 'www.enn-devl.ga',
+	host: 'www.enn-devl.com',
 	port: 22,
 	username: auth.username,
 	password: auth.password
