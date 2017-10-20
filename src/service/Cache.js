@@ -6,11 +6,11 @@ import param from 'jquery-param';
  */
 class CacheSvc {
 	static get $inject() {
-		return ['$http'];
+		return ['HttpSvc'];
 	}
 
-	constructor($http) {
-		this.$http = $http;
+	constructor(HttpSvc) {
+		this.HttpSvc = HttpSvc;
 		this.map = new Map();
 	}
 
@@ -21,17 +21,13 @@ class CacheSvc {
 	 * @returns {Promise}
 	 */
 	get(action, params) {
-		let key = CacheSvc.actionParamsCombined(action, params);
+		let key = this.HttpSvc.actionParamsCombined(action, params);
 		let val = this.map.get(key);
 
 		// 저장된게 없으면 AJAX 전송
 		if (val === undefined) {
 			console.log('Cache not found! Key:', key);
-			return this.$http({
-				method: 'POST',
-				url: ajax_url,
-				data: key
-			}).then((response) => {
+			return this.HttpSvc.request(action, params).then((response) => {
 				if (response.data.success) {
 					this.map.set(key, response);
 				}
@@ -55,18 +51,8 @@ class CacheSvc {
 	 * @returns {boolean}
 	 */
 	reset(action, params) {
-		let key = CacheSvc.actionParamsCombined(action, params);
+		let key = this.HttpSvc.actionParamsCombined(action, params);
 		return this.map.delete(key);
-	}
-
-	static actionParamsCombined(action, params) {
-		let key = {
-			action: action
-		};
-		if (params) {
-			key = Object.assign(key, params);
-		}
-		return param(key);
 	}
 }
 

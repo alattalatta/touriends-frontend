@@ -1,35 +1,29 @@
 // import param from 'jquery-param';
 
-function MatchingSuccessCtrl($timeout) {
+function MatchingSuccessCtrl(CacheSvc, HttpSvc, ToastSvc, $timeout) {
 	this.repeater = new Array(12);
 
-	this.datalist = [{
-		uid: 888,
-		url: 'http://imgnews.naver.com/image/5239/2015/03/04/209695_image_5_99_20150304181302.jpg',
-		liked: true,
-		language1: 'german',
-		language2: 'japanese',
-		language3: 'french',
-		text: '안뇽하세여 저는 도길에서와써여',
-		theme: 'k-pop'
-	}, {
-		uid: 777,
-		url: 'http://imgnews.naver.com/image/038/2013/07/24/wyby31820130724152131_C_00_C_1_59_20130724153211.jpg',
-		liked: false,
-		language1: 'japanese',
-		text: '안뇽하세여 저는 니혼에서와써여',
-		theme: 'exhibition'
-	}];
+	this.datalist = [];
+	CacheSvc.get('getMatching').then((response) => {
+		if (response.data.success) {
+			console.log(response.data);
+			this.datalist = response.data.matching;
+		}
+	});
 
 	this.person = null;
 	this.isChoice = false;
 
 	this.getPersonClasses = function(idx) {
 		let res = [];
-		// 좋아요?
+
 		let current = this.datalist[idx];
-		if (current !== undefined && current.liked) {
-			res.push('liked')
+		if (current !== undefined) {
+			res.push('occupied'); // 프사 없을 때 쓸 클래스
+			
+			if (current.liked) {
+				res.push('liked'); // 오홍홍 조아용
+			}
 		}
 
 		// Large / Middle / Small 중 택 1
@@ -69,11 +63,12 @@ function MatchingSuccessCtrl($timeout) {
 	};
 
 	this.personData = function (idx) {
-		if (idx >= this.datalist.length) {
+		if (idx >= this.datalist.length || this.datalist[idx].image === '') {
 			return null;
 		}
 		return {
-			'background-image': `url(${this.datalist[idx].url})`
+			'border': 'none',
+			'background-image': `url(${this.datalist[idx].image})`
 		}
 	};
 
@@ -92,25 +87,50 @@ function MatchingSuccessCtrl($timeout) {
 				'opacity': 0
 			};
 		}
-		return {
-			'background-image': `url(${this.datalist[this.person].url})`,
+		let res = {
 			'opacity': 1
 		};
+		if (this.datalist[this.person].image !== '') {
+			res['background-image'] = `url(${this.datalist[this.person].image})`;
+		}
+		return res;
+	};
+
+	this.cancelShow = function () {
+		this.isChoice = false;
+		$timeout(() => {
+			this.person = null;
+		}, 350); // 250 = CSS transition-duration
+	};
+
+	this.like = function () {
+		HttpSvc.request('bookmark', {
+			like: this.datalist[this.person].uid
+		}).then((res) => {
+			if (res.data.success) {
+				this.datalist[this.person].liked = res.data.like;
+			}
+			else {
+				ToastSvc.toggle('Could not like user ' + this.datalist[this.person].uid);
+			}
+		});
+		this.datalist[this.person].liked =
+			this.datalist[this.person].liked === false;
 	};
 
 	this.language1Data = function () {
 		if (this.person === null) return null;
-		return this.datalist[this.person].language1;
+		return this.datalist[this.person].languages[0];
 	};
 	this.language2Data = function () {
-		if (this.person === null) return null;
-		return this.datalist[this.person].language2;
+		if (this.person === null || this.datalist[this.person].languages[1] === undefined) return null;
+		return this.datalist[this.person].languages[1];
 	};
 	this.language3Data = function () {
-		if (this.person === null) return null;
-		return this.datalist[this.person].language3;
+		if (this.person === null || this.datalist[this.person].languages[2] === undefined) return null;
+		return this.datalist[this.person].languages[2];
 	};
-	this.likedData = function () {
+	this.isLiked = function () {
 		if (this.person === null) return null;
 		return this.datalist[this.person].liked;
 	};
@@ -118,22 +138,11 @@ function MatchingSuccessCtrl($timeout) {
 		if (this.person === null) return null;
 		return this.datalist[this.person].theme;
 	};
-	this.cancelShow = function () {
-		this.isChoice = false;
-		$timeout(() => {
-			this.person = null;
-		}, 350); // 250 = CSS transition-duration
-	};
-	this.isLiked = function () {
-		this.datalist[this.person].liked =
-			this.datalist[this.person].liked === false;
-	};
-
-	this.personText = function () {
+	this.tourComment = function () {
 		if (this.person === null) return null;
-		return this.datalist[this.person].text;
+		return this.datalist[this.person].comment;
 	}
 }
-MatchingSuccessCtrl.$inject = ['$timeout'];
+MatchingSuccessCtrl.$inject = ['CacheSvc', 'HttpSvc', 'ToastSvc', '$timeout'];
 
 export default angular.module('touriends.page.matching-success', ['touriends']).controller('MatchingSuccessCtrl', MatchingSuccessCtrl).name;

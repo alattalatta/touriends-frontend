@@ -2,12 +2,12 @@
 	<div class="matching-wrapper">
 		<div class="matching-data">
 			<div class="matching-circle">
-				<div class="matching-circle_inner image" ng-style="$ctrl.profileImage()"></div>
+				<div class="matching-circle_inner image" ng-class="{'occupied': $ctrl.isChoice}" ng-style="$ctrl.profileImage()"></div>
 				<div class="person-group" ng-class="{'is-visible': $ctrl.isChoice}">
 					<div class="choice cancel" ng-click="$ctrl.cancelShow()"></div>
 					<div class="choice message"></div>
-					<div class="choice liked" ng-class="{'is-liked': $ctrl.likedData()}"
-					     ng-click="$ctrl.isLiked()"></div>
+					<div class="choice liked" ng-class="{'is-liked': $ctrl.isLiked()}"
+					     ng-click="$ctrl.like()"></div>
 					<div class="choice theme" ng-class="$ctrl.themeData()"></div>
 					<div class="choice language1" ng-class="$ctrl.language1Data()"></div>
 					<div class="choice language2" ng-class="$ctrl.language2Data()"></div>
@@ -25,7 +25,7 @@
 			     ng-click="$ctrl.selectPerson($index)"></div>
 		</div>
 	</div>
-	<div class="person-text" ng-class="{'is-visible': $ctrl.isChoice}" ng-bind="$ctrl.personText()"></div>
+	<div class="person-text" ng-class="{'is-visible': $ctrl.isChoice}" ng-bind="$ctrl.tourComment()"></div>
 	<main-nav></main-nav>
 	<div class="preloader">
 		<div class="activity"></div>
