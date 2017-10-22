@@ -38,6 +38,7 @@ class MyCtrl {
 		this.imageOrientation = null;
 
 		this.user_login = LoginSvc.user_login;
+		this.schedule = null;
 		this.intro = null;
 		this.theme = null;
 		this.languages = null;
@@ -80,6 +81,8 @@ class MyCtrl {
 	async fetchData() {
 		// 프사
 		let imageData = this.CacheSvc.get('get_profile_image');
+		// 스케쥴 (달력 + 포맷)
+		let scheduleData = this.CacheSvc.get('get_schedule');
 		// 60소개
 		let introData = this.CacheSvc.get('get_intro');
 		// 테마
@@ -88,11 +91,13 @@ class MyCtrl {
 		let languageData = this.CacheSvc.get('get_language');
 
 		let imageRes = await imageData;
+		let scheduleRes = await scheduleData;
 		let introRes = await introData;
 		let themeRes = await themeData;
 		let languagesRes = await languageData;
 
 		this.image = imageRes.data.image;
+		this.schedule = scheduleRes.data.schedule;
 		this.intro = introRes.data.intro;
 		this.theme = themeRes.data.theme;
 		this.languages = languagesRes.data.language;

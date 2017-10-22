@@ -1,21 +1,41 @@
 <main class="page-main container-fluid" ng-controller="MainCtrl as $ctrl">
     <div class="paper-group tall">
-        <!--<div class="paper-title">-->
-            <!--<p class="paper-title_body">-->
-                <!--Which place<br>do you want to tour?-->
-            <!--</p>-->
-        <!--</div>-->
-        <div class="paper-image page">
-            <div class="paper-image_body main"></div>
-            <div class="start-btn" ng-click="$ctrl.start()"></div>
-        </div>
+	    <div class="slick-arrows"></div>
+	    <div class="slick-target">
+		    <div class="item">
+			    <div class="paper-image page item">
+				    <div class="paper-image_body main"></div>
+				    <div class="start-btn" ng-click="$ctrl.start()"></div>
+			    </div>
+		    </div>
+		    <div class="item" ng-repeat="item in $ctrl.dataList">
+			    <div class="paper-image page item">
+				    <div class="paper-image_body main" ng-style="$ctrl.getPersonImage($index)"></div>
+				    <div class="id-age" ng-bind="$ctrl.getPersonLabel($index)"></div>
+			    </div>
+		    </div>
+	    </div>
         <div class="paper left top white with-overlay"></div>
         <div class="paper right pink stiff"></div>
     </div>
     <section class="under-paper with-nav">
-        <div class="add-touriends-text">
+        <div class="add-touriends-text" ng-show="$ctrl.current === 0">
             <p>Add your Touriends to travel with you</p>
         </div>
+	    <div class="touriends-info" ng-show="$ctrl.current !== 0">
+		    <div class="top">
+			    <p class="my-schedule" ng-bind="$ctrl.CurrentTouriends.schedule"></p>
+			    <div class="icon" ng-if="$ctrl.CurrentTouriends.theme" ng-class="$ctrl.CurrentTouriends.theme"></div>
+			    <div class="icon" ng-repeat="lang in $ctrl.CurrentTouriends.languages" ng-class="lang"></div>
+		    </div>
+		    <p class="comment" ng-bind="$ctrl.CurrentTouriends.comment"></p>
+		    <div class="bottom">
+			    <div class="icon message"></div>
+			    <div class="icon liked"
+			         ng-class="{'not': ! $ctrl.CurrentTouriends.liked}"
+			         ng-click="$ctrl.like()"></div>
+		    </div>
+	    </div>
     </section>
     <main-nav></main-nav>
 </main>

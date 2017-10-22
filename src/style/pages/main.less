@@ -1,35 +1,104 @@
 @import (reference) '../index';
 
-
 .paper-image_body.main {
-  background-image: url('../../media/paper-image-main.png');
+	background-image: url('../../media/paper-image-main.png');
+
+	& + .id-age {
+		color: #88caae;
+		font-size: 40 / 16rem;
+		font-weight: 600;
+		line-height: 43 / 40;
+		margin-top: 29 / 16rem;
+		text-align: center;
+	}
 }
 
 .page-main {
-  .paper-image .start-btn {
-    background: url('../../media/main-start.png') center no-repeat;
-    background-size: contain;
-    z-index: 3;
-    width: 108.5 / 16rem;
-    height: 107.5 / 16rem;
-    margin: 0 auto;
-    position: relative;
-    top: -45 / 16rem;
-  }
+	.slick-arrows {
+		width: 100%;
+		position: absolute;
+		top: 273 / 16rem;
+		z-index: 10;
+	}
+	.slick-target {
+		z-index: 9;
+	}
+	.slick-arrow {
+		width: 70 / 16rem;
+		height: 70 / 16rem;
+		background: center no-repeat;
+		background-size: contain;
+		position: absolute;
+		transform: translateY(-50%);
 
-  .add-touriends-text {
-    z-index: 3;
-    opacity: 0.75;
-    text-align: left;
-    font-size: 50.7 / 16rem;
-    color: rgba(233, 97, 119, 0.75);
-    font-weight: 600;
-    margin-top: 82.5 / 16rem;
-    position: relative;
-    width: 100%;
-    p {
-      margin: 0 auto;
-      width: 364 / 16rem !important;
-    }
-  }
+		&.next {
+			background-image: url('../../media/main/next.png');
+			right: 0;
+		}
+		&.prev {
+			background-image: url('../../media/main/prev.png');
+			left: 0;
+		}
+	}
+
+	.paper-image .start-btn {
+		background: url('../../media/main-start.png') center no-repeat;
+		background-size: contain;
+		z-index: 3;
+		width: 108.5 / 16rem;
+		height: 107.5 / 16rem;
+		margin: 0 auto;
+		position: relative;
+		top: -45 / 16rem;
+	}
+
+	.add-touriends-text {
+		z-index: 3;
+		opacity: 0.75;
+		text-align: left;
+		font-size: 50.7 / 16rem;
+		color: rgba(233, 97, 119, 0.75);
+		font-weight: 600;
+		margin-top: 82.5 / 16rem;
+		position: relative;
+		width: 100%;
+		p {
+			margin: 0 auto;
+			width: 364 / 16rem !important;
+		}
+	}
+
+	.touriends-info {
+		margin-top: 1.5rem;
+
+		.top {
+			text-align: center;
+		}
+
+		.bottom {
+			margin-top: 1.5rem;
+			text-align: right;
+		}
+	}
+
+	.my-schedule {
+		margin-right: 21 / 16rem;
+	}
+
+	.icon {
+		width: 42 / 16rem;
+		height: 42 / 16rem;
+		border: 1px solid rgba(0, 0, 0, .1);
+		border-radius: 100%;
+		display: inline-block;
+		margin-right: 10 / 16rem;
+		vertical-align: middle;
+	}
+
+	.comment {
+		color: rgba(0, 0, 0, .8);
+		font-size: 26 / 16rem;
+		line-height: 35 / 26;
+		margin-top: 27 / 16rem;
+	}
 }

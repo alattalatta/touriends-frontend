@@ -1,14 +1,14 @@
 // import param from 'jquery-param';
 
-function MatchingSuccessCtrl(CacheSvc, HttpSvc, ToastSvc, $timeout) {
+function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout) {
 	this.repeater = new Array(12);
 
 	this.datalist = [];
-	CacheSvc.get('getMatching').then((response) => {
+	HttpSvc.request('getMatching').then((response) => {
 		if (response.data.success) {
-			console.log(response.data);
 			this.datalist = response.data.matching;
 		}
+		OverlaySvc.off('loading');
 	});
 
 	this.person = null;
@@ -113,9 +113,8 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, ToastSvc, $timeout) {
 			else {
 				ToastSvc.toggle('Could not like user ' + this.datalist[this.person].uid);
 			}
+			CacheSvc.reset('getBookmark');
 		});
-		this.datalist[this.person].liked =
-			this.datalist[this.person].liked === false;
 	};
 
 	this.language1Data = function () {
@@ -123,11 +122,11 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, ToastSvc, $timeout) {
 		return this.datalist[this.person].languages[0];
 	};
 	this.language2Data = function () {
-		if (this.person === null || this.datalist[this.person].languages[1] === undefined) return null;
+		if (this.person === null || this.datalist[this.person].languages[1] === undefined) return 'hidden';
 		return this.datalist[this.person].languages[1];
 	};
 	this.language3Data = function () {
-		if (this.person === null || this.datalist[this.person].languages[2] === undefined) return null;
+		if (this.person === null || this.datalist[this.person].languages[2] === undefined) return 'hidden';
 		return this.datalist[this.person].languages[2];
 	};
 	this.isLiked = function () {
@@ -140,9 +139,9 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, ToastSvc, $timeout) {
 	};
 	this.tourComment = function () {
 		if (this.person === null) return null;
-		return this.datalist[this.person].comment;
+		return this.datalist[this.person].comment === '' ? 'No comment' : this.datalist[this.person].comment;
 	}
 }
-MatchingSuccessCtrl.$inject = ['CacheSvc', 'HttpSvc', 'ToastSvc', '$timeout'];
+MatchingSuccessCtrl.$inject = ['CacheSvc', 'HttpSvc', 'OverlaySvc', 'ToastSvc', '$timeout'];
 
 export default angular.module('touriends.page.matching-success', ['touriends']).controller('MatchingSuccessCtrl', MatchingSuccessCtrl).name;

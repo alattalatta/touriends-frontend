@@ -1,7 +1,7 @@
 @import (reference) 'includes/index';
 
-@paper-height: 531 / 16rem;
-@paper-height-xs: 400 / 16rem;
+@paper-height: 596 / 16rem;
+@paper-height-xs: 460 / 16rem;
 @paper-height-tall: 577.5 / 16rem;
 @paper-height-tall-xs: 430 / 16rem;
 
@@ -58,19 +58,23 @@
   }
   &.page {
     width: 273 / 16rem;
-    height: 273 / 16rem;
     margin: 141.5 / 16rem auto 0;
 	  @media @xs-height {
 		  width: 180 / 16rem;
-		  height: 180 / 16rem;
 		  margin-top: 80 / 16rem;
+	  }
+
+	  .paper-image_body {
+		  height: 273 / 16rem;
+		  @media @xs-height {
+			  height: 180 / 16rem;
+		  }
 	  }
   }
 }
 //noinspection CssOptimizeSimilarProperties
 .paper-image_body {
   width: 100%;
-  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

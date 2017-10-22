@@ -53,10 +53,9 @@ class WhenCtrl {
 				to: to
 			})
 		});
-		console.log(response);
 		if (response.data.success) {
 			this.CacheSvc.reset('get_calendar');
-			this.$state.go('where');
+			this.$state.go('language');
 		}
 	}
 }
