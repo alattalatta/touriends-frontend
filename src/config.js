@@ -212,6 +212,22 @@ export default app => {
 				}]
 			}
 		}).state({
+			url: '/community-list',
+			name: 'community-list',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/community-list/template.html');
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/community-list/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.community-list'
+						});
+					});
+				}]
+			}
+		}).state({
 			url: '/test',
 			name: 'test',
 			templateProvider: () => {

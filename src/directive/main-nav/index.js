@@ -12,7 +12,7 @@ class MainNavCtrl {
 
     getIconClasses(stateName) {
     	let res = [stateName];
-    	if (this.$state.is(stateName)) {
+    	if (this.$state.current.name.indexOf(stateName) === 0) {
     		res.push('is-active');
 	    }
 	    return res;
