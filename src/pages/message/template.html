@@ -1,0 +1,26 @@
+<main class="page-main container-fluid ms-page" ng-controller="Message as $ctrl">
+	<div class="paper-group message">
+		<div class="paper-title message">
+			<p class="paper-title_body message" ng-bind="$ctrl.you.name"></p>
+		</div>
+		<div class="communication-box">
+			<div class="communication-box_body">
+				<div ng-repeat="c in $ctrl.communication" class="communication-list">
+					<div ng-show="$ctrl.isMe($index)" class="me">
+						<div class="communication" ng-bind="$ctrl.communication[$index].content" ng-style="$ctrl.myMessage($index)"
+						 ng-class="$ctrl.nextMessage($index)"></div>
+						<div ng-style="$ctrl.personImage($index)" class="person-img me" ng-show="$ctrl.communicationShow($index)"></div>
+					</div>
+					<div ng-hide="$ctrl.isMe($index)">
+						<div ng-style="$ctrl.personImage($index)" class="person-img you" ng-show="$ctrl.communicationShow($index)"></div>
+						<div class="communication" ng-bind="$ctrl.communication[$index].content" ng-class="$ctrl.nextMessage($index)"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="send-message">
+			<textarea class="message-input" ng-model="$ctrl.message_text" placeholder="Write your message"></textarea>
+			<button ng-click="$ctrl.btnSend()" class="btn-message" ng-class="$ctrl.activeBtn()" ng-disabled="$ctrl.btn_disabled"></button>
+		</div>
+	</div>
+</main>
