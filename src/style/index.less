@@ -18,7 +18,7 @@
 @import './pages/my';
 @import './pages/message-box';
 @import './pages/message';
-
+@import './pages/community-list';
 @import './test-suite';
 
 // ENGLISH
@@ -49,6 +49,7 @@
 	url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),
 	url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');
 }
+
 @font-face {
 	font-family: 'Noto Sans KR';
 	font-style: normal;
@@ -157,13 +158,6 @@ main {
 		@primary: desaturate(lighten(@yellow, 22%), 10%);
 		@secondary: lighten(@primary, 11%);
 		@width: 8px;
-		//background: repeating-linear-gradient(
-		//				-45deg,
-		//				@primary,
-		//				@primary @width,
-		//				@secondary @width,
-		//				@secondary @width * 2
-		//);
 	}
 }
 
@@ -192,10 +186,50 @@ main {
 
 .clearfix:before,
 .clearfix:after {
-	content: " "; /* 1 */
-	display: table; /* 2 */
+	content: ' ';
+	display: table;
 }
 
 .clearfix:after {
 	clear: both;
 }
+<<<<<<< HEAD
+=======
+
+.icon-mix(@selector) {
+	&.@{selector} {
+		background-image: url('../media/icons/@{selector}.png');
+	}
+}
+.icon {
+	background: center no-repeat;
+	background-size: cover;
+
+	.icon-mix(japanese);
+	.icon-mix(german);
+	.icon-mix(chinese);
+	.icon-mix(english);
+	.icon-mix(french);
+	.icon-mix(korean);
+
+	.icon-mix(k-pop);
+	.icon-mix(food);
+	.icon-mix(exhibition);
+	.icon-mix(activity);
+	.icon-mix(culture);
+
+	.icon-mix(liked);
+	.icon-mix(message);
+	.icon-mix(~'not.liked');
+	.icon-mix(x-button);
+
+	&.preloader {
+		width: 1px !important;
+		height: 0 !important;
+		pointer-events: none !important;
+		position: absolute;
+		opacity: .1 !important;
+		user-select: none !important;
+	}
+}
+>>>>>>> master

@@ -27,6 +27,10 @@
 		display: inline-block;
 		position: absolute;
 
+		&.occupied {
+			border: 1px solid #DADADA;
+		}
+
 		&.liked::after {
 			content: '';
 			width: calc(~'100% + 6px');
@@ -103,7 +107,6 @@
 		}
 	}
 }
-
 .matching-circle {
 	width: 273 / 16rem;
 	height: 273 / 16rem;
@@ -158,6 +161,10 @@
 		}
 	}
 }
+.circle.occupied,
+.matching-circle_inner.image.occupied {
+	background-image: url('../../media/default-profile.jpg');
+}
 
 .choice {
 	.delay(@pos) {
@@ -165,21 +172,16 @@
 			transition-delay: 25ms * (@pos - 1);
 		}
 	}
-	.background(@selector) {
-		&.@{selector} {
-			background-image: url('../../media/matching/@{selector}.png');
-		}
-	}
 
 	width: 45.5 / 16rem;
 	height: 45.5 / 16rem;
-	z-index: 15;
-	position: absolute;
-	display: inline-block;
 	background: center no-repeat;
-	background-size: contain;
+	background-size: cover;
+	display: inline-block;
 	opacity: 0;
+	position: absolute;
 	transition: opacity 250ms ease;
+	z-index: 15;
 
 	.delay(2);
 	.delay(3);
@@ -188,7 +190,6 @@
 	.delay(6);
 	.delay(7);
 
-	// Language start
 	&.language1 {
 		top: 13.5 / 16rem;
 		left: 64 / 16rem;
@@ -201,43 +202,29 @@
 		top: 93 / 16rem;
 		left: 3.5 / 16rem;
 	}
-	.background(japanese);
-	.background(german);
-	.background(chinese);
-	.background(english);
-	.background(french);
-	.background(korean);
-	// Language end
 
-	// Theme start
 	&.theme {
 		top: 2 / 16rem;
 		left: 114 / 16rem;
 	}
-	.background(k-pop);
-	.background(food);
-	.background(exhibition);
-	.background(activity);
-	.background(culture);
-	// Theme end
 
 	&.liked {
 		top: 12.5 / 16rem;
 		left: 163.5 / 16rem;
-		background-image: url('../../media/matching/no-liked.png');
+		background-image: url('../../media/icons/not.liked.png');
 		&.is-liked {
-			background-image: url('../../media/matching/liked.png');
+			background-image: url('../../media/icons/liked.png');
 		}
 	}
 	&.message {
 		top: 45.5 / 16rem;
 		left: 204 / 16rem;
-		background-image: url('../../media/matching/message.png');
+		background-image: url('../../media/icons/message.png');
 	}
 	&.cancel {
 		top: 94.5 / 16rem;
 		left: 224.5 / 16rem;
-		background-image: url('../../media/matching/x-button.png');
+		background-image: url('../../media/icons/x-button.png');
 	}
 }
 .is-visible .choice {
@@ -261,34 +248,4 @@
 	&.is-visible {
 		opacity: 1;
 	}
-}
-
-.icon-preloader {
-	.background(@selector) {
-		.@{selector} {
-			background-image: url('../../media/matching/@{selector}.png');
-		}
-	}
-
-	width: 1px;
-	height: 0;
-	pointer-events: none;
-	opacity: .1;
-	user-select: none;
-
-	.background(activity);
-	.background(chinese);
-	.background(culture);
-	.background(english);
-	.background(exhibition);
-	.background(food);
-	.background(french);
-	.background(german);
-	.background(japanese);
-	.background(k-pop);
-	.background(korean);
-	.background(liked);
-	.background(message);
-	.background(no-liked);
-	.background(x-button);
 }

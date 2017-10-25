@@ -2,16 +2,16 @@
 	<div class="matching-wrapper">
 		<div class="matching-data">
 			<div class="matching-circle">
-				<div class="matching-circle_inner image" ng-style="$ctrl.profileImage()"></div>
+				<div class="matching-circle_inner image" ng-class="{'occupied': $ctrl.isChoice}" ng-style="$ctrl.profileImage()"></div>
 				<div class="person-group" ng-class="{'is-visible': $ctrl.isChoice}">
 					<div class="choice cancel" ng-click="$ctrl.cancelShow()"></div>
 					<div class="choice message"></div>
-					<div class="choice liked" ng-class="{'is-liked': $ctrl.likedData()}"
-					     ng-click="$ctrl.isLiked()"></div>
-					<div class="choice theme" ng-class="$ctrl.themeData()"></div>
-					<div class="choice language1" ng-class="$ctrl.language1Data()"></div>
-					<div class="choice language2" ng-class="$ctrl.language2Data()"></div>
-					<div class="choice language3" ng-class="$ctrl.language3Data()"></div>
+					<div class="choice liked" ng-class="{'is-liked': $ctrl.isLiked()}"
+					     ng-click="$ctrl.like()"></div>
+					<div class="choice theme icon" ng-class="$ctrl.themeData()"></div>
+					<div class="choice language1 icon" ng-class="$ctrl.language1Data()"></div>
+					<div class="choice language2 icon" ng-class="$ctrl.language2Data()"></div>
+					<div class="choice language3 icon" ng-class="$ctrl.language3Data()"></div>
 				</div>
 				<div class="matching-circle_inner label">
 					<div class="wrapper">
@@ -25,23 +25,21 @@
 			     ng-click="$ctrl.selectPerson($index)"></div>
 		</div>
 	</div>
-	<div class="person-text" ng-class="{'is-visible': $ctrl.isChoice}" ng-bind="$ctrl.personText()"></div>
+	<div class="person-text" ng-class="{'is-visible': $ctrl.isChoice}" ng-bind="$ctrl.tourComment()"></div>
 	<main-nav></main-nav>
-	<div class="preloader">
-		<div class="activity"></div>
-		<div class="chinese"></div>
-		<div class="culture"></div>
-		<div class="english"></div>
-		<div class="exhibition"></div>
-		<div class="food"></div>
-		<div class="french"></div>
-		<div class="german"></div>
-		<div class="japanese"></div>
-		<div class="k-pop"></div>
-		<div class="korean"></div>
-		<div class="liked"></div>
-		<div class="message"></div>
-		<div class="no-liked"></div>
-		<div class="x-button"></div>
-	</div>
+	<div class="icon preloader activity"></div>
+	<div class="icon preloader chinese"></div>
+	<div class="icon preloader culture"></div>
+	<div class="icon preloader english"></div>
+	<div class="icon preloader exhibition"></div>
+	<div class="icon preloader food"></div>
+	<div class="icon preloader french"></div>
+	<div class="icon preloader german"></div>
+	<div class="icon preloader japanese"></div>
+	<div class="icon preloader k-pop"></div>
+	<div class="icon preloader korean"></div>
+	<div class="icon preloader liked"></div>
+	<div class="icon preloader message"></div>
+	<div class="icon preloader no-liked"></div>
+	<div class="icon preloader x-button"></div>
 </main>

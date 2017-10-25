@@ -1,0 +1,21 @@
+<main class="page-community-list" ng-controller="CommunityListCtrl as $ctrl">
+	<header class="community-filter">
+	</header>
+	<div class="community-list">
+		<div class="community-item" ng-repeat="item in $ctrl.dataList">
+			<div class="image"></div>
+			<div class="top">
+				<span class="id" ng-bind="item.id"></span>
+				<span class="separator">/</span>
+				<span class="age" ng-bind="item.age"></span>
+				<div class="community-icon icon" ng-repeat="lang in item.languages" ng-class="lang"></div>
+			</div>
+			<div class="intro" ng-bind="item.intro"></div>
+			<div class="triangle">
+				<div class="pattern"></div>
+				<div class="icon liked" ng-class="{'not': ! item.liked}" ng-click="$ctrl.like($index)"></div>
+			</div>
+		</div>
+	</div>
+	<main-nav></main-nav>
+</main>
