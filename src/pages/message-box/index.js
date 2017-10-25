@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function MessageBox(OverlaySvc, $state, $timeout) {
+function MessageBox(OverlaySvc, $state) {
   this.datalist=[{
     uid:888,
     new:true,
@@ -40,6 +40,6 @@ function MessageBox(OverlaySvc, $state, $timeout) {
   // }
 }
 
-MessageBox.$inject = ['OverlaySvc', '$state', '$timeout'];
+MessageBox.$inject = ['OverlaySvc', '$state'];
 
 export default angular.module('touriends.page.message-box', ['touriends']).controller('MessageBox', MessageBox).name;
