@@ -259,10 +259,10 @@ export default app => {
 				}]
 			}
 		}).state({
-			url: '/message',
+			url: '/message/:id',
 			name: 'message',
-			//params:'id',
-			//parent: 'authful',
+			params: {id : null},
+			parent: 'authful',
 			templateProvider: () => {
 				return import('./pages/message/template.html');
 			},
@@ -271,6 +271,22 @@ export default app => {
 					return import('./pages/message/index').then(() => {
 						$ocLazyLoad.load({
 							name: 'touriends.page.message'
+						});
+					});
+				}]
+			}
+		}).state({
+			url: '/attraction',
+			name: 'attraction',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/attraction/template.html');
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/attraction/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.attraction'
 						});
 					});
 				}]
