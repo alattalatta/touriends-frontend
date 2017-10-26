@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function Attraction(OverlaySvc, ToastSvc, HttpSvc) {
+function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state) {
   this.menu=['ALL', 'Attraction', 'Culture', 'Festival'];
   this.all_menu=['Gangnam-gu','Gangdong-gu','Gangbuk-gu','Gangseo-gu','Gwanak-gu','Gwangjin-gu', 'Guro-gu','Geumcheon-gu',
   'Nowon-gu', 'Dobong-gu', 'Dongdaemun-gu', 'Dongjak-gu', 'Mapo-gu', 'Seodaemun-gu', 'Seocho-gu', 'Seongdong-gu','Seongbuk-gu', 'Songpa-gu',
@@ -10,19 +10,30 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc) {
   //title 괄호에있는 한글 없애기
 
   //기본값지정
-  var origin = this.menu[0];
-  this.choiceLocation= this.all_menu[0];
+  this.content = 0;
+  this.choiceLocation= 0;
   this.attraction_data = [];
-
   //Attraction Data AJAX
   this.attractDataAjax = function(){
-    HttpSvc.request('testsj').then((res) => {
-      console.log(res);
+    HttpSvc.request('tour_Info',{
+      area: this.choiceLocation+1,
+      content : this.content
+    }).then((res) => {
       if (res.data.success) {
-        this.attraction_data = res.data.data;
-      }
-      else {
-        ToastSvc.toggle('No data');
+        this.attraction_data = res.data.data.item;
+        if(this.content===0){
+          this.attraction_data=this.attraction_data.concat(res.data.data1.item);
+          this.attraction_data=this.attraction_data.concat(res.data.data2.item);
+          console.log(this.attraction_data);
+        }
+        if(this.attraction_data==undefined || this.attraction_data==[undefined]){
+          ToastSvc.toggle('No data');
+        }
+        else if(Array.isArray(res.data.data.item)==false ){
+          this.attraction_data=[];
+          this.attraction_data.push(res.data.data.item);
+          console.log(this.attraction_data);
+        }
       }
     });
   }
@@ -30,7 +41,7 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc) {
   this.attractDataAjax();
 
   this.choiceMenu=function(idx){ //선택된 메뉴
-    if(origin===this.menu[idx]){
+    if(this.content===idx){
       return {
         'background-color' : '#74c7d3'
       }
@@ -42,33 +53,32 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc) {
     objDiv.classList.toggle("active");
     var panel =  document.querySelector(".at-panel");
     var selection_bar =  document.querySelector(".selection-bar");
-
     if(idx===undefined){ //뾰족이 눌렀을 때
       panel.style.maxHeight = null;
       selection_bar.style.backgroundColor = "white";
       return;
     }
-
-    if (panel.style.maxHeight){
+    if (panel.style.maxHeight && this.content===idx){
       panel.style.maxHeight = null;
       selection_bar.style.backgroundColor = "white";
-    } else {
+    }else{
       selection_bar.style.backgroundColor = "#d8d8d8";
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
-
-    origin=this.menu[idx];
+    if(this.content!=idx){
+      this.content=idx;
+      this.attractDataAjax();
+    }
   }
   this.locationClick = function(idx){
-    this.choiceLocation= this.all_menu[idx];
-    console.log('hi');
-
-    this.attractDataAjax();
-    console.log('bye');
+    if(this.choiceLocation!=idx){
+      this.choiceLocation= idx;
+      this.attractDataAjax();
+    }
     this.menuClick();
   }
   this.locationStyle = function(idx){
-    if(this.choiceLocation===this.all_menu[idx]){
+    if(this.choiceLocation===idx){
       return {
         'background-color' : '#74c7d3',
         'color' : 'white'
@@ -76,15 +86,40 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc) {
     }
     return;
   }
-  this.attractionImg=function(idx){
-    return {
-      'background-image' : `url(${this.attraction_data[idx].url})`
+  this.titleEng = function(idx){
+    var check = this.attraction_data[idx].title.indexOf("(");
+    if(check!=-1){
+      this.attraction_data[idx].title = this.attraction_data[idx].title.substr(0, check);
     }
+    return this.attraction_data[idx].title;
+  }
+
+  this.attractionImg=function(idx){
+    if(this.attraction_data[idx].firstimage==null){
+      return;
+    }
+    return {
+      'background-image' : `url(${this.attraction_data[idx].firstimage})`
+    }
+  }
+  this.noImage=function(idx){
+    if(this.attraction_data[idx].firstimage==null){
+      return 'no-image-data';
+    }
+    return;
   }
 
   OverlaySvc.off('loading');
+
+  this.go=function(stateName,idx) {
+    if ($state.is(stateName)) {
+      return;
+    }
+    OverlaySvc.on('loading');
+    $state.go(stateName,{id:this.attraction_data[idx].contentid});
+  }
 }
 
-Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc'];
+Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state'];
 
 export default angular.module('touriends.page.attraction', ['touriends']).controller('Attraction', Attraction).name;

@@ -56,12 +56,16 @@
 .at-panel {
     background-color: white;
     max-height: 0;
-    overflow: hidden;
+    overflow: scroll;
     transition: max-height 0.2s ease-out;
     position: fixed;
     z-index: 2;
+    width: 100%;
     .btn-box{
-      padding: 14 / 16rem 0 0 23 / 16rem;
+      width: 490 / 16rem;
+      margin: 0 auto;
+      margin-top: 13 / 16rem;
+      margin-bottom: 24 / 16rem;
       .one-btn{
         width: 122.5 / 16rem;
         height: 72 / 16rem;
@@ -94,7 +98,7 @@
     }
 }
 .attraction-list_body{
-  height: 640 / 16rem;
+  height: calc(~'100%' - 305 / 16rem);
   overflow: scroll;
   .attraction-data{
     height: 226 / 16rem;
@@ -103,34 +107,40 @@
     position: relative;
     background-position-y: center;
     padding:0  26.5 / 16rem;
-    .title-box{
-      position: absolute;
-      bottom: 38.5 / 16rem;
-      display: inline-block;
-      font-weight: 600;
-      color: #fffefe;
-      max-width: 380 / 16rem;
-      .at-data-addr{
-        font-size: 22 / 16rem;
-        line-height: 1.25;
-        color: #82e0ee;
-        margin-bottom: 10.5 / 16rem;
-        background-color: rgba(0, 0, 0, .7);
-      }
-      .at-data-name{
-        font-size: 27.5 / 16rem;
-        background-color: rgba(0, 0, 0, .6);
-        margin-top: 10.5 / 16rem;
-      }
-    }
-    .at-data-period{
-      position: absolute;
-      font-weight: 600;
-      color: #fffefe;
-      bottom:21.5 / 16rem;
-      right:22 / 16rem;
-      font-size: 25.8 / 16rem;
-      background-color: rgba(0, 0, 0, .6);
-    }
   }
+  .no-image-data{
+    background-image: url(../../media/noimage.jpg);
+    background-size: cover;
+  }
+}
+
+.title-box{
+  position: absolute;
+  bottom: 38.5 / 16rem;
+  display: inline-block;
+  font-weight: 600;
+  color: #fffefe;
+  max-width: 380 / 16rem;
+  .at-data-addr{
+    font-size: 22 / 16rem;
+    line-height: 1.25;
+    color: #82e0ee;
+    margin-bottom: 10.5 / 16rem;
+    background-color: rgba(0, 0, 0, .7);
+  }
+  .at-data-name{
+    font-size: 27.5 / 16rem;
+    background-color: rgba(0, 0, 0, .6);
+    margin-top: 10.5 / 16rem;
+    display: inline-block;
+  }
+}
+.at-data-period{
+  position: absolute;
+  font-weight: 600;
+  color: #fffefe;
+  bottom:21.5 / 16rem;
+  right:22 / 16rem;
+  font-size: 25.8 / 16rem;
+  background-color: rgba(0, 0, 0, .6);
 }

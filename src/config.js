@@ -291,6 +291,23 @@ export default app => {
 					});
 				}]
 			}
+		}).state({
+			url: '/attraction-detail/:id',
+			name: 'attraction-detail',
+			params: {id : null},
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/attraction-detail/template.html');
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/attraction-detail/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.attraction-detail'
+						});
+					});
+				}]
+			}
 		});
 
 		$urlRouterProvider.otherwise('/main');

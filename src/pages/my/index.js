@@ -49,8 +49,8 @@ class MyCtrl {
 			let data = new FormData();
 			data.set('action', 'set_profile_image');
 			data.append('image', this.imageData);
-
 			// 업로드?
+			console.log(this.image);
 			$http({
 				method: 'POST',
 				url: ajax_url,
@@ -66,6 +66,7 @@ class MyCtrl {
 							// 받아오기 성공
 							this.image = response.data.image;
 							ToastSvc.toggle('Profile image changed')
+							console.log(this.image);
 						}
 					});
 				}

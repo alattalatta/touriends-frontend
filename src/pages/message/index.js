@@ -8,7 +8,25 @@ function Message(OverlaySvc, $timeout, HttpSvc, LoginSvc, CacheSvc, $stateParams
     name : 'dndn305',
     url: 'http://imgnews.naver.com/image/5239/2015/03/04/209695_image_5_99_20150304181302.jpg'
   }
+
   //상대방 정보 AJAX
+  var other_id = $stateParams.id;
+  //other_name = other_name.toString();
+  //console.log('other', typeof other_name);
+  HttpSvc.request('otherInfo',{
+    other : other_id
+  }).then((res) => {
+    if (res.data.success) {
+      console.log(res.data);
+      this.you.name = res.data.other_name,
+      this.you.url = res.data.other_image
+    }
+    else {
+      console.log('no');
+    }
+  });
+
+  //대화 가져오기
   HttpSvc.request('getConversation',{
     other : this.you.uid
   }).then((res) => {
