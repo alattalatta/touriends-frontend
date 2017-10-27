@@ -292,9 +292,9 @@ export default app => {
 				}]
 			}
 		}).state({
-			url: '/attraction-detail/:id',
+			url: '/attraction-detail/:id/:type',
 			name: 'attraction-detail',
-			params: {id : null},
+			params: {id : null, type: null},
 			parent: 'authful',
 			templateProvider: () => {
 				return import('./pages/attraction-detail/template.html');

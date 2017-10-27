@@ -18,8 +18,8 @@ function Message(OverlaySvc, $timeout, HttpSvc, LoginSvc, CacheSvc, $stateParams
   }).then((res) => {
     if (res.data.success) {
       console.log(res.data);
-      this.you.name = res.data.other_name,
-      this.you.url = res.data.other_image
+      this.you.name = res.data.other_name;
+      this.you.url = res.data.other_image;
     }
     else {
       console.log('no');

@@ -87,11 +87,28 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state) {
     return;
   }
   this.titleEng = function(idx){
-    var check = this.attraction_data[idx].title.indexOf("(");
-    if(check!=-1){
-      this.attraction_data[idx].title = this.attraction_data[idx].title.substr(0, check);
+    var check=[];
+    for(var i=0; i<String(this.attraction_data[idx].title).length; i++){
+      if(this.attraction_data[idx].title.charAt(i)==="("){
+        check.push(i);
+      }
+    }
+    for(var i=0; i<check.length; i++){
+      var ko = checkKorean(this.attraction_data[idx].title.charAt(check[i]+1));
+      if(ko===true){
+        this.attraction_data[idx].title = this.attraction_data[idx].title.substr(0, check[i]);
+      }
     }
     return this.attraction_data[idx].title;
+  }
+  function checkKorean(objStr) { //한글체크함수
+      for (var i = 0; i < objStr.length; i++) {
+          if (((objStr.charCodeAt(i) > 0x3130 && objStr.charCodeAt(i) < 0x318F) || (objStr.charCodeAt(i) >= 0xAC00 && objStr.charCodeAt(i) <= 0xD7A3))) {
+              return true;
+          } else {
+              return false;
+          }
+      }
   }
 
   this.attractionImg=function(idx){
@@ -116,7 +133,7 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state) {
       return;
     }
     OverlaySvc.on('loading');
-    $state.go(stateName,{id:this.attraction_data[idx].contentid});
+    $state.go(stateName,{id:this.attraction_data[idx].contentid, type:this.attraction_data[idx].contenttypeid});
   }
 }
 

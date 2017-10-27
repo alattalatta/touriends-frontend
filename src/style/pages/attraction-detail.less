@@ -19,7 +19,7 @@
     display: inline-block;
     text-align: center;
     position: absolute;
-    &.infomation{
+    &.information{
       left:0;
     }
     &.usersguide{
@@ -32,7 +32,7 @@
     }
   }
 }
-.content-infomation{
+.content-information{
   height: calc(~'100%' - 459.5 / 16rem);
   overflow: scroll;
   font-size: 23.7 / 16rem;
@@ -43,7 +43,6 @@
     margin-right: 17 / 16rem;
   }
   .content-info-text{
-    position: absolute;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -64,11 +63,65 @@
     }
   }
   .content-overview{
-
     .overview-img{
       width: 29.5 / 16rem;
       height: 30 / 16rem;
       margin-bottom: 10.5 / 16rem;
+    }
+    .overview-text{
+      word-break: break-all;
+      margin-bottom: 30 / 16rem;
+    }
+  }
+  .available-box{
+    text-align: center;
+    position: relative;
+    .content-available{
+      width: 132 / 16rem;
+      display: inline-block;
+      .available-img{
+        width : 88 / 16rem;
+        height: 88 / 16rem;
+        background-size: cover;
+        margin: 0 auto;
+      }
+      &.text{
+        margin-top:14.5 / 16rem;
+        font-size: 19.7 / 16rem;
+      }
+      &.parking-lot{
+        .disavailable-icon{
+          background-image: url('../../media/attraction/dis-parkinglot.png');
+        }
+        .available-icon{
+          background-image: url('../../media/attraction/parkinglot.png');
+        }
+      }
+      &.pet-accompany{
+        .disavailable-icon{
+          background-image: url('../../media/attraction/dis-pet.png');
+        }
+        &.available-icon{
+          background-image: url('../../media/attraction/pet.png');
+        }
+      }
+      &.stroller-rental{
+        .disavailable-icon{
+          background-image: url('../../media/attraction/dis-stroller.png');
+        }
+        .available-icon{
+          background-image: url('../../media/attraction/stroller.png');
+        }
+      }
+    }
+  }
+  .detail-info-box{
+    padding: 40 / 16rem 0;
+    font-size: 23.7 / 16rem;
+    .detail-info{
+      line-height: 35 / 16rem;
+      margin-bottom: 20 / 16rem;
+      word-break: break-all;
     }
   }
 }
