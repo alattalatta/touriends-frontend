@@ -12,7 +12,7 @@ msgstr ""
 msgid "Age"
 msgstr ""
 
-#: src/pages/community-list/template.html:51
+#: src/pages/community-list/template.html:53
 msgid "Chinese"
 msgstr ""
 
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Edit profile"
 msgstr ""
 
-#: src/pages/community-list/template.html:43
+#: src/pages/community-list/template.html:45
 msgid "English"
 msgstr ""
 
@@ -32,26 +32,26 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: src/pages/community-list/template.html:47
+#: src/pages/community-list/template.html:49
 msgid "French"
 msgstr ""
 
-#: src/pages/community-list/template.html:55
+#: src/pages/community-list/template.html:57
 msgid "German"
 msgstr ""
 
-#: src/pages/community-list/template.html:35
+#: src/pages/community-list/template.html:37
 msgid "Japanese"
 msgstr ""
 
-#: src/pages/community-list/template.html:39
+#: src/pages/community-list/template.html:41
 msgid "Korean"
 msgstr ""
 
-#: src/pages/community-list/template.html:32
+#: src/pages/community-list/template.html:34
 msgid "Language"
 msgstr ""
 
-#: src/pages/community-list/template.html:70
+#: src/pages/community-list/template.html:72
 msgid "No Touriends"
 msgstr ""

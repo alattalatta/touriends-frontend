@@ -46,6 +46,46 @@
 		text-align: center;
 	}
 
+	.age {
+		padding: 0 1rem;
+
+		.wrapper {
+			height: 139 / 16rem;
+			border-radius: .5rem;
+			box-shadow: 0 0 4.1px 0.9px rgba(0, 0, 0, 0.07);
+			margin-top: .75rem;
+			padding: 52.5 / 16rem 62 / 16rem 0;
+		}
+
+		.slider {
+			height: 1.5rem;
+			position: relative;
+
+			.item {
+				position: absolute;
+				top: 0;
+
+				&:nth-child(1) {
+					left: 0;
+				}
+				&:nth-child(2) {
+
+				}
+				&:nth-child(4) {
+					right: 0;
+				}
+
+				.circle {
+					width: 1.5rem;
+					height: 1.5rem;
+					background: white;
+					border: .33rem solid #97d3dd;
+					border-radius: 100%;
+				}
+			}
+		}
+	}
+
 	.languages {
 		.buttons {
 			margin-top: 14 / 16rem;
