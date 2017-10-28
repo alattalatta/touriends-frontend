@@ -3,11 +3,11 @@ class MatchingMainCtrl {
 		return ['CacheSvc', 'OverlaySvc', '$state','gettext'];
 	}
 
-	constructor(CacheSvc, OverlaySvc, $state) {
+	constructor(CacheSvc, OverlaySvc, $state,gettext) {
 		this.CacheSvc = CacheSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.$state = $state;
-
+		this.gettext=gettext;
 		this.success = true;
 
 		this.fetchData();

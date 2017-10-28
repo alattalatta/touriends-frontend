@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function LongCommentCtrl(ToastSvc, CacheSvc, $http, $state) {
+function LongCommentCtrl(ToastSvc, CacheSvc, $http, $state,gettext) {
 	this.content = null;
 	this.byte = 0;
 

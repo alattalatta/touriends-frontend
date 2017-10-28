@@ -8,7 +8,7 @@ class CommunityItemCtrl {
 		this.CacheSvc = CacheSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.$stateParams = $stateParams;
-
+		this.gettext=gettext;
 		this.data = {
 			age: null,
 			comment: null,

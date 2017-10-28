@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function Message(OverlaySvc, $timeout, HttpSvc, LoginSvc, CacheSvc, $stateParams) {
+function Message(OverlaySvc, $timeout, HttpSvc, LoginSvc, CacheSvc, $stateParams,gettext) {
   this.message_text='';
   console.log($stateParams.id);
   this.you={

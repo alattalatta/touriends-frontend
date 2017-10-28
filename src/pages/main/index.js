@@ -12,7 +12,7 @@ class MainCtrl {
 		return this.dataList[this.CurrentIndex];
 	}
 
-	constructor(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $scope, $timeout, $state) {
+	constructor(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $scope, $timeout, $state,gettext) {
 		this.CacheSvc = CacheSvc;
 		this.HttpSvc = HttpSvc;
 		this.OverlaySvc = OverlaySvc;
@@ -20,7 +20,7 @@ class MainCtrl {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
 		this.$state = $state;
-
+		this.gettext=gettext;
 		this.current = 0;
 
 		this.dataList = [];
@@ -78,7 +78,7 @@ class MainCtrl {
 			this.CacheSvc.reset('getBookmark');
 		}
 		else {
-			this.ToastSvc.toggle(gettext('Could not like user ') + uid);
+			this.ToastSvc.toggle('Could not like user ' + uid);
 		}
 	}
 

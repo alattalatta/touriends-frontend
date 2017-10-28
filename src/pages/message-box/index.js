@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function MessageBox(OverlaySvc, $state, HttpSvc, LoginSvc, ToastSvc) {
+function MessageBox(OverlaySvc, $state, HttpSvc, LoginSvc, ToastSvc,gettext) {
   this.datalist=[];
   this.getOther = function(){
     HttpSvc.request('showMessage').then((res) => {

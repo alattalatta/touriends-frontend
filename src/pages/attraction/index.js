@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state) {
+function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext) {
   this.menu=[gettext('ALL'), gettext('Attraction'),gettext( 'Culture'), gettext('Festival')];
   this.all_menu=[gettext('Gangnam-gu'),gettext('Gangdong-gu'),gettext('Gangbuk-gu'),gettext('Gangseo-gu'),
       gettext('Gwanak-gu'),gettext('Gwangjin-gu'), gettext('Guro-gu'),gettext('Geumcheon-gu'),

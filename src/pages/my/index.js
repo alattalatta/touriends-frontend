@@ -27,12 +27,12 @@ class MyCtrl {
 		};
 	}
 
-	constructor(ToastSvc, OverlaySvc, CacheSvc, LoginSvc, $scope, $http, $state) {
+	constructor(ToastSvc, OverlaySvc, CacheSvc, LoginSvc, $scope, $http, $state,gettext) {
 		this.OverlaySvc = OverlaySvc;
 		this.CacheSvc = CacheSvc;
 		this.LoginSvc = LoginSvc;
 		this.$state = $state;
-
+		this.gettext=gettext;
 		this.image = null;
 		this.imageData = null;
 		this.imageOrientation = null;

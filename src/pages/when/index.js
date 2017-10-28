@@ -13,7 +13,7 @@ class WhenCtrl {
 		this.$state = $state;
 		this.dateA = null;
 		this.dateB = null;
-
+		this.gettext=gettext;
 		this.CacheSvc.get('get_calendar').then((response) => {
 			if (response.data.success) {
 				this.dateA = new Date(response.data.from + ' 00:00:00');
@@ -24,7 +24,7 @@ class WhenCtrl {
 
 	async goNext() {
 		if (this.dateA === null || this.dateB === null || isNaN(this.dateA.getTime()) || isNaN(this.dateB.getTime())) {
-			this.ToastSvc.toggle(gettext('Please select two dates'));
+			this.ToastSvc.toggle('Please select two dates');
 			return;
 		}
 

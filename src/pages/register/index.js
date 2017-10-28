@@ -173,13 +173,13 @@ class RegisterCtrl {
 		}
 	}
 
-	constructor(ToastSvc, OverlaySvc, LoginSvc, $scope, $state) {
+	constructor(ToastSvc, OverlaySvc, LoginSvc, $scope, $state,gettext) {
 		this.ToastSvc = ToastSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.LoginSvc = LoginSvc;
 		this.$scope = $scope;
 		this.$state = $state;
-
+		this.gettext=gettext;
 		this.imagePreview = null;
 		this.imageData = null;
 		this.imageOrientation = null;
@@ -220,28 +220,28 @@ class RegisterCtrl {
 		}
 		if (!this.DataValid) {
 			if (! this.IDValid) {
-				this.ToastSvc.toggle(gettext('Invalid ID'));
+				this.ToastSvc.toggle('Invalid ID');
 			}
 			else if (! this.NameValid) {
-				this.ToastSvc.toggle(gettext('Invalid name'));
+				this.ToastSvc.toggle('Invalid name');
 			}
 			else if (! this.EmailValid) {
-				this.ToastSvc.toggle(gettext('Invalid e-mail'));
+				this.ToastSvc.toggle('Invalid e-mail');
 			}
 			else if (! this.PasswordValid) {
-				this.ToastSvc.toggle(gettext('Please use password with 6 or more letters'))
+				this.ToastSvc.toggle('Please use password with 6 or more letters')
 			}
 			else if (! this.PasswordConfirmValid) {
-				this.ToastSvc.toggle(gettext('Please check your password'));
+				this.ToastSvc.toggle('Please check your password');
 			}
 			else if (! this.BirthValid) {
-				this.ToastSvc.toggle(gettext('Please fill your birthday (M/D/YY)'));
+				this.ToastSvc.toggle('Please fill your birthday (M/D/YY)');
 			}
 			else if (! this.GenderValid) {
-				this.ToastSvc.toggle(gettext('Please select your gender'));
+				this.ToastSvc.toggle('Please select your gender');
 			}
 			else if (! this.NationValid) {
-				this.ToastSvc.toggle(gettext('Please select your nationality'));
+				this.ToastSvc.toggle('Please select your nationality');
 			}
 			return;
 		}
@@ -255,27 +255,27 @@ class RegisterCtrl {
 		}
 
 		this.pending = true;
-		this.OverlaySvc.toggle(gettext('loading'));
+		this.OverlaySvc.toggle('loading');
 		let response = await this.LoginSvc.register(data);
 
 		this.pending = false;
 		if (response.data.success) {
 			await this.$state.go('introduce');
-			this.OverlaySvc.toggle(gettext('loading'));
+			this.OverlaySvc.toggle('loading');
 		}
 		else {
-			this.OverlaySvc.toggle(gettext('loading'));
+			this.OverlaySvc.toggle('loading');
 			this.registerObj.pwd = this.registerObj.pwdConfirm = null;
 			switch (response.data.error) {
 				case 'login_duplicate':
 					this.registerObj.login = null;
-					this.ToastSvc.toggle(gettext('ID already in use'), true);
+					this.ToastSvc.toggle('ID already in use', true);
 					break;
 				case 'upload_failed':
-					this.ToastSvc.toggle(gettext('Profile image must not exceed 5MB', true);
+					this.ToastSvc.toggle('Profile image must not exceed 5MB', true);
 					break;
 				default:
-					this.ToastSvc.toggle(gettext('Please check your internet connection', true);
+					this.ToastSvc.toggle('Please check your internet connection', true);
 			}
 		}
 	}

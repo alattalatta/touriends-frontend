@@ -10,7 +10,7 @@ class ThemeCtrl {
 		this.CacheSvc = CacheSvc;
 		this.$http = $http;
 		this.$state = $state;
-
+		this.gettext = gettext;
 		this.datalist = [gettext('k-pop'), gettext('food'), gettext('exhibition'), gettext('culture'), gettext('activity')];
 		this.simage = null;
 

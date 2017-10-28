@@ -1,6 +1,6 @@
 // import param from 'jquery-param';
 
-function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout) {
+function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout,gettext) {
 	this.repeater = new Array(12);
 
 	this.datalist = [];

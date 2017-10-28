@@ -12,13 +12,13 @@ class CommunityListCtrl {
 		}, []);
 	}
 
-	constructor(HttpSvc, CacheSvc, OverlaySvc, ToastSvc, $state) {
+	constructor(HttpSvc, CacheSvc, OverlaySvc, ToastSvc, $state,gettext) {
 		this.HttpSvc = HttpSvc;
 		this.CacheSvc = CacheSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.ToastSvc = ToastSvc;
 		this.$state = $state;
-
+		this.gettext=gettext;
 		this.dataList = [];
 		this.languages = [false, false, false, false, false, false];
 		this.keyword = null;
@@ -37,11 +37,11 @@ class CommunityListCtrl {
 		});
 
 		if (! res.data.success) {
-			this.OverlaySvc.off(gettext('loading'));
-			this.ToastSvc.toggle(gettext('Could not get community list'));
+			this.OverlaySvc.off('loading');
+			this.ToastSvc.toggle('Could not get community list');
 		}
 		else {
-			this.OverlaySvc.off(gettext('loading'));
+			this.OverlaySvc.off('loading');
 			this.dataList = res.data.users;
 		}
 	}

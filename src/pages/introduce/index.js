@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function IntroduceCtrl(LoginSvc, CacheSvc, $http, $state) {
+function IntroduceCtrl(LoginSvc, CacheSvc, $http, $state,gettext) {
     this.image = null;
     this.intro = null;
 	  this.login = LoginSvc.user_login;

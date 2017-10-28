@@ -1,20 +1,46 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.0.4\n"
 "Last-Translator: \n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Team: \n"
 "Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/pages/attraction/template.html:4
+msgid "ATTRACTION"
+msgstr ""
+
+#: src/pages/login/template.html:10
+msgid "Account?"
+msgstr "계정"
 
 #: src/pages/main/template.html:23
 msgid "Add your Touriends to travel with you"
 msgstr "테스트1"
+
+#: src/pages/community-list/template.html:10
+msgid "Age"
+msgstr ""
+
+#: src/pages/long-comment/template.html:4
+msgid "Anything more to tell us<br>about this tour?"
+msgstr ""
+
+#: src/pages/matching-success/template.html:18
+msgid "Choose your"
+msgstr ""
+
+#: src/pages/login/template.html:10
+msgid ""
+"Don't have an <span class=\"login-actions__accent\" translate=\"\">Account?</"
+"span>"
+msgstr "이 없으신가요"
 
 #: src/pages/my/template.html:23
 msgid "Edit matching info"
@@ -23,3 +49,100 @@ msgstr "테스트2"
 #: src/pages/my/template.html:22
 msgid "Edit profile"
 msgstr "테스트3"
+
+#: src/pages/register/template.html:48
+msgid ""
+"Female<input name=\"gender\" type=\"radio\" value=\"female\" ng-model="
+"\"$ctrl.registerObj.gender\">"
+msgstr ""
+
+#: src/pages/community-list/template.html:6
+msgid "Filter"
+msgstr ""
+
+#: src/pages/register/template.html:60
+msgid ""
+"Foreigner<input name=\"nation\" type=\"radio\" value=\"foreigner\" ng-model="
+"\"$ctrl.registerObj.nation\">"
+msgstr ""
+
+#: src/pages/login/template.html:11
+msgid ""
+"Forgot <span class=\"login-actions__accent\" translate=\"\">Password?</span>"
+msgstr ""
+
+#: src/pages/matching-main/template.html:3
+msgid "I'm looking for Touriends<br>for you.<br>Would you like to match?"
+msgstr ""
+
+#: src/pages/login/template.html:7
+msgid "LOGIN"
+msgstr ""
+
+#: src/pages/community-list/template.html:12
+msgid "Language"
+msgstr ""
+
+#: src/pages/matching-main/template.html:8
+msgid "Loading..."
+msgstr ""
+
+#: src/pages/register/template.html:57
+msgid ""
+"Local<input name=\"nation\" type=\"radio\" value=\"local\" ng-model=\"$ctrl."
+"registerObj.nation\">"
+msgstr ""
+
+#: src/pages/my/template.html:24
+msgid "Log out"
+msgstr ""
+
+#: src/pages/register/template.html:45
+msgid ""
+"Male<input name=\"gender\" type=\"radio\" value=\"male\" ng-model=\"$ctrl."
+"registerObj.gender\">"
+msgstr ""
+
+#: src/pages/message-box/template.html:4
+msgid "Message box"
+msgstr ""
+
+#: src/pages/community-list/template.html:30
+msgid "No Touriends"
+msgstr ""
+
+#: src/pages/matching-main/template.html:12
+msgid "No, I'll do it next time"
+msgstr "아니요, 다음에할게요"
+
+#: src/pages/login/template.html:11
+msgid "Password?"
+msgstr ""
+
+#: src/pages/long-comment/template.html:19
+msgid "Register"
+msgstr ""
+
+#: src/pages/matching-success/template.html:19
+msgid "TOURIENDS"
+msgstr ""
+
+#: src/pages/introduce/template.html:3
+msgid "Welcome Touriends!"
+msgstr ""
+
+#: src/pages/theme/template.html:5
+msgid "What is your<br>preferred travel theme?"
+msgstr ""
+
+#: src/pages/language/template.html:5
+msgid "What language<br>do you speak?"
+msgstr ""
+
+#: src/pages/when/template.html:4
+msgid "When do you<br>come to Seoul?"
+msgstr ""
+
+#: src/pages/matching-main/template.html:11
+msgid "Yes, I'd like to match"
+msgstr ""
