@@ -24,7 +24,7 @@ const gulp = require('gulp');
 const cache = require('gulp-cached');
 const sftp = require('gulp-ssh');
 
-gulp.task('default', 'build');
+gulp.task('default', ['build']);
 gulp.task('clean', () => {
 	return del([
 		'app/**/*'
