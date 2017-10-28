@@ -3,17 +3,17 @@
 		<header class="community-filter">
 			<div class="wrapper">
 				<div class="close" ng-click="$ctrl.closeFilter()"></div>
-				<label>Filter</label>
+				<label translate >Filter</label>
 			</div>
 		</header>
 		<div class="community-filter_body">
-			<h1>Age</h1>
+			<h1 translate >Age</h1>
 			<section class="languages">
-				<h1>Language</h1>
+				<h1 translate >Language</h1>
 				<div class="buttons row">
 					<div class="col-4" ng-repeat="lang in $ctrl.langs">
 						<div class="button" ng-class="{'is-active': $ctrl.languages[$index]}"
-						     ng-click="$ctrl.languages[$index] = ! $ctrl.languages[$index]" ng-bind="lang"></div>
+						     ng-click="$ctrl.languages[$index] = ! $ctrl.languages[$index]" ng-bind="lang | translate"></div>
 					</div>
 				</div>
 			</section>
@@ -27,18 +27,18 @@
 		</form>
 	</header>
 	<div class="community-list">
-		<div class="community-blank" ng-if="$ctrl.dataList.length === 0">
+		<div class="community-blank" ng-if="$ctrl.dataList.length === 0" translate >
 			No Touriends
 		</div>
 		<div class="community-item" ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.go($index)">
 			<div class="image" ng-style="item.image | srcToBackground"></div>
 			<div class="top">
-				<span class="id" ng-bind="item.login"></span>
+				<span class="id" ng-bind="item.login | translate"></span>
 				<span class="separator">/</span>
-				<span class="age" ng-bind="item.age"></span>
+				<span class="age" ng-bind="item.age | translate"></span>
 				<div class="community-icon icon" ng-repeat="lang in item.languages" ng-class="lang"></div>
 			</div>
-			<div class="intro" ng-bind="item.intro"></div>
+			<div class="intro" ng-bind="item.intro | translate"></div>
 			<div class="triangle">
 				<div class="pattern"></div>
 				<div class="icon liked" ng-class="{'not': ! item.liked}" ng-click="$ctrl.like($index)"></div>

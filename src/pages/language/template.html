@@ -2,7 +2,7 @@
 	<div class="lang-preloader" ng-repeat="lang in $ctrl.datalist" ng-class="lang"></div>
 	<div class="paper-group tall">
 		<div class="paper-title language">
-			<p class="paper-title_body language">
+			<p class="paper-title_body language" translate>
 				What language<br>do you speak?
 			</p>
 		</div>
@@ -17,7 +17,7 @@
 	<section class="under-paper">
 		<div class="big-bracket">
 			<div class="left-bracket"> [</div>
-			<div class="select-title language" ng-bind="$ctrl.selectedTitle()"></div>
+			<div class="select-title language" ng-bind="$ctrl.selectedTitle() | translate"></div>
 			<div class="right-bracket"> ]</div>
 		</div>
 		<div class="select-list language">

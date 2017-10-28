@@ -71,6 +71,6 @@ function MessageBox(OverlaySvc, $state, HttpSvc, LoginSvc, ToastSvc) {
   }
 }
 
-MessageBox.$inject = ['OverlaySvc', '$state', 'HttpSvc', 'LoginSvc', 'ToastSvc'];
+MessageBox.$inject = ['OverlaySvc', '$state', 'HttpSvc', 'LoginSvc', 'ToastSvc','gettext'];
 
 export default angular.module('touriends.page.message-box', ['touriends']).controller('MessageBox', MessageBox).name;

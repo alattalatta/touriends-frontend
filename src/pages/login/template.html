@@ -4,11 +4,11 @@
         <form class="login-box" id="form_login" ng-submit="$ctrl.login()" novalidate>
             <input class="form-input input" name="login" type="email" ng-model="$ctrl.loginObj.login" placeholder="ID">
             <input class="form-input input" name="pwd" type="password" ng-model="$ctrl.loginObj.pwd" placeholder="Password">
-            <button class="login-box__submit">LOGIN</button>
+            <button class="login-box__submit" translate>LOGIN</button>
         </form>
         <div class="login-actions">
-            <a class="login-actions__action" ui-sref="register">Don't have an <span class="login-actions__accent">Account?</span></a>
-            <a class="login-actions__action">Forgot <span class="login-actions__accent">Password?</span></a>
+            <a class="login-actions__action" ui-sref="register" translate>Don't have an <span class="login-actions__accent" translate>Account?</span></a>
+            <a class="login-actions__action" translate>Forgot <span class="login-actions__accent" translate>Password?</span></a>
         </div>
     </div>
     <div class="login-triangle"></div>

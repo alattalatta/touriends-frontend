@@ -3,7 +3,7 @@ import leftPad from 'left-pad';
 
 class WhenCtrl {
 	static get $inject() {
-		return ['ToastSvc', 'CacheSvc', '$http', '$state'];
+		return ['ToastSvc', 'CacheSvc', '$http', '$state','gettext'];
 	}
 
 	constructor(ToastSvc, CacheSvc, $http, $state) {
@@ -24,7 +24,7 @@ class WhenCtrl {
 
 	async goNext() {
 		if (this.dateA === null || this.dateB === null || isNaN(this.dateA.getTime()) || isNaN(this.dateB.getTime())) {
-			this.ToastSvc.toggle('Please select two dates');
+			this.ToastSvc.toggle(gettext('Please select two dates'));
 			return;
 		}
 

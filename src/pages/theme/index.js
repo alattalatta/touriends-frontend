@@ -2,7 +2,7 @@ import param from 'jquery-param';
 
 class ThemeCtrl {
 	static get $inject() {
-		return ['ToastSvc', 'CacheSvc', '$http', '$state'];
+		return ['ToastSvc', 'CacheSvc', '$http', '$state','gettext'];
 	}
 
 	constructor(ToastSvc, CacheSvc, $http, $state) {
@@ -11,7 +11,7 @@ class ThemeCtrl {
 		this.$http = $http;
 		this.$state = $state;
 
-		this.datalist = ['k-pop', 'food', 'exhibition', 'culture', 'activity'];
+		this.datalist = [gettext('k-pop'), gettext('food'), gettext('exhibition'), gettext('culture'), gettext('activity')];
 		this.simage = null;
 
 		// 서버에서 받아오기
@@ -48,7 +48,7 @@ class ThemeCtrl {
 
 	async goNext() {
 		if (this.simage === null) {
-			this.ToastSvc.toggle('Please select a theme');
+			this.ToastSvc.toggle(gettext('Please select a theme'));
 			return;
 		}
 

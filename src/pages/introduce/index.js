@@ -65,6 +65,6 @@ function IntroduceCtrl(LoginSvc, CacheSvc, $http, $state) {
     }
 }
 
-IntroduceCtrl.$inject = ['LoginSvc', 'CacheSvc', '$http', '$state'];
+IntroduceCtrl.$inject = ['LoginSvc', 'CacheSvc', '$http', '$state','gettext'];
 
 export default angular.module('touriends.page.introduce', ['touriends']).controller('IntroduceCtrl', IntroduceCtrl).name;

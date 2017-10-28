@@ -139,6 +139,6 @@ function Message(OverlaySvc, $timeout, HttpSvc, LoginSvc, CacheSvc, $stateParams
 
 }
 
-Message.$inject = ['OverlaySvc', '$timeout', 'HttpSvc', 'LoginSvc', 'CacheSvc', '$stateParams'];
+Message.$inject = ['OverlaySvc', '$timeout', 'HttpSvc', 'LoginSvc', 'CacheSvc', '$stateParams','gettext'];
 
 export default angular.module('touriends.page.message', ['touriends']).controller('Message', Message).name;

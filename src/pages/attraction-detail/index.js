@@ -256,6 +256,6 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
   OverlaySvc.off('loading');
 }
 
-AttractionDetail.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$stateParams'];
+AttractionDetail.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$stateParams','gettext'];
 
 export default angular.module('touriends.page.attraction-detail', ['touriends']).controller('AttractionDetail', AttractionDetail).name;

@@ -1,6 +1,6 @@
 class CommunityItemCtrl {
 	static get $inject() {
-		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', '$stateParams'];
+		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', '$stateParams','gettext'];
 	}
 
 	constructor(HttpSvc, CacheSvc, OverlaySvc, $stateParams) {

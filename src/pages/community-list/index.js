@@ -1,6 +1,6 @@
 class CommunityListCtrl {
 	static get $inject() {
-		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', 'ToastSvc', '$state'];
+		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', 'ToastSvc', '$state', 'gettext'];
 	}
 
 	get Languages() {
@@ -24,7 +24,7 @@ class CommunityListCtrl {
 		this.keyword = null;
 		this.filterOpened = false;
 
-		this.langs = ['Japanese', 'Korean', 'English', 'French', 'Chinese', 'German'];
+		this.langs = [gettext('Japanese'), gettext('Korean'), gettext('English'), gettext('French'), gettext('Chinese'), gettext('German')];
 
 		this.fetchData();
 	}
@@ -37,11 +37,11 @@ class CommunityListCtrl {
 		});
 
 		if (! res.data.success) {
-			this.OverlaySvc.off('loading');
-			this.ToastSvc.toggle('Could not get community list');
+			this.OverlaySvc.off(gettext('loading'));
+			this.ToastSvc.toggle(gettext('Could not get community list'));
 		}
 		else {
-			this.OverlaySvc.off('loading');
+			this.OverlaySvc.off(gettext('loading'));
 			this.dataList = res.data.users;
 		}
 	}

@@ -1,6 +1,6 @@
 class MyCtrl {
 	static get $inject() {
-		return ['ToastSvc', 'OverlaySvc', 'CacheSvc', 'LoginSvc', '$scope', '$http', '$state']
+		return ['ToastSvc', 'OverlaySvc', 'CacheSvc', 'LoginSvc', '$scope', '$http', '$state','gettext']
 	}
 
 	get ProfileImage() {

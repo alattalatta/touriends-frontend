@@ -15,8 +15,8 @@
 				</div>
 				<div class="matching-circle_inner label">
 					<div class="wrapper">
-						<p class="first-text">Choose your</p>
-						<p class="second-text">TOURIENDS</p>
+						<p class="first-text" translate>Choose your</p>
+						<p class="second-text" translate >TOURIENDS</p>
 					</div>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 			     ng-click="$ctrl.selectPerson($index)"></div>
 		</div>
 	</div>
-	<div class="person-text" ng-class="{'is-visible': $ctrl.isChoice}" ng-bind="$ctrl.tourComment()"></div>
+	<div class="person-text" ng-class="{'is-visible': $ctrl.isChoice}" ng-bind="$ctrl.tourComment() | translate"></div>
 	<main-nav></main-nav>
 	<div class="icon preloader activity"></div>
 	<div class="icon preloader chinese"></div>

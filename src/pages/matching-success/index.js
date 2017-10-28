@@ -111,7 +111,7 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout) 
 				this.datalist[this.person].liked = res.data.like;
 			}
 			else {
-				ToastSvc.toggle('Could not like user ' + this.datalist[this.person].uid);
+				ToastSvc.toggle(gettext('Could not like user ') + this.datalist[this.person].uid);
 			}
 			CacheSvc.reset('getBookmark');
 		});
@@ -142,6 +142,6 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout) 
 		return this.datalist[this.person].comment === '' ? 'No comment' : this.datalist[this.person].comment;
 	}
 }
-MatchingSuccessCtrl.$inject = ['CacheSvc', 'HttpSvc', 'OverlaySvc', 'ToastSvc', '$timeout'];
+MatchingSuccessCtrl.$inject = ['CacheSvc', 'HttpSvc', 'OverlaySvc', 'ToastSvc', '$timeout','gettext'];
 
 export default angular.module('touriends.page.matching-success', ['touriends']).controller('MatchingSuccessCtrl', MatchingSuccessCtrl).name;

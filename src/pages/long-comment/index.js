@@ -47,13 +47,13 @@ function LongCommentCtrl(ToastSvc, CacheSvc, $http, $state) {
 				$state.go('matching-main');
 			}
 			else {
-				ToastSvc.toggle('Failed to update tour comment');
+				ToastSvc.toggle(gettext('Failed to update tour comment'));
 			}
 		});
 	}
 }
 
-LongCommentCtrl.$inject = ['ToastSvc', 'CacheSvc', '$http', '$state'];
+LongCommentCtrl.$inject = ['ToastSvc', 'CacheSvc', '$http', '$state','gettext'];
 
 
 export default angular.module('touriends.page.long-comment', ['touriends']).controller('LongCommentCtrl', LongCommentCtrl).name;

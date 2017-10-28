@@ -2,7 +2,7 @@
 	<div class="theme-preloader" ng-repeat="theme in $ctrl.datalist" ng-class="theme"></div>
 	<div class="paper-group tall">
 		<div class="paper-title theme">
-			<p class="paper-title_body theme">
+			<p class="paper-title_body theme" translate>
 				What is your<br>preferred travel theme?
 			</p>
 		</div>
@@ -17,7 +17,7 @@
 	<section class="under-paper">
 		<div class="big-bracket">
 			<div class="left-bracket"> [</div>
-			<div class="select-title" ng-bind="$ctrl.selectedTitle()"></div>
+			<div class="select-title" ng-bind="$ctrl.selectedTitle() | translate"></div>
 			<div class="right-bracket"> ]</div>
 		</div>
 		<div class="select-list theme">

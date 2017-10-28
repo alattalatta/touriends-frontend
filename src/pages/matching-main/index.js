@@ -1,6 +1,6 @@
 class MatchingMainCtrl {
 	static get $inject() {
-		return ['CacheSvc', 'OverlaySvc', '$state'];
+		return ['CacheSvc', 'OverlaySvc', '$state','gettext'];
 	}
 
 	constructor(CacheSvc, OverlaySvc, $state) {

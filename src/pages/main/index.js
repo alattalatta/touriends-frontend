@@ -2,7 +2,7 @@ require('slick-carousel');
 
 class MainCtrl {
 	static get $inject() {
-		return ['CacheSvc', 'HttpSvc', 'OverlaySvc', 'ToastSvc', '$scope', '$timeout', '$state'];
+		return ['CacheSvc', 'HttpSvc', 'OverlaySvc', 'ToastSvc', '$scope', '$timeout', '$state','gettext'];
 	}
 
 	get CurrentIndex() {
@@ -78,7 +78,7 @@ class MainCtrl {
 			this.CacheSvc.reset('getBookmark');
 		}
 		else {
-			this.ToastSvc.toggle('Could not like user ' + uid);
+			this.ToastSvc.toggle(gettext('Could not like user ') + uid);
 		}
 	}
 
