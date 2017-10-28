@@ -258,6 +258,39 @@ export default app => {
 					})
 				}]
 			}
+		}).state({
+			url: '/message-box',
+			name: 'message-box',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/message-box/template.html');
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/message-box/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.message-box'
+						});
+					});
+				}]
+			}
+		}).state({
+			url: '/message',
+			name: 'message',
+			//params:'id',
+			//parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/message/template.html');
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/message/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.message'
+						});
+					});
+				}]
+			}
 		});
 
 		$urlRouterProvider.otherwise('/main');

@@ -3,7 +3,7 @@ import param from 'jquery-param';
 function IntroduceCtrl(LoginSvc, CacheSvc, $http, $state) {
     this.image = null;
     this.intro = null;
-	this.login = LoginSvc.user_login;
+	  this.login = LoginSvc.user_login;
     this.byte = 0;
 
 	// 자기소개 가져오기
