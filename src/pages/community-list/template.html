@@ -3,17 +3,57 @@
 		<header class="community-filter">
 			<div class="wrapper">
 				<div class="close" ng-click="$ctrl.closeFilter()"></div>
-				<label>Filter</label>
+				<label translate>Filter</label>
 			</div>
 		</header>
 		<div class="community-filter_body">
-			<h1>Age</h1>
+			<section class="age">
+				<h1 translate>Age</h1>
+				<div class="slider">
+					<div class="item">
+						<div class="circle"></div>
+						<label>0</label>
+					</div>
+					<div class="item">
+						<div class="circle"></div>
+						<label>20</label>
+					</div>
+					<div class="item">
+						<div class="circle"></div>
+						<label>30</label>
+					</div>
+					<div class="item">
+						<div class="circle"></div>
+						<label>40</label>
+					</div>
+				</div>
+			</section>
 			<section class="languages">
-				<h1>Language</h1>
+				<h1 translate>Language</h1>
 				<div class="buttons row">
-					<div class="col-4" ng-repeat="lang in $ctrl.langs">
-						<div class="button" ng-class="{'is-active': $ctrl.languages[$index]}"
-						     ng-click="$ctrl.languages[$index] = ! $ctrl.languages[$index]" ng-bind="lang"></div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('japanese')"
+						     ng-click="$ctrl.Language = 'japanese'" translate>Japanese</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('korean')"
+						     ng-click="$ctrl.Language = 'korean'" translate>Korean</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('english')"
+						     ng-click="$ctrl.Language = 'english'" translate>English</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('french')"
+						     ng-click="$ctrl.Language = 'french'" translate>French</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('chinese')"
+						     ng-click="$ctrl.Language = 'chinese'" translate>Chinese</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('german')"
+						     ng-click="$ctrl.Language = 'german'" translate>German</div>
 					</div>
 				</div>
 			</section>
@@ -27,9 +67,7 @@
 		</form>
 	</header>
 	<div class="community-list">
-		<div class="community-blank" ng-if="$ctrl.dataList.length === 0">
-			No Touriends
-		</div>
+		<div class="community-blank" ng-if="$ctrl.dataList.length === 0" translate>No Touriends</div>
 		<div class="community-item" ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.go($index)">
 			<div class="image" ng-style="item.image | srcToBackground"></div>
 			<div class="top">

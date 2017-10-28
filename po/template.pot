@@ -8,10 +8,50 @@ msgstr ""
 msgid "Add your Touriends to travel with you"
 msgstr ""
 
+#: src/pages/community-list/template.html:11
+msgid "Age"
+msgstr ""
+
+#: src/pages/community-list/template.html:51
+msgid "Chinese"
+msgstr ""
+
 #: src/pages/my/template.html:23
 msgid "Edit matching info"
 msgstr ""
 
 #: src/pages/my/template.html:22
 msgid "Edit profile"
+msgstr ""
+
+#: src/pages/community-list/template.html:43
+msgid "English"
+msgstr ""
+
+#: src/pages/community-list/template.html:6
+msgid "Filter"
+msgstr ""
+
+#: src/pages/community-list/template.html:47
+msgid "French"
+msgstr ""
+
+#: src/pages/community-list/template.html:55
+msgid "German"
+msgstr ""
+
+#: src/pages/community-list/template.html:35
+msgid "Japanese"
+msgstr ""
+
+#: src/pages/community-list/template.html:39
+msgid "Korean"
+msgstr ""
+
+#: src/pages/community-list/template.html:32
+msgid "Language"
+msgstr ""
+
+#: src/pages/community-list/template.html:70
+msgid "No Touriends"
 msgstr ""

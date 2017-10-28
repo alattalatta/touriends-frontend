@@ -3,13 +3,13 @@ class CommunityListCtrl {
 		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', 'ToastSvc', '$state'];
 	}
 
-	get Languages() {
-		return this.languages.reduce((acc, cur, idx) => {
-			if (cur) {
-				acc.push(this.langs[idx]);
-			}
-			return acc;
-		}, []);
+	set Language(val) {
+		if (this.language === val) {
+			this.language = null;
+		}
+		else {
+			this.language = val;
+		}
 	}
 
 	constructor(HttpSvc, CacheSvc, OverlaySvc, ToastSvc, $state) {
@@ -20,21 +20,20 @@ class CommunityListCtrl {
 		this.$state = $state;
 
 		this.dataList = [];
-		this.languages = [false, false, false, false, false, false];
+		this.language = null;
+		this.ages = [0, 40];
 		this.keyword = null;
 		this.filterOpened = false;
-
-		this.langs = ['Japanese', 'Korean', 'English', 'French', 'Chinese', 'German'];
 
 		this.fetchData();
 	}
 
 	async fetchData(keyword) {
-		console.log(this.Languages);
 		let res = await this.HttpSvc.request('getCommunityList', {
 			keyword: keyword,
-			languages: this.Languages
+			language: this.language
 		});
+		console.log(res.data);
 
 		if (! res.data.success) {
 			this.OverlaySvc.off('loading');
@@ -49,7 +48,6 @@ class CommunityListCtrl {
 	async like($index) {
 		let uid = this.dataList[$index].id;
 		this.dataList[$index].liked = ! this.dataList[$index].liked;
-		console.log(this.dataList[$index].liked);
 		let res = await this.HttpSvc.request('bookmark', {
 			like: uid,
 			override: this.dataList[$index].liked
@@ -69,6 +67,10 @@ class CommunityListCtrl {
 	async closeFilter() {
 		await this.fetchData(this.keyword);
 		this.filterOpened = false;
+	}
+
+	languageClass(key) {
+		return this.language === key ? 'is-active' : null;
 	}
 
 	go($index) {
