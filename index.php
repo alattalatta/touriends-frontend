@@ -9,6 +9,7 @@
 	<base href="<?= home_url() ?>">
     <?php wp_head() ?>
     <script>
+	    var locale_url = '<?= get_stylesheet_directory_uri() . '/app/l10n' ?>';
 	    var ajax_url = `<?= admin_url('admin-ajax.php') ?>`;
 	    var aaa =<?= is_user_logged_in() ? 'true' : 'false' ?>;
 	    var bbb =<?= is_user_logged_in() ? '\'' . wp_get_current_user()->user_login . '\'' : 'null' ?>;

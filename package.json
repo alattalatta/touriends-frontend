@@ -3,6 +3,8 @@
     "version": "1.0.0",
     "dependencies": {
         "angular-autoselect": "^0.3.3",
+        "angular-gettext": "^2.3.10",
+        "angular-gettext-plugin": "^1.0.1",
         "angular-loading-bar": "^0.9.0",
         "angular-sanitize": "1.6.6",
         "angular-ui-router": "^1.0.3",

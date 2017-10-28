@@ -17,13 +17,14 @@ const LessAutoprefixPlugin = require('less-plugin-autoprefix');
 const LessCleanCSSPlugin = require('less-plugin-clean-css');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const Gettext = require('angular-gettext-plugin');
 
 // Gulp
 const gulp = require('gulp');
 const cache = require('gulp-cached');
 const sftp = require('gulp-ssh');
 
-gulp.task('default', ['clean', 'watch', 'build']);
+gulp.task('default', 'build');
 gulp.task('clean', () => {
 	return del([
 		'app/**/*'
@@ -102,6 +103,17 @@ gulp.task('build', () => {
 			},
 			plugins: [
 				new ExtractTextPlugin('style.css'),
+				new Gettext({
+					compileTranslations: {
+						input: 'po/*.po',
+						outputFolder: 'l10n',
+						format: 'json'
+					},
+					extractStrings: {
+						input: 'src/**/*.html',
+						destination: 'po/template.pot'
+					}
+				})
 				// new UglifyJSPlugin({sourceMap: true})
 			]
 		}, webpackCompiler))
