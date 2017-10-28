@@ -1,93 +1,97 @@
 @import (reference) '../index';
-.paper-group&.message{
-  height:100%;
-}
-.communication{
-  border-radius: 30px;
-  background-color: #EFEFEF;
-  font-size: 24.1px;
-  padding: 17.5 / 16rem 19 / 16rem 20.5 / 16rem 19 / 16rem;
-  display: inline-block;
-  max-width: 343 / 16rem;
-  margin-left: 75 / 16rem;
-  margin-right: 74.5 / 16rem;
-  margin-top: 30 / 16rem;
-  position:relative;
-  word-break: break-all;
 
-  &.next-my-message{
-    margin-top: 11 / 16rem;
-  }
-  &.next-you-message{
-    margin-top: 11 / 16rem;
-  }
-}
-.communication-box{
-  padding: 0 43 / 16rem 30 / 16rem 34 / 16rem;
-  height: calc(~'100%' - 160 / 16rem);
-  overflow: scroll;
-  .communication-box_body{
-    overflow-y: hidden;
-  }
-  .communication-list{
-    position:relative;
-    .person-img{
-      position: absolute;
-      top:30 / 16rem;
-      width: 58 / 16rem;
-      height: 58 / 16rem;
-      display: inline-block;
-      background: center no-repeat;
-      background-size: cover;
-      border-radius: 100%;
-      &.me{
-        right:0;
-      }
-      &.you{
-        left:0;
-      }
-    }
-  }
-  .me{
-    text-align: right;
-  }
+.paper-group&.message {
+	height: 100%;
 }
 
-.send-message{
-  height: 72.5 / 16rem;
-  position: fixed;
-  bottom:0;
-  background-color: #F8F8F8;
-  width:100%;
-  .message-input{
-    margin-left: 15.5 / 16rem;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    width:75%;
-    padding:5.5 / 16rem 15 / 16rem 0;
-    height: 46 / 16rem;
-    font-size: 24.1 / 16rem;
-    border-radius: 10px;
-    background-color: white;
-    border:1px solid #EBEBEB;
-    display: inline-block;
-    word-break: break-all;
-  }
-  .btn-message{
-    width: 43.5 / 16rem;
-    height: 32 / 16rem;
-    background-size: cover;
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right:31 / 16rem;
-    &.btn-active{
-      background-image: url('../../media/message-icon.png');
-    }
-    &.btn-disabled{
-      background-image: url('../../media/dis-message-icon.png');
-    }
-  }
+.communication {
+	border-radius: 30px;
+	background-color: #EFEFEF;
+	font-size: 24.1px;
+	padding: 17.5 / 16rem 19 / 16rem 20.5 / 16rem 19 / 16rem;
+	display: inline-block;
+	max-width: 343 / 16rem;
+	margin-left: 75 / 16rem;
+	margin-right: 74.5 / 16rem;
+	margin-top: 30 / 16rem;
+	position: relative;
+	word-break: break-all;
+
+	&.next-my-message {
+		margin-top: 11 / 16rem;
+	}
+	&.next-you-message {
+		margin-top: 11 / 16rem;
+	}
+}
+
+.communication-box {
+	padding: 0 43 / 16rem 30 / 16rem 34 / 16rem;
+	height: calc(~'100% - 10rem');
+	overflow: scroll;
+	.communication-box_body {
+		overflow-y: hidden;
+	}
+	.communication-list {
+		position: relative;
+
+		.person-img {
+			width: 58 / 16rem;
+			height: 58 / 16rem;
+			position: absolute;
+			top: 30 / 16rem;
+			display: inline-block;
+			background: url('../../media/default-profile.jpg') center no-repeat;
+			background-size: cover;
+			border-radius: 100%;
+			&.me {
+				right: 0;
+			}
+			&.you {
+				left: 0;
+			}
+		}
+	}
+	.me {
+		text-align: right;
+	}
+}
+
+.send-message {
+	height: 72.5 / 16rem;
+	position: fixed;
+	bottom: 0;
+	background-color: #F8F8F8;
+	width: 100%;
+	.message-input {
+		margin-left: 15.5 / 16rem;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 75%;
+		padding: 5.5 / 16rem 15 / 16rem 0;
+		height: 46 / 16rem;
+		font-size: 24.1 / 16rem;
+		border-radius: 10px;
+		background-color: white;
+		border: 1px solid #EBEBEB;
+		display: inline-block;
+		word-break: break-all;
+	}
+	.btn-message {
+		width: 43.5 / 16rem;
+		height: 32 / 16rem;
+		background-size: cover;
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 31 / 16rem;
+		&.btn-active {
+			background-image: url('../../media/message-icon.png');
+		}
+		&.btn-disabled {
+			background-image: url('../../media/dis-message-icon.png');
+		}
+	}
 }

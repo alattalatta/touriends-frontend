@@ -3,6 +3,17 @@ class CommunityListCtrl {
 		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', 'ToastSvc', '$state'];
 	}
 
+	set Age(val) {
+		this.ages[this.ageSelectMode] = val;
+		if (this.ages[0] > this.ages[1]) {
+			let tmp = this.ages[1];
+			this.ages[1] = this.ages[0];
+			this.ages[0] = tmp;
+		}
+		this.ageSelectMode = this.ageSelectMode === 1 ? 0 : 1;
+		console.log(this.ages);
+	}
+
 	set Language(val) {
 		if (this.language === val) {
 			this.language = null;
@@ -22,6 +33,7 @@ class CommunityListCtrl {
 		this.dataList = [];
 		this.language = null;
 		this.ages = [0, 40];
+		this.ageSelectMode = 1; // 0 = min, 1 = max
 		this.keyword = null;
 		this.filterOpened = false;
 
@@ -31,9 +43,9 @@ class CommunityListCtrl {
 	async fetchData(keyword) {
 		let res = await this.HttpSvc.request('getCommunityList', {
 			keyword: keyword,
-			language: this.language
+			language: this.language,
+			ages: this.ages
 		});
-		console.log(res.data);
 
 		if (! res.data.success) {
 			this.OverlaySvc.off('loading');
@@ -67,6 +79,13 @@ class CommunityListCtrl {
 	async closeFilter() {
 		await this.fetchData(this.keyword);
 		this.filterOpened = false;
+	}
+
+	ageItemClass(key) {
+		return this.ages[0] <= key && this.ages[1] >= key ? 'is-active' : null;
+	}
+	ageHorizontalClass(min, max) {
+		return this.ages[0] <= min && this.ages[1] >= max ? 'is-active' : null;
 	}
 
 	languageClass(key) {

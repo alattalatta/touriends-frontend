@@ -23,16 +23,6 @@
 		height: 100%;
 		visibility: visible;
 	}
-
-	.close {
-		width: 24 / 16rem;
-		height: 24 / 16rem;
-		background: url('../../media/community/close.png') center no-repeat;
-		background-size: contain;
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
 }
 
 .community-filter_body {
@@ -69,7 +59,12 @@
 					left: 0;
 				}
 				&:nth-child(2) {
-
+					left: 33%;
+					transform: translateX(-50%);
+				}
+				&:nth-child(3) {
+					left: 66%;
+					transform: translateX(-50%);
 				}
 				&:nth-child(4) {
 					right: 0;
@@ -79,8 +74,34 @@
 					width: 1.5rem;
 					height: 1.5rem;
 					background: white;
-					border: .33rem solid #97d3dd;
+					border: .25rem solid #BFBFBF;
 					border-radius: 100%;
+					margin: auto;
+				}
+				&.is-active .circle {
+					border-color: #97d3dd;
+				}
+
+				label {
+					color: rgba(0, 0, 0, .6);
+					display: block;
+					text-align: center;
+					margin-top: 1rem;
+				}
+			}
+
+			.horizontals {
+				display: flex;
+				padding: 0 .5rem;
+			}
+			.horizontal {
+				height: 2px;
+				background: #D5D5D5;
+				flex: 0 0 33%;
+				margin-top: 10 / 16rem;
+
+				&.is-active {
+					background: #97d3dd;
 				}
 			}
 		}
@@ -113,7 +134,7 @@
 	}
 }
 
-.community-filter {
+.community-header {
 	width: 100%;
 	height: @filter-height;
 	background: white;
@@ -122,6 +143,17 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 999;
+
+	.close {
+		width: 24 / 16rem;
+		height: 24 / 16rem;
+		background: url('../../media/community/close.png') center no-repeat;
+		background-size: contain;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
 
 	label {
 		color: rgba(0, 0, 0, .7);
@@ -176,7 +208,7 @@
 	padding-top: @filter-height;
 }
 
-.community-item {
+.community-list_item {
 	height: 143 / 16rem;
 	color: rgba(0, 0, 0, .8);
 	padding: 13 / 16rem 22 / 16rem;
@@ -212,6 +244,8 @@
 	.intro {
 		font-size: 20 / 16rem;
 		margin-top: .5rem;
+		margin-left: 5rem;
+		margin-right: 72 / 16rem;
 	}
 
 	.triangle {

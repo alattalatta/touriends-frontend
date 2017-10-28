@@ -47,9 +47,8 @@ export default app => {
 			parent: 'authless',
 			template: require('./pages/login/template.html')
 		}).state({
-			url: '/register',
+			url: '/register/:edit',
 			name: 'register',
-			parent: 'authless',
 			templateProvider: () => {
 				return import('./pages/register/template.html');
 			},

@@ -19,7 +19,7 @@
 			<p class="my-intro" ng-bind="$ctrl.intro"></p>
 		</section>
 		<section class="my-options">
-			<div class="item"><span translate>Edit profile</span></div>
+			<div class="item" ui-sref="register({edit: true})"><span translate>Edit profile</span></div>
 			<div class="item" ui-sref="when"><span translate>Edit matching info</span></div>
 			<div class="item" ng-click="$ctrl.logout()"><span>Log out</span></div>
 		</section>

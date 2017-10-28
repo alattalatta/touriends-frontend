@@ -1,6 +1,6 @@
 <main class="page-community-list" ng-controller="CommunityListCtrl as $ctrl">
 	<div class="community-filter-window" ng-class="{'is-open': $ctrl.filterOpened}">
-		<header class="community-filter">
+		<header class="community-header">
 			<div class="wrapper">
 				<div class="close" ng-click="$ctrl.closeFilter()"></div>
 				<label translate>Filter</label>
@@ -11,21 +11,28 @@
 				<h1 translate>Age</h1>
 				<div class="wrapper">
 					<div class="slider">
-						<div class="item">
-							<div class="circle"></div>
-							<label>0</label>
+						<div class="items">
+								<div class="item" ng-class="$ctrl.ageItemClass(0)" ng-click="$ctrl.Age = 0">
+								<div class="circle"></div>
+								<label>0</label>
+							</div>
+								<div class="item" ng-class="$ctrl.ageItemClass(20)" ng-click="$ctrl.Age = 20">
+								<div class="circle"></div>
+								<label>20</label>
+							</div>
+								<div class="item" ng-class="$ctrl.ageItemClass(30)" ng-click="$ctrl.Age = 30">
+								<div class="circle"></div>
+								<label>30</label>
+							</div>
+								<div class="item" ng-class="$ctrl.ageItemClass(40)" ng-click="$ctrl.Age = 40">
+								<div class="circle"></div>
+								<label>40+</label>
+							</div>
 						</div>
-						<div class="item">
-							<div class="circle"></div>
-							<label>20</label>
-						</div>
-						<div class="item">
-							<div class="circle"></div>
-							<label>30</label>
-						</div>
-						<div class="item">
-							<div class="circle"></div>
-							<label>40</label>
+						<div class="horizontals">
+							<div class="horizontal" ng-class="$ctrl.ageHorizontalClass(0, 20)"></div>
+							<div class="horizontal" ng-class="$ctrl.ageHorizontalClass(20, 30)"></div>
+							<div class="horizontal" ng-class="$ctrl.ageHorizontalClass(30, 40)"></div>
 						</div>
 					</div>
 				</div>
@@ -61,7 +68,7 @@
 			</section>
 		</div>
 	</div>
-	<header class="community-filter">
+	<header class="community-header">
 		<form class="wrapper" ng-submit="$ctrl.fetchData($ctrl.keyword)">
 			<button type="submit" class="search"></button>
 			<input placeholder="Search ID" ng-model="$ctrl.keyword">
@@ -70,7 +77,7 @@
 	</header>
 	<div class="community-list">
 		<div class="community-blank" ng-if="$ctrl.dataList.length === 0" translate>No Touriends</div>
-		<div class="community-item" ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.go($index)">
+		<div class="community-list_item" ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.go($index)">
 			<div class="image" ng-style="item.image | srcToBackground"></div>
 			<div class="top">
 				<span class="id" ng-bind="item.login"></span>

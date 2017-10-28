@@ -25,6 +25,16 @@ class LoginSvc {
 		return this.signIn(formData);
 	}
 
+	edit(formData) {
+		formData.set('action', 'setEdit');
+
+		let login = formData.get('login');
+		let pwd = formData.get('pwd');
+		formData.set('pwd', LoginSvc.hashPwd(login, pwd));
+
+		return this.signIn(formData);
+	}
+
 	login(formData) {
 		formData.set('action', 'login');
 
@@ -36,7 +46,6 @@ class LoginSvc {
 	}
 
 	logout() {
-		this.CacheSvc.resetAll();
 		return this.signOut({action: 'logout'});
 	}
 
@@ -48,6 +57,7 @@ class LoginSvc {
 	 * 가입/로그인 공용 로그인 함수
 	 */
 	signIn(formData) {
+		this.CacheSvc.resetAll();
 		return this.$http({
 			method: 'POST',
 			url: ajax_url,

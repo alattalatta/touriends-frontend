@@ -1,12 +1,13 @@
 class CommunityItemCtrl {
 	static get $inject() {
-		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', '$stateParams'];
+		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', '$state', '$stateParams'];
 	}
 
-	constructor(HttpSvc, CacheSvc, OverlaySvc, $stateParams) {
+	constructor(HttpSvc, CacheSvc, OverlaySvc, $state, $stateParams) {
 		this.HttpSvc = HttpSvc;
 		this.CacheSvc = CacheSvc;
 		this.OverlaySvc = OverlaySvc;
+		this.$state = $state;
 		this.$stateParams = $stateParams;
 
 		this.data = {
@@ -33,6 +34,10 @@ class CommunityItemCtrl {
 			console.log(this.data);
 		}
 		this.OverlaySvc.off('loading');
+	}
+
+	goBack() {
+		this.$state.go('community-list');
 	}
 }
 
