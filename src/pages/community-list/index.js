@@ -1,39 +1,50 @@
 class CommunityListCtrl {
 	static get $inject() {
-		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', 'ToastSvc', '$state', 'gettext'];
+		return ['HttpSvc', 'CacheSvc', 'OverlaySvc', 'ToastSvc', '$state'];
 	}
 
-	get Languages() {
-		return this.languages.reduce((acc, cur, idx) => {
-			if (cur) {
-				acc.push(this.langs[idx]);
-			}
-			return acc;
-		}, []);
+	set Age(val) {
+		this.ages[this.ageSelectMode] = val;
+		if (this.ages[0] > this.ages[1]) {
+			let tmp = this.ages[1];
+			this.ages[1] = this.ages[0];
+			this.ages[0] = tmp;
+		}
+		this.ageSelectMode = this.ageSelectMode === 1 ? 0 : 1;
+		console.log(this.ages);
 	}
 
-	constructor(HttpSvc, CacheSvc, OverlaySvc, ToastSvc, $state,gettext) {
+	set Language(val) {
+		if (this.language === val) {
+			this.language = null;
+		}
+		else {
+			this.language = val;
+		}
+	}
+
+	constructor(HttpSvc, CacheSvc, OverlaySvc, ToastSvc, $state) {
 		this.HttpSvc = HttpSvc;
 		this.CacheSvc = CacheSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.ToastSvc = ToastSvc;
 		this.$state = $state;
-		this.gettext=gettext;
+
 		this.dataList = [];
-		this.languages = [false, false, false, false, false, false];
+		this.language = null;
+		this.ages = [0, 40];
+		this.ageSelectMode = 1; // 0 = min, 1 = max
 		this.keyword = null;
 		this.filterOpened = false;
-
-		this.langs = [gettext('Japanese'), gettext('Korean'), gettext('English'), gettext('French'), gettext('Chinese'), gettext('German')];
 
 		this.fetchData();
 	}
 
 	async fetchData(keyword) {
-		console.log(this.Languages);
 		let res = await this.HttpSvc.request('getCommunityList', {
 			keyword: keyword,
-			languages: this.Languages
+			language: this.language,
+			ages: this.ages
 		});
 
 		if (! res.data.success) {
@@ -49,7 +60,6 @@ class CommunityListCtrl {
 	async like($index) {
 		let uid = this.dataList[$index].id;
 		this.dataList[$index].liked = ! this.dataList[$index].liked;
-		console.log(this.dataList[$index].liked);
 		let res = await this.HttpSvc.request('bookmark', {
 			like: uid,
 			override: this.dataList[$index].liked
@@ -69,6 +79,17 @@ class CommunityListCtrl {
 	async closeFilter() {
 		await this.fetchData(this.keyword);
 		this.filterOpened = false;
+	}
+
+	ageItemClass(key) {
+		return this.ages[0] <= key && this.ages[1] >= key ? 'is-active' : null;
+	}
+	ageHorizontalClass(min, max) {
+		return this.ages[0] <= min && this.ages[1] >= max ? 'is-active' : null;
+	}
+
+	languageClass(key) {
+		return this.language === key ? 'is-active' : null;
 	}
 
 	go($index) {

@@ -1,25 +1,74 @@
 <main class="page-community-list" ng-controller="CommunityListCtrl as $ctrl">
 	<div class="community-filter-window" ng-class="{'is-open': $ctrl.filterOpened}">
-		<header class="community-filter">
+		<header class="community-header">
 			<div class="wrapper">
 				<div class="close" ng-click="$ctrl.closeFilter()"></div>
-				<label translate >Filter</label>
+				<label translate>Filter</label>
 			</div>
 		</header>
 		<div class="community-filter_body">
-			<h1 translate >Age</h1>
+			<section class="age">
+				<h1 translate>Age</h1>
+				<div class="wrapper">
+					<div class="slider">
+						<div class="items">
+								<div class="item" ng-class="$ctrl.ageItemClass(0)" ng-click="$ctrl.Age = 0">
+								<div class="circle"></div>
+								<label>0</label>
+							</div>
+								<div class="item" ng-class="$ctrl.ageItemClass(20)" ng-click="$ctrl.Age = 20">
+								<div class="circle"></div>
+								<label>20</label>
+							</div>
+								<div class="item" ng-class="$ctrl.ageItemClass(30)" ng-click="$ctrl.Age = 30">
+								<div class="circle"></div>
+								<label>30</label>
+							</div>
+								<div class="item" ng-class="$ctrl.ageItemClass(40)" ng-click="$ctrl.Age = 40">
+								<div class="circle"></div>
+								<label>40+</label>
+							</div>
+						</div>
+						<div class="horizontals">
+							<div class="horizontal" ng-class="$ctrl.ageHorizontalClass(0, 20)"></div>
+							<div class="horizontal" ng-class="$ctrl.ageHorizontalClass(20, 30)"></div>
+							<div class="horizontal" ng-class="$ctrl.ageHorizontalClass(30, 40)"></div>
+						</div>
+					</div>
+				</div>
+			</section>
 			<section class="languages">
-				<h1 translate >Language</h1>
+				<h1 translate>Language</h1>
 				<div class="buttons row">
-					<div class="col-4" ng-repeat="lang in $ctrl.langs">
-						<div class="button" ng-class="{'is-active': $ctrl.languages[$index]}"
-						     ng-click="$ctrl.languages[$index] = ! $ctrl.languages[$index]" ng-bind="lang | translate"></div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('japanese')"
+						     ng-click="$ctrl.Language = 'japanese'" translate>Japanese</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('korean')"
+						     ng-click="$ctrl.Language = 'korean'" translate>Korean</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('english')"
+						     ng-click="$ctrl.Language = 'english'" translate>English</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('french')"
+						     ng-click="$ctrl.Language = 'french'" translate>French</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('chinese')"
+						     ng-click="$ctrl.Language = 'chinese'" translate>Chinese</div>
+					</div>
+					<div class="col-4">
+						<div class="button" ng-class="$ctrl.languageClass('german')"
+						     ng-click="$ctrl.Language = 'german'" translate>German</div>
 					</div>
 				</div>
 			</section>
 		</div>
 	</div>
-	<header class="community-filter">
+	<header class="community-header">
 		<form class="wrapper" ng-submit="$ctrl.fetchData($ctrl.keyword)">
 			<button type="submit" class="search"></button>
 			<input placeholder="Search ID" ng-model="$ctrl.keyword">
@@ -27,18 +76,16 @@
 		</form>
 	</header>
 	<div class="community-list">
-		<div class="community-blank" ng-if="$ctrl.dataList.length === 0" translate >
-			No Touriends
-		</div>
-		<div class="community-item" ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.go($index)">
+		<div class="community-blank" ng-if="$ctrl.dataList.length === 0" translate>No Touriends</div>
+		<div class="community-list_item" ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.go($index)">
 			<div class="image" ng-style="item.image | srcToBackground"></div>
 			<div class="top">
-				<span class="id" ng-bind="item.login | translate"></span>
+				<span class="id" ng-bind="item.login"></span>
 				<span class="separator">/</span>
-				<span class="age" ng-bind="item.age | translate"></span>
+				<span class="age" ng-bind="item.age"></span>
 				<div class="community-icon icon" ng-repeat="lang in item.languages" ng-class="lang"></div>
 			</div>
-			<div class="intro" ng-bind="item.intro | translate"></div>
+			<div class="intro" ng-bind="item.intro"></div>
 			<div class="triangle">
 				<div class="pattern"></div>
 				<div class="icon liked" ng-class="{'not': ! item.liked}" ng-click="$ctrl.like($index)"></div>
