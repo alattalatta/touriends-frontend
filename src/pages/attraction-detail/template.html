@@ -1,0 +1,58 @@
+<main class="page-main container-fluid ms-page" ng-controller="AttractionDetail as $ctrl">
+	<div class="paper-group message">
+		<div class="paper-title message">
+			<p class="paper-title_body message" ng-bind="$ctrl.titleEng()"></p>
+		</div>
+		<div class="content-img" ng-style="$ctrl.contentImage()" ng-class="$ctrl.noImage()">
+			<div class="title-box">
+				<span class="at-data-addr"><img class="img-marker white" src="../../media/white-marker.png" alt="">{{$ctrl.content.addr1}}</span><br>
+				<div class="at-data-name" ng-bind="$ctrl.titleEng()"></div>
+			</div>
+			<span class="at-data-period" ng-show="$ctrl.periodShow()">{{$ctrl.detail.time.eventstartdate}}~<br>{{$ctrl.detail.time.eventenddate}}</span>
+		</div>
+		<div class="select-box">
+			<div class="select-type information" ng-click="$ctrl.clickSelect(0)" ng-style="$ctrl.selectStyle(0)">
+				<p class="select-type_text">information</p>
+			</div>
+			<div class="select-type usersguide" ng-click="$ctrl.clickSelect(1)" ng-style="$ctrl.selectStyle(1)">
+				<p class="select-type_text">User's Guide</p>
+			</div>
+		</div>
+		<div class="content-information" ng-show="$ctrl.informationShow()">
+			<div class="content-number">
+				<img class="content-info-img tel-img" src="../../media/attraction/call.png" alt="">
+				<span class="content-info-text" ng-bind-html="$ctrl.content.tel"><span>
+			</div>
+			<div class="content-homepage">
+				<img class="content-info-img homepage-img" src="../../media/attraction/homepage.png" alt="">
+				<span class="content-info-text" ng-bind-html="$ctrl.content.homepage"><span>
+			</div>
+			<div class="content-overview">
+				<img class="content-info-img overview-img" src="../../media/attraction/overview.png" alt="">
+				<div class="overview-text" ng-bind-html="$ctrl.content.overview"></div>
+			</div>
+		</div>
+		<div class="content-information" ng-hide="$ctrl.informationShow()">
+			<div class="available-box">
+				<div class="content-available parking-lot">
+					<div class="available-img" ng-class="$ctrl.availImg(0)"></div>
+				</div>
+				<div class="content-available pet-accompany">
+					<div class="available-img" ng-class="$ctrl.availImg(1)"></div>
+				</div>
+				<div class="content-available stroller-rental">
+					<div class="available-img" ng-class="$ctrl.availImg(2)"></div>
+				</div>
+			</div>
+			<div class="available-box">
+				<div class="content-available text">Parking<br> lot</div>
+				<div class="content-available text">Accompany<br> pet dog</div>
+				<div class="content-available text">Stroller<Br> Rental</div>
+			</div>
+			<div class="detail-info-box">
+				<div class="detail-info" ng-repeat="d in $ctrl.additionalData" ng-bind-html="d"></div>
+			</div>
+		</div>
+	</div>
+	<main-nav></main-nav>
+</main>

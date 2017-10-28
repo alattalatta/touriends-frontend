@@ -4,6 +4,7 @@
     "dependencies": {
         "angular-autoselect": "^0.3.3",
         "angular-loading-bar": "^0.9.0",
+        "angular-sanitize": "1.6.6",
         "angular-ui-router": "^1.0.3",
         "email-validator": "^1.1.1",
         "exif-js": "^2.3.0",
