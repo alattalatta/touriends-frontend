@@ -110,7 +110,7 @@ gulp.task('build', () => {
 						format: 'json'
 					},
 					extractStrings: {
-						input: 'src/**/*.html',
+						input: 'src/**/*.*',
 						destination: 'po/template.pot'
 					}
 				})
