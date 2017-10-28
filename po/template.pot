@@ -4,64 +4,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: src/pages/attraction/index.js:4
-msgid "ALL"
-msgstr ""
-
-#: src/pages/attraction/template.html:4
-msgid "ATTRACTION"
-msgstr ""
-
-#: src/pages/login/template.html:10
-msgid "Account?"
-msgstr ""
-
 #: src/pages/main/template.html:23
 msgid "Add your Touriends to travel with you"
 msgstr ""
 
-#: src/pages/community-list/template.html:10
+#: src/pages/community-list/template.html:11
 msgid "Age"
 msgstr ""
 
-#: src/pages/long-comment/template.html:4
-msgid "Anything more to tell us<br>about this tour?"
-msgstr ""
-
-#: src/pages/attraction/index.js:4
-msgid "Attraction"
-msgstr ""
-
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:60
 msgid "Chinese"
-msgstr ""
-
-#: src/pages/matching-success/template.html:18
-msgid "Choose your"
-msgstr ""
-
-#: src/pages/matching-success/index.js:114
-msgid "Could not like user"
-msgstr ""
-
-#: src/pages/attraction/index.js:4
-msgid "Culture"
-msgstr ""
-
-#: src/pages/attraction/index.js:7
-msgid "Dobong-gu"
-msgstr ""
-
-#: src/pages/login/template.html:10
-msgid "Don't have an <span class=\"login-actions__accent\" translate=\"\">Account?</span>"
-msgstr ""
-
-#: src/pages/attraction/index.js:7
-msgid "Dongdaemun-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:7
-msgid "Dongjak-gu"
 msgstr ""
 
 #: src/pages/my/template.html:23
@@ -72,246 +24,34 @@ msgstr ""
 msgid "Edit profile"
 msgstr ""
 
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:52
 msgid "English"
-msgstr ""
-
-#: src/pages/attraction/index.js:9
-msgid "Eunpyeong-gu"
-msgstr ""
-
-#: src/pages/long-comment/index.js:50
-msgid "Failed to update tour comment"
-msgstr ""
-
-#: src/pages/register/template.html:48
-msgid "Female<input name=\"gender\" type=\"radio\" value=\"female\" ng-model=\"$ctrl.registerObj.gender\">"
-msgstr ""
-
-#: src/pages/attraction/index.js:4
-msgid "Festival"
 msgstr ""
 
 #: src/pages/community-list/template.html:6
 msgid "Filter"
 msgstr ""
 
-#: src/pages/register/template.html:60
-msgid "Foreigner<input name=\"nation\" type=\"radio\" value=\"foreigner\" ng-model=\"$ctrl.registerObj.nation\">"
-msgstr ""
-
-#: src/pages/login/template.html:11
-msgid "Forgot <span class=\"login-actions__accent\" translate=\"\">Password?</span>"
-msgstr ""
-
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:56
 msgid "French"
 msgstr ""
 
-#: src/pages/attraction/index.js:5
-msgid "Gangbuk-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:5
-msgid "Gangdong-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:5
-msgid "Gangnam-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:5
-msgid "Gangseo-gu"
-msgstr ""
-
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:64
 msgid "German"
 msgstr ""
 
-#: src/pages/attraction/index.js:6
-msgid "Geumcheon-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:6
-msgid "Guro-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:6
-msgid "Gwanak-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:6
-msgid "Gwangjin-gu"
-msgstr ""
-
-#: src/pages/matching-main/template.html:3
-msgid "I'm looking for Touriends<br>for you.<br>Would you like to match?"
-msgstr ""
-
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:44
 msgid "Japanese"
 msgstr ""
 
-#: src/pages/attraction/index.js:9
-msgid "Jongno-gu"
-msgstr ""
-
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:48
 msgid "Korean"
 msgstr ""
 
-#: src/pages/login/template.html:7
-msgid "LOGIN"
-msgstr ""
-
-#: src/pages/community-list/template.html:12
+#: src/pages/community-list/template.html:41
 msgid "Language"
 msgstr ""
 
-#: src/pages/matching-main/template.html:8
-msgid "Loading..."
-msgstr ""
-
-#: src/pages/register/template.html:57
-msgid "Local<input name=\"nation\" type=\"radio\" value=\"local\" ng-model=\"$ctrl.registerObj.nation\">"
-msgstr ""
-
-#: src/pages/my/template.html:24
-msgid "Log out"
-msgstr ""
-
-#: src/pages/register/template.html:45
-msgid "Male<input name=\"gender\" type=\"radio\" value=\"male\" ng-model=\"$ctrl.registerObj.gender\">"
-msgstr ""
-
-#: src/pages/attraction/index.js:7
-msgid "Mapo-gu"
-msgstr ""
-
-#: src/pages/message-box/template.html:4
-msgid "Message box"
-msgstr ""
-
-#: src/pages/community-list/template.html:30
+#: src/pages/community-list/template.html:79
 msgid "No Touriends"
-msgstr ""
-
-#: src/pages/matching-main/template.html:12
-msgid "No, I'll do it next time"
-msgstr ""
-
-#: src/pages/attraction/index.js:7
-msgid "Nowon-gu"
-msgstr ""
-
-#: src/pages/login/template.html:11
-msgid "Password?"
-msgstr ""
-
-#: src/pages/theme/index.js:51
-msgid "Please select a theme"
-msgstr ""
-
-#: src/pages/long-comment/template.html:19
-msgid "Register"
-msgstr ""
-
-#: src/pages/attraction/index.js:8
-msgid "Seocho-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:8
-msgid "Seodaemun-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:8
-msgid "Seongbuk-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:8
-msgid "Seongdong-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:8
-msgid "Songpa-gu"
-msgstr ""
-
-#: src/pages/matching-success/template.html:19
-msgid "TOURIENDS"
-msgstr ""
-
-#: src/pages/introduce/template.html:3
-msgid "Welcome Touriends!"
-msgstr ""
-
-#: src/pages/theme/template.html:5
-msgid "What is your<br>preferred travel theme?"
-msgstr ""
-
-#: src/pages/language/template.html:5
-msgid "What language<br>do you speak?"
-msgstr ""
-
-#: src/pages/when/template.html:4
-msgid "When do you<br>come to Seoul?"
-msgstr ""
-
-#: src/pages/attraction/index.js:9
-msgid "Yangcheon-gu"
-msgstr ""
-
-#: src/pages/attraction/index.js:9
-msgid "Yeongdeungpo-gu"
-msgstr ""
-
-#: src/pages/matching-main/template.html:11
-msgid "Yes, I'd like to match"
-msgstr ""
-
-#: src/pages/attraction/index.js:9
-msgid "Yongsan-gu"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "activity"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "chinese"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "culture"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "english"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "exhibition"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "food"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "french"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "german"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "japanese"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "k-pop"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "korean"
 msgstr ""

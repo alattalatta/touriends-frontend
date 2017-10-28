@@ -1,7 +1,7 @@
 <main class="page-main container-fluid ms-page" ng-controller="MessageBox as $ctrl">
 	<div class="paper-group message">
 		<div class="paper-title message">
-			<p class="paper-title_body message" translate>
+			<p class="paper-title_body message">
 				Message box
 			</p>
 		</div>
@@ -9,8 +9,8 @@
 			<div class="message-box">
 				<div ng-repeat="d in $ctrl.datalist" class="message-list" ng-style="$ctrl.messagePerson($index)"
 				ng-click="$ctrl.go('message', $index)">
-					<div ng-style="$ctrl.personImage($index)" class="person-image"></div>
-					<div class="person-id" ng-bind="$ctrl.datalist[$index].name | translate"></div>
+					<div ng-style="$ctrl.datalist[$index].url | srcToBackground" class="person-image"></div>
+					<div class="person-id" ng-bind="$ctrl.datalist[$index].name"></div>
 					<div ng-show="$ctrl.datalist[$index].new_ck=='0'" class="new-message"></div>
 				</div>
 			</div>

@@ -1,58 +1,63 @@
 @import (reference) '../index';
 
-.paper-title&.message{
-    margin-top: 40 / 16rem;
-    padding-bottom: 16 / 16rem;
-    //box-shadow: 0 1px 0 #D7D7D7;
-    border-bottom: 1px solid #D7D7D7;
+.paper-title&.message {
+	margin-top: 40 / 16rem;
+	padding-bottom: 16 / 16rem;
+	//box-shadow: 0 1px 0 #D7D7D7;
+	border-bottom: 1px solid #D7D7D7;
 }
-.paper-title_body&.message{
-    opacity: .7;
-    width: 100%;
-    font-size: 35.8 / 16rem;
-    font-weight: 600;
-    line-height: 1.08;
-    color:rgba(1, 1, 1, 0.7);
-    text-align: center;
+
+.paper-title_body&.message {
+	opacity: .7;
+	width: 100%;
+	font-size: 35.8 / 16rem;
+	font-weight: 600;
+	line-height: 1.08;
+	color: rgba(1, 1, 1, 0.7);
+	text-align: center;
 }
-.message-box_body{
-    height: calc(~'100%' - 162 / 16rem);
-    overflow: scroll;
-    background: repeating-linear-gradient(#D7D7D7, #D7D7D7 1px, white 1px, white 88 / 16rem);
+
+.message-box_body {
+	height: calc(~'100% - 10rem');
+	overflow: scroll;
+	background: repeating-linear-gradient(#D7D7D7, #D7D7D7 1px, white 1px, white 88 / 16rem);
 }
-.message-list{
-  height: 89 / 16rem;
-  border-bottom: 1px solid #D7D7D7;
-  position: relative;
-  .person-image{
-    width:58 / 16rem;
-    height: 58 / 16rem;
-    margin-top:15.5 / 16rem;
-    margin-left: 19.5 / 16rem;
-    border-radius: 100%;
-    display: inline-block;
-    background: center no-repeat;
-    background-size: cover;
-  }
-  .person-id{
-    position: absolute;
-    display: inline-block;
-    position: absolute;
-    top: 16 / 16rem;
-    font-size: 24.1 / 16rem;
-    color: #545454;
-    margin-left: 6.5 / 16rem;
-  }
-  .new-message{
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    background-image: url('../../media/new-botton.png');
-    background-size: cover;
-    width:67.5 / 16rem;
-    height: 34 / 16rem;
-    margin-right: 29.5 / 16rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+
+.message-list {
+	height: 89 / 16rem;
+	border-bottom: 1px solid #D7D7D7;
+	position: relative;
+
+	.person-image {
+		width: 58 / 16rem;
+		height: 58 / 16rem;
+		background: url('../../media/default-profile.jpg') center no-repeat;
+		background-size: cover;
+		border-radius: 100%;
+		display: inline-block;
+		margin-top: 15.5 / 16rem;
+		margin-left: 19.5 / 16rem;
+	}
+
+	.person-id {
+		position: absolute;
+		display: inline-block;
+		position: absolute;
+		top: 16 / 16rem;
+		font-size: 24.1 / 16rem;
+		color: #545454;
+		margin-left: 6.5 / 16rem;
+	}
+	.new-message {
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		background-image: url('../../media/new-botton.png');
+		background-size: cover;
+		width: 67.5 / 16rem;
+		height: 34 / 16rem;
+		margin-right: 29.5 / 16rem;
+		top: 50%;
+		transform: translateY(-50%);
+	}
 }

@@ -2,7 +2,7 @@ import EmailValidator from 'email-validator';
 
 class RegisterCtrl {
 	static get $inject() {
-		return ['ToastSvc', 'OverlaySvc', 'LoginSvc', '$scope', '$state','gettext']
+		return ['CacheSvc', 'HttpSvc', 'ToastSvc', 'OverlaySvc', 'LoginSvc', '$scope', '$state', '$stateParams']
 	}
 
 	// =============== Property
@@ -35,7 +35,7 @@ class RegisterCtrl {
 	}
 
 	get Birth() {
-		return `${this.BirthYear}-${this.BirthMonth}-${this.BirthDay}`;
+		return `${this.BirthYear}-${this.BirthMonth.toString().padStart(2, '0')}-${this.BirthDay}`;
 	}
 
 	// =============== Validation
@@ -173,16 +173,21 @@ class RegisterCtrl {
 		}
 	}
 
-	constructor(ToastSvc, OverlaySvc, LoginSvc, $scope, $state,gettext) {
+	// ============== END
+
+	constructor(CacheSvc, HttpSvc, ToastSvc, OverlaySvc, LoginSvc, $scope, $state, $stateParams) {
+		this.CacheSvc = CacheSvc;
+		this.HttpSvc = HttpSvc;
 		this.ToastSvc = ToastSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.LoginSvc = LoginSvc;
 		this.$scope = $scope;
 		this.$state = $state;
-		this.gettext=gettext;
-		this.imagePreview = null;
-		this.imageData = null;
-		this.imageOrientation = null;
+		this.$stateParams = $stateParams;
+
+		this.imagePreview = null;     // 표시할 이미지 (Base64 or url)
+		this.imageData = null;        // 업로드할 실제 이미지 데이터
+		this.imageOrientation = null; // 업로드한 이미지 오리엔테이션 메타데이터
 		this.form = document.getElementById('form_register');
 
 		/**
@@ -212,6 +217,21 @@ class RegisterCtrl {
 		 * 회원가입 오브젝트
 		 */
 		this.registerObj = angular.copy(this.registerTemplate);
+
+		this.fetchData();
+	}
+
+	async fetchData() {
+		if (this.$stateParams.edit === false) {
+			return;
+		}
+		let res = await this.HttpSvc.request('getEdit');
+		if (res.data.success) {
+			console.log(res.data);
+			this.registerObj = res.data;
+			this.registerObj.pwd = this.registerObj.pwdConfirm = null;
+			this.imagePreview = res.data.image;
+		}
 	}
 
 	async register() {
@@ -256,7 +276,14 @@ class RegisterCtrl {
 
 		this.pending = true;
 		this.OverlaySvc.toggle('loading');
-		let response = await this.LoginSvc.register(data);
+		let response = null;
+		if (this.$stateParams.edit) {
+			response = await this.LoginSvc.edit(data);
+			console.log(response);
+		}
+		else {
+			response = await this.LoginSvc.register(data);
+		}
 
 		this.pending = false;
 		if (response.data.success) {
