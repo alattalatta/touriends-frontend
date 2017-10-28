@@ -54,6 +54,10 @@ class CacheSvc {
 		let key = this.HttpSvc.actionParamsCombined(action, params);
 		return this.map.delete(key);
 	}
+
+	resetAll() {
+		this.map = new Map();
+	}
 }
 
 export default CacheSvc;

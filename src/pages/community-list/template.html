@@ -1,11 +1,39 @@
 <main class="page-community-list" ng-controller="CommunityListCtrl as $ctrl">
+	<div class="community-filter-window" ng-class="{'is-open': $ctrl.filterOpened}">
+		<header class="community-filter">
+			<div class="wrapper">
+				<div class="close" ng-click="$ctrl.closeFilter()"></div>
+				<label>Filter</label>
+			</div>
+		</header>
+		<div class="community-filter_body">
+			<h1>Age</h1>
+			<section class="languages">
+				<h1>Language</h1>
+				<div class="buttons row">
+					<div class="col-4" ng-repeat="lang in $ctrl.langs">
+						<div class="button" ng-class="{'is-active': $ctrl.languages[$index]}"
+						     ng-click="$ctrl.languages[$index] = ! $ctrl.languages[$index]" ng-bind="lang"></div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
 	<header class="community-filter">
+		<form class="wrapper" ng-submit="$ctrl.fetchData($ctrl.keyword)">
+			<button type="submit" class="search"></button>
+			<input placeholder="Search ID" ng-model="$ctrl.keyword">
+			<div class="filter-open" ng-click="$ctrl.openFilter()"></div>
+		</form>
 	</header>
 	<div class="community-list">
-		<div class="community-item" ng-repeat="item in $ctrl.dataList">
-			<div class="image"></div>
+		<div class="community-blank" ng-if="$ctrl.dataList.length === 0">
+			No Touriends
+		</div>
+		<div class="community-item" ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.go($index)">
+			<div class="image" ng-style="item.image | srcToBackground"></div>
 			<div class="top">
-				<span class="id" ng-bind="item.id"></span>
+				<span class="id" ng-bind="item.login"></span>
 				<span class="separator">/</span>
 				<span class="age" ng-bind="item.age"></span>
 				<div class="community-icon icon" ng-repeat="lang in item.languages" ng-class="lang"></div>

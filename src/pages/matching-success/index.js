@@ -4,7 +4,7 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout) 
 	this.repeater = new Array(12);
 
 	this.datalist = [];
-	HttpSvc.request('getMatching').then((response) => {
+	CacheSvc.get('getMatching').then((response) => {
 		if (response.data.success) {
 			this.datalist = response.data.matching;
 		}

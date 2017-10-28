@@ -5,11 +5,12 @@ import crypt from 'sjcl';
  */
 class LoginSvc {
 	static get $inject() {
-		return ['$http', '$http'];
+		return ['$http', 'CacheSvc'];
 	}
 
-	constructor($http) {
+	constructor($http, CacheSvc) {
 		this.$http = $http;
+		this.CacheSvc = CacheSvc;
 		this.logged = aaa; // 이미 로그인된 경우면 index.php 의 logged = true
 		this.user_login = bbb; // 상동
 	}
@@ -35,6 +36,7 @@ class LoginSvc {
 	}
 
 	logout() {
+		this.CacheSvc.resetAll();
 		return this.signOut({action: 'logout'});
 	}
 

@@ -1,12 +1,25 @@
 class MatchingMainCtrl {
 	static get $inject() {
-		return ['OverlaySvc', '$state'];
+		return ['CacheSvc', 'OverlaySvc', '$state'];
 	}
 
-	constructor(OverlaySvc, $state) {
+	constructor(CacheSvc, OverlaySvc, $state) {
+		this.CacheSvc = CacheSvc;
+		this.OverlaySvc = OverlaySvc;
 		this.$state = $state;
 
-		OverlaySvc.off('loading');
+		this.success = true;
+
+		this.fetchData();
+	}
+
+	async fetchData() {
+		this.CacheSvc.reset('getMatching');
+		let res = await this.CacheSvc.get('getMatching');
+		if (res.data.success) {
+			this.OverlaySvc.off('loading');
+			this.success = res.data.matching.length !== 0;
+		}
 	}
 
 	goNext() {

@@ -8,11 +8,13 @@ import 'oclazyload';
 
 import directiveModule from './directive/index';
 import serviceModule from './service/index';
+import srcToBackground from './filters/srcToBackground';
 
 let app = angular
 	.module('touriends', [
 		'ngAnimate', 'ui.router', 'oc.lazyLoad', ngLoadingBar,
 		directiveModule, serviceModule
-	]);
+	])
+	.filter('srcToBackground', srcToBackground);
 
 (require('./config').default)(app);

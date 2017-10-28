@@ -228,6 +228,22 @@ export default app => {
 				}]
 			}
 		}).state({
+			url: '/community-item/:id',
+			name: 'community-item',
+			parent: 'authful',
+			templateProvider: () => {
+				return import('./pages/community-item/template.html');
+			},
+			resolve: {
+				lazyload: ['$ocLazyLoad', ($ocLazyLoad) => {
+					return import('./pages/community-item/index').then(() => {
+						$ocLazyLoad.load({
+							name: 'touriends.page.community-item'
+						});
+					});
+				}]
+			}
+		}).state({
 			url: '/test',
 			name: 'test',
 			templateProvider: () => {
