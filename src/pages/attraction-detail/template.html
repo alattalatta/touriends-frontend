@@ -8,7 +8,7 @@
 		</div>
 		<div class="content-img" ng-style="$ctrl.contentImage()" ng-class="$ctrl.noImage()">
 			<div class="title-box">
-				<span class="at-data-addr"><img class="img-marker white" src="../../media/white-marker.png" alt="">{{$ctrl.content.addr1}}</span><br>
+				<div class="at-data-addr"><img class="img-marker white" src="../../media/white-marker.png" alt="">{{$ctrl.content.addr1}}</div>
 				<div class="at-data-name" ng-bind="$ctrl.titleEng()"></div>
 			</div>
 			<span class="at-data-period" ng-show="$ctrl.periodShow()">{{$ctrl.detail.time.eventstartdate}}~<br>{{$ctrl.detail.time.eventenddate}}</span>
@@ -22,13 +22,13 @@
 			</div>
 		</div>
 		<div class="content-information" ng-show="$ctrl.informationShow()">
-			<div class="content-number">
+			<div class="content-number" ng-if="$ctrl.content.tel">
 				<img class="content-info-img tel-img" src="../../media/attraction/call.png" alt="">
-				<span class="content-info-text" ng-bind-html="$ctrl.content.tel"><span>
+				<div class="content-info-text" ng-bind-html="$ctrl.content.tel"></div>
 			</div>
-			<div class="content-homepage">
+			<div class="content-homepage" ng-if="$ctrl.content.homepage">
 				<img class="content-info-img homepage-img" src="../../media/attraction/homepage.png" alt="">
-				<span class="content-info-text" ng-bind-html="$ctrl.content.homepage"><span>
+				<div class="content-info-text" ng-bind-html="$ctrl.content.homepage"></div>
 			</div>
 			<div class="content-overview">
 				<img class="content-info-img overview-img" src="../../media/attraction/overview.png" alt="">
