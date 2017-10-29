@@ -11,7 +11,7 @@
 		    <div class="item" ng-repeat="item in $ctrl.dataList">
 			    <div class="paper-image page item">
 				    <div class="paper-image_body main" ng-style="$ctrl.getPersonImage($index)"></div>
-				    <div class="id-age" ng-bind="$ctrl.getPersonLabel($index) | translate"></div>
+				    <div class="id-age" ng-bind="$ctrl.getPersonLabel($index)"></div>
 			    </div>
 		    </div>
 	    </div>
@@ -24,11 +24,11 @@
         </div>
 	    <div class="touriends-info" ng-show="$ctrl.current !== 0">
 		    <div class="top">
-			    <p class="my-schedule" ng-bind="$ctrl.CurrentTouriends.schedule | translate"></p>
+			    <p class="my-schedule" ng-bind="$ctrl.CurrentTouriends.schedule"></p>
 			    <div class="icon" ng-if="$ctrl.CurrentTouriends.theme" ng-class="$ctrl.CurrentTouriends.theme"></div>
 			    <div class="icon" ng-repeat="lang in $ctrl.CurrentTouriends.languages" ng-class="lang"></div>
 		    </div>
-		    <p class="comment" ng-bind="$ctrl.CurrentTouriends.comment |translate "></p>
+		    <p class="comment" ng-bind="$ctrl.CurrentTouriends.comment"></p>
 		    <div class="bottom">
 			    <div class="icon message"></div>
 			    <div class="icon liked"

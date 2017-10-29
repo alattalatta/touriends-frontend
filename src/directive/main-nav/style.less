@@ -18,11 +18,11 @@ main-nav {
 }
 
 .main-nav_icon {
-	.icons(@name; @file) {
+	.icons(@name) {
 		&.@{name} {
-			background-image: url('./media/@{file}-disabled.png');
+			background-image: url('./media/@{name}-disabled.png');
 			&.is-active {
-				background-image: url('./media/@{file}.png');
+				background-image: url('./media/@{name}.png');
 			}
 		}
 	}
@@ -32,9 +32,9 @@ main-nav {
 	background-size: contain;
 	flex: 0 0 20%;
 
-	.icons(attraction; attraction);
-	.icons(community; community);
-	.icons(main; main);
-	.icons(matching; matching);
-	.icons(my; my);
+	.icons(attraction);
+	.icons(community);
+	.icons(main);
+	.icons(message);
+	.icons(my);
 }

@@ -5,13 +5,13 @@ class ThemeCtrl {
 		return ['ToastSvc', 'CacheSvc', '$http', '$state','gettext'];
 	}
 
-	constructor(ToastSvc, CacheSvc, $http, $state) {
+	constructor(ToastSvc, CacheSvc, $http, $state, gettext) {
 		this.ToastSvc = ToastSvc;
 		this.CacheSvc = CacheSvc;
 		this.$http = $http;
 		this.$state = $state;
-		this.gettext = gettext;
-		this.datalist = [gettext('k-pop'), gettext('food'), gettext('exhibition'), gettext('culture'), gettext('activity')];
+		this._ = gettext;
+		this.datalist = ['k-pop', 'food', 'exhibition', 'culture', 'activity'];
 		this.simage = null;
 
 		// 서버에서 받아오기
@@ -48,7 +48,7 @@ class ThemeCtrl {
 
 	async goNext() {
 		if (this.simage === null) {
-			this.ToastSvc.toggle(gettext('Please select a theme'));
+			this.ToastSvc.toggle(this._('Please select a theme'));
 			return;
 		}
 

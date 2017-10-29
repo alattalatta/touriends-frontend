@@ -80,20 +80,12 @@ msgstr ""
 msgid "Failed to update tour comment"
 msgstr ""
 
-#: src/pages/register/template.html:48
-msgid "Female<input name=\"gender\" type=\"radio\" value=\"female\" ng-model=\"$ctrl.registerObj.gender\">"
-msgstr ""
-
 #: src/pages/attraction/index.js:4
 msgid "Festival"
 msgstr ""
 
 #: src/pages/community-list/template.html:6
 msgid "Filter"
-msgstr ""
-
-#: src/pages/register/template.html:60
-msgid "Foreigner<input name=\"nation\" type=\"radio\" value=\"foreigner\" ng-model=\"$ctrl.registerObj.nation\">"
 msgstr ""
 
 #: src/pages/community-list/template.html:56
@@ -164,16 +156,8 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: src/pages/register/template.html:57
-msgid "Local<input name=\"nation\" type=\"radio\" value=\"local\" ng-model=\"$ctrl.registerObj.nation\">"
-msgstr ""
-
 #: src/pages/my/template.html:24
 msgid "Log out"
-msgstr ""
-
-#: src/pages/register/template.html:45
-msgid "Male<input name=\"gender\" type=\"radio\" value=\"male\" ng-model=\"$ctrl.registerObj.gender\">"
 msgstr ""
 
 #: src/pages/attraction/index.js:7
@@ -192,8 +176,8 @@ msgstr ""
 msgid "Nowon-gu"
 msgstr ""
 
-#: src/pages/theme/index.js:51
-msgid "Please select a theme"
+#: src/pages/when/index.js:27
+msgid "Please select two dates"
 msgstr ""
 
 #: src/pages/long-comment/template.html:19
@@ -254,48 +238,4 @@ msgstr ""
 
 #: src/pages/attraction/index.js:9
 msgid "Yongsan-gu"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "activity"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "chinese"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "culture"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "english"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "exhibition"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "food"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "french"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "german"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "japanese"
-msgstr ""
-
-#: src/pages/theme/index.js:14
-msgid "k-pop"
-msgstr ""
-
-#: src/pages/language/index.js:14
-msgid "korean"
 msgstr ""

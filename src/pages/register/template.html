@@ -42,10 +42,10 @@
                 <div class="col-6">
                     <div class="input form-input invalid-by-gradient gender" ng-class="{'is-invalid': ! $ctrl.GenderValid}">
                         <div class="row no-gutters">
-                            <label class="input col-6 left" ng-class="$ctrl.genderChecked('male')" translate>
+                            <label class="input col-6 left" ng-class="$ctrl.genderChecked('male')">
                                 Male<input name="gender" type="radio" value="male" ng-model="$ctrl.registerObj.gender">
                             </label>
-                            <label class="input col-6 right" ng-class="$ctrl.genderChecked('female')" translate>
+                            <label class="input col-6 right" ng-class="$ctrl.genderChecked('female')">
                                 Female<input name="gender" type="radio" value="female" ng-model="$ctrl.registerObj.gender">
                             </label>
                         </div>
@@ -54,16 +54,16 @@
             </div>
             <div class="input form-input invalid-by-gradient nation" ng-class="{'is-invalid': ! $ctrl.NationValid}">
                 <div class="row no-gutters">
-                    <label class="input col-6 left" ng-class="$ctrl.nationChecked('local')" translate>
+                    <label class="input col-6 left" ng-class="$ctrl.nationChecked('local')">
                         Local<input name="nation" type="radio" value="local" ng-model="$ctrl.registerObj.nation">
                     </label>
-                    <label class="input col-6 right" ng-class="$ctrl.nationChecked('foreigner')" translate>
+                    <label class="input col-6 right" ng-class="$ctrl.nationChecked('foreigner')">
                         Foreigner<input name="nation" type="radio" value="foreigner" ng-model="$ctrl.registerObj.nation">
                     </label>
                 </div>
             </div>
             <button class="button-submit" ng-class="{'is-disabled': ! $ctrl.DataValid}"
-                    ng-bind="$ctrl.SignUpLabel | translate"></button>
+                    ng-bind="$ctrl.SignUpLabel"></button>
         </form>
     </div>
 </main>

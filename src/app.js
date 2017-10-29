@@ -23,7 +23,6 @@ let app = angular
 	.run(['gettextCatalog', (gettextCatalog) => {
 		gettextCatalog.debug = true;
 		gettextCatalog.loadRemote(`${locale_url}/ko.json`);
-		console.log(gettextCatalog);
 	}]);
 
 (require('./config').default)(app);

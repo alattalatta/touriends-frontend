@@ -276,7 +276,7 @@ export default app => {
 		}).state({
 			url: '/message/:id',
 			name: 'message',
-			params: {id : null},
+			params: {id: null},
 			parent: 'authful',
 			templateProvider: () => {
 				return import('./pages/message/template.html');
@@ -309,7 +309,7 @@ export default app => {
 		}).state({
 			url: '/attraction-detail/:id/:type',
 			name: 'attraction-detail',
-			params: {id : null, type: null},
+			params: {id: null, type: null},
 			parent: 'authful',
 			templateProvider: () => {
 				return import('./pages/attraction-detail/template.html');
@@ -324,11 +324,9 @@ export default app => {
 				}]
 			}
 		});
-
 		$urlRouterProvider.otherwise('/main');
-	}])
-		.config(['$httpProvider', ($httpProvider) => {
-			$httpProvider.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded'};
-			$httpProvider.defaults.paramSerializer = '$httpParamSerializerJQLike';
-		}]);
+	}]).config(['$httpProvider', ($httpProvider) => {
+		$httpProvider.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded'};
+		$httpProvider.defaults.paramSerializer = '$httpParamSerializerJQLike';
+	}]);
 }

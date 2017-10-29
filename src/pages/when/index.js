@@ -6,14 +6,14 @@ class WhenCtrl {
 		return ['ToastSvc', 'CacheSvc', '$http', '$state','gettext'];
 	}
 
-	constructor(ToastSvc, CacheSvc, $http, $state) {
+	constructor(ToastSvc, CacheSvc, $http, $state, gettext) {
 		this.ToastSvc = ToastSvc;
 		this.CacheSvc = CacheSvc;
 		this.$http = $http;
 		this.$state = $state;
 		this.dateA = null;
 		this.dateB = null;
-		this.gettext=gettext;
+		this.gettext = gettext;
 		this.CacheSvc.get('get_calendar').then((response) => {
 			if (response.data.success) {
 				this.dateA = new Date(response.data.from + ' 00:00:00');
@@ -24,7 +24,7 @@ class WhenCtrl {
 
 	async goNext() {
 		if (this.dateA === null || this.dateB === null || isNaN(this.dateA.getTime()) || isNaN(this.dateB.getTime())) {
-			this.ToastSvc.toggle('Please select two dates');
+			this.ToastSvc.toggle(this.gettext('Please select two dates'));
 			return;
 		}
 

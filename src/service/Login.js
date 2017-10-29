@@ -5,14 +5,19 @@ import crypt from 'sjcl';
  */
 class LoginSvc {
 	static get $inject() {
-		return ['$http', 'CacheSvc'];
+		return ['$http', 'CacheSvc', 'gettextCatalog'];
 	}
 
-	constructor($http, CacheSvc) {
+	constructor($http, CacheSvc, localizer) {
 		this.$http = $http;
 		this.CacheSvc = CacheSvc;
+		this.localizer = localizer;
+
 		this.logged = aaa; // 이미 로그인된 경우면 index.php 의 logged = true
 		this.user_login = bbb; // 상동
+		this.nationality = ccc; // 상동
+
+		this.localize();
 	}
 
 	register(formData) {
@@ -67,6 +72,8 @@ class LoginSvc {
 			if (response.data.success) {
 				this.logged = true;
 				this.user_login = response.data.user_login;
+				this.nationality = response.data.nationality;
+				this.localize();
 			}
 			return response;
 		});
@@ -101,6 +108,15 @@ class LoginSvc {
 
 		let salt = hash(login);
 		return hash(salt + pwd);
+	}
+
+	localize() {
+		if (this.nationality === 'local') {
+			this.localizer.setCurrentLanguage('ko');
+		}
+		else {
+			this.localizer.setCurrentLanguage('en');
+		}
 	}
 }
 
