@@ -1,6 +1,7 @@
 <main class="page-main container-fluid ms-page" ng-controller="Message as $ctrl">
 	<div class="paper-group message">
 		<div class="paper-title message">
+			<div class="back-button-box" ng-click="$ctrl.go('message-box')"><div class="back-button" ></div></div>
 			<p class="paper-title_body message" ng-bind="$ctrl.you.name"></p>
 		</div>
 		<div class="communication-box">

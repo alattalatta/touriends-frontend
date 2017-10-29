@@ -1,5 +1,5 @@
-function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext) {
-	this.menu = [gettext('ALL'), gettext('Attraction'), gettext('Culture'), gettext('Festival')];
+function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext, LoginSvc) {
+	this.menu = [gettext('ALL'),gettext('Attraction'),gettext('Culture'),gettext('Festival')];
 	this.all_menu = ['Gangnam-gu', 'Gangdong-gu', 'Gangbuk-gu', 'Gangseo-gu',
 		'Gwanak-gu', 'Gwangjin-gu', 'Guro-gu', 'Geumcheon-gu',
 		'Nowon-gu', 'Dobong-gu', 'Dongdaemun-gu', 'Dongjak-gu', 'Mapo-gu',
@@ -10,14 +10,44 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext) {
 	//title 괄호에있는 한글 없애기
 
 	//기본값지정
+
 	this.content = 0;
 	this.choiceLocation = 0;
 	this.attraction_data = [];
 	//Attraction Data AJAX
 	this.attractDataAjax = function () {
+		var content_type=3;
+		if(LoginSvc.nationality=='local'){
+			if(this.content===0){
+				content_type = 1;
+			}
+			else if(this.content===1){
+				content_type = 12;
+			}
+			else if(this.content===2){
+				content_type = 14;
+			}
+			else if(this.content===3){
+				content_type = 15;
+			}
+		}
+		else{
+			if(this.content===0){
+				content_type = 0;
+			}
+			else if(this.content===1){
+				content_type = 76;
+			}
+			else if(this.content===2){
+				content_type = 78;
+			}
+			else if(this.content===3){
+				content_type = 85;
+			}
+		}
 		HttpSvc.request('tour_Info', {
 			area: this.choiceLocation + 1,
-			content: this.content
+			content: content_type
 		}).then((res) => {
 			if (res.data.success) {
 				this.attraction_data = res.data.data.item;
@@ -138,6 +168,6 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext) {
 	}
 }
 
-Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state', 'gettext'];
+Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state', 'gettext', 'LoginSvc'];
 
 export default angular.module('touriends.page.attraction', ['touriends']).controller('Attraction', Attraction).name;

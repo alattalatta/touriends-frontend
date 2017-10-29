@@ -1,7 +1,10 @@
 <main class="page-main container-fluid ms-page" ng-controller="AttractionDetail as $ctrl">
 	<div class="paper-group message">
 		<div class="paper-title message">
-			<p class="paper-title_body message" ng-bind="$ctrl.titleEng()"></p>
+			<div class="back-button-box" ng-click="$ctrl.go('attraction')"><div class="back-button" ></div></div>
+			<div class="paper-title_body message">
+				<div class="title-text" ng-bind="$ctrl.titleEng()"></div>
+			</div>
 		</div>
 		<div class="content-img" ng-style="$ctrl.contentImage()" ng-class="$ctrl.noImage()">
 			<div class="title-box">
