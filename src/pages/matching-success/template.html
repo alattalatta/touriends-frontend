@@ -5,7 +5,7 @@
 				<div class="matching-circle_inner image" ng-class="{'occupied': $ctrl.isChoice}" ng-style="$ctrl.profileImage()"></div>
 				<div class="person-group" ng-class="{'is-visible': $ctrl.isChoice}">
 					<div class="choice cancel" ng-click="$ctrl.cancelShow()"></div>
-					<div class="choice message"></div>
+					<div class="choice message" ng-click="$ctrl.go('message')"></div>
 					<div class="choice liked" ng-class="{'is-liked': $ctrl.isLiked()}"
 					     ng-click="$ctrl.like()"></div>
 					<div class="choice theme icon" ng-class="$ctrl.themeData()"></div>

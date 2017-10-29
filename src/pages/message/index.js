@@ -1,4 +1,4 @@
-function Message(OverlaySvc, $timeout, HttpSvc, CacheSvc, $stateParams) {
+function Message(OverlaySvc, $timeout, HttpSvc, CacheSvc, $stateParams, $state) {
 	this.getCommunication = function () {
 		HttpSvc.request('getConversation', {
 			other: $stateParams.id
@@ -119,9 +119,19 @@ function Message(OverlaySvc, $timeout, HttpSvc, CacheSvc, $stateParams) {
 		this.scrollBottom();
 	}, 300);
 
+	this.go = function (stateName) {
+		console.log('click', stateName);
+		if ($state.is(stateName)) {
+			return;
+		}
+		OverlaySvc.on('loading');
+		$state.go(stateName);
+	}
 	OverlaySvc.off('loading');
+
+
 }
 
-Message.$inject = ['OverlaySvc', '$timeout', 'HttpSvc', 'CacheSvc', '$stateParams'];
+Message.$inject = ['OverlaySvc', '$timeout', 'HttpSvc', 'CacheSvc', '$stateParams', '$state'];
 
 export default angular.module('touriends.page.message', ['touriends']).controller('Message', Message).name;
