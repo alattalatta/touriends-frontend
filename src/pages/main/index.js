@@ -28,7 +28,6 @@ class MainCtrl {
 
 	async init() {
 		let res = await this.CacheSvc.get('getBookmark');
-		console.log(res.data);
 		if (res.data.success) {
 			this.dataList = res.data.liked;
 			this.$timeout(() => {

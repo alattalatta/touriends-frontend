@@ -277,9 +277,8 @@ class RegisterCtrl {
 		this.pending = true;
 		this.OverlaySvc.toggle('loading');
 		let response = null;
-		if (this.$stateParams.edit) {
+		if (this.$stateParams.edit === 'true') {
 			response = await this.LoginSvc.edit(data);
-			console.log(response);
 		}
 		else {
 			response = await this.LoginSvc.register(data);
