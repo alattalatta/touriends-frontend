@@ -1,13 +1,12 @@
 class MatchingMainCtrl {
 	static get $inject() {
-		return ['CacheSvc', 'OverlaySvc', '$state','gettext'];
+		return ['CacheSvc', 'OverlaySvc', '$state'];
 	}
 
-	constructor(CacheSvc, OverlaySvc, $state,gettext) {
+	constructor(CacheSvc, OverlaySvc, $state) {
 		this.CacheSvc = CacheSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.$state = $state;
-		this.gettext=gettext;
 		this.success = true;
 
 		this.fetchData();

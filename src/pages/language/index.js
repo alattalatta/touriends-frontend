@@ -10,7 +10,7 @@ class LanguageCtrl {
 		this.CacheSvc = CacheSvc;
 		this.$http = $http;
 		this.$state = $state;
-		this._ = gettext;
+		this.gettext = gettext;
 		this.datalist = ['japanese', 'korean', 'english','french', 'chinese', 'german'];
 		this.dataChecked = [false, false, false, false, false];
 		this.simage = null;
@@ -36,7 +36,7 @@ class LanguageCtrl {
 
 	selectData(idx) {
 		if (this.simageCnt === 3 && this.dataChecked[idx] === false) {
-			this.ToastSvc.toggle(this._('Already chose three. Please uncheck one first'));
+			this.ToastSvc.toggle(this.gettext('Already chose three. Please uncheck one first'));
 			return;
 		}
 
@@ -70,7 +70,7 @@ class LanguageCtrl {
 
 	async goNext() {
 		if (this.simageCnt === 0) {
-			this.ToastSvc.toggle(this._('Please select at least 1 language'));
+			this.ToastSvc.toggle(this.gettext('Please select at least 1 language'));
 			return;
 		}
 

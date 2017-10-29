@@ -12,13 +12,17 @@ msgstr ""
 "X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: src/pages/attraction/index.js:2
+msgid "ALL"
+msgstr "전체"
+
 #: src/pages/attraction/template.html:4
 msgid "ATTRACTION"
 msgstr "관광정보"
 
 #: src/pages/login/template.html:10
 msgid "Account?"
-msgstr " 없으신가요?"
+msgstr "없으신가요?"
 
 #: src/pages/main/template.html:23
 msgid "Add your Touriends to travel with you"
@@ -28,9 +32,17 @@ msgstr "여행을 같이할 투렌즈를 추가해보세요"
 msgid "Age"
 msgstr "선호연령"
 
+#: src/pages/language/index.js:39
+msgid "Already chose three. Please uncheck one first"
+msgstr "이미 세 개를 선택했습니다"
+
 #: src/pages/long-comment/template.html:5
 msgid "Anything more to tell us"
 msgstr "이 여행에 대해서"
+
+#: src/pages/attraction/index.js:2
+msgid "Attraction"
+msgstr "관광지"
 
 #: src/pages/community-list/template.html:60
 msgid "Chinese"
@@ -39,6 +51,10 @@ msgstr "중국어"
 #: src/pages/matching-success/template.html:18
 msgid "Choose your"
 msgstr "당신의 투렌즈르"
+
+#: src/pages/attraction/index.js:2
+msgid "Culture"
+msgstr "문화시설"
 
 #: src/pages/login/template.html:10
 msgid "Don't have an"
@@ -55,6 +71,10 @@ msgstr "프로필 수정"
 #: src/pages/community-list/template.html:52
 msgid "English"
 msgstr "영어"
+
+#: src/pages/attraction/index.js:2
+msgid "Festival"
+msgstr "축제공연"
 
 #: src/pages/community-list/template.html:6
 msgid "Filter"
@@ -116,6 +136,18 @@ msgstr "아니요, 다음에 받을게요"
 msgid "Password"
 msgstr "비밀번호"
 
+#: src/pages/theme/index.js:51
+msgid "Please select a theme"
+msgstr "테마를 선택해주세요"
+
+#: src/pages/language/index.js:73
+msgid "Please select at least 1 language"
+msgstr "하나 이상의 언어를 선택해주세요"
+
+#: src/pages/when/index.js:27
+msgid "Please select two dates"
+msgstr "시작일과 종료일을 선택해주세요"
+
 #: src/pages/long-comment/template.html:19
 msgid "Register"
 msgstr "등록하기"
@@ -128,7 +160,7 @@ msgstr "골라주세요"
 msgid "Welcome Touriends!"
 msgstr "투렌즈에 가입하신걸 환영합니다!"
 
-#: src/pages/theme/template.html:5
+#: src/pages/theme/template.html:6
 msgid "What is your"
 msgstr "선호하는 여행테마가"
 
@@ -164,7 +196,7 @@ msgstr "무엇인가요?"
 msgid "for you."
 msgstr "검색 중입니다..."
 
-#: src/pages/theme/template.html:6
+#: src/pages/theme/template.html:7
 msgid "preferred travel theme?"
 msgstr "무엇인가요?"
 
@@ -195,12 +227,6 @@ msgstr "무엇인가요?"
 #~ msgid "YY"
 #~ msgstr "연도"
 
-#~ msgid "ALL"
-#~ msgstr "전체"
-
-#~ msgid "Culture"
-#~ msgstr "문화"
-
 #~ msgid "Dobong-gu"
 #~ msgstr "도봉구"
 
@@ -212,9 +238,6 @@ msgstr "무엇인가요?"
 
 #~ msgid "Eunpyeong-gu"
 #~ msgstr "은평구"
-
-#~ msgid "Festival"
-#~ msgstr "페스티벌"
 
 #~ msgid "Gangbuk-gu"
 #~ msgstr "강북구"
@@ -316,10 +339,6 @@ msgstr "무엇인가요?"
 #~| msgid "Don't have an <span class=\"login-actions__accent\" translate=\"\">Account?</span>"
 #~ msgid "Don't have an <span class=\"login-actions__accent\">Account?</span>"
 #~ msgstr "이 없으신가요"
-
-#, fuzzy
-#~ msgid "Please select a theme"
-#~ msgstr "테마를 선택해주세요"
 
 #, fuzzy
 #~ msgid "culture"

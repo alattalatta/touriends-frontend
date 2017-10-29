@@ -12,7 +12,7 @@ class MainCtrl {
 		return this.dataList[this.CurrentIndex];
 	}
 
-	constructor(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $scope, $timeout, $state,gettext) {
+	constructor(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $scope, $timeout, $state) {
 		this.CacheSvc = CacheSvc;
 		this.HttpSvc = HttpSvc;
 		this.OverlaySvc = OverlaySvc;
@@ -20,7 +20,6 @@ class MainCtrl {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
 		this.$state = $state;
-		this.gettext=gettext;
 		this.current = 0;
 
 		this.dataList = [];

@@ -1,6 +1,6 @@
 class MyCtrl {
 	static get $inject() {
-		return ['ToastSvc', 'OverlaySvc', 'CacheSvc', 'LoginSvc', '$scope', '$http', '$state','gettext']
+		return ['ToastSvc', 'OverlaySvc', 'CacheSvc', 'LoginSvc', '$scope', '$http', '$state']
 	}
 
 	get ProfileImage() {
@@ -27,12 +27,11 @@ class MyCtrl {
 		};
 	}
 
-	constructor(ToastSvc, OverlaySvc, CacheSvc, LoginSvc, $scope, $http, $state,gettext) {
+	constructor(ToastSvc, OverlaySvc, CacheSvc, LoginSvc, $scope, $http, $state) {
 		this.OverlaySvc = OverlaySvc;
 		this.CacheSvc = CacheSvc;
 		this.LoginSvc = LoginSvc;
 		this.$state = $state;
-		this.gettext=gettext;
 		this.image = null;
 		this.imageData = null;
 		this.imageOrientation = null;

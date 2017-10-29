@@ -1,28 +1,29 @@
 <main class="page-main container-fluid ms-page" ng-controller="Attraction as $ctrl">
 	<div class="paper-group message">
 		<div class="paper-title message">
-			<p class="paper-title_body message" translate>
-				ATTRACTION
-			</p>
+			<p class="paper-title_body message" translate>ATTRACTION</p>
 		</div>
 
 		<div class="attraction-menu">
-			<div class = "choice-box" ng-repeat="menu in $ctrl.menu" ng-bind="$ctrl.menu | translate">
+			<div class="choice-box" ng-repeat="menu in $ctrl.menu">
 				<div class="at-choice" ng-style="$ctrl.choiceMenu($index)" ng-click="$ctrl.menuClick($index)">
-					<div class="menu-name">{{menu}}</div>
+					<div class="menu-name" ng-bind="menu"></div>
 				</div>
 			</div>
 		</div>
 		<div class="selection-bar">
-			<div class="sb-location"><img class="img-marker" src="../../media/map-marker.png" alt=""><span ng-bind="$ctrl.all_menu[$ctrl.choiceLocation] "></span></div>
+			<div class="sb-location"><img class="img-marker" src="../../media/map-marker.png" alt=""><span
+					ng-bind="$ctrl.all_menu[$ctrl.choiceLocation] "></span></div>
 		</div>
 
 		<!--지역선택 패널-->
 		<div class="at-panel">
 			<div class="btn-box">
-					<div class="one-btn" ng-repeat="data in $ctrl.all_menu" ng-bind="$ctrl.menu" >
-						<button type="button" class="board" ng-click="$ctrl.locationClick($index)" ng-style="$ctrl.locationStyle($index)">{{data}}</button>
-					</div>
+				<div class="one-btn" ng-repeat="data in $ctrl.all_menu">
+					<button type="button" class="board" ng-click="$ctrl.locationClick($index)"
+					        ng-style="$ctrl.locationStyle($index)" ng-bind="data">
+					</button>
+				</div>
 			</div>
 			<div class="panel-close">
 				<div class="close-icon" ng-click="$ctrl.menuClick()"></div>
@@ -30,9 +31,11 @@
 		</div>
 
 		<div class="attraction-list_body">
-			<div ng-repeat="data in $ctrl.attraction_data" class="attraction-data" ng-style="$ctrl.attractionImg($index)" ng-class="$ctrl.noImage($index)" ng-click="$ctrl.go('attraction-detail', $index)">
+			<div ng-repeat="data in $ctrl.attraction_data" class="attraction-data"
+			     ng-style="$ctrl.attractionImg($index)" ng-class="$ctrl.noImage($index)"
+			     ng-click="$ctrl.go('attraction-detail', $index)">
 				<div class="title-box">
-					<span class="at-data-addr"><img class="img-marker white" src="../../media/white-marker.png" alt="">{{data.addr1}}</span><br>
+					<span class="at-data-addr"><img class="img-marker white" src="../../media/white-marker.png">{{data.addr1}}</span><br>
 					<div class="at-data-name" ng-bind="$ctrl.titleEng($index)"></div>
 				</div>
 			</div>

@@ -10,7 +10,7 @@ class ThemeCtrl {
 		this.CacheSvc = CacheSvc;
 		this.$http = $http;
 		this.$state = $state;
-		this._ = gettext;
+		this.gettext = gettext;
 		this.datalist = ['k-pop', 'food', 'exhibition', 'culture', 'activity'];
 		this.simage = null;
 
@@ -48,7 +48,7 @@ class ThemeCtrl {
 
 	async goNext() {
 		if (this.simage === null) {
-			this.ToastSvc.toggle(this._('Please select a theme'));
+			this.ToastSvc.toggle(this.gettext('Please select a theme'));
 			return;
 		}
 

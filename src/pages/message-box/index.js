@@ -1,6 +1,4 @@
-import param from 'jquery-param';
-
-function MessageBox(OverlaySvc, $state, HttpSvc, LoginSvc, ToastSvc) {
+function MessageBox(OverlaySvc, $state, HttpSvc, ToastSvc) {
 	this.datalist = [];
 	this.getOther = function () {
 		HttpSvc.request('showMessage').then((res) => {
@@ -8,9 +6,8 @@ function MessageBox(OverlaySvc, $state, HttpSvc, LoginSvc, ToastSvc) {
 				this.datalist = res.data.box;
 				this.new = res.data.new;
 				console.log(this.datalist);
-				for (var i = 0; i < this.datalist.length; i++) {
-					console.log('zz');
-					var other_id = parseInt(this.datalist[i].other);
+				for (let i = 0; i < this.datalist.length; i++) {
+					let other_id = parseInt(this.datalist[i].other);
 					this.getOtherInfo(i, other_id);
 				}
 			}
@@ -18,7 +15,7 @@ function MessageBox(OverlaySvc, $state, HttpSvc, LoginSvc, ToastSvc) {
 				ToastSvc.toggle('No data');
 			}
 		});
-	}
+	};
 	this.getOther();
 
 	this.getOtherInfo = function (i, other_id) {
@@ -40,8 +37,7 @@ function MessageBox(OverlaySvc, $state, HttpSvc, LoginSvc, ToastSvc) {
 				console.log('no');
 			}
 		});
-	}
-
+	};
 
 	this.messagePerson = function (idx) {
 		console.log(this.datalist);
@@ -71,6 +67,6 @@ function MessageBox(OverlaySvc, $state, HttpSvc, LoginSvc, ToastSvc) {
 	}
 }
 
-MessageBox.$inject = ['OverlaySvc', '$state', 'HttpSvc', 'LoginSvc', 'ToastSvc'];
+MessageBox.$inject = ['OverlaySvc', '$state', 'HttpSvc', 'ToastSvc'];
 
 export default angular.module('touriends.page.message-box', ['touriends']).controller('MessageBox', MessageBox).name;

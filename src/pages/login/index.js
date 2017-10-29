@@ -1,14 +1,13 @@
 class LoginCtrl {
 	static get $inject() {
-		return ['ToastSvc', 'OverlaySvc', 'LoginSvc', '$state', 'gettext']
+		return ['ToastSvc', 'OverlaySvc', 'LoginSvc', '$state']
 	}
 
-	constructor(ToastSvc, OverlaySvc, LoginSvc, $state,gettext) {
+	constructor(ToastSvc, OverlaySvc, LoginSvc, $state) {
 		this.ToastSvc = ToastSvc;
 		this.OverlaySvc = OverlaySvc;
 		this.LoginSvc = LoginSvc;
 		this.$state = $state;
-		this.gettext=gettext;
 		this.form = document.getElementById('form_login');
 
         /**
