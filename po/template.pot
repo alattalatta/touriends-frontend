@@ -12,15 +12,11 @@ msgstr ""
 msgid "ATTRACTION"
 msgstr ""
 
-#: src/pages/login/template.html:10
-msgid "Account?"
-msgstr ""
-
 #: src/pages/main/template.html:23
 msgid "Add your Touriends to travel with you"
 msgstr ""
 
-#: src/pages/community-list/template.html:10
+#: src/pages/community-list/template.html:11
 msgid "Age"
 msgstr ""
 
@@ -32,7 +28,7 @@ msgstr ""
 msgid "Attraction"
 msgstr ""
 
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:60
 msgid "Chinese"
 msgstr ""
 
@@ -53,7 +49,7 @@ msgid "Dobong-gu"
 msgstr ""
 
 #: src/pages/login/template.html:10
-msgid "Don't have an <span class=\"login-actions__accent\" translate=\"\">Account?</span>"
+msgid "Don't have an <span class=\"login-actions__accent\">Account?</span>"
 msgstr ""
 
 #: src/pages/attraction/index.js:7
@@ -72,7 +68,7 @@ msgstr ""
 msgid "Edit profile"
 msgstr ""
 
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:52
 msgid "English"
 msgstr ""
 
@@ -100,11 +96,7 @@ msgstr ""
 msgid "Foreigner<input name=\"nation\" type=\"radio\" value=\"foreigner\" ng-model=\"$ctrl.registerObj.nation\">"
 msgstr ""
 
-#: src/pages/login/template.html:11
-msgid "Forgot <span class=\"login-actions__accent\" translate=\"\">Password?</span>"
-msgstr ""
-
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:56
 msgid "French"
 msgstr ""
 
@@ -124,7 +116,7 @@ msgstr ""
 msgid "Gangseo-gu"
 msgstr ""
 
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:64
 msgid "German"
 msgstr ""
 
@@ -148,7 +140,7 @@ msgstr ""
 msgid "I'm looking for Touriends<br>for you.<br>Would you like to match?"
 msgstr ""
 
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:44
 msgid "Japanese"
 msgstr ""
 
@@ -156,7 +148,7 @@ msgstr ""
 msgid "Jongno-gu"
 msgstr ""
 
-#: src/pages/community-list/index.js:27
+#: src/pages/community-list/template.html:48
 msgid "Korean"
 msgstr ""
 
@@ -164,7 +156,7 @@ msgstr ""
 msgid "LOGIN"
 msgstr ""
 
-#: src/pages/community-list/template.html:12
+#: src/pages/community-list/template.html:41
 msgid "Language"
 msgstr ""
 
@@ -188,11 +180,7 @@ msgstr ""
 msgid "Mapo-gu"
 msgstr ""
 
-#: src/pages/message-box/template.html:4
-msgid "Message box"
-msgstr ""
-
-#: src/pages/community-list/template.html:30
+#: src/pages/community-list/template.html:79
 msgid "No Touriends"
 msgstr ""
 
@@ -202,10 +190,6 @@ msgstr ""
 
 #: src/pages/attraction/index.js:7
 msgid "Nowon-gu"
-msgstr ""
-
-#: src/pages/login/template.html:11
-msgid "Password?"
 msgstr ""
 
 #: src/pages/theme/index.js:51
