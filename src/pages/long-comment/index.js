@@ -47,7 +47,7 @@ function LongCommentCtrl(ToastSvc, CacheSvc, $http, $state,gettext) {
 				$state.go('matching-main');
 			}
 			else {
-				ToastSvc.toggle(gettext('Failed to update tour comment'));
+				ToastSvc.toggle('Failed to update tour comment');
 			}
 		});
 	}

@@ -11,8 +11,8 @@
         <div class="form-intro">
             <p class="id-write" ng-bind="$ctrl.login | translate"></p>
             <textarea name="intro" class="intro" ng-model="$ctrl.intro"
-                      placeholder="Introduce yourself to touriends! "></textarea>
-            <div class="byte-check" ng-class="{'is-highlighted': $ctrl.byte > 60}" ng-bind="$ctrl.byteCheck() | translate"></div>
+                      placeholder="{{'Introduce yourself to touriends! ' | translate }}"></textarea>
+            <div class="byte-check" ng-class="{'is-highlighted': $ctrl.byte > 60}" ng-bind="$ctrl.byteCheck()"></div>
         </div>
         <button ng-class="{'is-disabled': $ctrl.byte > 60}" class="button-submit">START</button>
     </form>

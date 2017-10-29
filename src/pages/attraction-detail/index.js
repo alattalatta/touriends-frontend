@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams,gettext) {
+function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
 
   this.detail = {
     parking : null,
