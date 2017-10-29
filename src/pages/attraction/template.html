@@ -20,7 +20,7 @@
 		<!--지역선택 패널-->
 		<div class="at-panel">
 			<div class="btn-box">
-					<div class="one-btn" ng-repeat="data in $ctrl.all_menu" ng-bind="$ctrl.menu | translate" >
+					<div class="one-btn" ng-repeat="data in $ctrl.all_menu" ng-bind="$ctrl.menu" >
 						<button type="button" class="board" ng-click="$ctrl.locationClick($index)" ng-style="$ctrl.locationStyle($index)">{{data}}</button>
 					</div>
 			</div>

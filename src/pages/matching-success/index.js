@@ -111,7 +111,7 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout,g
 				this.datalist[this.person].liked = res.data.like;
 			}
 			else {
-				ToastSvc.toggle(gettext('Could not like user ') + this.datalist[this.person].uid);
+				ToastSvc.toggle('Could not like user ' + this.datalist[this.person].uid);
 			}
 			CacheSvc.reset('getBookmark');
 		});

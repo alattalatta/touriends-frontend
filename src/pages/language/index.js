@@ -2,7 +2,7 @@ import param from 'jquery-param';
 
 class LanguageCtrl {
 	static get $inject() {
-		return ['ToastSvc', 'CacheSvc', '$http', '$state','gettext'];
+		return ['ToastSvc', 'CacheSvc', '$http', '$state'];
 	}
 
 	constructor(ToastSvc, CacheSvc, $http, $state) {
@@ -10,8 +10,7 @@ class LanguageCtrl {
 		this.CacheSvc = CacheSvc;
 		this.$http = $http;
 		this.$state = $state;
-		this.gettext=gettext;
-		this.datalist = [gettext('japanese'), gettext('korean'), gettext('english'),gettext('french'), gettext('chinese'), gettext('german')];
+		this.datalist = ['japanese', 'korean', 'english','french', 'chinese', 'german'];
 		this.dataChecked = [false, false, false, false, false];
 		this.simage = null;
 		this.simageCnt = 0;

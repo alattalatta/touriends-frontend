@@ -1,8 +1,8 @@
 <main class="page-main page-longcomment container-fluid" ng-controller="LongCommentCtrl as $ctrl">
 	<div class="paper-group longcomment-paper">
 		<div class="paper-title where">
-			<p class="paper-title_body page-longcomment-title" translate>
-				Anything more to tell us<br>about this tour?
+			<p class="paper-title_body page-longcomment-title">
+				<span translate>Anything more to tell us</span><br><span translate>about this tour?</span>
 			</p>
 		</div>
 
@@ -14,7 +14,7 @@
 			<div class="form-intro">
 			<textarea name="intro" class="intro" ng-model="$ctrl.content"
 					  placeholder=""></textarea>
-				<div class="byte-check" ng-class="{'is-highlighted': $ctrl.byte > 300}" ng-bind="$ctrl.byteCheck() | translate"></div>
+				<div class="byte-check" ng-class="{'is-highlighted': $ctrl.byte > 300}" ng-bind="$ctrl.byteCheck()"></div>
 			</div>
 			<button ng-class="{'is-disabled': $ctrl.byte > 300}" class="button-submit form-submit" translate>Register</button>
 		</form>

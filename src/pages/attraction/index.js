@@ -1,12 +1,12 @@
 import param from 'jquery-param';
 
-function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext) {
-  this.menu=[gettext('ALL'), gettext('Attraction'),gettext( 'Culture'), gettext('Festival')];
-  this.all_menu=[gettext('Gangnam-gu'),gettext('Gangdong-gu'),gettext('Gangbuk-gu'),gettext('Gangseo-gu'),
-      gettext('Gwanak-gu'),gettext('Gwangjin-gu'), gettext('Guro-gu'),gettext('Geumcheon-gu'),
-      gettext('Nowon-gu'), gettext('Dobong-gu'), gettext('Dongdaemun-gu'), gettext('Dongjak-gu'), gettext('Mapo-gu'),
-      gettext('Seodaemun-gu'),gettext('Seocho-gu'), gettext('Seongdong-gu'),gettext('Seongbuk-gu'), gettext('Songpa-gu'),
-      gettext('Yangcheon-gu'), gettext('Yeongdeungpo-gu'),gettext('Yongsan-gu'), gettext('Eunpyeong-gu'), gettext('Jongno-gu'), 'Jung-gu', 'Jungnagng-gu'];
+function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state) {
+  this.menu=['ALL', 'Attraction', 'Culture', 'Festival'];
+  this.all_menu=['Gangnam-gu','Gangdong-gu','Gangbuk-gu','Gangseo-gu',
+      'Gwanak-gu','Gwangjin-gu', 'Guro-gu','Geumcheon-gu',
+      'Nowon-gu', 'Dobong-gu', 'Dongdaemun-gu', 'Dongjak-gu', 'Mapo-gu',
+      'Seodaemun-gu','Seocho-gu', 'Seongdong-gu','Seongbuk-gu', 'Songpa-gu',
+  'Yangcheon-gu', 'Yeongdeungpo-gu','Yongsan-gu', 'Eunpyeong-gu', 'Jongno-gu', 'Jung-gu', 'Jungnagng-gu'];
 
 
   //title 괄호에있는 한글 없애기
@@ -139,6 +139,6 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext) {
   }
 }
 
-Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state', 'gettext'];
+Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state'];
 
 export default angular.module('touriends.page.attraction', ['touriends']).controller('Attraction', Attraction).name;

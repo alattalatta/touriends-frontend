@@ -3,7 +3,7 @@ import leftPad from 'left-pad';
 
 class WhenCtrl {
 	static get $inject() {
-		return ['ToastSvc', 'CacheSvc', '$http', '$state','gettext'];
+		return ['ToastSvc', 'CacheSvc', '$http', '$state'];
 	}
 
 	constructor(ToastSvc, CacheSvc, $http, $state) {
@@ -13,7 +13,6 @@ class WhenCtrl {
 		this.$state = $state;
 		this.dateA = null;
 		this.dateB = null;
-		this.gettext=gettext;
 		this.CacheSvc.get('get_calendar').then((response) => {
 			if (response.data.success) {
 				this.dateA = new Date(response.data.from + ' 00:00:00');

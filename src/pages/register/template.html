@@ -12,40 +12,40 @@
     <div class="container">
         <form class="form" id="form_register" ng-submit="$ctrl.register()" novalidate autocomplete="off">
             <input name="login" class="invalid-by-gradient" ng-class="{'is-invalid': ! $ctrl.IDValid}"
-                   ng-model="$ctrl.registerObj.login" placeholder="ID">
+                   ng-model="$ctrl.registerObj.login" placeholder='ID'>
             <hr class="login-separator">
             <input name="name" class="input form-input invalid-by-gradient"
                    ng-model="$ctrl.registerObj.name" ng-class="{'is-invalid': ! $ctrl.NameValid}"
-                   placeholder="Name">
+                   placeholder='Name'>
             <input name="email" class="input form-input invalid-by-gradient" type="email"
                    ng-model="$ctrl.registerObj.email" ng-class="{'is-invalid': ! $ctrl.EmailValid}"
-                   placeholder="E - mail">
+                   placeholder='E - mail' >
             <input name="pwd" class="input form-input invalid-by-gradient" type="password"
                    ng-model="$ctrl.registerObj.pwd" ng-class="{'is-invalid': ! $ctrl.PasswordValid}"
-                   placeholder="Password (6 or more letters)">
+                   placeholder='Password (6 or more letters)'>
             <input class="input form-input invalid-by-gradient" type="password"
                    ng-model="$ctrl.registerObj.pwdConfirm" ng-class="{'is-invalid': ! $ctrl.PasswordConfirmValid}"
-                   placeholder="Confirm Password">
+                   placeholder='Confirm Password'>
             <div class="row">
                 <div class="col-6">
                     <div class="input form-input invalid-by-gradient birth" ng-class="{'is-invalid': ! $ctrl.BirthValid}">
                         <div class="row no-gutters">
                             <input class="month input col-4" type="tel" name="month" ng-model="$ctrl.BirthMonth"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="M" focus-select>
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder='M' focus-select>
                             <input class="date input col-4" type="tel" name="day" ng-model="$ctrl.registerObj.birth.day"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="D" focus-select>
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder='D' focus-select>
                             <input class="year input col-4" type="tel" name="year" ng-model="$ctrl.registerObj.birth.year"
-                                   ng-blur="$ctrl.sanitizeBirth()" placeholder="YY" focus-select>
+                                   ng-blur="$ctrl.sanitizeBirth()" placeholder='YY' focus-select>
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="input form-input invalid-by-gradient gender" ng-class="{'is-invalid': ! $ctrl.GenderValid}">
                         <div class="row no-gutters">
-                            <label class="input col-6 left" ng-class="$ctrl.genderChecked('male')" translate>
+                            <label class="input col-6 left" ng-class="$ctrl.genderChecked('male')" >
                                 Male<input name="gender" type="radio" value="male" ng-model="$ctrl.registerObj.gender">
                             </label>
-                            <label class="input col-6 right" ng-class="$ctrl.genderChecked('female')" translate>
+                            <label class="input col-6 right" ng-class="$ctrl.genderChecked('female')" >
                                 Female<input name="gender" type="radio" value="female" ng-model="$ctrl.registerObj.gender">
                             </label>
                         </div>
@@ -54,16 +54,16 @@
             </div>
             <div class="input form-input invalid-by-gradient nation" ng-class="{'is-invalid': ! $ctrl.NationValid}">
                 <div class="row no-gutters">
-                    <label class="input col-6 left" ng-class="$ctrl.nationChecked('local')" translate>
+                    <label class="input col-6 left" ng-class="$ctrl.nationChecked('local')" >
                         Local<input name="nation" type="radio" value="local" ng-model="$ctrl.registerObj.nation">
                     </label>
-                    <label class="input col-6 right" ng-class="$ctrl.nationChecked('foreigner')" translate>
+                    <label class="input col-6 right" ng-class="$ctrl.nationChecked('foreigner')" >
                         Foreigner<input name="nation" type="radio" value="foreigner" ng-model="$ctrl.registerObj.nation">
                     </label>
                 </div>
             </div>
             <button class="button-submit" ng-class="{'is-disabled': ! $ctrl.DataValid}"
-                    ng-bind="$ctrl.SignUpLabel | translate"></button>
+                    ng-bind="$ctrl.SignUpLabel"></button>
         </form>
     </div>
 </main>
