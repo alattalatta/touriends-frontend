@@ -25,10 +25,16 @@ function MessageBox(OverlaySvc, $state, HttpSvc, ToastSvc) {
 		}).then((res) => {
 			if (res.data.success) {
 				// console.log("data", other_id, res.data);
+				let new_ck=false;
+				for (let j=0; j<this.new.length; j++){
+					if(this.new[j] == this.datalist[i].mid){
+						new_ck = true;
+					}
+				}
 				this.datalist[i] = {
 					mid   : this.datalist[i].mid,
 					other : this.datalist[i].other,
-					new_ck: this.new[i].newmsg,
+					new_ck : new_ck,
 					url   : res.data.other_image,
 					name  : res.data.other_name
 				};
