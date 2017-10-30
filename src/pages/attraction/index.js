@@ -55,34 +55,65 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext, LoginSvc) {
 			if (res.data.success) {
 				this.attraction_data = res.data.data.item;
 				if (this.content === 0) {
-					if (this.attraction_data == undefined || this.attraction_data == [undefined]) {
+					if (this.attraction_data == undefined || this.attraction_data[0] == undefined) {
 						this.attraction_data = new Array();
 					}
+					else if (Array.isArray(this.attraction_data) == false) {
+						this.attraction_data = new Array();
+						this.attraction_data.push(res.data.data.item);
+						console.log(this.attraction_data);
+					}
 					console.log(this.attraction_data,res.data.data1, res.data.data2);
+					console.log(this.attraction_data,res.data.data1, Array.isArray(res.data.data2.item));
 					if (Array.isArray(res.data.data1.item) == false){
-						this.attraction_data.push(res.data.data1.item);
+						if (res.data.data1.item != undefined) {
+							this.attraction_data.push(res.data.data1.item);
+						}
+						else{
+						}
 					}
 					else if (Array.isArray(res.data.data1.item) == true){
-						this.attraction_data = this.attraction_data.concat(res.data.data1.item);
+						if (res.data.data2.length===0) {
+						}
+						else{
+							this.attraction_data = this.attraction_data.concat(res.data.data1.item);
+						}
 					}
 					if(Array.isArray(res.data.data2.item) == false){
-						this.attraction_data.push(res.data.data2.item);
+						if (this.attraction_data != undefined) {
+							this.attraction_data.push(res.data.data2.item);
+						}
+						else{
+						}
 					}
 					else if(Array.isArray(res.data.data2.item) == true){
-						this.attraction_data = this.attraction_data.concat(res.data.data2.item);
+						if (res.data.data2.length===0) {
+						}
+						else{
+							this.attraction_data = this.attraction_data.concat(res.data.data2.item);
+						}
 					}
 				}
 
 				console.log(this.attraction_data);
-				if (this.attraction_data == undefined || this.attraction_data == [undefined]) {
+				if (this.attraction_data == undefined) {
 					ToastSvc.toggle('No data');
 				}
+				else	if(Array.isArray(this.attraction_data)==true){
+					if(this.attraction_data[0] == undefined){
+						ToastSvc.toggle('No data');
+					}
+					for(var i=0; i<this.attraction_data.length; i++){
+						if(this.attraction_data[i]==undefined){
+							this.attraction_data.splice(i,1);
+						}
+					}
+				}
 				else if (Array.isArray(this.attraction_data) == false) {
-					this.attraction_data = [];
+					this.attraction_data = new Array();
 					this.attraction_data.push(res.data.data.item);
 					console.log(this.attraction_data);
 				}
-
 			}
 		});
 	};
