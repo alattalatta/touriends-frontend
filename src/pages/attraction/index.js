@@ -14,7 +14,7 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext, LoginSvc) {
 	this.content = 0;
 	this.choiceLocation = 0;
 	this.attraction_data = [{
-		firstimage : null,
+		firstimage : '',
 		title : ''
 	}];
 	//Attraction Data AJAX
@@ -193,11 +193,12 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext, LoginSvc) {
 	}
 
 	this.attractionImg = function (idx) {
-		if (this.attraction_data[idx].firstimage == null) {
+		if (this.attraction_data[idx].firstimage == null || this.attraction_data[idx].firstimage == '') {
 			return;
 		}
+		var a = this.attraction_data[idx].firstimage.replace('http','https');
 		return {
-			'background-image': `url(${this.attraction_data[idx].firstimage})`
+			'background-image': `url(${a})`
 		}
 	}
 	this.noImage = function (idx) {

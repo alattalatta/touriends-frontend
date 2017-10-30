@@ -22,7 +22,7 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
     }
   }
   this.content = {
-    firstimage : null,
+    firstimage : '',
     addr1 : '',
     title : ''
   }
@@ -190,8 +190,9 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
   }
   this.contentImage = function(){
     if('firstimage' in this.content){
+      var a=this.content.firstimage.replace('http','https');
       return {
-        'background-image' : `url(${this.content.firstimage})`
+        'background-image' : `url(${a})`
       }
     }
     return;
