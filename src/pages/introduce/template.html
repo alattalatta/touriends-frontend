@@ -9,7 +9,7 @@
     </div>
     <form class="form" id="form_introduce" ng-submit="$ctrl.submitIntro()" novalidate autocomplete="off">
         <div class="form-intro">
-            <p class="id-write" ng-bind="$ctrl.login | translate"></p>
+            <p class="id-write" ng-bind="$ctrl.login"></p>
             <textarea name="intro" class="intro" ng-model="$ctrl.intro"
                       placeholder="{{'Introduce yourself to touriends! ' | translate }}"></textarea>
             <div class="byte-check" ng-class="{'is-highlighted': $ctrl.byte > 60}" ng-bind="$ctrl.byteCheck()"></div>

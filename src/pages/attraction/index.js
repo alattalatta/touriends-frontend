@@ -18,27 +18,107 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettextCatalog,gettex
 	//title 괄호에있는 한글 없애기
 
 	//기본값지정
+
 	this.content = 0;
 	this.choiceLocation = 0;
-	this.attraction_data = [];
+	this.attraction_data = [{
+		firstimage : '',
+		title : ''
+	}];
 	//Attraction Data AJAX
 	this.attractDataAjax = function () {
+		var content_type=3;
+		if(LoginSvc.nationality=='local'){
+			if(this.content===0){
+				content_type = 1;
+			}
+			else if(this.content===1){
+				content_type = 12;
+			}
+			else if(this.content===2){
+				content_type = 14;
+			}
+			else if(this.content===3){
+				content_type = 15;
+			}
+		}
+		else{
+			if(this.content===0){
+				content_type = 0;
+			}
+			else if(this.content===1){
+				content_type = 76;
+			}
+			else if(this.content===2){
+				content_type = 78;
+			}
+			else if(this.content===3){
+				content_type = 85;
+			}
+		}
 		HttpSvc.request('tour_Info', {
 			area: this.choiceLocation + 1,
-			content: this.content
+			content: content_type
 		}).then((res) => {
 			if (res.data.success) {
 				this.attraction_data = res.data.data.item;
 				if (this.content === 0) {
-					this.attraction_data = this.attraction_data.concat(res.data.data1.item);
-					this.attraction_data = this.attraction_data.concat(res.data.data2.item);
-					console.log(this.attraction_data);
+					if (this.attraction_data == undefined || this.attraction_data[0] == undefined) {
+						this.attraction_data = new Array();
+					}
+					else if (Array.isArray(this.attraction_data) == false) {
+						this.attraction_data = new Array();
+						this.attraction_data.push(res.data.data.item);
+						console.log(this.attraction_data);
+					}
+					console.log(this.attraction_data,res.data.data1, res.data.data2);
+					console.log(this.attraction_data,res.data.data1, Array.isArray(res.data.data2.item));
+					if (Array.isArray(res.data.data1.item) == false){
+						if (res.data.data1.item != undefined) {
+							this.attraction_data.push(res.data.data1.item);
+						}
+						else{
+						}
+					}
+					else if (Array.isArray(res.data.data1.item) == true){
+						if (res.data.data2.length===0) {
+						}
+						else{
+							this.attraction_data = this.attraction_data.concat(res.data.data1.item);
+						}
+					}
+					if(Array.isArray(res.data.data2.item) == false){
+						if (this.attraction_data != undefined) {
+							this.attraction_data.push(res.data.data2.item);
+						}
+						else{
+						}
+					}
+					else if(Array.isArray(res.data.data2.item) == true){
+						if (res.data.data2.length===0) {
+						}
+						else{
+							this.attraction_data = this.attraction_data.concat(res.data.data2.item);
+						}
+					}
 				}
-				if (this.attraction_data == undefined || this.attraction_data == [undefined]) {
+
+				console.log(this.attraction_data);
+				if (this.attraction_data == undefined) {
 					ToastSvc.toggle('No data');
 				}
-				else if (Array.isArray(res.data.data.item) == false) {
-					this.attraction_data = [];
+				else	if(Array.isArray(this.attraction_data)==true){
+					if(this.attraction_data[0] == undefined){
+						ToastSvc.toggle('No data');
+					}
+					for(var i=0; i<this.attraction_data.length; i++){
+						if(this.attraction_data[i]==undefined){
+							this.attraction_data.splice(i,1);
+						}
+					}
+				}
+				else if (Array.isArray(this.attraction_data) == false) {
+					this.attraction_data = new Array();
 					this.attraction_data.push(res.data.data.item);
 					console.log(this.attraction_data);
 				}
@@ -103,7 +183,7 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettextCatalog,gettex
 		}
 		for (let i = 0; i < check.length; i++) {
 			let ko = checkKorean(this.attraction_data[idx].title.charAt(check[i] + 1));
-			if (ko === true) {
+			if (ko === true || this.attraction_data[idx].title.charAt(check[i] + 1)==this.attraction_data[idx].title.charAt(0)) {
 				this.attraction_data[idx].title = this.attraction_data[idx].title.substr(0, check[i]);
 			}
 		}
@@ -121,11 +201,12 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettextCatalog,gettex
 	}
 
 	this.attractionImg = function (idx) {
-		if (this.attraction_data[idx].firstimage == null) {
+		if (this.attraction_data[idx].firstimage == null || this.attraction_data[idx].firstimage == '') {
 			return;
 		}
+		var a = this.attraction_data[idx].firstimage.replace('http','https');
 		return {
-			'background-image': `url(${this.attraction_data[idx].firstimage})`
+			'background-image': `url(${a})`
 		}
 	}
 	this.noImage = function (idx) {

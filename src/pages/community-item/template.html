@@ -5,7 +5,7 @@
 			<label ng-bind="$ctrl.data.login"></label>
 		</div>
 	</header>
-	<div class="paper-group tall">
+	<div class="paper-group">
 		<div class="paper-image profile">
 			<div class="paper-image_body profile" ng-style="$ctrl.data.image | srcToBackground"></div>
 			<div class="right">
@@ -21,6 +21,11 @@
 		<div class="paper right stiff cyan"></div>
 	</div>
 	<div class="under-paper container-fluid">
+		<p ng-bind="$ctrl.data.comment"></p>
+		<div class="icons">
+			<div class="icon message" ui-sref="message({id: $ctrl.uid})"></div>
+			<div class="icon liked" ng-class="{'not': ! $ctrl.data.liked}" ng-click="$ctrl.like()"></div>
+		</div>
 	</div>
 	<main-nav></main-nav>
 </main>

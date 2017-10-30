@@ -12,6 +12,7 @@ import 'oclazyload';
 import directiveModule from './directive/index';
 import serviceModule from './service/index';
 import srcToBackground from './filters/srcToBackground';
+import trusted from './filters/trusted';
 
 let app = angular
 	.module('touriends', [
@@ -20,8 +21,8 @@ let app = angular
 		directiveModule, serviceModule
 	])
 	.filter('srcToBackground', srcToBackground)
+	.filter('trusted', trusted)
 	.run(['gettextCatalog', (gettextCatalog) => {
-		gettextCatalog.debug = true;
 		gettextCatalog.loadRemote(`${locale_url}/ko.json`);
 		console.log(gettextCatalog);
 	}]);

@@ -1,6 +1,9 @@
 @import (reference) '../index';
 
 .community-item {
+	.paper {
+		height: 28rem;
+	}
 	.paper-image.profile {
 		width: 100%;
 		height: auto;
@@ -16,6 +19,10 @@
 
 	.right {
 		margin-left: 174 / 16rem;
+
+		.icons {
+			margin-top: 23 / 16rem;
+		}
 	}
 
 	.paper-id {
@@ -29,13 +36,33 @@
 		padding-right: 1rem;
 	}
 
-	.icons {
-		margin-top: 23 / 16rem;
-	}
 	.icon {
 		width: 2rem;
 		height: 2rem;
 		display: inline-block;
 		margin-right: 7 / 16rem;
+	}
+
+	.under-paper {
+		color: rgba(0, 0, 0, .8);
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: 22 / 16rem;
+		line-height: 35 / 22;
+		padding-top: 31rem;
+		padding-left: 30 / 16rem;
+		padding-right: 30 / 16rem;
+
+		.icons {
+			margin-top: 2rem;
+			text-align: right;
+		}
+	}
+
+	.icon.liked,
+	.icon.message {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 100%;
+		box-shadow: 0 0 .25rem 1px rgba(0, 0, 0, 0.07);
 	}
 }

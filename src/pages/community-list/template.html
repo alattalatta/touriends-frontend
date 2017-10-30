@@ -77,15 +77,15 @@
 	</header>
 	<div class="community-list">
 		<div class="community-blank" ng-if="$ctrl.dataList.length === 0" translate>No Touriends</div>
-		<div class="community-list_item" ng-repeat="item in $ctrl.dataList" ng-click="$ctrl.go($index)">
+		<div class="community-list_item" ng-repeat="item in $ctrl.dataList">
 			<div class="image" ng-style="item.image | srcToBackground"></div>
-			<div class="top">
+			<div class="top" ng-click="$ctrl.go($index)">
 				<span class="id" ng-bind="item.login"></span>
 				<span class="separator">/</span>
 				<span class="age" ng-bind="item.age"></span>
 				<div class="community-icon icon" ng-repeat="lang in item.languages" ng-class="lang"></div>
+				<div class="intro" ng-bind="item.intro"></div>
 			</div>
-			<div class="intro" ng-bind="item.intro"></div>
 			<div class="triangle">
 				<div class="pattern"></div>
 				<div class="icon liked" ng-class="{'not': ! item.liked}" ng-click="$ctrl.like($index)"></div>

@@ -1,12 +1,13 @@
 // import param from 'jquery-param';
 
-function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout, gettext) {
+function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout, gettext, $state) {
 	this.repeater = new Array(12);
 
 	this.datalist = [];
 	CacheSvc.get('getMatching').then((response) => {
 		if (response.data.success) {
 			this.datalist = response.data.matching;
+			console.log(this.datalist);
 		}
 		OverlaySvc.off('loading');
 	});
@@ -20,7 +21,7 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout, 
 		let current = this.datalist[idx];
 		if (current !== undefined) {
 			res.push('occupied'); // 프사 없을 때 쓸 클래스
-			
+
 			if (current.liked) {
 				res.push('liked'); // 오홍홍 조아용
 			}
@@ -141,7 +142,16 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout, 
 		if (this.person === null) return null;
 		return this.datalist[this.person].comment === '' ? 'No comment' : this.datalist[this.person].comment;
 	}
+
+	this.go = function (stateName) {
+		if ($state.is(stateName)) {
+			return;
+		}
+		OverlaySvc.on('loading');
+		$state.go(stateName, {id: this.datalist[this.person].uid});
+	}
+
 }
-MatchingSuccessCtrl.$inject = ['CacheSvc', 'HttpSvc', 'OverlaySvc', 'ToastSvc', '$timeout','gettext'];
+MatchingSuccessCtrl.$inject = ['CacheSvc', 'HttpSvc', 'OverlaySvc', 'ToastSvc', '$timeout','gettext', '$state'];
 
 export default angular.module('touriends.page.matching-success', ['touriends']).controller('MatchingSuccessCtrl', MatchingSuccessCtrl).name;

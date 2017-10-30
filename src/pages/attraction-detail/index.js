@@ -1,6 +1,6 @@
 import param from 'jquery-param';
 
-function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
+function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
 
   this.detail = {
     parking : null,
@@ -22,35 +22,61 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
     }
   }
   this.content = {
-    firstimage : null,
+    firstimage : '',
     addr1 : '',
     title : ''
   }
 
   this.getContentData = function(){
-    HttpSvc.request('common_Info',{
-      contentId : $stateParams.id
-    }).then((res) => {
-      if (res.data.success) {
-        console.log($stateParams.id,res.data.detail.item);
-        this.content = res.data.detail.item;
-      }
-    });
-    HttpSvc.request('detail_Info',{
-      contentId : $stateParams.id,
-      content : $stateParams.type
-    }).then((res) => {
-      if (res.data.success) {
-        this.detail = res.data.detail.item;
-        console.log('parking',this.detail.parking);
-        this.dataCheck();
-        this.getAdditionalData();
-        console.log('dd',this.detail.add_data.playtime);
-      }
-      else{
-        console.log("fail");
-      }
-    });
+    if($stateParams.type==="12" || $stateParams.type==="14" || $stateParams.type==="15"){
+      HttpSvc.request('common_Info_Kor',{
+        contentId : $stateParams.id
+      }).then((res) => {
+        if (res.data.success) {
+          console.log(res.data);
+          this.content = res.data.detail.item;
+        }
+      });
+      HttpSvc.request('detail_Info_Kor',{
+        contentId : $stateParams.id,
+        content : $stateParams.type
+      }).then((res) => {
+        if (res.data.success) {
+          //console.log(res.data);
+          this.detail = res.data.detail.item;
+          this.dataCheck();
+          this.getAdditionalData();
+        }
+        else{
+          console.log("fail");
+        }
+      });
+    }
+    else{
+      HttpSvc.request('common_Info',{
+        contentId : $stateParams.id
+      }).then((res) => {
+        if (res.data.success) {
+          console.log($stateParams.id,res.data.detail.item);
+          this.content = res.data.detail.item;
+        }
+      });
+      HttpSvc.request('detail_Info',{
+        contentId : $stateParams.id,
+        content : $stateParams.type
+      }).then((res) => {
+        if (res.data.success) {
+          this.detail = res.data.detail.item;
+          //console.log('parking',this.detail.parking);
+          this.dataCheck();
+          this.getAdditionalData();
+          //console.log('dd',this.detail.add_data.playtime);
+        }
+        else{
+          console.log("fail");
+        }
+      });
+    }
   }
   this.getContentData();
 
@@ -68,7 +94,7 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
     //유모차
     if('chkbabycarriage' in this.detail && this.detail.chkbabycarriage!={}){
       stroller=this.detail.chkbabycarriage;
-    }else if('chkbabycarriageculture' in this.detail  ){
+    }else if('chkbabycarriageculture' in this.detail){
       stroller=this.detail.chkbabycarriageculture;
     }
     //애완동물
@@ -153,7 +179,7 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
       }
     }
 
-    console.log('add',this.additionalData);
+    //console.log('add',this.additionalData);
   }
 
   this.noImage=function(){
@@ -164,8 +190,9 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
   }
   this.contentImage = function(){
     if('firstimage' in this.content){
+      var a=this.content.firstimage.replace('http','https');
       return {
-        'background-image' : `url(${this.content.firstimage})`
+        'background-image' : `url(${a})`
       }
     }
     return;
@@ -179,7 +206,7 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
     }
     for(var i=0; i<check.length; i++){
       var ko = checkKorean(this.content.title.charAt(check[i]+1));
-      if(ko===true){
+      if(ko===true || this.content.title.charAt(check[i] + 1)==this.content.title.charAt(0)){
         this.content.title = this.content.title.substr(0, check[i]);
       }
     }
@@ -232,30 +259,39 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams) {
   //usersguide
 
   this.availImg = function(idx){
-    var data = this.detail;
     if(idx===0){
-      if(this.detail.parking===null || this.detail.parking==='불가' || this.detail.parking==='없음'){
+      if(this.detail.parking===null || this.detail.parking=='불가' || this.detail.parking=='없음'){
         return 'disavailable-icon';
       }
       return 'available-icon';
     }
     else if(idx===1){
-      if(this.detail.chkbabycarriage===null || this.detail.chkbabycarriage==='불가' || this.detail.chkbabycarriage==='없음'){
+      if(this.detail.chkpet===null || this.detail.chkpet=='불가' || this.detail.chkpet=='없음'){
         return 'disavailable-icon';
       }
       return 'available-icon';
     }
     else if(idx===2){
-      if(this.detail.chkpet===null  || this.detail.chkpet==='불가' || this.detail.chkpet==='없음'){
+      if(this.detail.chkbabycarriage===null  || this.detail.chkbabycarriage=='불가' || this.detail.chkbabycarriage=='없음'){
         return 'disavailable-icon';
       }
       return 'available-icon';
     }
   }
 
+
   OverlaySvc.off('loading');
+
+  this.go = function (stateName) {
+    console.log(stateName);
+		if ($state.is(stateName)) {
+			return;
+		}
+		OverlaySvc.on('loading');
+		$state.go(stateName);
+	}
 }
 
-AttractionDetail.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$stateParams','gettext'];
+AttractionDetail.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$stateParams','$state'];
 
 export default angular.module('touriends.page.attraction-detail', ['touriends']).controller('AttractionDetail', AttractionDetail).name;

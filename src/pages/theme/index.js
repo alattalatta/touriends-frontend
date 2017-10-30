@@ -31,7 +31,7 @@ class ThemeCtrl {
 	rmGray(idx) {
 		if (this.simage === idx) {
 			return {
-				'filter': 'none'
+				'filter': 'grayscale(0)'
 			}
 		}
 		return null;

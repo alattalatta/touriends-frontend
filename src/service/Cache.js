@@ -26,7 +26,6 @@ class CacheSvc {
 
 		// 저장된게 없으면 AJAX 전송
 		if (val === undefined) {
-			console.log('Cache not found! Key:', key);
 			return this.HttpSvc.request(action, params).then((response) => {
 				if (response.data.success) {
 					this.map.set(key, response);
@@ -37,7 +36,6 @@ class CacheSvc {
 		// 저장된게 있으면 그거 반환
 		else {
 			// 왜 Promise? => 저장된게 없는 경우 Promise 가 반환되니까 있는 경우도 Promise 로 맞춰야 함
-			console.log('Cache found! Key/Val:', key, this.map.get(key));
 			return new Promise((resolve) => {
 				resolve(val);
 			});

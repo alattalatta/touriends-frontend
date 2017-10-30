@@ -30,7 +30,7 @@
 		    </div>
 		    <p class="comment" ng-bind="$ctrl.CurrentTouriends.comment"></p>
 		    <div class="bottom">
-			    <div class="icon message"></div>
+			    <div class="icon message" ui-sref="message({id: $ctrl.CurrentTouriends.uid})"></div>
 			    <div class="icon liked"
 			         ng-class="{'not': ! $ctrl.CurrentTouriends.liked}"
 			         ng-click="$ctrl.like()"></div>
