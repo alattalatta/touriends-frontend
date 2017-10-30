@@ -8,13 +8,19 @@
 			<div class="communication-box_body">
 				<div ng-repeat="c in $ctrl.communication" class="communication-list">
 					<div ng-show="$ctrl.isMe($index)" class="me">
-						<div class="communication" ng-bind="$ctrl.communication[$index].note " ng-style="$ctrl.myMessage($index)"
-						 ng-class="$ctrl.nextMessage($index)"></div>
-						<div ng-style="$ctrl.personImage($index)" class="person-img me" ng-show="$ctrl.communicationShow($index)"></div>
+						<div class="communication" ng-class="$ctrl.nextMessage($index)"
+							 ng-style="$ctrl.myMessage($index)"
+							 ng-bind-html="$ctrl.communication[$index].note | trusted"></div>
+						<div class="person-img me"
+							 ng-style="$ctrl.personImage($index)"
+							 ng-show="$ctrl.communicationShow($index)"></div>
 					</div>
 					<div ng-hide="$ctrl.isMe($index)">
-						<div ng-style="$ctrl.personImage($index)" class="person-img you" ng-show="$ctrl.communicationShow($index)"></div>
-						<div class="communication" ng-bind="$ctrl.communication[$index].note " ng-class="$ctrl.nextMessage($index)"></div>
+						<div class="person-img you"
+							 ng-style="$ctrl.personImage($index)"
+							 ng-show="$ctrl.communicationShow($index)"></div>
+						<div class="communication" ng-class="$ctrl.nextMessage($index)"
+							 ng-bind-html="$ctrl.communication[$index].note | trusted"></div>
 					</div>
 				</div>
 			</div>

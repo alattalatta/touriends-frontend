@@ -5,7 +5,6 @@ function Message(OverlaySvc, $timeout, HttpSvc, CacheSvc, $stateParams, $state) 
 		}).then((res) => {
 			if (res.data.success) {
 				this.communication = res.data.messages;
-				console.log(res.data);
 			}
 			else {
 				console.log('no');
@@ -52,10 +51,12 @@ function Message(OverlaySvc, $timeout, HttpSvc, CacheSvc, $stateParams, $state) 
 	};
 
 	this.btnSend = function () { //보내기 버튼 누르면 되는고
+		console.log({'msg': this.message_text});
 		HttpSvc.request('sendMessage', {
 			other: $stateParams.id,
 			note: this.message_text
 		}).then((res) => {
+			console.log(res.data);
 			if (res.data.success) {
 				this.getCommunication();
 			}
@@ -95,7 +96,6 @@ function Message(OverlaySvc, $timeout, HttpSvc, CacheSvc, $stateParams, $state) 
 		other: $stateParams.id
 	}).then((res) => {
 		if (res.data.success) {
-			console.log(res.data);
 			this.you.name = res.data.other_name;
 			this.you.url = res.data.other_image;
 		}
@@ -120,7 +120,6 @@ function Message(OverlaySvc, $timeout, HttpSvc, CacheSvc, $stateParams, $state) 
 	}, 300);
 
 	this.go = function (stateName) {
-		console.log('click', stateName);
 		if ($state.is(stateName)) {
 			return;
 		}

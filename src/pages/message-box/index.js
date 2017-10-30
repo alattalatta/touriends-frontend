@@ -1,11 +1,12 @@
 function MessageBox(OverlaySvc, $state, HttpSvc, ToastSvc) {
 	this.datalist = [];
-	this.getOther = function () {
+
+	this.getOther = function() {
 		HttpSvc.request('showMessage').then((res) => {
 			if (res.data.success) {
 				this.datalist = res.data.box;
 				this.new = res.data.new;
-				console.log(this.datalist);
+				console.log('showMessage', res.data);
 				for (let i = 0; i < this.datalist.length; i++) {
 					let other_id = parseInt(this.datalist[i].other);
 					this.getOtherInfo(i, other_id);
@@ -18,20 +19,20 @@ function MessageBox(OverlaySvc, $state, HttpSvc, ToastSvc) {
 	};
 	this.getOther();
 
-	this.getOtherInfo = function (i, other_id) {
+	this.getOtherInfo = function(i, other_id) {
 		HttpSvc.request('otherInfo', {
 			other: other_id
 		}).then((res) => {
 			if (res.data.success) {
-				console.log("data", other_id, res.data);
+				// console.log("data", other_id, res.data);
 				this.datalist[i] = {
-					mid: this.datalist[i].mid,
-					other: this.datalist[i].other,
+					mid   : this.datalist[i].mid,
+					other : this.datalist[i].other,
 					new_ck: this.new[i].newmsg,
-					url: res.data.other_image,
-					name: res.data.other_name
+					url   : res.data.other_image,
+					name  : res.data.other_name
 				};
-				console.log(this.datalist);
+				// console.log('otherInfo', this.datalist);
 			}
 			else {
 				console.log('no');
@@ -39,26 +40,9 @@ function MessageBox(OverlaySvc, $state, HttpSvc, ToastSvc) {
 		});
 	};
 
-	this.messagePerson = function (idx) {
-		console.log(this.datalist);
-		return {
-			'background-color': '#F7F7F7'
-		};
-	};
-	this.personImage = function (idx) {
-		if (this.datalist[idx].url === '') {
-			return {
-				'background-color': 'grey'
-			};
-		}
-		return {
-			'background-image': `url(${this.datalist[idx].url})`,
-		}
-	};
-
 	OverlaySvc.off('loading');
 
-	this.go = function (stateName, idx) {
+	this.go = function(stateName, idx) {
 		if ($state.is(stateName)) {
 			return;
 		}
