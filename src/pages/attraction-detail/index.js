@@ -205,7 +205,7 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
     }
     for(var i=0; i<check.length; i++){
       var ko = checkKorean(this.content.title.charAt(check[i]+1));
-      if(ko===true || this.attraction_data[idx].title.charAt(check[i] + 1)==this.attraction_data[idx].title.charAt(0)){
+      if(ko===true || this.content.title.charAt(check[i] + 1)==this.content.title.charAt(0)){
         this.content.title = this.content.title.substr(0, check[i]);
       }
     }

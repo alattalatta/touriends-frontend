@@ -13,7 +13,10 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext, LoginSvc) {
 
 	this.content = 0;
 	this.choiceLocation = 0;
-	this.attraction_data = [];
+	this.attraction_data = [{
+		firstimage : null,
+		title : ''
+	}];
 	//Attraction Data AJAX
 	this.attractDataAjax = function () {
 		var content_type=3;
@@ -52,18 +55,34 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext, LoginSvc) {
 			if (res.data.success) {
 				this.attraction_data = res.data.data.item;
 				if (this.content === 0) {
-					this.attraction_data = this.attraction_data.concat(res.data.data1.item);
-					this.attraction_data = this.attraction_data.concat(res.data.data2.item);
-					console.log(this.attraction_data);
+					if (this.attraction_data == undefined || this.attraction_data == [undefined]) {
+						this.attraction_data = new Array();
+					}
+					console.log(this.attraction_data,res.data.data1, res.data.data2);
+					if (Array.isArray(res.data.data1.item) == false){
+						this.attraction_data.push(res.data.data1.item);
+					}
+					else if (Array.isArray(res.data.data1.item) == true){
+						this.attraction_data = this.attraction_data.concat(res.data.data1.item);
+					}
+					if(Array.isArray(res.data.data2.item) == false){
+						this.attraction_data.push(res.data.data2.item);
+					}
+					else if(Array.isArray(res.data.data2.item) == true){
+						this.attraction_data = this.attraction_data.concat(res.data.data2.item);
+					}
 				}
+
+				console.log(this.attraction_data);
 				if (this.attraction_data == undefined || this.attraction_data == [undefined]) {
 					ToastSvc.toggle('No data');
 				}
-				else if (Array.isArray(res.data.data.item) == false) {
+				else if (Array.isArray(this.attraction_data) == false) {
 					this.attraction_data = [];
 					this.attraction_data.push(res.data.data.item);
 					console.log(this.attraction_data);
 				}
+
 			}
 		});
 	};
