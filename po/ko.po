@@ -30,7 +30,7 @@ msgstr "선호연령"
 
 #: src/pages/language/index.js:39
 msgid "Already chose three. Please uncheck one first"
-msgstr ""
+msgstr "이미 3개를 선택하셨어요. 3개만 선택해주세요"
 
 #: src/pages/long-comment/template.html:5
 msgid "Anything more to tell us"
@@ -189,23 +189,24 @@ msgid "Password"
 msgstr "비밀번호"
 
 #: src/pages/theme/index.js:51
-#, fuzzy
 msgid "Please select a theme"
 msgstr "테마를 선택해주세요"
 
 #: src/pages/language/index.js:73
-#, fuzzy
 msgid "Please select at least 1 language"
-msgstr "테마를 선택해주세요"
+msgstr "최소한 1개의 언어를 선택해 주세요"
 
 #: src/pages/when/index.js:27
-#, fuzzy
 msgid "Please select two dates"
-msgstr "테마를 선택해주세요"
+msgstr "시작하는 날짜와 끝나는 날짜를 모두 선택해 주세요"
 
 #: src/pages/long-comment/template.html:19
 msgid "Register"
 msgstr "등록하기"
+
+#: src/pages/community-list/template.html:74
+msgid "Search ID"
+msgstr "투렌즈 검색"
 
 #: src/pages/attraction/index.js:10
 msgid "Seocho-gu"
@@ -250,6 +251,10 @@ msgstr "서울투어"
 #: src/pages/matching-main/template.html:4
 msgid "Would you like to match?"
 msgstr "매칭을 받으시겠습니까?"
+
+#: src/pages/message/template.html:29
+msgid "Write your message"
+msgstr "메시지를 작성해 주세요"
 
 #: src/pages/attraction/index.js:12
 msgid "Yangcheon-gu"

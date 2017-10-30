@@ -71,7 +71,7 @@
 	<header class="community-header">
 		<form class="wrapper" ng-submit="$ctrl.fetchData($ctrl.keyword)">
 			<button type="submit" class="search"></button>
-			<input placeholder="Search ID" ng-model="$ctrl.keyword">
+			<input placeholder="{{'Search ID'| translate}}" ng-model="$ctrl.keyword">
 			<div class="filter-open" ng-click="$ctrl.openFilter()"></div>
 		</form>
 	</header>

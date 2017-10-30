@@ -196,6 +196,10 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
+#: src/pages/community-list/template.html:74
+msgid "Search ID"
+msgstr ""
+
 #: src/pages/attraction/index.js:10
 msgid "Seocho-gu"
 msgstr ""
@@ -238,6 +242,10 @@ msgstr ""
 
 #: src/pages/matching-main/template.html:4
 msgid "Would you like to match?"
+msgstr ""
+
+#: src/pages/message/template.html:29
+msgid "Write your message"
 msgstr ""
 
 #: src/pages/attraction/index.js:12
