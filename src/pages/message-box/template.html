@@ -11,7 +11,7 @@
 				ng-click="$ctrl.go('message', $index)">
 					<div ng-style="$ctrl.datalist[$index].url | srcToBackground" class="person-image"></div>
 					<div class="person-id" ng-bind="$ctrl.datalist[$index].name"></div>
-					<div ng-show="$ctrl.datalist[$index].new_ck=='0'" class="new-message"></div>
+					<div ng-show="$ctrl.datalist[$index].new_ck=='1'" class="new-message"></div>
 				</div>
 			</div>
 		</div>

@@ -21,7 +21,6 @@ let app = angular
 	])
 	.filter('srcToBackground', srcToBackground)
 	.run(['gettextCatalog', (gettextCatalog) => {
-		gettextCatalog.debug = true;
 		gettextCatalog.loadRemote(`${locale_url}/ko.json`);
 	}]);
 
