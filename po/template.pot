@@ -4,10 +4,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: src/pages/attraction/index.js:2
-msgid "ALL"
-msgstr ""
-
 #: src/pages/attraction/template.html:4
 msgid "ATTRACTION"
 msgstr ""
@@ -32,10 +28,6 @@ msgstr ""
 msgid "Anything more to tell us"
 msgstr ""
 
-#: src/pages/attraction/index.js:2
-msgid "Attraction"
-msgstr ""
-
 #: src/pages/community-list/template.html:60
 msgid "Chinese"
 msgstr ""
@@ -44,12 +36,20 @@ msgstr ""
 msgid "Choose your"
 msgstr ""
 
-#: src/pages/attraction/index.js:2
-msgid "Culture"
+#: src/pages/attraction/index.js:7
+msgid "Dobong-gu"
 msgstr ""
 
 #: src/pages/login/template.html:10
 msgid "Don't have an"
+msgstr ""
+
+#: src/pages/attraction/index.js:8
+msgid "Dongdaemun-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:8
+msgid "Dongjak-gu"
 msgstr ""
 
 #: src/pages/my/template.html:23
@@ -64,8 +64,8 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: src/pages/attraction/index.js:2
-msgid "Festival"
+#: src/pages/attraction/index.js:14
+msgid "Eunpyeong-gu"
 msgstr ""
 
 #: src/pages/community-list/template.html:6
@@ -76,8 +76,40 @@ msgstr ""
 msgid "French"
 msgstr ""
 
+#: src/pages/attraction/index.js:4
+msgid "Gangbuk-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:3
+msgid "Gangdong-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:3
+msgid "Gangnam-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:4
+msgid "Gangseo-gu"
+msgstr ""
+
 #: src/pages/community-list/template.html:64
 msgid "German"
+msgstr ""
+
+#: src/pages/attraction/index.js:6
+msgid "Geumcheon-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:6
+msgid "Guro-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:5
+msgid "Gwanak-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:5
+msgid "Gwangjin-gu"
 msgstr ""
 
 #: src/pages/matching-main/template.html:4
@@ -96,6 +128,18 @@ msgstr ""
 msgid "Japanese"
 msgstr ""
 
+#: src/pages/attraction/index.js:14
+msgid "Jongno-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:15
+msgid "Jung-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:15
+msgid "Jungnang-gu"
+msgstr ""
+
 #: src/pages/community-list/template.html:48
 msgid "Korean"
 msgstr ""
@@ -112,6 +156,10 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
+#: src/pages/attraction/index.js:9
+msgid "Mapo-gu"
+msgstr ""
+
 #: src/pages/message-box/template.html:4
 msgid "Message box"
 msgstr ""
@@ -122,6 +170,10 @@ msgstr ""
 
 #: src/pages/matching-main/template.html:12
 msgid "No, I'll do it next time"
+msgstr ""
+
+#: src/pages/attraction/index.js:7
+msgid "Nowon-gu"
 msgstr ""
 
 #: src/pages/login/template.html:6
@@ -142,6 +194,26 @@ msgstr ""
 
 #: src/pages/long-comment/template.html:19
 msgid "Register"
+msgstr ""
+
+#: src/pages/attraction/index.js:10
+msgid "Seocho-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:9
+msgid "Seodaemun-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:11
+msgid "Seongbuk-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:10
+msgid "Seongdong-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:11
+msgid "Songpa-gu"
 msgstr ""
 
 #: src/pages/matching-success/template.html:19
@@ -168,8 +240,20 @@ msgstr ""
 msgid "Would you like to match?"
 msgstr ""
 
+#: src/pages/attraction/index.js:12
+msgid "Yangcheon-gu"
+msgstr ""
+
+#: src/pages/attraction/index.js:12
+msgid "Yeongdeungpo-gu"
+msgstr ""
+
 #: src/pages/matching-main/template.html:11
 msgid "Yes, I'd like to match"
+msgstr ""
+
+#: src/pages/attraction/index.js:13
+msgid "Yongsan-gu"
 msgstr ""
 
 #: src/pages/long-comment/template.html:5

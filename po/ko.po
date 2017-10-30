@@ -12,17 +12,13 @@ msgstr ""
 "X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/pages/attraction/index.js:2
-msgid "ALL"
-msgstr "전체"
-
 #: src/pages/attraction/template.html:4
 msgid "ATTRACTION"
 msgstr "관광정보"
 
 #: src/pages/login/template.html:10
 msgid "Account?"
-msgstr "없으신가요?"
+msgstr " 없으신가요?"
 
 #: src/pages/main/template.html:23
 msgid "Add your Touriends to travel with you"
@@ -34,15 +30,11 @@ msgstr "선호연령"
 
 #: src/pages/language/index.js:39
 msgid "Already chose three. Please uncheck one first"
-msgstr "이미 세 개를 선택했습니다"
+msgstr ""
 
 #: src/pages/long-comment/template.html:5
 msgid "Anything more to tell us"
 msgstr "이 여행에 대해서"
-
-#: src/pages/attraction/index.js:2
-msgid "Attraction"
-msgstr "관광지"
 
 #: src/pages/community-list/template.html:60
 msgid "Chinese"
@@ -52,13 +44,21 @@ msgstr "중국어"
 msgid "Choose your"
 msgstr "당신의 투렌즈르"
 
-#: src/pages/attraction/index.js:2
-msgid "Culture"
-msgstr "문화시설"
+#: src/pages/attraction/index.js:7
+msgid "Dobong-gu"
+msgstr "도봉구"
 
 #: src/pages/login/template.html:10
 msgid "Don't have an"
 msgstr "계정이"
+
+#: src/pages/attraction/index.js:8
+msgid "Dongdaemun-gu"
+msgstr "동대문구"
+
+#: src/pages/attraction/index.js:8
+msgid "Dongjak-gu"
+msgstr "동작구"
 
 #: src/pages/my/template.html:23
 msgid "Edit matching info"
@@ -72,9 +72,9 @@ msgstr "프로필 수정"
 msgid "English"
 msgstr "영어"
 
-#: src/pages/attraction/index.js:2
-msgid "Festival"
-msgstr "축제공연"
+#: src/pages/attraction/index.js:14
+msgid "Eunpyeong-gu"
+msgstr "은평구"
 
 #: src/pages/community-list/template.html:6
 msgid "Filter"
@@ -84,9 +84,41 @@ msgstr "검색필터"
 msgid "French"
 msgstr "불어"
 
+#: src/pages/attraction/index.js:4
+msgid "Gangbuk-gu"
+msgstr "강북구"
+
+#: src/pages/attraction/index.js:3
+msgid "Gangdong-gu"
+msgstr "강동구"
+
+#: src/pages/attraction/index.js:3
+msgid "Gangnam-gu"
+msgstr "강남구"
+
+#: src/pages/attraction/index.js:4
+msgid "Gangseo-gu"
+msgstr "강서구"
+
 #: src/pages/community-list/template.html:64
 msgid "German"
 msgstr "독일어"
+
+#: src/pages/attraction/index.js:6
+msgid "Geumcheon-gu"
+msgstr "금천구"
+
+#: src/pages/attraction/index.js:6
+msgid "Guro-gu"
+msgstr "구로구"
+
+#: src/pages/attraction/index.js:5
+msgid "Gwanak-gu"
+msgstr "관악구"
+
+#: src/pages/attraction/index.js:5
+msgid "Gwangjin-gu"
+msgstr "광진구"
 
 #: src/pages/matching-main/template.html:4
 msgid "I'm looking for Touriends"
@@ -104,6 +136,18 @@ msgstr "투렌즈에게 자기소개를 해주세요!"
 msgid "Japanese"
 msgstr "일본어"
 
+#: src/pages/attraction/index.js:14
+msgid "Jongno-gu"
+msgstr "종로구"
+
+#: src/pages/attraction/index.js:15
+msgid "Jung-gu"
+msgstr "은평구"
+
+#: src/pages/attraction/index.js:15
+msgid "Jungnang-gu"
+msgstr "중랑구"
+
 #: src/pages/community-list/template.html:48
 msgid "Korean"
 msgstr "한국어"
@@ -120,6 +164,10 @@ msgstr "구사언어"
 msgid "Log out"
 msgstr "로그아웃"
 
+#: src/pages/attraction/index.js:9
+msgid "Mapo-gu"
+msgstr "마포구"
+
 #: src/pages/message-box/template.html:4
 msgid "Message box"
 msgstr "메시지함"
@@ -132,25 +180,52 @@ msgstr "투렌즈가 없어요"
 msgid "No, I'll do it next time"
 msgstr "아니요, 다음에 받을게요"
 
+#: src/pages/attraction/index.js:7
+msgid "Nowon-gu"
+msgstr "노원구"
+
 #: src/pages/login/template.html:6
 msgid "Password"
 msgstr "비밀번호"
 
 #: src/pages/theme/index.js:51
+#, fuzzy
 msgid "Please select a theme"
 msgstr "테마를 선택해주세요"
 
 #: src/pages/language/index.js:73
+#, fuzzy
 msgid "Please select at least 1 language"
-msgstr "하나 이상의 언어를 선택해주세요"
+msgstr "테마를 선택해주세요"
 
 #: src/pages/when/index.js:27
+#, fuzzy
 msgid "Please select two dates"
-msgstr "시작일과 종료일을 선택해주세요"
+msgstr "테마를 선택해주세요"
 
 #: src/pages/long-comment/template.html:19
 msgid "Register"
 msgstr "등록하기"
+
+#: src/pages/attraction/index.js:10
+msgid "Seocho-gu"
+msgstr "서초구"
+
+#: src/pages/attraction/index.js:9
+msgid "Seodaemun-gu"
+msgstr "서대문구"
+
+#: src/pages/attraction/index.js:11
+msgid "Seongbuk-gu"
+msgstr "성북구"
+
+#: src/pages/attraction/index.js:10
+msgid "Seongdong-gu"
+msgstr "성동구"
+
+#: src/pages/attraction/index.js:11
+msgid "Songpa-gu"
+msgstr "송파구"
 
 #: src/pages/matching-success/template.html:19
 msgid "TOURIENDS"
@@ -176,9 +251,21 @@ msgstr "서울투어"
 msgid "Would you like to match?"
 msgstr "매칭을 받으시겠습니까?"
 
+#: src/pages/attraction/index.js:12
+msgid "Yangcheon-gu"
+msgstr "양천구"
+
+#: src/pages/attraction/index.js:12
+msgid "Yeongdeungpo-gu"
+msgstr "영등포구"
+
 #: src/pages/matching-main/template.html:11
 msgid "Yes, I'd like to match"
 msgstr "네. 지금 매칭을 받을게요"
+
+#: src/pages/attraction/index.js:13
+msgid "Yongsan-gu"
+msgstr "용산구"
 
 #: src/pages/long-comment/template.html:5
 msgid "about this tour?"
@@ -199,6 +286,15 @@ msgstr "검색 중입니다..."
 #: src/pages/theme/template.html:7
 msgid "preferred travel theme?"
 msgstr "무엇인가요?"
+
+#~ msgid "ALL"
+#~ msgstr "전체"
+
+#~ msgid "Culture"
+#~ msgstr "문화"
+
+#~ msgid "Festival"
+#~ msgstr "페스티벌"
 
 #~ msgid "Confirm Password"
 #~ msgstr "비밀번호확인"
@@ -227,77 +323,8 @@ msgstr "무엇인가요?"
 #~ msgid "YY"
 #~ msgstr "연도"
 
-#~ msgid "Dobong-gu"
-#~ msgstr "도봉구"
-
-#~ msgid "Dongdaemun-gu"
-#~ msgstr "동대문구"
-
-#~ msgid "Dongjak-gu"
-#~ msgstr "동작구"
-
-#~ msgid "Eunpyeong-gu"
-#~ msgstr "은평구"
-
-#~ msgid "Gangbuk-gu"
-#~ msgstr "강북구"
-
-#~ msgid "Gangdong-gu"
-#~ msgstr "강동구"
-
-#~ msgid "Gangnam-gu"
-#~ msgstr "강남구"
-
-#~ msgid "Gangseo-gu"
-#~ msgstr "강서구"
-
-#~ msgid "Geumcheon-gu"
-#~ msgstr "금천구"
-
-#~ msgid "Guro-gu"
-#~ msgstr "구로구"
-
-#~ msgid "Gwanak-gu"
-#~ msgstr "관악구"
-
-#~ msgid "Gwangjin-gu"
-#~ msgstr "광진구"
-
-#~ msgid "Jongno-gu"
-#~ msgstr "종로구"
-
 #~ msgid "Local"
 #~ msgstr "내국인"
-
-#~ msgid "Mapo-gu"
-#~ msgstr "마포구"
-
-#~ msgid "Nowon-gu"
-#~ msgstr "노원구"
-
-#~ msgid "Seocho-gu"
-#~ msgstr "서초구"
-
-#~ msgid "Seodaemun-gu"
-#~ msgstr "서대문구"
-
-#~ msgid "Seongbuk-gu"
-#~ msgstr "성북구"
-
-#~ msgid "Seongdong-gu"
-#~ msgstr "성동구"
-
-#~ msgid "Songpa-gu"
-#~ msgstr "송파구"
-
-#~ msgid "Yangcheon-gu"
-#~ msgstr "양천구"
-
-#~ msgid "Yeongdeungpo-gu"
-#~ msgstr "영등포구"
-
-#~ msgid "Yongsan-gu"
-#~ msgstr "용산구"
 
 #, fuzzy
 #~| msgid "preferred travel theme?"
@@ -390,12 +417,6 @@ msgstr "무엇인가요?"
 
 #~ msgid "Jongno"
 #~ msgstr "종로구"
-
-#~ msgid "Jung-gu"
-#~ msgstr "은평구"
-
-#~ msgid "Jungnang"
-#~ msgstr "중앙구"
 
 #~ msgid "Mapo"
 #~ msgstr "마포구"
