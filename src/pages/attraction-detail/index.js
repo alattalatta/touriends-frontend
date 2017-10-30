@@ -42,7 +42,7 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
         content : $stateParams.type
       }).then((res) => {
         if (res.data.success) {
-          console.log(res.data);
+          //console.log(res.data);
           this.detail = res.data.detail.item;
           this.dataCheck();
           this.getAdditionalData();
@@ -67,10 +67,10 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
       }).then((res) => {
         if (res.data.success) {
           this.detail = res.data.detail.item;
-          console.log('parking',this.detail.parking);
+          //console.log('parking',this.detail.parking);
           this.dataCheck();
           this.getAdditionalData();
-          console.log('dd',this.detail.add_data.playtime);
+          //console.log('dd',this.detail.add_data.playtime);
         }
         else{
           console.log("fail");
@@ -94,7 +94,7 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
     //유모차
     if('chkbabycarriage' in this.detail && this.detail.chkbabycarriage!={}){
       stroller=this.detail.chkbabycarriage;
-    }else if('chkbabycarriageculture' in this.detail  ){
+    }else if('chkbabycarriageculture' in this.detail){
       stroller=this.detail.chkbabycarriageculture;
     }
     //애완동물
@@ -179,7 +179,7 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
       }
     }
 
-    console.log('add',this.additionalData);
+    //console.log('add',this.additionalData);
   }
 
   this.noImage=function(){
@@ -258,21 +258,20 @@ function AttractionDetail(OverlaySvc, ToastSvc, HttpSvc, $stateParams, $state) {
   //usersguide
 
   this.availImg = function(idx){
-    var data = this.detail;
     if(idx===0){
-      if(this.detail.parking===null || this.detail.parking==='불가' || this.detail.parking==='없음'){
+      if(this.detail.parking===null || this.detail.parking=='불가' || this.detail.parking=='없음'){
         return 'disavailable-icon';
       }
       return 'available-icon';
     }
     else if(idx===1){
-      if(this.detail.chkbabycarriage===null || this.detail.chkbabycarriage==='불가' || this.detail.chkbabycarriage==='없음'){
+      if(this.detail.chkpet===null || this.detail.chkpet=='불가' || this.detail.chkpet=='없음'){
         return 'disavailable-icon';
       }
       return 'available-icon';
     }
     else if(idx===2){
-      if(this.detail.chkpet===null  || this.detail.chkpet==='불가' || this.detail.chkpet==='없음'){
+      if(this.detail.chkbabycarriage===null  || this.detail.chkbabycarriage=='불가' || this.detail.chkbabycarriage=='없음'){
         return 'disavailable-icon';
       }
       return 'available-icon';
