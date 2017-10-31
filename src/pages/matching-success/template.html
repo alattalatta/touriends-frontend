@@ -1,4 +1,41 @@
 <main class="page-main container-fluid ms-page" ng-controller="MatchingSuccessCtrl as $ctrl">
+	<div class="matching-helper" ng-hide="$ctrl.matching=='1'" ng-click="$ctrl.helperClose()"><!--도움말-->
+		<div class="matching-data">
+			<div class="helper step1">
+				<img class="share-img" src="../../media/share.png" alt="">
+				<img class="number one" src="../../media/one.png" alt="">
+				<div class="description-text">
+					매칭된 투렌즈를 <br> 눌러주세요
+				</div>
+			</div>
+			<div class="helper step2">
+				<img class="number" src="../../media/two.png" alt="">
+				<div class="description-text">
+					<div class="heart"></div> 를 눌러 관심을 표현하세요! <br> (관심투렌즈는 Home에서 한번에)
+				</div>
+			</div>
+			<div class="helper step3">
+				<img class="number" src="../../media/three.png" alt="">
+				<div class="description-text">
+					투렌즈와 대화하고 싶다면 <div class="chat-icon"></div>
+				</div>
+			</div>
+			<div class="matching-circle">
+				<div class="matching-circle_inner example image"></div>
+
+				<div class="person-group is-visible">
+					<div class="choice cancel example"></div>
+					<div class="choice message example"></div>
+					<div class="choice liked example"></div>
+					<div class="choice theme icon culture example"></div>
+					<div class="choice language1 icon korean example"></div>
+					<div class="choice language2 icon english example"></div>
+					<div class="choice language3 icon japanese example"></div>
+				</div>
+			</div>
+			<div class="circle ng-scope large first occupied example-circle"></div>
+		</div>
+	</div>
 	<div class="matching-wrapper">
 		<div class="matching-data">
 			<div class="matching-circle">

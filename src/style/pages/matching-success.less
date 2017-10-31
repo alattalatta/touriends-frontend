@@ -2,12 +2,86 @@
 
 .page-main.ms-page {
 	position: relative;
+	padding: 0;
 }
-
+.matching-helper{
+	background: rgba(0,0,0,.5);
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+	padding-right: 20 / 16rem;
+  padding-left: 20 / 16rem;
+	.helper{
+		.number{
+			width: 50 / 16rem;
+			height: 50 / 16rem;
+			margin-left: 40 / 16rem;
+	    position: relative;
+	    top: -30 / 16rem;
+		}
+		.description-text{
+			color: white;
+			font-size: 30 / 16rem;
+			text-align: center;
+			position: relative;
+	    top: -90 / 16rem;
+	    left: 120 / 16rem;
+		}
+	}
+	.step1{
+		position: relative;
+		top: 50 / 16rem;
+		left: 150 / 16rem;
+		z-index: 99;
+		.share-img{
+			width: 50 / 16rem;
+			height: 50 / 16rem;
+			transform: rotate(-150deg);
+		}
+		.one{
+			width: 50 / 16rem;
+			height: 50 / 16rem;
+			margin-left: 15 / 16rem;
+	    position: relative;
+	    top: -30 / 16rem;
+		}
+		.description-text{
+	    left: -20 / 16rem;
+		}
+	}
+	.step2{
+		position: absolute;
+		bottom: 90 / 16rem;
+		.heart{
+			width: 30 / 16rem;
+			height: 30 / 16rem;
+			background-image: url('../../media/icons/not.liked.png');
+			display: inline-block;
+			background-size: cover;
+			position: relative;
+	    top: 6 / 16rem;
+		}
+	}
+	.step3{
+		position: absolute;
+		bottom: 0;
+		.chat-icon{
+			width: 30 / 16rem;
+			height: 30 / 16rem;
+			background-image: url('../../media/icons/message.png');
+			display: inline-block;
+			background-size: cover;
+			position: relative;
+	    top: 6 / 16rem;
+		}
+	}
+}
 .matching-wrapper {
 	height: 100%;
 	min-height: 791.5 / 16rem;
-	position: relative;
+	padding-right: 20 / 16rem;
+  padding-left: 20 / 16rem;
 }
 .matching-data {
 	max-width: 531 / 16rem;
@@ -15,11 +89,14 @@
 	font-size: 1rem;
 	margin: auto;
 	position: relative;
-	top: 50%;
+	top: 45%;
 	left: 0;
 	right: 0;
 	transform: translateY(-50%);
-
+	.example-circle{
+		background-image: url('../../media/example.jpg') !important;
+		border: none !important;
+	}
 	.circle {
 		background: #DADADA center no-repeat;
 		background-size: cover;
@@ -140,6 +217,9 @@
 	right: 0;
 	transform: translateY(-50%);
 
+	.image&.example{
+		background-image: url('../../media/example.jpg');
+	}
 	&.image {
 		background: white center no-repeat;
 		background-size: cover;
@@ -229,7 +309,6 @@
 .is-visible .choice {
 	opacity: 1;
 }
-
 .person-text {
 	height: 309.5 / 16rem;
 	background: linear-gradient(rgba(249, 247, 247, 0),rgba(66, 66, 66, 0.78) 90%); // iOS 에서 transparent 키워드 안됨

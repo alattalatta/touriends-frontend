@@ -2,7 +2,17 @@
 
 function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout, gettext, $state) {
 	this.repeater = new Array(12);
+	this.matching = null;
+	HttpSvc.request('matchCheck').then((res) => {
+		if (res.data.success) {
+			this.matching = res.data.matching;
+			console.log(res.data);
+		}
+	});
 
+	this.helperClose = function(){
+		this.matching = '1';
+	}
 	this.datalist = [];
 	CacheSvc.get('getMatching').then((response) => {
 		if (response.data.success) {

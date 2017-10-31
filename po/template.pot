@@ -40,7 +40,7 @@ msgstr ""
 msgid "Chinese"
 msgstr ""
 
-#: src/pages/matching-success/template.html:18
+#: src/pages/matching-success/template.html:55
 msgid "Choose your"
 msgstr ""
 
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: src/pages/matching-success/template.html:19
+#: src/pages/matching-success/template.html:56
 msgid "TOURIENDS"
 msgstr ""
 
