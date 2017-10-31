@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<form class="send-message" ng-submit="$ctrl.btnSend()">
-			<input class="message-input" ng-model="$ctrl.message_text" placeholder="Write your message">
+			<input class="message-input" ng-model="$ctrl.message_text" placeholder="{{'Write your message' | translate}}">
 			<button type="submit" class="btn-message" ng-class="$ctrl.activeBtn()" ng-disabled="$ctrl.btn_disabled"></button>
 		</form>
 	</div>

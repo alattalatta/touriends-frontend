@@ -1,10 +1,18 @@
-function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext, LoginSvc) {
-	this.menu = [gettext('ALL'),gettext('Attraction'),gettext('Culture'),gettext('Festival')];
-	this.all_menu = ['Gangnam-gu', 'Gangdong-gu', 'Gangbuk-gu', 'Gangseo-gu',
-		'Gwanak-gu', 'Gwangjin-gu', 'Guro-gu', 'Geumcheon-gu',
-		'Nowon-gu', 'Dobong-gu', 'Dongdaemun-gu', 'Dongjak-gu', 'Mapo-gu',
-		'Seodaemun-gu', 'Seocho-gu', 'Seongdong-gu', 'Seongbuk-gu', 'Songpa-gu',
-		'Yangcheon-gu', 'Yeongdeungpo-gu', 'Yongsan-gu', 'Eunpyeong-gu', 'Jongno-gu', 'Jung-gu', 'Jungnagng-gu'];
+function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettextCatalog,gettext) {
+	this.menu = ['ALL', 'Attraction', 'Culture', 'Festival'];
+	this.all_menu = [gettextCatalog.getString(gettext('Gangnam-gu')), gettextCatalog.getString(gettext('Gangdong-gu'))
+		, gettextCatalog.getString(gettext('Gangbuk-gu')), gettextCatalog.getString(gettext('Gangseo-gu')),
+            gettextCatalog.getString(gettext('Gwanak-gu')), gettextCatalog.getString(gettext('Gwangjin-gu')),
+                gettextCatalog.getString(gettext('Guro-gu')), gettextCatalog.getString(gettext('Geumcheon-gu')),
+                    gettextCatalog.getString(gettext('Nowon-gu')), gettextCatalog.getString(gettext('Dobong-gu')),
+                        gettextCatalog.getString(gettext('Dongdaemun-gu')),gettextCatalog.getString(gettext('Dongjak-gu')),
+                            gettextCatalog.getString(gettext('Mapo-gu')), 	gettextCatalog.getString(gettext('Seodaemun-gu')),
+								gettextCatalog.getString(gettext('Seocho-gu')), gettextCatalog.getString(gettext('Seongdong-gu')),
+									gettextCatalog.getString(gettext('Seongbuk-gu')), gettextCatalog.getString(gettext('Songpa-gu')),
+                                        gettextCatalog.getString(gettext('Yangcheon-gu')), gettextCatalog.getString(gettext('Yeongdeungpo-gu')),
+											gettextCatalog.getString(gettext('Yongsan-gu')),
+                                            gettextCatalog.getString(gettext('Eunpyeong-gu')), gettextCatalog.getString(gettext('Jongno-gu')),
+                                                gettextCatalog.getString(gettext('Jung-gu')), gettextCatalog.getString(gettext('Jungnang-gu'))];
 
 
 	//title 괄호에있는 한글 없애기
@@ -219,6 +227,6 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettext, LoginSvc) {
 	}
 }
 
-Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state', 'gettext', 'LoginSvc'];
+Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state', 'gettextCatalog','gettext'];
 
 export default angular.module('touriends.page.attraction', ['touriends']).controller('Attraction', Attraction).name;

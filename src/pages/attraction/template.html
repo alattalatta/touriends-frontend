@@ -13,7 +13,7 @@
 		</div>
 		<div class="selection-bar">
 			<div class="sb-location"><img class="img-marker" src="../../media/map-marker.png" alt=""><span
-					ng-bind="$ctrl.all_menu[$ctrl.choiceLocation] "></span></div>
+					ng-bind="$ctrl.all_menu[$ctrl.choiceLocation] | translate "></span></div>
 		</div>
 
 		<!--지역선택 패널-->
@@ -21,7 +21,7 @@
 			<div class="btn-box">
 				<div class="one-btn" ng-repeat="data in $ctrl.all_menu">
 					<button type="button" class="board" ng-click="$ctrl.locationClick($index)"
-					        ng-style="$ctrl.locationStyle($index)" ng-bind="data">
+					        ng-style="$ctrl.locationStyle($index)" ng-bind="data | translate">
 					</button>
 				</div>
 			</div>

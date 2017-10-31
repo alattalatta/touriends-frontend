@@ -24,6 +24,7 @@ let app = angular
 	.filter('trusted', trusted)
 	.run(['gettextCatalog', (gettextCatalog) => {
 		gettextCatalog.loadRemote(`${locale_url}/ko.json`);
+		console.log(gettextCatalog);
 	}]);
 
 (require('./config').default)(app);
