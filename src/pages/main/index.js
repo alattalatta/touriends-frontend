@@ -22,14 +22,18 @@ class MainCtrl {
 		this.$state = $state;
 		this.current = 0;
 
+		this.matched = false;
 		this.dataList = [];
 		this.init();
 	}
 
 	async init() {
-		let res = await this.CacheSvc.get('getBookmark');
-		if (res.data.success) {
-			this.dataList = res.data.liked;
+		let matchChecker = this.CacheSvc.get('matchCheck');
+		let bookmark = this.CacheSvc.get('getBookmark');
+
+		let bookmarkRes = await bookmark;
+		if (bookmarkRes.data.success) {
+			this.dataList = bookmarkRes.data.liked;
 			this.$timeout(() => {
 				jQuery('.slick-target').slick({
 					appendArrows: '.slick-arrows',
@@ -43,26 +47,35 @@ class MainCtrl {
 				});
 			}, 50);
 		}
+		let matchRes = await matchChecker;
+		if (matchRes.data.success) {
+			this.matched = matchRes.data.matching;
+		}
 		this.OverlaySvc.off('loading');
 	}
 
 	async start() {
-		this.OverlaySvc.on('loading');
-		// 캐싱 우선
-		let when = this.CacheSvc.get('get_calendar');
-		let where = this.CacheSvc.get('get_place');
-		let lang = this.CacheSvc.get('get_language');
-		let theme = this.CacheSvc.get('get_theme');
-		let comment = this.CacheSvc.get('get_tour_comment');
-		await when;
-		await where;
-		await lang;
-		await theme;
-		await comment;
+		if (this.matched) {
+			this.$state.go('matching-main');
+		}
+		else {
+			this.OverlaySvc.on('loading');
+			// 캐싱 우선
+			let when = this.CacheSvc.get('get_calendar');
+			let where = this.CacheSvc.get('get_place');
+			let lang = this.CacheSvc.get('get_language');
+			let theme = this.CacheSvc.get('get_theme');
+			let comment = this.CacheSvc.get('get_tour_comment');
+			await when;
+			await where;
+			await lang;
+			await theme;
+			await comment;
 
-		// 끗
-		await this.$state.go('when');
-		this.OverlaySvc.off('loading');
+			// 끗
+			await this.$state.go('when');
+			this.OverlaySvc.off('loading');
+		}
 	}
 
 	async like() {

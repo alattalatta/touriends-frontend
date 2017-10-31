@@ -44,6 +44,7 @@ function LongCommentCtrl(ToastSvc, CacheSvc, $http, $state,gettext) {
 			console.log(response);
 			if (response.data.success) {
 				CacheSvc.reset('get_longIntro');
+				CacheSvc.reset('matchCheck');
 				$state.go('matching-main');
 			}
 			else {
