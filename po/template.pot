@@ -4,6 +4,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
+#: src/pages/matching-success/template.html:14
+msgid "(lists are in Home)"
+msgstr ""
+
 #: src/pages/attraction/template.html:4
 msgid "ATTRACTION"
 msgstr ""
@@ -32,7 +36,11 @@ msgstr ""
 msgid "Chinese"
 msgstr ""
 
-#: src/pages/matching-success/template.html:55
+#: src/pages/matching-success/template.html:8
+msgid "Choose Touriends"
+msgstr ""
+
+#: src/pages/matching-success/template.html:56
 msgid "Choose your"
 msgstr ""
 
@@ -66,6 +74,10 @@ msgstr ""
 
 #: src/pages/attraction/index.js:14
 msgid "Eunpyeong-gu"
+msgstr ""
+
+#: src/pages/matching-success/template.html:14
+msgid "Express interest!"
 msgstr ""
 
 #: src/pages/community-list/template.html:6
@@ -118,6 +130,10 @@ msgstr ""
 
 #: src/pages/login/template.html:5
 msgid "ID"
+msgstr ""
+
+#: src/pages/matching-success/template.html:20
+msgid "If you want to"
 msgstr ""
 
 #: src/pages/introduce/template.html:14
@@ -220,7 +236,7 @@ msgstr ""
 msgid "Songpa-gu"
 msgstr ""
 
-#: src/pages/matching-success/template.html:56
+#: src/pages/matching-success/template.html:57
 msgid "TOURIENDS"
 msgstr ""
 
@@ -282,4 +298,12 @@ msgstr ""
 
 #: src/pages/theme/template.html:7
 msgid "preferred travel theme?"
+msgstr ""
+
+#: src/pages/matching-success/template.html:20
+msgid "send a message! Touch"
+msgstr ""
+
+#: src/pages/matching-success/template.html:8
+msgid "who you want"
 msgstr ""

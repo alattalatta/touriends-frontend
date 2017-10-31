@@ -9,9 +9,12 @@ function MatchingSuccessCtrl(CacheSvc, HttpSvc, OverlaySvc, ToastSvc, $timeout, 
 			console.log(res.data);
 		}
 	});
-
 	this.helperClose = function(){
 		this.matching = '1';
+		HttpSvc.request('matchCheckSend',{
+			matching : this.matching
+		}).then((res) => {
+		});
 	}
 	this.datalist = [];
 	CacheSvc.get('getMatching').then((response) => {

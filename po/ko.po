@@ -12,6 +12,10 @@ msgstr ""
 "X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: src/pages/matching-success/template.html:14
+msgid "(lists are in Home)"
+msgstr "(홈에서 목록 확인)"
+
 #: src/pages/attraction/template.html:4
 msgid "ATTRACTION"
 msgstr "관광정보"
@@ -40,9 +44,13 @@ msgstr "이 여행에 대해서"
 msgid "Chinese"
 msgstr "중국어"
 
-#: src/pages/matching-success/template.html:18
+#: src/pages/matching-success/template.html:8
+msgid "Choose Touriends"
+msgstr "매칭된 투렌즈를"
+
+#: src/pages/matching-success/template.html:56
 msgid "Choose your"
-msgstr "당신의 투렌즈르"
+msgstr "당신의 투렌즈를"
 
 #: src/pages/attraction/index.js:7
 msgid "Dobong-gu"
@@ -75,6 +83,10 @@ msgstr "영어"
 #: src/pages/attraction/index.js:14
 msgid "Eunpyeong-gu"
 msgstr "은평구"
+
+#: src/pages/matching-success/template.html:14
+msgid "Express interest!"
+msgstr "관심을 표현하세요!"
 
 #: src/pages/community-list/template.html:6
 msgid "Filter"
@@ -127,6 +139,10 @@ msgstr "당신에게 맞는 투렌즈를"
 #: src/pages/login/template.html:5
 msgid "ID"
 msgstr "아이디"
+
+#: src/pages/matching-success/template.html:20
+msgid "If you want to"
+msgstr "투렌즈와 대화하고 싶다면"
 
 #: src/pages/introduce/template.html:14
 msgid "Introduce yourself to touriends!"
@@ -228,7 +244,7 @@ msgstr "성동구"
 msgid "Songpa-gu"
 msgstr "송파구"
 
-#: src/pages/matching-success/template.html:19
+#: src/pages/matching-success/template.html:57
 msgid "TOURIENDS"
 msgstr "골라주세요"
 
@@ -291,6 +307,20 @@ msgstr "검색 중입니다..."
 #: src/pages/theme/template.html:7
 msgid "preferred travel theme?"
 msgstr "무엇인가요?"
+
+#: src/pages/matching-success/template.html:20
+msgid "send a message! Touch"
+msgstr "메시지를 보내세요!"
+
+#: src/pages/matching-success/template.html:8
+msgid "who you want"
+msgstr "선택해주세요"
+
+#~ msgid "Click here and express your interest!"
+#~ msgstr "를 눌러서 관심을 표현하세요!"
+
+#~ msgid "If you want to send a message, hit this!"
+#~ msgstr "여기를 눌러서 메시지를 보내보세요!"
 
 #~ msgid "ALL"
 #~ msgstr "전체"
@@ -458,6 +488,3 @@ msgstr "무엇인가요?"
 
 #~ msgid "Yongsan"
 #~ msgstr "용산구"
-
-#~ msgid "do you want to tour?"
-#~ msgstr "투어하고 싶나요?"

@@ -1,4 +1,4 @@
-function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettextCatalog,gettext) {
+function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettextCatalog,gettext, LoginSvc) {
 	this.menu = ['ALL', 'Attraction', 'Culture', 'Festival'];
 	this.all_menu = [gettextCatalog.getString(gettext('Gangnam-gu')), gettextCatalog.getString(gettext('Gangdong-gu'))
 		, gettextCatalog.getString(gettext('Gangbuk-gu')), gettextCatalog.getString(gettext('Gangseo-gu')),
@@ -227,6 +227,6 @@ function Attraction(OverlaySvc, ToastSvc, HttpSvc, $state, gettextCatalog,gettex
 	}
 }
 
-Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state', 'gettextCatalog','gettext'];
+Attraction.$inject = ['OverlaySvc', 'ToastSvc', 'HttpSvc', '$state', 'gettextCatalog','gettext','LoginSvc'];
 
 export default angular.module('touriends.page.attraction', ['touriends']).controller('Attraction', Attraction).name;
