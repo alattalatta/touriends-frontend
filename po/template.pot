@@ -32,7 +32,7 @@ msgstr ""
 msgid "Chinese"
 msgstr ""
 
-#: src/pages/matching-success/template.html:55
+#: src/pages/matching-success/template.html:57
 msgid "Choose your"
 msgstr ""
 
@@ -220,7 +220,7 @@ msgstr ""
 msgid "Songpa-gu"
 msgstr ""
 
-#: src/pages/matching-success/template.html:56
+#: src/pages/matching-success/template.html:58
 msgid "TOURIENDS"
 msgstr ""
 
